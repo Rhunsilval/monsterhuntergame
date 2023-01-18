@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button  
             type="button"
-            v-for="product in products"
+            v-for="product in store.apothecary"
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -159,43 +159,10 @@
   import { ref, computed } from 'vue';
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import { usePlayerStore } from '@/stores/player'
+  import { useShopStore } from '@/stores/shops'
 
   const playerStore = usePlayerStore();
-
-  const products = [
-    {
-      id: 'apo_health_1',
-      name: 'Simple Healing Draught',
-      description: 'A simple brew that will perk you up a bit.',
-      value: '+10 health',
-      price: 10,
-      imageSrc: require('../../assets/images/village/Apothecary_clay_bottle_1.png'),
-    },
-    {
-      id: 'apo_strength_1',
-      name: 'Tincure of Strength',
-      description:"Rub this in and you'll instantly feel stronger.  For a little while anyway.",
-      value: '+5 strength',
-      price: 25,
-      imageSrc: require('../../assets/images/village/Apothecary_clay_jar_1.png'),
-    },
-    {
-      id: 'apo_poison_1',
-      name: 'Simple Anti-venom Potion',
-      description:'You would not believe the number of things that are poisonous out there',
-      value: 'cures you of poisoning, lasts until next exposure',
-      price: 350,
-      imageSrc: require('../../assets/images/village/Apothecary_potions_bottle_1.png'),
-    },
-    {
-      id: 'apo_soup_1',
-      name: 'Bone Broth Soup',
-      description: "I know how it looks.  Just give it a try - I think you'll like it!",
-      value: '+5-15 health and +1-10 strength',
-      price: 35,
-      imageSrc: require('../../assets/images/village/Apothecary_soup_1.png'),
-    },
-  ] 
+  const store = useShopStore();
 
   const openDialogModal = ref(false)
   const openDialogModal2 = ref(false)
@@ -206,7 +173,7 @@
 
   const chosenProdId = ref(null)
   const chosenProd = computed(function() {
-    return products.find(product => product.id === chosenProdId.value)
+    return store.apothecary.find(product => product.id === chosenProdId.value)
   })
   
   function buyProduct(productId) {
