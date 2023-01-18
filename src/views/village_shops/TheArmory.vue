@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           <button 
             type="button"
-            v-for="product in products" 
+            v-for="product in store.armory" 
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -158,44 +158,10 @@
   import { ref, computed } from 'vue';
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import { usePlayerStore } from '@/stores/player'
+  import { useShopStore } from '@/stores/shops'
 
   const playerStore = usePlayerStore();
-
-  const products = [
-    {
-      id: 'leath_armor_1',
-      name: 'Basic Leather Armor',
-      description: 'Cheap, reliable, and sturdy',
-      value: '+10 defense',
-      price: 200,
-      imageSrc: require('../../assets/images/village/Leather_leather_armor_1.png'),
-    },
-    {
-      id: 'leath_gauntlet_1',
-      name: 'Leather Gauntlets',
-      description:"Just the thing to help you keep a strong grip on your sword.",
-      value: '+3 defense',
-      price: 100,
-      imageSrc: require('../../assets/images/village/Leather_leather_gauntlets_1.png'),
-    },
-    {
-      id: 'leath_boots_1',
-      name: 'Sturdy Leather Boots',
-      description:'Hunting monsters with bad boots is a bad idea.  You need good footwear.',
-      value: '+3 defense and +2 strength',
-      price: 150,
-      imageSrc: require('../../assets/images/village/Leather_leather_boots_1.png'),
-    },
-    {
-      id: 'leath_enchant_boots_1',
-      name: 'Enchanted Boots',
-      description: "A gift from a friendly 'Shroom Spirit, these are great if you're considering adding magic items to your armor",
-      value: '+1-5 defense, and poison resistance, and occasional +1-5 health',
-      price: 350,
-      imageSrc: require('../../assets/images/village/Leather_enchanted_boots_1.png'),
-    },
-    // More products...
-  ]
+  const store = useShopStore();
 
   const openDialogModal = ref(false)
   const openDialogModal2 = ref(false)
@@ -206,7 +172,7 @@
 
   const chosenProdId = ref(null)
   const chosenProd = computed(function() {
-    return products.find(product => product.id === chosenProdId.value)
+    return store.armory.find(product => product.id === chosenProdId.value)
   })
 
   function buyProduct(productId) {

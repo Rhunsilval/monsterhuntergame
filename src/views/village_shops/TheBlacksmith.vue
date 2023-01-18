@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           <button 
             type="button"
-            v-for="product in products" 
+            v-for="product in store.blacksmith" 
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -159,44 +159,10 @@
   import { ref, computed } from 'vue';
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import { usePlayerStore } from '@/stores/player'
+  import { useShopStore } from '@/stores/shops'
 
   const playerStore = usePlayerStore();
-
-  const products = [
-    {
-      id: 'smith_sword_1',
-      name: 'Basic Steel Sword',
-      description: 'A good sword to start out with',
-      value: '+5 attack',
-      price: 150,
-      imageSrc: require('../../assets/images/village/Blacksmith_sword_1.png'),
-    },
-    {
-      id: 'smith_helm_1',
-      name: 'Metal Helmet',
-      description:"Some basic head protection.  You're going to want it.",
-      value: '+3 defense',
-      price: 150,
-      imageSrc: require('../../assets/images/village/Blacksmith_helmet_1.png'),
-    },
-    {
-      id: 'smith_shield_1',
-      name: 'Basic Wooden Shield',
-      description:"Won't help much against fire-based monsters, but useful against pretty much everything else.",
-      value: '+3 defense',
-      price: 100,
-      imageSrc: require('../../assets/images/village/Blacksmith_shield_1.png'),
-    },
-    {
-      id: 'smith_misc_1',
-      name: 'Horseshoes',
-      description: "Everyone feels better with proper footware, horses included",
-      value: 'allows your horse to carry 10% more items',
-      price: 200,
-      imageSrc: require('../../assets/images/village/Blacksmith_horseshoes_1.png'),
-    },
-    // More products...
-  ]
+  const store = useShopStore();
 
   const openDialogModal = ref(false)
   const openDialogModal2 = ref(false)
@@ -207,7 +173,7 @@
 
   const chosenProdId = ref(null)
   const chosenProd = computed(function() {
-    return products.find(product => product.id === chosenProdId.value)
+    return store.blacksmith.find(product => product.id === chosenProdId.value)
   })
 
   function buyProduct(productId) {

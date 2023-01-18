@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           <button 
             type="button"
-            v-for="product in products" 
+            v-for="product in store.oddities" 
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -158,44 +158,10 @@
   import { ref, computed } from 'vue';
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import { usePlayerStore } from '@/stores/player'
+  import { useShopStore } from '@/stores/shops'
 
   const playerStore = usePlayerStore();
-
-  const products = [
-    {
-      id: 'odd_ring_1',
-      name: 'Enchanted Ring of Vigor',
-      description: 'Made by elves.  Good on the battlefield, and in the bedroom!',
-      value: '+4 attack',
-      price: 500,
-      imageSrc: require('../../assets/images/village/Oddities_enchanted_ring_1.png'),
-    },
-    {
-      id: 'odd_skull_1',
-      name: 'Raven Skull',
-      description:"Useful for potions and spellwork.",
-      value: 'Potency results may vary',
-      price: 50,
-      imageSrc: require('../../assets/images/village/Oddities_skull_1.png'),
-    },
-    {
-      id: 'odd_gloves_1',
-      name: 'Mysterious Leather Gloves',
-      description:"No telling what they do - but they're magic!",
-      value: '???',
-      price: 750,
-      imageSrc: require('../../assets/images/village/Oddities_enchanted_gloves_1.png'),
-    },
-    {
-      id: 'odd_herb_1',
-      name: "Mountain's Bane",
-      description: "A very rare herb of very potent magic",
-      value: 'Results vary by application',
-      price: 3000,
-      imageSrc: require('../../assets/images/village/Oddities_herb_1.png'),
-    },
-    // More products...
-  ]
+  const store = useShopStore();
 
   const openDialogModal = ref(false)
   const openDialogModal2 = ref(false)
@@ -206,7 +172,7 @@
 
   const chosenProdId = ref(null)
   const chosenProd = computed(function() {
-    return products.find(product => product.id === chosenProdId.value)
+    return store.oddities.find(product => product.id === chosenProdId.value)
   })
   
   function buyProduct(productId) {
