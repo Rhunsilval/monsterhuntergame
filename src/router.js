@@ -47,6 +47,9 @@ const router = createRouter({
         { path: '/map_marshes', component: TheMarshes },
         { path: '/map_swamp', component: TheSwamp },
     ],
+    scrollBehavior() {
+        return { left:0, top: 0 };
+    }
 });
 
 export default router;

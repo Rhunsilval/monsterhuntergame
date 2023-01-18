@@ -147,7 +147,7 @@
 
 // odds of finding a monster: 1 in 3
 // if monster found - generate one
-function findMonster() {
+      function findMonster() {
         const randomMonsterNumber = getRandomValue(1, 3);
         if (randomMonsterNumber === 1) {
           monsterStore.monsterFound = true;
