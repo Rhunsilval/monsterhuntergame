@@ -1,8 +1,12 @@
 <template>
   <the-header></the-header>
 
+  <monster-hunter
+    :mapName="mapName"
+  ></monster-hunter>
+
 <!-- landing screen -->
-  <div v-if="!startGame">
+  <!-- <div v-if="!startGame">
     <div class="bg-[url('../assets/images/desert/Desert_background.png')] w-screen h-screen">
         
         <div class="flex justify-center pt-16">
@@ -24,10 +28,10 @@
         </div>
 
     </div>
-  </div>
+  </div> -->
 
 <!-- start hunt screen -->
-  <div v-if="startGame">
+  <!-- <div v-if="startGame">
     <div class="bg-[url('../assets/images/desert/Desert_background.png')] w-screen h-screen ">
       <div class="bg-opacity-60 bg-orange-500 w-screen h-screen">
 
@@ -40,12 +44,12 @@
         </div>
 
         <div class="flex justify-center">
-          <div class="text-center w-1/2 bg-white bg-opacity-70 flex justify-center">
+          <div class="text-center w-1/2 bg-white bg-opacity-70 flex justify-center"> -->
 
 <!-- game over inactive, game is on -->
-            <div v-if="!gameover" class="px-10 py-10"> 
+            <!-- <div v-if="!gameover" class="px-10 py-10">  -->
 <!-- no monsters found -->
-              <div v-if="!monsterStore.monsterFound" class="grid grid-cols-2 items-center mb-28 ">  
+              <!-- <div v-if="!monsterStore.monsterFound" class="grid grid-cols-2 items-center mb-28 ">  
 
                     <div class=" flex flex-col justify-center items-center py-10 px-10"> 
                       <div v-if="!toggleImage"> 
@@ -69,13 +73,12 @@
                       </div>
                     </div>
 
-              </div>
+              </div> -->
             
 <!-- found monsters -->
-              <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 pb-16">
+              <!-- <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 pb-16">
 
                 <div class="border border-black"> 
-                  <!-- <p>placeholder?</p> -->
                 </div>
                 
                 <div> 
@@ -96,10 +99,10 @@
 
               </div>
 
-            </div>
+            </div> -->
 
 <!-- game over active -->
-            <div v-if="gameover"> 
+            <!-- <div v-if="gameover"> 
               <the-winner
                 :winner="winner"
                 :mapName="mapName"
@@ -112,260 +115,232 @@
 
       </div>    
     </div>
-  </div>
+  </div> -->
 
 </template>
 
 
-<script>
-  import { ref, watch } from 'vue'
-  import { storeToRefs } from 'pinia'  
-  import { usePlayerStore } from '@/stores/player'
-  import { useMonsterStore } from '@/stores/monster'
+<script setup>
+//   import { ref, watch } from 'vue'
+//   import { storeToRefs } from 'pinia'  
+//   import { usePlayerStore } from '@/stores/player'
+//   import { useMonsterStore } from '@/stores/monster'
 
-  export default {
-    components: {},
-    props: [],
-    emits: [],
-    setup() {
-      const mapName = 'Firesand Desert';
-      const playerStore = usePlayerStore();
-      const monsterStore = useMonsterStore();
+  const mapName = 'Firesand Desert';
+//   const playerStore = usePlayerStore();
+//   const monsterStore = useMonsterStore();
 
-// a random number generator, since I'm needing this so often
-      function getRandomValue(min, max) {
-        return Math.floor(Math.random()*(max - min)) + min;
-      }
+// // a random number generator, since I'm needing this so often
+//   function getRandomValue(min, max) {
+//     return Math.floor(Math.random()*(max - min)) + min;
+//   }
 
-// initiate the hunt  
-      const startGame = ref(false);
+// // initiate the hunt  
+//   const startGame = ref(false);
 
-      function startHunt() {
-        findMonster();
-        startGame.value = true;
-      }
+//   function startHunt() {
+//     findMonster();
+//     startGame.value = true;
+//   }
 
-// odds of finding a monster: 1 in 3
-// if monster found - generate one
-      function findMonster() {
-        const randomMonsterNumber = getRandomValue(1, 3);
-        if (randomMonsterNumber === 1) {
-          monsterStore.monsterFound = true;
-          getMonsterMap();
-          monsterStore.generateMonster();
-          monsterStore.getMonsterName();
-          monsterStore.getMonsterStartingHealth();
-          monsterStore.getMonsterHealth();
-        } else {
-          monsterStore.monsterFound = false;
-        }
-      }
+// // odds of finding a monster: 1 in 3
+// // if monster found - generate one
+//   function findMonster() {
+//     const randomMonsterNumber = getRandomValue(1, 3);
+//     if (randomMonsterNumber === 1) {
+//       monsterStore.monsterFound = true;
+//       getMonsterMap();
+//       monsterStore.generateMonster();
+//       monsterStore.getMonsterName();
+//       monsterStore.getMonsterStartingHealth();
+//       monsterStore.getMonsterHealth();
+//     } else {
+//       monsterStore.monsterFound = false;
+//     }
+//   }
 
-// don't find a monster, try again - with image toggling to visually see that the button is working
-      const toggleImage = ref(false);
+// // don't find a monster, try again - with image toggling to visually see that the button is working
+//   const toggleImage = ref(false);
 
-      function tryAgain() {
-        findMonster();
-        toggleImage.value = !toggleImage.value;
-      }
+//   function tryAgain() {
+//     findMonster();
+//     toggleImage.value = !toggleImage.value;
+//   }
 
-// if monster found and player wants to run, reset everything
-      function runAway() {
-        startGame.value = false;
-        toggleImage.value = false;
-        monsterStore.monsterFound = false;
-        monsterStore.monsterId = '';
-        monsterStore.monsterName = '';
-        monsterStore.monsterHealth = null;
-        monsterStore.monsterStartingHealth = null;
-        const attackValue = getRandomValue(1, 10);
-        playerStore.playerHealth -= attackValue; //monster hits as player runs, takes some damage
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
-        } else {
-          playerStore.playerHealth;
-        }
-        currentRound.value = 0;
-        monsterRound.value = 0;
-      }
+// // if monster found and player wants to run, reset everything
+//   function runAway() {
+//     startGame.value = false;
+//     toggleImage.value = false;
+//     monsterStore.monsterFound = false;
+//     monsterStore.monsterId = '';
+//     monsterStore.monsterName = '';
+//     monsterStore.monsterHealth = null;
+//     monsterStore.monsterStartingHealth = null;
+//     const attackValue = getRandomValue(1, 10);
+//     playerStore.playerHealth -= attackValue; //monster hits as player runs, takes some damage
+//     if (playerStore.playerHealth < 0) {
+//       playerStore.playerHealth = 0;
+//     } else {
+//       playerStore.playerHealth;
+//     }
+//     currentRound.value = 0;
+//     monsterRound.value = 0;
+//   }
 
-      function getMonsterMap() {
-        monsterStore.monsterMap = mapName;
-      }
+//   function getMonsterMap() {
+//     monsterStore.monsterMap = mapName;
+//   }
       
-// round counters for charged events
-      const currentRound = ref(0);
-      const monsterRound = ref(0);
+// // round counters for charged events
+//   const currentRound = ref(0);
+//   const monsterRound = ref(0);
 
-// special attack charged event
-      const specialAttackAvailable = ref(false)
+// // special attack charged event
+//   const specialAttackAvailable = ref(false)
 
-      watch(currentRound, function() {
-        if (currentRound.value >= 3) {
-          specialAttackAvailable.value = true;
-        } else {
-          specialAttackAvailable.value;
-        }
-      })
+//   watch(currentRound, function() {
+//     if (currentRound.value >= 3) {
+//       specialAttackAvailable.value = true;
+//     } else {
+//       specialAttackAvailable.value;
+//     }
+//   })
 
-// monster auto-heal charged event
-      watch(monsterRound, function(value) {
-        if (value >= 5) {
-          monsterStore.monsterHealth = monsterStore.monsterHealth + 5;
-          if (monsterStore.monsterHealth + 5 > monsterStore.monsterStartingHealth) {
-            monsterStore.monsterHealth = monsterStore.monsterStartingHealth;
-          } else {monsterStore.monsterHealth;}
-          addLogEntry('monster','heals', 5);
-          monsterRound.value = 0;
-        }
-      })
-
-
-// gameplay
-// creating a battle log for user clarity in battle
-      const battleLog = ref([]);
-
-      function addLogEntry(who, what, value) {
-        battleLog.value.unshift({
-          entryId: new Date().toISOString(),
-          actionBy: who,
-          actionType: what,
-          actionValue: value,
-        })
-      }
-
-// attack the monster
-      function attackMonster() {
-        currentRound.value = currentRound.value + 1;
-        monsterRound.value = monsterRound.value + 1;
-        const attackValue = getRandomValue(5, 10) + playerStore.playerAttack;
-        monsterStore.monsterHealth -= attackValue;
-        addLogEntry('player', 'attacks', attackValue);
-        if (monsterStore.monsterHealth < 0) {
-          monsterStore.monsterHealth = 0;
-        } else {
-          monsterStore.monsterHealth;
-        }
-        attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
-        } else {
-          playerStore.playerHealth;
-        }
-      }
-
-// charged special attack 
-      function specialAttackMonster() {
-        currentRound.value = 0;
-        monsterRound.value = monsterRound.value + 1;
-        const attackValue = getRandomValue(10, 25);
-        monsterStore.monsterHealth -= attackValue;
-        addLogEntry('player', 'uses special-attack', attackValue);
-        if (monsterStore.monsterHealth < 0) {
-          monsterStore.monsterHealth = 0;
-        } else {
-          monsterStore.monsterHealth;
-        }
-        attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
-        } else {
-          playerStore.playerHealth
-        }
-        specialAttackAvailable.value = false;
-      }
-
-// monster strikes back
-      function attackPlayer() {
-        const attackValue = monsterStore.getMonsterHitAbility();
-        playerStore.playerHealth -= attackValue;
-        addLogEntry('monster', 'attacks', attackValue);
-      }
-
-// player healing
-      function healPlayer() {
-        currentRound.value = currentRound.value + 1;
-        monsterRound.value = monsterRound.value + 1;
-        const healValue = getRandomValue(10, 25);
-        if (playerStore.playerHealth + healValue > 100) {
-          playerStore.playerHealth = 100;
-        } else {
-          playerStore.playerHealth += healValue;
-        }
-        addLogEntry('player', 'heals', healValue);
-        attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
-        } else {
-          playerStore.playerHealth;
-        }
-      }
+// // monster auto-heal charged event
+//   watch(monsterRound, function(value) {
+//     if (value >= 5) {
+//       monsterStore.monsterHealth = monsterStore.monsterHealth + 5;
+//       if (monsterStore.monsterHealth + 5 > monsterStore.monsterStartingHealth) {
+//         monsterStore.monsterHealth = monsterStore.monsterStartingHealth;
+//       } else {monsterStore.monsterHealth;}
+//       addLogEntry('monster','heals', 5);
+//       monsterRound.value = 0;
+//     }
+//   })
 
 
-// setting winning conditions:
-      const gameover = ref(false)
-      const winner = ref(null);
-      const storePlayerHealth = storeToRefs(playerStore)
-      const storeMonsterHealth = storeToRefs(monsterStore)
+// // gameplay
+// // creating a battle log for user clarity in battle
+//   const battleLog = ref([]);
 
-      watch(storePlayerHealth.playerHealth, function(value) {
-        if (value === 0) {
-          gameover.value = true;
-          storeMonsterHealth.monsterFound = false;
-        }
-      })     
+//   function addLogEntry(who, what, value) {
+//     battleLog.value.unshift({
+//       entryId: new Date().toISOString(),
+//       actionBy: who,
+//       actionType: what,
+//       actionValue: value,
+//     })
+//   }
 
-      watch(storePlayerHealth.playerHealth, function(value) {
-        if (value <= 0 && storeMonsterHealth.monsterHealth <= 0) {
-          winner.value = 'draw';
-        } else if (value <=0) {
-          winner.value = 'monster';
-        }
-      })
+// // attack the monster
+//   function attackMonster() {
+//     currentRound.value = currentRound.value + 1;
+//     monsterRound.value = monsterRound.value + 1;
+//     const attackValue = getRandomValue(5, 10) + playerStore.playerAttack;
+//     monsterStore.monsterHealth -= attackValue;
+//     addLogEntry('player', 'attacks', attackValue);
+//     if (monsterStore.monsterHealth < 0) {
+//       monsterStore.monsterHealth = 0;
+//     } else {
+//       monsterStore.monsterHealth;
+//     }
+//     attackPlayer();
+//     if (playerStore.playerHealth < 0) {
+//       playerStore.playerHealth = 0;
+//     } else {
+//       playerStore.playerHealth;
+//     }
+//   }
 
-      watch(storeMonsterHealth.monsterHealth, function(value) {
-        if (value <= 0 && storePlayerHealth.playerHealth <=0) {
-          winner.value = 'draw';
-        } else if (value <= 0) {
-          winner.value = 'player';
-        }
-      })
+// // charged special attack 
+//   function specialAttackMonster() {
+//     currentRound.value = 0;
+//     monsterRound.value = monsterRound.value + 1;
+//     const attackValue = getRandomValue(10, 25);
+//     monsterStore.monsterHealth -= attackValue;
+//     addLogEntry('player', 'uses special-attack', attackValue);
+//     if (monsterStore.monsterHealth < 0) {
+//       monsterStore.monsterHealth = 0;
+//     } else {
+//       monsterStore.monsterHealth;
+//     }
+//     attackPlayer();
+//     if (playerStore.playerHealth < 0) {
+//       playerStore.playerHealth = 0;
+//     } else {
+//       playerStore.playerHealth
+//     }
+//     specialAttackAvailable.value = false;
+//   }
 
-      watch(storeMonsterHealth.monsterHealth, function(value) {
-        if (value === 0) {
-          gameover.value = true;
-          storeMonsterHealth.monsterFound = false;
-        }
-      })   
+// // monster strikes back
+//   function attackPlayer() {
+//     const attackValue = monsterStore.getMonsterHitAbility();
+//     playerStore.playerHealth -= attackValue;
+//     addLogEntry('monster', 'attacks', attackValue);
+//   }
+
+// // player healing
+//   function healPlayer() {
+//     currentRound.value = currentRound.value + 1;
+//     monsterRound.value = monsterRound.value + 1;
+//     const healValue = getRandomValue(10, 25);
+//     if (playerStore.playerHealth + healValue > 100) {
+//       playerStore.playerHealth = 100;
+//     } else {
+//       playerStore.playerHealth += healValue;
+//     }
+//     addLogEntry('player', 'heals', healValue);
+//     attackPlayer();
+//     if (playerStore.playerHealth < 0) {
+//       playerStore.playerHealth = 0;
+//     } else {
+//       playerStore.playerHealth;
+//     }
+//   }
+
+
+// // setting winning conditions:
+//   const gameover = ref(false)
+//   const winner = ref(null);
+//   const storePlayerHealth = storeToRefs(playerStore)
+//   const storeMonsterHealth = storeToRefs(monsterStore)
+
+//   watch(storePlayerHealth.playerHealth, function(value) {
+//     if (value === 0) {
+//       gameover.value = true;
+//       storeMonsterHealth.monsterFound = false;
+//     }
+//   })     
+
+//   watch(storePlayerHealth.playerHealth, function(value) {
+//     if (value <= 0 && storeMonsterHealth.monsterHealth <= 0) {
+//       winner.value = 'draw';
+//     } else if (value <=0) {
+//       winner.value = 'monster';
+//     }
+//   })
+
+//   watch(storeMonsterHealth.monsterHealth, function(value) {
+//     if (value <= 0 && storePlayerHealth.playerHealth <=0) {
+//       winner.value = 'draw';
+//     } else if (value <= 0) {
+//       winner.value = 'player';
+//     }
+//   })
+
+//   watch(storeMonsterHealth.monsterHealth, function(value) {
+//     if (value === 0) {
+//       gameover.value = true;
+//       storeMonsterHealth.monsterFound = false;
+//     }
+//   })   
 
 
 // collect loot!
       // function lootCollected() {
       //   startGame.value = false; 
       // }
-
-
-      return {
-        mapName,
-        playerStore,
-        monsterStore,
-        startGame,
-        startHunt,        
-        findMonster,
-        tryAgain,
-        runAway,
-        toggleImage,
-        attackMonster,
-        battleLog,
-        specialAttackAvailable,
-        specialAttackMonster,
-        healPlayer, 
-        gameover,
-        winner,
-        // lootCollected
-      }
-    }
-  }  
 
     // my emitLootCollected emission is throwing an error in the map_page component.  
     // page is receiving emit-loot-collected from winner component and executing lootCollected function:
