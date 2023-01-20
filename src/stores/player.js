@@ -16,5 +16,11 @@ export const usePlayerStore =
             playerQuests: [],
             playerEquipped: [],
             playerPacked: [],
+
+            nextLevel: 100,
+            increase: 3,
+            playerXP: 0,
+            playerTotalXP: 0,
+            healthPerSec: 0,
         })
     })

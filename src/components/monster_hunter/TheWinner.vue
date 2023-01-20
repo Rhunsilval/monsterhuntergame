@@ -4,7 +4,7 @@
 <!-- winner -->
         <div v-if="winner === 'player'" class="mb-10"> 
             <div class="pt-3"> 
-                <img src="../assets/images/victory.png" alt="" class="h-96 w-96 object-cover object-center" />
+                <img src="../../assets/images/victory.png" alt="" class="h-96 w-96 object-cover object-center" />
                 <p class="py-3 font-bold text-2xl">Victory is yours!</p>
             </div>
             
@@ -23,7 +23,7 @@
 <!-- loser -->
         <div v-if="winner === 'monster'" class="mb-10"> 
             <div class="pt-3 "> 
-                <img src="../assets/images/defeat.png" alt="" class="h-96 w-96 object-cover object-center" />
+                <img src="../../assets/images/defeat.png" alt="" class="h-96 w-96 object-cover object-center" />
                 <p class="py-3 font-bold text-2xl">You Lose. <br/> Oh, how embarrassing!</p>
             </div>
 
@@ -35,7 +35,7 @@
 <!-- draw -->
         <div v-if="winner === 'draw'" class="mb-10"> 
             <div class="pt-3 "> 
-                <img src="../assets/images/draw.png" alt="" class="h-96 w-96 object-cover object-center" />
+                <img src="../../assets/images/draw.png" alt="" class="h-96 w-96 object-cover object-center" />
                 <p class="py-3 font-bold text-2xl">A draw? <br/> Well, that stinks!</p>
             </div>
             
