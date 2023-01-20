@@ -46,7 +46,7 @@ export const useShopStore =
                     description: 'Cheap, reliable, and sturdy',
                     value: '+10 defense',
                     price: 200,
-                    imageSrc: require('../assets/images/village/Leather_leather_armor_1.png'),
+                    imageSrc: require('../assets/images/village/Armory_leather_armor_1.png'),
                 },
                 {
                     id: 'arm_leath_gauntlet_1',
@@ -54,7 +54,7 @@ export const useShopStore =
                     description:"Just the thing to help you keep a strong grip on your sword.",
                     value: '+3 defense',
                     price: 100,
-                    imageSrc: require('../assets/images/village/Leather_leather_gauntlets_1.png'),
+                    imageSrc: require('../assets/images/village/Armory_leather_gauntlets_1.png'),
                 },
                 {
                     id: 'arm_leather_boots_1',
@@ -62,7 +62,7 @@ export const useShopStore =
                     description:'Hunting monsters with bad boots is a bad idea.  You need good footwear.',
                     value: '+3 defense and +2 strength',
                     price: 150,
-                    imageSrc: require('../assets/images/village/Leather_leather_boots_1.png'),
+                    imageSrc: require('../assets/images/village/Armory_leather_boots_1.png'),
                 },
                 {
                     id: 'arm_enchant_boots_1',
@@ -70,7 +70,7 @@ export const useShopStore =
                     description: "A gift from a friendly 'Shroom Spirit, these are great if you're considering adding magic items to your armor",
                     value: '+1-5 defense, and poison resistance, and occasional +1-5 health',
                     price: 350,
-                    imageSrc: require('../assets/images/village/Leather_enchanted_boots_1.png'),
+                    imageSrc: require('../assets/images/village/Armory_enchanted_boots_1.png'),
                 },
             ],
             blacksmith: [
