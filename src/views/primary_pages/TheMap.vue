@@ -1,12 +1,5 @@
 <template>
-    <the-header
-      :playerId="playerId"
-      :playerLevel="playerLevel"
-      :playerStartingHealth="playerStartingHealth"
-      :playerHealth="playerHealth"
-      :playerStats="playerStats"
-      :coinOnHand="coinOnHand"
-    ></the-header>
+    <the-header></the-header>
 
     <div class="bg-[url('../assets/images/map.png')] py-10"> 
 
@@ -78,9 +71,9 @@
                   </div>
                 </div>
   
-                <a href="/village" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Explore the Village</a>
-                <a href="/questfinder" type="button" class="relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-slate-400 hover:bg-slate-200 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Find a Quest</a>
-                <a href="/map" type="button" class="relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Hunt for Monsters</a>
+                <router-link to="/village" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Explore the Village</router-link>
+                <router-link to="/questfinder" type="button" class="relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-slate-400 hover:bg-slate-200 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Find a Quest</router-link>
+                <router-link to="/map" type="button" class="relative ml-0.5 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">Hunt for Monsters</router-link>
               </div>
             </div>
 
@@ -93,39 +86,4 @@
   
 
 <script>
-  import { ref, reactive } from 'vue';
-  
-  export default {
-    components: {},
-    props: [],
-    emits: [],
-    setup() {
-      const playerId = 'Player One';
-      const playerLevel = ref(1);
-      const playerStartingHealth = ref(100);
-      const playerHealth = ref(100);
-      const coinOnHand = ref(1000);
-      const playerStats = reactive({
-        playerId: 'Player_1',
-        attack: 1,
-        defense: 1,
-        strength: 1,
-      });  
-      const playerQuests = [];
-      const playerEquipped = [];
-      const playerPacked = []; 
-      
-      return {
-        playerId,
-        playerLevel,
-        playerStartingHealth,
-        playerHealth,
-        coinOnHand,
-        playerStats,
-        playerPacked,
-        playerEquipped,
-        playerQuests,
-      }
-    }
-  }
 </script>

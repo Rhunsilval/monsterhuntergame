@@ -1,12 +1,5 @@
 <template>
-  <the-header
-    :playerId="playerId"
-    :playerLevel="playerLevel"
-    :playerStartingHealth="playerStartingHealth"
-    :playerHealth="playerHealth"
-    :playerStats="playerStats"
-    :coinOnHand="coinOnHand"
-  ></the-header>
+  <the-header></the-header>
 
 <!-- background -->
   <div class="bg-[url('../assets/images/village/Thornstalk_Village.png')] bg-cover ">
@@ -47,111 +40,72 @@
               </li>
             </ul>
           </div>
-
         </div>
-      </div>
-      
+      </div>      
     </div>
   </div>
 </template>
 
 
-<script>
-  import { ref, reactive } from 'vue';
-
-  export default {
-    components: {},
-    props: {},
-    emits: [],
-    setup() {
-      const shops = [
-        {
-          name: "Bobby Baker's Botanical Brews",
-          goods: 'potions',
-          href: '/village_apothecary',
-          priceMonthly: 12,
-          description: 'Potions, tincures, and general herbal remedies for all that ailes you.',
-          includedFeatures: [
-            'Health potions', 
-            'Strengthening rubs', 
-            'Herbal soaks', 
-            'Anti-venom treatments', 
-            'Spiritual aids',
-            "The best soups you'll find anywhere in Thornstalk!"],
-        },
-        {
-          name: 'Threads and Thongs and Things',
-          goods: 'armor',
-          href: '/village_armory',
-          priceMonthly: 24,
-          description: 'Useful armors made from leather, silk, and enchanted fabrics.',
-          includedFeatures: [
-            'Leather armor',
-            'Enchanted robes',
-            'Hats, gloves, and boots',
-            'Saddlebags'
-          ],
-        },
-        {
-          name: "Sally's Smithy Supplies",
-          goods: 'weapons',
-          href: '/village_blacksmith',
-          priceMonthly: 32,
-          description: 'All metal-made items for all your hunting needs. Sometimes, enchanted.',
-          includedFeatures: [
-            'Swords',
-            'Maces',
-            'Arrows',
-            'Shields',
-            'Chainmail and helms',
-            'Horseshoes'
-          ],
-        },
-        {
-          name: "Abernathy's Oddities",
-          goods: 'random junk',
-          href: '/village_oddities',
-          priceMonthly: 48,
-          description: "Rare, bizarre, powerful, sometimes dangerous items you won't find anywhere else",
-          includedFeatures: [
-            'Magic charms',
-            'Rare substances',
-            'Bizarre collectables',
-            'Unique books',
-            'Legendary items',
-            'An occasional cursed trinket or two',
-            '',
-          ],
-        },
-      ];
-
-      const playerId = 'Player One';
-      const playerLevel = ref(1);
-      const playerStartingHealth = ref(100);
-      const playerHealth = ref(100);
-      const coinOnHand = ref(1000);
-      const playerStats = reactive({
-        playerId: 'Player_1',
-        attack: 1,
-        defense: 1,
-        strength: 1,
-      }); 
-      const playerQuests = [];
-      const playerEquipped = [];
-      const playerPacked = []; 
-
-      return {
-        shops,
-        playerId,
-        playerLevel,
-        playerStartingHealth,
-        playerHealth,
-        coinOnHand,
-        playerStats,
-        playerQuests,
-        playerEquipped,
-        playerPacked,
-      };
+<script setup>
+  const shops = [
+    {
+      name: "Bobby Baker's Botanical Brews",
+      goods: 'potions',
+      href: '/village_apothecary',
+      priceMonthly: 12,
+      description: 'Potions, tincures, and general herbal remedies for all that ailes you.',
+      includedFeatures: [
+        'Health potions', 
+        'Strengthening rubs', 
+        'Herbal soaks', 
+        'Anti-venom treatments', 
+        'Spiritual aids',
+        "The best soups you'll find anywhere in Thornstalk!"],
     },
-  };
+    {
+      name: 'Threads and Thongs and Things',
+      goods: 'armor',
+      href: '/village_armory',
+      priceMonthly: 24,
+      description: 'Useful armors made from leather, silk, and enchanted fabrics.',
+      includedFeatures: [
+        'Leather armor',
+        'Enchanted robes',
+        'Hats, gloves, and boots',
+        'Saddlebags'
+      ],
+    },
+    {
+      name: "Sally's Smithy Supplies",
+      goods: 'weapons',
+      href: '/village_blacksmith',
+      priceMonthly: 32,
+      description: 'All metal-made items for all your hunting needs. Sometimes, enchanted.',
+      includedFeatures: [
+        'Swords',
+        'Maces',
+        'Arrows',
+        'Shields',
+        'Chainmail and helms',
+        'Horseshoes'
+      ],
+    },
+    {
+      name: "Abernathy's Oddities",
+      goods: 'random junk',
+      href: '/village_oddities',
+      priceMonthly: 48,
+      description: "Rare, bizarre, powerful, sometimes dangerous items you won't find anywhere else",
+      includedFeatures: [
+        'Magic charms',
+        'Rare substances',
+        'Bizarre collectables',
+        'Unique books',
+        'Legendary items',
+        'An occasional cursed trinket or two',
+        '',
+      ],
+    },
+  ];
 </script>

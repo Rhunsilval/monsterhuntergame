@@ -1,7 +1,7 @@
 <template>
 <!-- landing screen -->
   <div v-if="!startGame">
-    <div :style="{ backgroundImage: `url(${mapTypes[getMapType()]})` }" class="bg-[url('../assets/images/desert/Desert_background.png')] w-screen h-screen">
+    <div :style="{ backgroundImage: `url(${mapTypes[getMapType()]})` }" class="w-auto h-auto ">
 
         <div class="flex justify-center pt-16">
             <div class="text-center w-1/2 bg-white bg-opacity-70  flex justify-center pb-3">
@@ -23,29 +23,31 @@
                 </div>             
             </div>        
         </div>
-
     </div>
   </div>
 
 <!-- start hunt screen -->
   <div v-if="startGame">
-    <div class="bg-[url('../assets/images/desert/Desert_background.png')] w-screen h-screen ">
-    <!-- <div v-if="map='Black Forest'" class="bg-[url('../assets/images/forest/Forest_background.png')] w-screen h-screen ">
-    <div v-if="map='The Great Grass Sea'" class="bg-[url('../assets/images/grassland/Grassland_background.png')] w-screen h-screen ">
-    <div v-if="map='The Moving Jungle'" class="bg-[url('../assets/images/jungle/Jungle_background.png')] w-screen h-screen ">
-    <div v-if="map='Dead Marshes'" class="bg-[url('../assets/images/marshes/Marshes_background.png')] w-screen h-screen ">
-    <div v-if="map='Iron Mountains'" class="bg-[url('../assets/images/mountains/Mountains_background.png')] w-screen h-screen ">
-    <div v-if="map='Noxus Swamp'" class="bg-[url('../assets/images/swamp/Swamp_background.png')] w-screen h-screen "> -->
-      <div v-if="map='Firesand Desert'" class="bg-opacity-60 bg-orange-500 w-screen h-screen">
-      <!-- <div v-if="map='Black Forest'" class="bg-opacity-60 bg-black w-screen h-screen">
-      <div v-if="map='The Great Grass Sea'" class="bg-opacity-60 bg-[#ead068] w-screen h-screen">
-      <div v-if="map='The Moving Jungle'" class="bg-opacity-60 bg-[#82bc71] w-screen h-screen">
-      <div v-if="map='Dead Marshes'" class="bg-opacity-60 bg-[#6b3e2e] w-screen h-screen">
-      <div v-if="map='Iron Mountains'" class="bg-opacity-60 bg-gray-800 w-screen h-screen">
-      <div v-if="map='Noxus Swamp'" class="bg-opacity-60 bg-[#8b7a32] w-screen h-screen"> -->
-
+    <div :style="{ backgroundImage: `url(${mapTypes[getMapType()]})` }" class="w-screen h-screen">
+      <div class="bg-stone-700 bg-opacity-60 w-screen h-screen"> 
+      <!-- <div 
+        :class="{ 
+          'desert': mapName === 'Firesand Desert', 
+          'forest': mapName === 'Black Forest',
+          'grassland': mapName === 'The Great Grass Sea',
+          'jungle': mapName === 'The Moving Jungle',
+          'marshes': mapName === 'Dead Marshes',
+          'mountains': mapName === 'Iron Mountains',
+          'swamp': mapName === 'Noxus Swamp'
+        }" 
+        class=" w-screen h-screen"
+      >  -->
+      <!-- conditional color rendering did not work as desired.  adding a background via the tailwinds css allowed JUST the 
+      background to be somewhat transparent.  elements rendered after/within this color-wash div still remained opaque.
+      BUT - rewriting them as css outside of tailwinds caused both the background color wash AND everything rendered 
+      inside that div to be transparent or opaque.  could not figure out how to make it just a wash with everything else still solid -->
         <div v-if="!monsterStore.monsterFound" class="flex justify-center pt-16">
-          <div class="text-center w-1/2 flex justify-center pb-3 bg-white opacity-70">
+          <div class="text-center w-1/2 flex justify-center pb-3 bg-white bg-opacity-70">
             <div class="pt-16">
                 <p class="font-extrabold font-serif text-7xl ">{{ mapName }}</p>                
             </div>             
@@ -58,60 +60,56 @@
 <!-- game over inactive, game is on -->
             <div v-if="!gameover" class="px-10 py-10"> 
 <!-- no monsters found -->
-              <div v-if="!monsterStore.monsterFound" class="grid grid-cols-2 items-center mb-28 ">  
+              <div v-if="!monsterStore.monsterFound" class="grid grid-cols-2 items-center mb-28 ">
+                <div class=" flex flex-col justify-center items-center py-10 px-10"> 
+                  <div v-if="!toggleImage"> 
+                    <img v-if="mapName==='Firesand Desert'" src="../../assets/images/desert/desert_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Black Forest'" src="../../assets/images/forest/forest_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='The Great Grass Sea'" src="../../assets/images/grassland/grassland_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else src="../../assets/images/swamp/swamp_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    
+                    <p v-if="mapName==='Firesand Desert'">Nothing here but lots of sand</p>  
+                    <p v-else-if="mapName==='Black Forest'">Trees, trees, and more trees</p> 
+                    <p v-else-if="mapName==='The Great Grass Sea'">There's nothing here</p> 
+                    <p v-else-if="mapName==='The Moving Jungle'">I found a bug, but no monster</p>
+                    <p v-else-if="mapName==='Dead Marshes'">Mud and muck and nothing else</p> 
+                    <p v-else-if="mapName==='Iron Mountains'">Nothing to see here</p>
+                    <p v-else>Nothing interesting here</p> 
+                  </div>
+                          
+                  <div v-if="toggleImage"> 
+                    <img v-if="mapName==='Firesand Desert'" src="../../assets/images/desert/desert_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Black Forest'" src="../../assets/images/forest/forest_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='The Great Grass Sea'" src="../../assets/images/grassland/grassland_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else src="../../assets/images/swamp/swamp_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <p>Nothing here either </p>                            
+                  </div>                        
+                </div>
 
-                    <div class=" flex flex-col justify-center items-center py-10 px-10"> 
-                      <div v-if="!toggleImage"> 
-                        <img v-if="map='Firesand Desert'" src="../../assets/images/desert/desert_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <!-- <img v-if="map='Black Forest'" src="../../assets/images/forest/forest_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <img v-if="map='The Great Grass Sea'" src="../../assets/images/grassland/grassland_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <img v-if="map='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <img v-if="map='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <img v-if="map='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
-                        <img v-if="map='Noxus Swamp'" src="../../assets/images/swamp/swamp_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" /> -->
-                        <p v-if="map='Firesand Desert'">Nothing here but lots of sand</p>  
-                        <!-- <p v-if="map='Black Forest'">Trees, trees, and more trees</p> 
-                        <p v-if="map='The Great Grass Sea'">There's nothing here</p> 
-                        <p v-if="map='The Moving Jungle'">I found a bug, but no monster</p>
-                        <p v-if="map='Dead Marshes'">Mud and muck and nothing else</p> 
-                        <p v-if="map='Iron Mountains'">Nothing to see here</p>
-                        <p v-if="map='Noxus Swamp'">Nothing interesting here</p>  -->
-                      </div>
-                              
-                      <div v-if="toggleImage"> 
-                        <img v-if="map='Firesand Desert'" src="../../assets/images/desert/desert_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <!-- <img v-if="map='Black Forest'" src="../../assets/images/forest/forest_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <img v-if="map='The Great Grass Sea'" src="../../assets/images/grassland/grassland_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <img v-if="map='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <img v-if="map='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <img v-if="map='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
-                        <img v-if="map='Noxus Swamp'" src="../../assets/images/swamp/swamp_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" /> -->
-                        <p>Nothing here either </p>                            
-                      </div>                        
-                    </div>
-
-                    <div class=" px-10 ">
-                      <div class="">
-                        <button @click="tryAgain()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5">
-                          No Monsters Found <br/>Try Again</button>
-                      </div>
-                              
-                      <div class="mt-8">
-                        <button @click="startGame = false" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5">
-                          Stop Searching</button>
-                      </div>
-                    </div>
+                <div class=" px-10 ">
+                  <div class="">
+                    <button @click="tryAgain()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5">
+                      No Monsters Found <br/>Try Again</button>
+                  </div>
+                          
+                  <div class="mt-8">
+                    <button @click="startGame = false" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5">
+                      Stop Searching</button>
+                  </div>
+                </div>
 
               </div>
             
 <!-- found monsters -->
               <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 pb-16">
-
-                <div class="border border-black"> 
-                  <!-- <p>placeholder?</p> -->
-                </div>
-                
-                <div> 
+              
+                <div class="col-span-2 "> 
                   <monster-fighter
                     :specialAttackAvailable="specialAttackAvailable"
                     @emit-attack-monster="attackMonster"
@@ -121,14 +119,15 @@
                   ></monster-fighter>
                 </div>
 
-                <div class=""> 
+                <div class="border border-black"> 
                   <battle-log
                     :battleLog="battleLog"
                   ></battle-log>
                 </div>
+                <!-- for some reason, when the empty log array is store on this page as a data property, 
+                it causes this component to not work?  moving the array to the monster pinia store fixed the issue -->
 
               </div>
-
             </div>
 
 <!-- game over active -->
@@ -139,24 +138,10 @@
                 @emit-loot-collected="lootCollected"
               ></the-winner>
             </div>
-
           </div>
         </div>
-
-      </div> 
-      <!-- </div> 
-      </div>
-      </div>  
-      </div>
-      </div>
-      </div> -->
+      </div>    
     </div>
-    <!-- </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div> -->
   </div>
 
 </template>
@@ -217,6 +202,7 @@
     } else {
       monsterStore.monsterFound = false;
     }
+    monsterStore.battleLog = [];
   }
 
 // don't find a monster, try again - with image toggling to visually see that the button is working
@@ -245,6 +231,7 @@
     }
     currentRound.value = 0;
     monsterRound.value = 0;
+    monsterStore.battleLog = [];
   }
 
   function getMonsterMap() {
@@ -281,10 +268,11 @@
 
 // gameplay
 // creating a battle log for user clarity in battle
-  const battleLog = ref([]);
+  // const battleLog = ref([]);
+  // moved this to monster pinia store since, for reasons i don't understand, it breaks here
 
   function addLogEntry(who, what, value) {
-    battleLog.value.unshift({
+    monsterStore.battleLog.unshift({
       entryId: new Date().toISOString(),
       actionBy: who,
       actionType: what,
@@ -411,3 +399,38 @@
     // workaround is to turn button into a router-link that takes user back to the map
     // NOT IDEAL - i want the user to return to the landing page view of the map_page they're already on
 </script>
+
+<style scoped>
+.desert {
+  background-color: #e05a00;
+  opacity: .6;
+}
+.forest {
+  background-color: #000000;
+  opacity: .6;
+}
+.grassland {
+  background-color: #ead068;
+  opacity: .6;
+}
+.jungle {
+  background-color: #82bc71;
+  opacity: .6;
+}
+.marshes {
+  background-color: #6b3e2e;
+  opacity: .6;
+}
+.mountains {
+  background-color: #808080;
+  opacity: .6;
+}
+.swamp {
+  background-color: #8b7a32;
+  opacity: .6;
+}
+</style>
+
+
+    
+  

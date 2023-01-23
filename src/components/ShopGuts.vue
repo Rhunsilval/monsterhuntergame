@@ -11,7 +11,6 @@
                 <p v-else-if="shopName === 'Armory'" class="font-extrabold font-serif text-6xl ">Threads and Thongs and Things</p>                
                 <p v-else-if="shopName === 'Blacksmith'" class="font-extrabold font-serif text-6xl ">Sally's Smithy Supplies</p>                
                 <p v-else class="font-extrabold font-serif text-6xl ">Abernathy's Oddities</p>                
-                <p class="invisible">{{ props.shopName }}</p>
             </div>                        
         </div>        
       </div>

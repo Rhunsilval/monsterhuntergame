@@ -2,40 +2,47 @@
     <div id="log" class="container border border-t-[#a6bf8e] border-t-2"> 
         <h2 class="mt-2">Battle Log:</h2>
         <ul class="border border-black">
-        <div class="overflow-x-auto">
-            <div class="inline-block w-full py-2 align-middle">
-                <div class="table-wrp block max-h-96 shadow ring-1 ring-black ring-opacity-5 ">
-            
-                    <li v-for="entry in battleLog" :key="entry.entryId" class="flex flex-col">
-                        <span
-                            :class="{'log--player': entry.actionBy === 'player', 'log--monster': entry.actionBy === 'monster'}" >
-                            {{ entry.actionBy === 'player' ? 'Player' : 'Monster' }}
-                        </span>
-                        <span v-if="entry.actionType === 'heals' && entry.actionBy === 'player'"> heals themselves for <span class="log--heal">{{ entry.actionValue }}</span> </span>
-                        <span v-else-if="entry.actionType === 'heals' && entry.actionBy === 'monster'"> healed itself for <span class="log--heal">{{ entry.actionValue }}</span> </span>
-                        <span v-else-if="entry.actionType === 'attacks'"> attacks for <span class="log--damage">{{ entry.actionValue }}</span> </span>
-                        <span v-else> uses their Special Attack and hits for <span class="log--damage">{{ entry.actionValue }}</span> </span>
-                    </li>
-                    
+            <div class="overflow-x-auto">
+                <div class="inline-block w-full py-2 align-middle">
+                    <div class="table-wrp block max-h-96 shadow ring-1 ring-black ring-opacity-5 ">
+                
+                        <li v-for="entry in monsterStore.battleLog" :key="entry.entryId" class="flex flex-col">
+                            <span
+                                :class="{'log--player': entry.actionBy === 'player', 'log--monster': entry.actionBy === 'monster'}" >
+                                {{ entry.actionBy === 'player' ? 'Player' : 'Monster' }}
+                            </span>
+                            <span v-if="entry.actionType === 'heals' && entry.actionBy === 'player'"> heals themselves for <span class="log--heal">{{ entry.actionValue }}</span> </span>
+                            <span v-else-if="entry.actionType === 'heals' && entry.actionBy === 'monster'"> healed itself for <span class="log--heal">{{ entry.actionValue }}</span> </span>
+                            <span v-else-if="entry.actionType === 'attacks'"> attacks for <span class="log--damage">{{ entry.actionValue }}</span> </span>
+                            <span v-else> uses their Special Attack and hits for <span class="log--damage">{{ entry.actionValue }}</span> </span>
+                        </li>
+                        
+                    </div>
                 </div>
             </div>
-        </div>
         </ul>
     </div>
 </template>
 
-<script>
-    export default {
-        components: {},
-        props: [
-            'battleLog',
-        ],
-        emits: [],
-        setup() {}
-    }  
+<script setup>
+    import { useMonsterStore } from '@/stores/monster'
+    const monsterStore = useMonsterStore();
+
+    // const props = defineProps({
+    //     battleLog:{}
+    // })
+    
+    // export default {
+    //     components: {},
+    //     props: [
+    //         'battleLog',
+    //     ],
+    //     emits: [],
+    //     setup() {}
+    // }  
 </script>
 
-<style> 
+<style scoped> 
 .logcontainer {
     text-align: center;
     padding: 0.5rem;

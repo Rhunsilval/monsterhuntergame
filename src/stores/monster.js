@@ -11,6 +11,7 @@ export const useMonsterStore =
             monsterHealth: null,
             monsterHit: null,
             monsterMap: '',
+            battleLog: [],
         }),
         actions: {
             getRandomValue(min, max) {

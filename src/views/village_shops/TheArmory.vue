@@ -10,5 +10,4 @@
 
 <script setup>
   const shopName = 'Armory';
-
 </script>

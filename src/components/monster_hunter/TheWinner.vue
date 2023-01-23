@@ -9,14 +9,16 @@
             </div>
             
             <div> 
-                <button @click="openModal = true" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Collect Loot</button>
+                <button @click="openModal = true" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                  Collect Loot</button>
             </div>
             <br/>
             <!-- <div> 
                 <button @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Done</button>
             </div> -->
             <div> 
-                <router-link :to="'/map'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Done</router-link>
+                <router-link :to="'/map'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                  Done</router-link>
             </div>
         </div>
 
@@ -28,7 +30,8 @@
             </div>
 
             <div>
-                <router-link :to="'/home'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Return to Village</router-link>
+                <router-link :to="'/home'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                  Start Over</router-link>
             </div>
         </div>
 
@@ -40,7 +43,8 @@
             </div>
             
             <div>
-                <router-link :to="'/home'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Return to Village</router-link>
+                <router-link :to="'/village'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                  Return to Village</router-link>
             </div>
         </div>
         
@@ -70,7 +74,8 @@
                     </div>
 
                     <div> 
-                      <button @click="collectLoot()" class="px-2 py-2 bg-white border border-black" >Collect Loot</button>
+                      <button @click="collectLoot()" class="px-2 py-2 bg-white border border-black">
+                        Collect Loot</button>
                     </div>
 
                   </div>

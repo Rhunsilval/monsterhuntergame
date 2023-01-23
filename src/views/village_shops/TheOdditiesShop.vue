@@ -10,7 +10,6 @@
 
 <script setup>
   const shopName = 'Oddities';
-
 </script>
 
 
