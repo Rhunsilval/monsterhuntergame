@@ -105,6 +105,7 @@ export const useShopStore =
                     value: 'allows your horse to carry 10% more items',
                     price: 200,
                     imageSrc: require('../assets/images/village/Blacksmith_horseshoes_1.png'),
+                    itemSlot: 'horse_shoes'
                   },
             ],
             oddities: [

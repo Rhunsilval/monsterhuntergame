@@ -7,20 +7,19 @@
         <div class=" mx-auto flex max-w-full items-center justify-between px-4
          sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
 
-<!-- left side button -->
+<!-- START OVER button -->
           <div class="">
             <router-link :to="'/home'" class="flex">
-              <span class="sr-only">Your Company</span>
-              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-red-600" src="../assets/images/startover.png" alt="" />
-            </router-link>
+              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../assets/images/startover.png" alt="" />
+            </router-link>            
           </div>
 
-<!-- menu button 1 -->
+<!-- EQUIPPED button -->
           <div class=" md:flex md:flex-1 md:items-center md:justify-between">
             <br/>
             <PopoverGroup as="nav" class="flex space-x-10">
               <Popover v-slot="{ open }">
-                <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 border border-transparent hover:border-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md px-2 py-2 bg-white text-base font-medium hover:text-gray-900 border border-transparent hover:border-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
                   <span>Equipped</span>
                   <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
                 </PopoverButton>
@@ -62,79 +61,23 @@
                 </transition>
               </Popover>
 
-<!-- standalone buttons -->
-              <!-- <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-              <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a> -->
-
-<!-- menu button 2 -->
+<!-- PACKED menu button -->
               <Popover v-slot="{ open }">
-                <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md bg-white text-base font-medium border border-transparent hover:text-gray-900 hover:border-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md bg-white text-base font-medium px-2 py-2 border border-transparent hover:text-gray-900 hover:border-teal-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2']">
                   <span>Packed</span>
-                  <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
-                </PopoverButton>
-  
+                  <ChevronDownIcon :class="[open ? 'text-gray-600, -rotate-180' : 'text-gray-400, rotate-0', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
+                </PopoverButton>  
                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
                   <PopoverPanel class="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
-                    <div class="absolute inset-0 flex">
-                      <div class="w-1/2 bg-white" />
-                      <div class="w-1/2 bg-gray-50" />
-                    </div>
-                    <div class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-                      <nav class="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
-                        <div>
-                          <h3 class="text-base font-medium text-gray-500">Company</h3>
-                          <ul role="list" class="mt-5 space-y-6">
-                            <li v-for="item in company" :key="item.name" class="flow-root">
-                              <a :href="item.href" class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50">
-                                <component :is="item.icon" class="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                <span class="ml-4">{{ item.name }}</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h3 class="text-base font-medium text-gray-500">Resources</h3>
-                          <ul role="list" class="mt-5 space-y-6">
-                            <li v-for="item in resources" :key="item.name" class="flow-root">
-                              <a :href="item.href" class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50">
-                                <component :is="item.icon" class="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                <span class="ml-4">{{ item.name }}</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </nav>
-                      <div class="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
-                        <div>
-                          <h3 class="text-base font-medium text-gray-500">From the blog</h3>
-                          <ul role="list" class="mt-6 space-y-6">
-                            <li v-for="post in blogPosts" :key="post.id" class="flow-root">
-                              <a :href="post.href" class="-m-3 flex rounded-lg p-3 hover:bg-gray-100">
-                                <div class="hidden flex-shrink-0 sm:block">
-                                  <img class="h-20 w-32 rounded-md object-cover" :src="post.imageUrl" alt="" />
-                                </div>
-                                <div class="w-0 flex-1 sm:ml-8">
-                                  <h4 class="truncate text-base font-medium text-gray-900">{{ post.name }}</h4>
-                                  <p class="mt-1 text-sm text-gray-500">{{ post.preview }}</p>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="mt-6 text-sm font-medium">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-500">
-                            View all posts
-                            <span aria-hidden="true"> &rarr;</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+
+                      <player-inventory></player-inventory>
+
                   </PopoverPanel>
                 </transition>
               </Popover>
             </PopoverGroup>
 
-<!-- right side buttons -->
+<!-- PLAYER STATS buttons -->
             <div class="flex items-center pl-5 w-1/3 md:ml-12 max-h-20">
               <div class="text-base font-medium text-gray-600 text-center">Level:<br/> {{ playerStore.playerLevel }}</div>
               <button @click="openStatsModal = !openStatsModal" class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#305c79] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-200 hover:text-black">View <br/>Stats</button>
@@ -217,6 +160,7 @@
   import { ChevronDownIcon } from '@heroicons/vue/20/solid'
   import { ref,  computed } from 'vue'
   import { usePlayerStore } from '@/stores/player'
+  import PlayerInventory from './PlayerInventory.vue'
 
   export default {
     components: {
@@ -230,6 +174,7 @@
       TransitionChild,
       TransitionRoot,
       ChevronDownIcon,
+      PlayerInventory,
     },
     props: [
       // 'playerLevel',

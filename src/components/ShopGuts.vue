@@ -34,11 +34,11 @@
                 <p v-else-if="shopName === 'Blacksmith'" class="">If you're needing a good sword, you're in the right place. <br/> Let me know if I can help.</p>
                 <p v-else class="">I'll make you a deal.<br/> Don't ask me where I got anything, <br/>and I won't ask you what you intend to do with it.<br/>Ha!</p>
                 <div class="pt-4">  
-                  <button @click="openDialogModal = !openDialogModal" class="px-3 py-3 border border-gray-600 bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                  <button @click="openDialogModal = !openDialogModal" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
                     Speak with Shopkeeper</button>
                 </div>
                 <div class="pt-8">           
-                  <router-link to="/village" class="px-3 py-3 bg-[#a6bf8e] hover:bg-green-100 border border-slate-600">
+                  <router-link to="/village" class="px-3 py-3 bg-[#a6bf8e] rounded-md hover:bg-green-100 border border-slate-600">
                   Return to Village</router-link>
                 </div>
             </div>                         
@@ -47,15 +47,15 @@
 
 <!-- inventory -->
       <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 bg-white bg-opacity-75 ">
-        <div v-if="shopName === 'Apothecary'" class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
+        <div v-if="shopName === 'Apothecary'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
             v-for="product in store.apothecary"
             @click="buyProduct(product.id)"
             :key="product.id" 
-            class="group"
+            class="group "
           >
-            <div class="aspect-w-1 aspect-h-1 w-full h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <div class="aspect-w-1 aspect-h-1 w-72 h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <img :src="product.imageSrc" :alt="''" class="h-full w-full object-cover object-center group-hover:opacity-30" />
             </div>
             <div class="text-center">
@@ -67,7 +67,7 @@
           </button>
         </div>
 
-        <div v-else-if="shopName === 'Armory'" class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
+        <div v-else-if="shopName === 'Armory'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
             v-for="product in store.armory"
@@ -75,7 +75,7 @@
             :key="product.id" 
             class="group"
           >
-            <div class="aspect-w-1 aspect-h-1 w-full h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <div class="aspect-w-1 aspect-h-1 w-72 h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <img :src="product.imageSrc" :alt="''" class="h-full w-full object-cover object-center group-hover:opacity-30" />
             </div>
             <div class="text-center">
@@ -87,7 +87,7 @@
           </button>
         </div>
 
-        <div v-else-if="shopName === 'Blacksmith'" class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
+        <div v-else-if="shopName === 'Blacksmith'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
             v-for="product in store.blacksmith"
@@ -95,7 +95,7 @@
             :key="product.id" 
             class="group"
           >
-            <div class="aspect-w-1 aspect-h-1 w-full h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <div class="aspect-w-1 aspect-h-1 w-72 h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <img :src="product.imageSrc" :alt="''" class="h-full w-full object-cover object-center group-hover:opacity-30" />
             </div>
             <div class="text-center">
@@ -107,7 +107,7 @@
           </button>
         </div>
 
-        <div v-else class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
+        <div v-else class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
             v-for="product in store.oddities"
@@ -115,7 +115,7 @@
             :key="product.id" 
             class="group"
           >
-            <div class="aspect-w-1 aspect-h-1 w-full h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <div class="aspect-w-1 aspect-h-1 w-72 h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <img :src="product.imageSrc" :alt="''" class="h-full w-full object-cover object-center group-hover:opacity-30" />
             </div>
             <div class="text-center">
@@ -256,6 +256,7 @@
 
     const playerStore = usePlayerStore();
     const store = useShopStore();
+    
     const props = defineProps({
         shopName:{
             type: String,
@@ -281,7 +282,7 @@
     const convoThread1 = ref(false)
     const convoThread2 = ref(false)
 
-    const chosenProdId = ref(null)
+    const chosenProdId = ref('')
     const chosenProd = computed(function() {
         return store.apothecary.find(product => product.id === chosenProdId.value) ||
         store.armory.find(product => product.id === chosenProdId.value) ||
@@ -292,14 +293,21 @@
     function buyProduct(productId) {
         chosenProdId.value = productId;
         checkSale();
-        return playerStore.coinOnHand = (playerStore.coinOnHand - chosenProd.value.price);
+        playerStore.coinOnHand = (playerStore.coinOnHand - chosenProd.value.price);                
     }
 
     function checkSale() {
         if (playerStore.coinOnHand - chosenProd.value.price < 0 ) {
         playerStore.coinOnHand = (playerStore.coinOnHand + chosenProd.value.price);
         openDialogModal2.value = true;
-        }
+        } else (addItem())
+    }
+
+    function addItem() {
+      // chosenProdId.value = productId;
+      if (playerStore.coinOnHand - chosenProd.value.price >= 0) {
+        playerStore.playerPacked.push(chosenProd.value);
+      }
     }
 
 </script>
