@@ -1,12 +1,12 @@
 <template>
     <div id="log" class="container border border-t-[#a6bf8e] border-t-2"> 
-        <h2 class="mt-2">Battle Log:</h2>
-        <ul class="border border-black">
+        <h2 class="mt-2 pb-5">Battle Log:</h2>
+        <ul class="border border-green-800 h-96 ">
             <div class="overflow-x-auto">
                 <div class="inline-block w-full py-2 align-middle">
-                    <div class="table-wrp block max-h-96 shadow ring-1 ring-black ring-opacity-5 ">
+                    <div class="table-wrp block max-h-80 ">
                 
-                        <li v-for="entry in monsterStore.battleLog" :key="entry.entryId" class="flex flex-col">
+                        <li v-for="entry in monsterStore.battleLog" :key="entry.entryId" class="flex flex-col border border-b-black ">
                             <span
                                 :class="{'log--player': entry.actionBy === 'player', 'log--monster': entry.actionBy === 'monster'}" >
                                 {{ entry.actionBy === 'player' ? 'Player' : 'Monster' }}

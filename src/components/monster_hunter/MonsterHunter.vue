@@ -1,7 +1,7 @@
 <template>
 <!-- landing screen -->
   <div v-if="!startGame">
-    <div :style="{ backgroundImage: `url(${mapTypes[getMapType()]})` }" class="w-auto h-auto ">
+    <div :style="{ backgroundImage: `url(${mapTypes[getMapType()]})` }" class="w-auto h-screen ">
 
         <div class="flex justify-center pt-16">
             <div class="text-center w-1/2 bg-white bg-opacity-70  flex justify-center pb-3">
@@ -107,9 +107,9 @@
               </div>
             
 <!-- found monsters -->
-              <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 pb-16">
+              <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 py-16">
               
-                <div class="col-span-2 "> 
+                <div class="col-span-2"> 
                   <monster-fighter
                     :specialAttackAvailable="specialAttackAvailable"
                     @emit-attack-monster="attackMonster"
@@ -152,6 +152,9 @@
   import { storeToRefs } from 'pinia'  
   import { usePlayerStore } from '@/stores/player'
   import { useMonsterStore } from '@/stores/monster'
+  import MonsterFighter from './MonsterFighter.vue'
+  import BattleLog from './BattleLog.vue'
+  import TheWinner from './TheWinner.vue'
 
   const playerStore = usePlayerStore();
   const monsterStore = useMonsterStore();

@@ -27,18 +27,19 @@
               <span class="block xl:inline">Monster Hunters of Awesome Legendary-ness</span>
               {{ ' ' }}
               <br/>
-              <span class="block text-lg text-center mx-24   text-indigo-600 xl:inline">and sometimes embarrassing failure</span>
+              <span class="block text-lg text-center mx-24   text-cyan-600 xl:inline">and sometimes embarrassing failure</span>
             </h1>
 
 <!-- description -->
-            <p class="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">A silly, fun, little turn-based game that I've created as a way for me to practice my coding skills.</p>
+            <p class="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl text-center">A silly, fun, little turn-based game that I've created as a way for me to practice my coding skills.</p>
             <br/>
             <!-- <p class="text-center border border-red-700">Player Health: {{ playerHealth }}</p> -->
             
 <!-- buttons -->
             <div class="mt-10 sm:flex sm:justify-center lg:justify-center">
               <div class="rounded-md shadow">
-                <router-link :to="'/village'" type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-400 md:py-4 md:px-10 md:text-lg">Start New Game</router-link>
+                <router-link :to="'/village'" type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-800 px-8 py-3 text-base font-medium text-white hover:bg-indigo-400 md:py-4 md:px-10 md:text-lg">
+                Start New Game</router-link>
               </div>
 
               <!-- <div class="rounded-md shadow">
