@@ -26,7 +26,10 @@
   
                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
                   <PopoverPanel class="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block">
-                    <div class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
+                    
+                    <player-equipped></player-equipped>
+
+                    <!-- <div class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                       <a v-for="item in solutions" :key="item.name" :href="item.href" class="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-gray-50">
                         <div class="flex md:h-full lg:flex-col">
                           <div class="flex-shrink-0">
@@ -56,7 +59,7 @@
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </PopoverPanel>
                 </transition>
               </Popover>
@@ -137,137 +140,102 @@
 
 </template>
   
-<script>
+<script setup>
   import { Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue'
   import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import {
-    BookmarkSquareIcon,
-    BriefcaseIcon,
-    BuildingOfficeIcon,
-    ChartBarIcon,
-    CheckCircleIcon,
-    ComputerDesktopIcon,
-    CursorArrowRaysIcon,
-    GlobeAltIcon,
-    InformationCircleIcon,
-    NewspaperIcon,
-    PhoneIcon,
-    PlayIcon,
-    ShieldCheckIcon,
-    Squares2X2Icon,
-    UserGroupIcon,
+    // BookmarkSquareIcon,
+    // BriefcaseIcon,
+    // BuildingOfficeIcon,
+    // ChartBarIcon,
+    // CheckCircleIcon,
+    // // ComputerDesktopIcon,
+    // CursorArrowRaysIcon,
+    // // GlobeAltIcon,
+    // // InformationCircleIcon,
+    // // NewspaperIcon,
+    // PhoneIcon,
+    // PlayIcon,
+    // ShieldCheckIcon,
+    // Squares2X2Icon,
+    // UserGroupIcon,
   } from '@heroicons/vue/24/outline'
   import { ChevronDownIcon } from '@heroicons/vue/20/solid'
   import { ref,  computed } from 'vue'
   import { usePlayerStore } from '@/stores/player'
   import PlayerInventory from './PlayerInventory.vue'
+  import PlayerEquipped from './PlayerEquipped.vue'
 
-  export default {
-    components: {
-      Popover,
-      PopoverButton,
-      PopoverGroup,
-      PopoverPanel,
-      Dialog,
-      DialogPanel,
-      DialogTitle,
-      TransitionChild,
-      TransitionRoot,
-      ChevronDownIcon,
-      PlayerInventory,
-    },
-    props: [
-      // 'playerLevel',
-      // 'playerHealth',
-      // 'playerStartingHealth',
-      // 'playerStats',
-      // 'coinOnHand'
-    ],
-    emits: [],
-    
-    setup() {
-      const playerStore = usePlayerStore();
+  const playerStore = usePlayerStore();
 
-      const solutions = [
-        {
-          name: 'Analytics',
-          description: 'Get a better understanding of where your traffic is coming from.',
-          href: '#',
-          icon: ChartBarIcon,
-        },
-        {
-          name: 'Engagement',
-          description: 'Speak directly to your customers in a more meaningful way.',
-          href: '#',
-          icon: CursorArrowRaysIcon,
-        },
-        { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
-        {
-          name: 'Integrations',
-          description: "Connect with third-party tools that you're already using.",
-          href: '#',
-          icon: Squares2X2Icon,
-        },
-      ]
-      const callsToAction = [
-        { name: 'Watch Demo', href: '#', icon: PlayIcon },
-        { name: 'View All Products', href: '#', icon: CheckCircleIcon },
-        { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-      ]
-      const company = [
-        { name: 'About', href: '#', icon: InformationCircleIcon },
-        { name: 'Customers', href: '#', icon: BuildingOfficeIcon },
-        { name: 'Press', href: '#', icon: NewspaperIcon },
-        { name: 'Careers', href: '#', icon: BriefcaseIcon },
-        { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
-      ]
-      const resources = [
-        { name: 'Community', href: '#', icon: UserGroupIcon },
-        { name: 'Partners', href: '#', icon: GlobeAltIcon },
-        { name: 'Guides', href: '#', icon: BookmarkSquareIcon },
-        { name: 'Webinars', href: '#', icon: ComputerDesktopIcon },
-      ]
-      const blogPosts = [
-        {
-          id: 1,
-          name: 'Boost your conversion rate',
-          href: '#',
-          preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-          imageUrl:
-            'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-        },
-        {
-          id: 2,
-          name: 'How to use search engine optimization to drive traffic to your site',
-          href: '#',
-          preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-          imageUrl:
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-        },
-      ]
+  // const solutions = [
+  //   {
+  //     name: 'Analytics',
+  //     description: 'Get a better understanding of where your traffic is coming from.',
+  //     href: '#',
+  //     icon: ChartBarIcon,
+  //   },
+  //   {
+  //     name: 'Engagement',
+  //     description: 'Speak directly to your customers in a more meaningful way.',
+  //     href: '#',
+  //     icon: CursorArrowRaysIcon,
+  //   },
+  //   { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+  //   {
+  //     name: 'Integrations',
+  //     description: "Connect with third-party tools that you're already using.",
+  //     href: '#',
+  //     icon: Squares2X2Icon,
+  //   },
+  // ]
+  // const callsToAction = [
+  //   { name: 'Watch Demo', href: '#', icon: PlayIcon },
+  //   { name: 'View All Products', href: '#', icon: CheckCircleIcon },
+  //   { name: 'Contact Sales', href: '#', icon: PhoneIcon },
+  // ]
+  // const company = [
+  //   { name: 'About', href: '#', icon: InformationCircleIcon },
+  //   { name: 'Customers', href: '#', icon: BuildingOfficeIcon },
+  //   { name: 'Press', href: '#', icon: NewspaperIcon },
+  //   { name: 'Careers', href: '#', icon: BriefcaseIcon },
+  //   { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
+  // ]
+  // const resources = [
+  //   { name: 'Community', href: '#', icon: UserGroupIcon },
+  //   { name: 'Partners', href: '#', icon: GlobeAltIcon },
+  //   { name: 'Guides', href: '#', icon: BookmarkSquareIcon },
+  //   { name: 'Webinars', href: '#', icon: ComputerDesktopIcon },
+  // ]
+  // const blogPosts = [
+  //   {
+  //     id: 1,
+  //     name: 'Boost your conversion rate',
+  //     href: '#',
+  //     preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'How to use search engine optimization to drive traffic to your site',
+  //     href: '#',
+  //     preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
+  //   },
+  // ]
 
-      const openStatsModal = ref(false)
-    
-      const playerHealthPercentage = computed(function () {
-        return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
-      })
+  const openStatsModal = ref(false)
 
-      const playerBarStyle = computed(function () {
-        return {width: playerHealthPercentage.value + '%'};
-      })
+  const playerHealthPercentage = computed(function () {
+    return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
+  })
 
-      return {
-        playerStore,
-        playerBarStyle,
-        openStatsModal,
-        blogPosts,
-        resources,
-        company,
-        callsToAction,
-        solutions,
-      }
-    }
-  }
+  const playerBarStyle = computed(function () {
+    return {width: playerHealthPercentage.value + '%'};
+  })
+
 </script>
 
 

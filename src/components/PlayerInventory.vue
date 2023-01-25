@@ -10,10 +10,9 @@
                 <img src="../assets/images/horse.png" alt="" class="h-96  w-auto border border-slate-600 "/>
             </div>
             <ul class="grid grid-cols-3 gap-x-5 px-5 py-5">
-                <li v-for="item in horseInventory" :key="item.id" class="relative" >
+                <li v-for="item in playerStore.horseInventory" :key="item.id" class="relative" >
                     <div class="group aspect-w-3 aspect-h-3 block w-full overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-                        <img :src="item.imageSrc" :alt="item.alt" />
-                        <!-- <button type="button" class="absolute inset-0 focus:outline-none h-3 w-3"></button> -->
+                        <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
             </ul>
@@ -26,7 +25,6 @@
                     <li v-for="item in playerStore.playerPacked" :key="item.id" class="px-6 py-6 rounded-lg border border-slate-400">
                         <button class="pb-5">
                             <img :src="item.imageSrc" alt="" />
-                            <!-- <p class="text-center text-xs ">{{ item.name }}</p> -->
                         </button>
                         <div class="flex flex-col items-center">
                             <button @click="equipItem(item.id)" class="px-2 py-2 rounded-md w-24 bg-slate-400 border border-black">
@@ -41,9 +39,7 @@
             </div>
             <div v-if="playerStore.playerPacked.length==0" class="overflow-hidden rounded-md bg-white shadow shadow-gray-800 mx-5 mt-8">
                 <ul role="list" class="grid grid-cols-10 gap-x-2 divide-x divide-gray-800">
-                    <li v-for="item in items" :key="item.id" class="px-6 py-16 ">
-                        <!-- <p>something</p> -->
-                    </li>
+                    <li v-for="item in items" :key="item.id" class="px-6 py-16 "></li>
                 </ul>
             </div>
         </div>
@@ -51,40 +47,9 @@
 </template>
 
 <script setup>
-    import { reactive, ref, computed } from 'vue'
+    import { ref, computed } from 'vue'
     import { usePlayerStore } from '@/stores/player'
     const playerStore = usePlayerStore();
-
-    const horseInventory = reactive([
-        {
-            id: 'shoes',
-            itemSlot: 'horse_shoes',
-            name: 'shoes',
-            description: "",
-            value: '',
-            price: '',
-            imageSrc: require('../assets/logo.png'),            
-        },
-        {
-            id: 'saddle',
-            itemSlot: 'horse_saddle',
-            name: 'saddle',            
-            description: "",
-            value: '',
-            price: '',
-            imageSrc: require('../assets/logo.png'),            
-        },
-        {
-            id: 'bag',
-            itemSlot: 'horse_bag',
-            name: 'bag',
-            description: "",
-            value: '',
-            price: '',
-            imageSrc: require('../assets/logo.png'),
-
-        },
-    ])
 
     const items = [
         { id: 1 },
@@ -106,9 +71,11 @@
     
     function equipItem(itemId) {
         chosenItemId.value = itemId;
-        let x = horseInventory.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);
-        horseInventory.splice(x, 1, chosenItem.value);
-        playerStore.playerPacked.splice(x, 1);
+
+        let x = playerStore.horseInventory.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);
+        playerStore.horseInventory.splice(x, 1, chosenItem.value);
+        let y = playerStore.playerPacked.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);        
+        playerStore.playerPacked.splice(y, 1);
     }
 
 </script>
