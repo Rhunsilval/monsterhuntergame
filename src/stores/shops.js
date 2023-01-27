@@ -8,7 +8,7 @@ export const useShopStore =
             apothecary: [
                 {
                     id: 'apo_health_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: 'Simple Healing Draught',                    
                     description: 'A simple brew that will perk you up a bit.',
                     value: '+10 health',
@@ -17,7 +17,7 @@ export const useShopStore =
                 },
                 {
                     id: 'apo_strength_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: 'Tincure of Strength',
                     description:"Rub this in and you'll instantly feel stronger.  For a little while anyway.",
                     value: '+5 strength',
@@ -26,7 +26,7 @@ export const useShopStore =
                 },
                 {
                     id: 'apo_poison_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: 'Simple Anti-venom Potion',
                     description:'You would not believe the number of things that are poisonous out there',
                     value: 'cures you of poisoning, lasts until next exposure',
@@ -35,7 +35,7 @@ export const useShopStore =
                 },
                 {
                     id: 'apo_soup_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: 'Bone Broth Soup',
                     description: "I know how it looks.  Just give it a try - I think you'll like it!",
                     value: '+5-15 health and +1-10 strength',
@@ -131,7 +131,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_skull_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: 'Raven Skull',
                     description:"Useful for potions and spellwork.",
                     value: 'Potency results may vary',
@@ -149,7 +149,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_herb_1',
-                    itemSlot: '',
+                    itemSlot: 'null',
                     name: "Mountain's Bane",
                     description: "A very rare herb of very potent magic",
                     value: 'Results vary by application',

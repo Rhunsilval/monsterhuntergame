@@ -8,7 +8,7 @@ export const usePlayerStore =
             playerLevel: 1,
             playerStartingHealth: 100,
             playerHealth: 100,
-            coinOnHand: 1000,
+            coinOnHand: 10000,
             playerAttack: 1,
             playerDefense: 1,
             playerStrength: 1,
@@ -107,9 +107,10 @@ export const usePlayerStore =
                 },
             },
             playerPacked: [],
+            carryCapacity: 10,
 
-            horseInventory: [
-                {
+            horseInventory: {
+                horse_shoes: {
                     id: 'shoes',
                     itemSlot: 'horse_shoes',
                     name: 'shoes',
@@ -118,7 +119,7 @@ export const usePlayerStore =
                     price: '',
                     imageSrc: require('../assets/images/placeholders/horseshoes.png'),            
                 },
-                {
+                horse_saddle: {
                     id: 'saddle',
                     itemSlot: 'horse_saddle',
                     name: 'saddle',            
@@ -127,7 +128,7 @@ export const usePlayerStore =
                     price: '',
                     imageSrc: require('../assets/images/placeholders/saddle.png'),            
                 },
-                {
+                horse_bag: {
                     id: 'bag',
                     itemSlot: 'horse_bag',
                     name: 'bag',
@@ -136,7 +137,36 @@ export const usePlayerStore =
                     price: '',
                     imageSrc: require('../assets/images/placeholders/bags.png'),        
                 },
-            ],
+            },
+            // horseInventory: [
+            //     {
+            //         id: 'shoes',
+            //         itemSlot: 'horse_shoes',
+            //         name: 'shoes',
+            //         description: "",
+            //         value: '',
+            //         price: '',
+            //         imageSrc: require('../assets/images/placeholders/horseshoes.png'),            
+            //     },
+            //     {
+            //         id: 'saddle',
+            //         itemSlot: 'horse_saddle',
+            //         name: 'saddle',            
+            //         description: "",
+            //         value: '',
+            //         price: '',
+            //         imageSrc: require('../assets/images/placeholders/saddle.png'),            
+            //     },
+            //     {
+            //         id: 'bag',
+            //         itemSlot: 'horse_bag',
+            //         name: 'bag',
+            //         description: "",
+            //         value: '',
+            //         price: '',
+            //         imageSrc: require('../assets/images/placeholders/bags.png'),        
+            //     },
+            // ],
 
             nextLevel: 100,
             increase: 3,

@@ -10,32 +10,32 @@
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-2">
 
                 <div class="col-span-1 mt-20 ml-60 ">
-                    <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_necklace.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                    <div class="flex justify-center mb-5 ">
+                        <img :src="playerStore.playerEquipped.player_necklace.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_ring.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                        <img :src="playerStore.playerEquipped.player_ring.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
                     <div class="flex justify-center">
-                        <img :src="playerStore.playerEquipped.player_belt.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                        <img :src="playerStore.playerEquipped.player_belt.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
                 </div>
 
                 <div class="col-span-1 mt-1 mx-10 pb-10">
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_helm.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                        <img :src="playerStore.playerEquipped.player_helm.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_shield.imageSrc" alt="" class="h-20 rounded-lg border border-black mr-5 mt-5" />
-                        <img :src="playerStore.playerEquipped.player_gloves.imageSrc" alt="" class="h-20 rounded-lg border border-black mr-5" /> 
-                        <img :src="playerStore.playerEquipped.player_vambraces.imageSrc" alt="" class="h-20 rounded-lg border border-black mr-5" /> 
-                        <img :src="playerStore.playerEquipped.player_sword.imageSrc" alt="" class="h-20 rounded-lg border border-black mt-5" />
+                        <img :src="playerStore.playerEquipped.player_shield.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5 mt-5" />
+                        <img :src="playerStore.playerEquipped.player_gloves.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" /> 
+                        <img :src="playerStore.playerEquipped.player_vambraces.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" /> 
+                        <img :src="playerStore.playerEquipped.player_sword.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mt-5" />
                     </div>
                      <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_armor.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                        <img :src="playerStore.playerEquipped.player_armor.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>                   
                     <div class="flex justify-center">
-                        <img :src="playerStore.playerEquipped.player_boots.imageSrc" alt="" class="h-20 rounded-lg border border-black" />
+                        <img :src="playerStore.playerEquipped.player_boots.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
                 </div>
                 

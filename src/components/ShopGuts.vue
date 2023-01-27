@@ -5,7 +5,7 @@
 
 <!-- header -->    
       <div class="flex justify-center">                
-        <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
+        <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center pb-2">
             <div class="pt-3 ">
                 <p v-if="shopName === 'Apothecary'" class="font-extrabold font-serif text-6xl ">Bobby Baker's Botanical Brews</p>                
                 <p v-else-if="shopName === 'Armory'" class="font-extrabold font-serif text-6xl ">Threads and Thongs and Things</p>                
@@ -256,6 +256,12 @@
 
     const playerStore = usePlayerStore();
     const store = useShopStore();
+
+    // NEED TO:
+    // either remove items from store inventory after sale OR
+    // add a quantity element to each item, and figure a way for each item to have its own id to prevent rendering errors in 
+        // player inventory
+    // limit number of items sold in relation to player holding capacity
     
     const props = defineProps({
         shopName:{
