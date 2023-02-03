@@ -29,8 +29,12 @@
                     :index="index"
                     :id="item.id"
                     :imageSrc="item.imageSrc"
+                    :name="item.name"
+                    :value="item.value"
                     :limit_by="limit_by"
+                    :equipshow="equipshow"
                     @emit-equip-item="equipItem"
+                    @emit-drop-item="dropItem"
                 ></playerinventory-pack>
             </div>
 <!-- unequippable error message -->
@@ -196,19 +200,17 @@
                 playerStore.playerEquipped.player_belt.imageSrc = chosenItem.value.imageSrc;
             } 
             playerStore.playerPacked.splice(x, 1);
-        }        
-
+            playerStore.getAttackValues();
+        }      
         console.log('chosen item ID: ' + chosenItem.value.id);
     }
 
+    function dropItem(id) {
+        chosenItemId.value = id;
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItemId.value);
+        playerStore.playerPacked.splice(x, 1);
+    }
 
-    // function equipItem(itemId) {
-    //     chosenItemId.value = itemId;
 
-    //     let x = playerStore.horseInventory.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);
-    //     playerStore.horseInventory.splice(x, 1, chosenItem.value);
-    //     let y = playerStore.playerPacked.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);        
-    //     playerStore.playerPacked.splice(y, 1);
-    // }
 
 </script>

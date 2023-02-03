@@ -9,8 +9,14 @@ export const usePlayerStore =
             playerStartingHealth: 100,
             playerHealth: 100,
             coinOnHand: 10000,
+            playerBaseAttack: 1,
+            attackBonus: 0,
             playerAttack: 1,
+            playerBaseDefense: 1,
+            defenseBonus: 0,
             playerDefense: 1,
+            playerBaseStrength: 1,
+            strengthBonus: 0, 
             playerStrength: 1,
 
             playerQuests: [],
@@ -21,6 +27,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/helm.png'),
                 },
@@ -30,6 +39,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/armor.png'),
                 },
@@ -39,6 +51,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/shield.png'),
                 },
@@ -48,6 +63,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/gloves.png'),
                 },
@@ -57,6 +75,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/vambraces.png'),
                 },
@@ -66,6 +87,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/sword.png'),
                 },
@@ -75,6 +99,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/boots.png'),
                 },
@@ -84,6 +111,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/necklace.png'),
                 },
@@ -93,6 +123,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/ring.png'),
                 },
@@ -102,6 +135,9 @@ export const usePlayerStore =
                     name: '',
                     description: '',
                     value: '',
+                    attack: null,
+                    defense: null,
+                    strength: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/belt.png'),
                 },
@@ -138,40 +174,30 @@ export const usePlayerStore =
                     imageSrc: require('../assets/images/placeholders/bags.png'),        
                 },
             },
-            // horseInventory: [
-            //     {
-            //         id: 'shoes',
-            //         itemSlot: 'horse_shoes',
-            //         name: 'shoes',
-            //         description: "",
-            //         value: '',
-            //         price: '',
-            //         imageSrc: require('../assets/images/placeholders/horseshoes.png'),            
-            //     },
-            //     {
-            //         id: 'saddle',
-            //         itemSlot: 'horse_saddle',
-            //         name: 'saddle',            
-            //         description: "",
-            //         value: '',
-            //         price: '',
-            //         imageSrc: require('../assets/images/placeholders/saddle.png'),            
-            //     },
-            //     {
-            //         id: 'bag',
-            //         itemSlot: 'horse_bag',
-            //         name: 'bag',
-            //         description: "",
-            //         value: '',
-            //         price: '',
-            //         imageSrc: require('../assets/images/placeholders/bags.png'),        
-            //     },
-            // ],
 
             nextLevel: 100,
             increase: 3,
             playerXP: 0,
             playerTotalXP: 0,
             healthPerSec: 0,
-        })
+        }),
+        actions: {
+            getAttackValues() {
+                this.attackBonus = 
+                    (
+                        this.playerEquipped.player_helm.attack + 
+                        this.playerEquipped.player_armor.attack +
+                        this.playerEquipped.player_shield.attack +
+                        this.playerEquipped.player_gloves.attack +
+                        this.playerEquipped.player_vambraces.attack +
+                        this.playerEquipped.player_sword.attack +
+                        this.playerEquipped.player_boots.attack +
+                        this.playerEquipped.player_necklace.attack + 
+                        this.playerEquipped.player_ring.attack +
+                        this.playerEquipped.player_belt.attack 
+                    );
+                this.playerAttack = (this.playerBaseAttack + this.attackBonus);
+            }
+        }
+
     })
