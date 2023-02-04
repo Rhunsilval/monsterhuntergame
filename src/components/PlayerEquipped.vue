@@ -7,9 +7,16 @@
 <!-- inventory -->
         <div class="col-span-3 pb-10">
             <h1 class="text-center text-3xl text-teal-800 font-semibold mt-3">Equipped Items</h1>
-            <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-2">
+            <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
 
-                <div class="col-span-1 mt-20 ml-60 ">
+                <div class="text-center -ml-36 mt-36">
+                    <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }}</p>
+                    <p>Full Attack: {{ playerStore.playerAttack }}</p>
+                    <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }}</p>
+                    <p>Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }}</p>
+                </div>
+
+                <div class="col-span-1 mt-20 -ml-64 ">
                     <div class="flex justify-center mb-5 ">
                         <img :src="playerStore.playerEquipped.player_necklace.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
@@ -21,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="col-span-1 mt-1 mx-10 pb-10">
+                <div class="col-span-1 mt-1 mx-10 pb-10 pr-28 ">
                     <div class="flex justify-center mb-5">
                         <img :src="playerStore.playerEquipped.player_helm.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                     </div>
@@ -52,6 +59,7 @@
 </template>
 
 <script setup>
+    // import { ref } from 'vue'
     import { usePlayerStore } from '@/stores/player'
     const playerStore = usePlayerStore();
 
