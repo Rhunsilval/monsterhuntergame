@@ -10,10 +10,12 @@
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
 
                 <div class="text-center -ml-36 mt-36">
-                    <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }}</p>
-                    <p>Full Attack: {{ playerStore.playerAttack }}</p>
-                    <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }}</p>
-                    <p>Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }}</p>
+                    <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }} <br/>
+                        Total Attack: {{ playerStore.playerAttack }}</p>
+                    <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }} <br/>
+                        Total Defense: {{ playerStore.playerDefense }}</p>
+                    <p>Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }} <br/>
+                        Total Strength: {{ playerStore.playerStrength }}</p>
                 </div>
 
                 <div class="col-span-1 mt-20 -ml-64 ">

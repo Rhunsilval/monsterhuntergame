@@ -102,7 +102,7 @@
     // activates message if item is unequippable (based on itemSlot value)
     function equipItem(id) {
         chosenItemId.value = id;
-        let x = playerStore.playerPacked.findIndex(item => item.itemSlot === chosenItem.value.itemSlot);  
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);  
 
         if (chosenItem.value.itemSlot === 'null') {
             equipshow.value = true;
@@ -133,6 +133,10 @@
                 playerStore.playerEquipped.player_helm.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_helm.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_helm.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_helm.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_helm.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_helm.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_helm.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_helm.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_helm.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_armor') {
@@ -140,6 +144,10 @@
                 playerStore.playerEquipped.player_armor.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_armor.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_armor.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_armor.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_armor.defense = chosenItem.value.strength;
+                playerStore.playerEquipped.player_armor.strength = chosenItem.value.defense;
+                playerStore.playerEquipped.player_armor.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_armor.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_armor.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_shield') {
@@ -147,6 +155,10 @@
                 playerStore.playerEquipped.player_shield.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_shield.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_shield.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_shield.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_shield.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_shield.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_shield.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_shield.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_shield.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_gloves') {
@@ -154,6 +166,10 @@
                 playerStore.playerEquipped.player_gloves.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_gloves.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_gloves.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_gloves.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_gloves.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_gloves.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_gloves.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_gloves.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_gloves.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_vambraces') {
@@ -161,6 +177,10 @@
                 playerStore.playerEquipped.player_vambraces.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_vambraces.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_vambraces.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_vambraces.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_vambraces.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_vambraces.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_vambraces.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_vambraces.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_vambraces.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_sword') {
@@ -168,6 +188,10 @@
                 playerStore.playerEquipped.player_sword.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_sword.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_sword.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_sword.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_sword.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_sword.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_sword.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_sword.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_sword.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_boots') {
@@ -175,6 +199,10 @@
                 playerStore.playerEquipped.player_boots.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_boots.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_boots.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_boots.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_boots.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_boots.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_boots.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_boots.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_boots.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_necklace') {
@@ -182,6 +210,10 @@
                 playerStore.playerEquipped.player_necklace.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_necklace.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_necklace.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_necklace.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_necklace.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_necklace.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_necklace.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_necklace.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_necklace.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_ring') {
@@ -189,6 +221,10 @@
                 playerStore.playerEquipped.player_ring.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_ring.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_ring.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_ring.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_ring.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_ring.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_ring.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_ring.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_ring.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_belt') {
@@ -196,11 +232,18 @@
                 playerStore.playerEquipped.player_belt.name = chosenItem.value.name;
                 playerStore.playerEquipped.player_belt.description = chosenItem.value.description;
                 playerStore.playerEquipped.player_belt.value = chosenItem.value.value;
+                playerStore.playerEquipped.player_belt.attack = chosenItem.value.attack;
+                playerStore.playerEquipped.player_belt.strength = chosenItem.value.strength;
+                playerStore.playerEquipped.player_belt.defense = chosenItem.value.defense;
+                playerStore.playerEquipped.player_belt.life = chosenItem.value.life;
                 playerStore.playerEquipped.player_belt.price = chosenItem.value.price;
                 playerStore.playerEquipped.player_belt.imageSrc = chosenItem.value.imageSrc;
             } 
             playerStore.playerPacked.splice(x, 1);
             playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
         console.log('chosen item ID: ' + chosenItem.value.id);
     }

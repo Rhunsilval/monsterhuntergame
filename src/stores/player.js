@@ -8,6 +8,7 @@ export const usePlayerStore =
             playerLevel: 1,
             playerStartingHealth: 100,
             playerHealth: 100,
+            healthBonus: 0,
             coinOnHand: 10000,
             playerBaseAttack: 1,
             attackBonus: 0,
@@ -30,6 +31,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/helm.png'),
                 },
@@ -42,6 +44,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/armor.png'),
                 },
@@ -54,6 +57,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/shield.png'),
                 },
@@ -66,6 +70,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/gloves.png'),
                 },
@@ -78,6 +83,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/vambraces.png'),
                 },
@@ -90,6 +96,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/sword.png'),
                 },
@@ -102,6 +109,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/boots.png'),
                 },
@@ -114,6 +122,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/necklace.png'),
                 },
@@ -126,6 +135,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/ring.png'),
                 },
@@ -138,6 +148,7 @@ export const usePlayerStore =
                     attack: null,
                     defense: null,
                     strength: null,
+                    life: null,
                     price: '',
                     imageSrc: require('../assets/images/placeholders/belt.png'),
                 },
@@ -185,19 +196,69 @@ export const usePlayerStore =
             getAttackValues() {
                 this.attackBonus = 
                     (
-                        this.playerEquipped.player_helm.attack + 
-                        this.playerEquipped.player_armor.attack +
-                        this.playerEquipped.player_shield.attack +
-                        this.playerEquipped.player_gloves.attack +
-                        this.playerEquipped.player_vambraces.attack +
-                        this.playerEquipped.player_sword.attack +
-                        this.playerEquipped.player_boots.attack +
-                        this.playerEquipped.player_necklace.attack + 
-                        this.playerEquipped.player_ring.attack +
-                        this.playerEquipped.player_belt.attack 
+                        this.playerEquipped.player_helm.attack
+                        + this.playerEquipped.player_armor.attack 
+                        + this.playerEquipped.player_shield.attack 
+                        + this.playerEquipped.player_gloves.attack 
+                        + this.playerEquipped.player_vambraces.attack
+                        + this.playerEquipped.player_sword.attack 
+                        + this.playerEquipped.player_boots.attack 
+                        + this.playerEquipped.player_necklace.attack 
+                        + this.playerEquipped.player_ring.attack 
+                        + this.playerEquipped.player_belt.attack 
                     );
                 this.playerAttack = (this.playerBaseAttack + this.attackBonus);
-            }
+            },
+            getDefenseValues() {
+                this.defenseBonus = 
+                (
+                    this.playerEquipped.player_helm.defense
+                    + this.playerEquipped.player_armor.defense 
+                    + this.playerEquipped.player_shield.defense 
+                    + this.playerEquipped.player_gloves.defense 
+                    + this.playerEquipped.player_vambraces.defense
+                    + this.playerEquipped.player_sword.defense 
+                    + this.playerEquipped.player_boots.defense 
+                    + this.playerEquipped.player_necklace.defense 
+                    + this.playerEquipped.player_ring.defense 
+                    + this.playerEquipped.player_belt.defense 
+                );
+            this.playerDefense = (this.playerBaseDefense + this.defenseBonus);
+            },
+            getStrengthValues() {
+                this.strengthBonus = 
+                (
+                    this.playerEquipped.player_helm.strength
+                    + this.playerEquipped.player_armor.strength 
+                    + this.playerEquipped.player_shield.strength 
+                    + this.playerEquipped.player_gloves.strength 
+                    + this.playerEquipped.player_vambraces.strength
+                    + this.playerEquipped.player_sword.strength 
+                    + this.playerEquipped.player_boots.strength 
+                    + this.playerEquipped.player_necklace.strength 
+                    + this.playerEquipped.player_ring.strength 
+                    + this.playerEquipped.player_belt.strength 
+                );
+            this.playerStrength = (this.playerBaseStrength + this.strengthBonus);
+            },
+            getExtraHealth() {
+                this.healthBonus = 
+                (
+                    this.playerEquipped.player_helm.life
+                    + this.playerEquipped.player_armor.life 
+                    + this.playerEquipped.player_shield.life 
+                    + this.playerEquipped.player_gloves.life 
+                    + this.playerEquipped.player_vambraces.life
+                    + this.playerEquipped.player_sword.life 
+                    + this.playerEquipped.player_boots.life 
+                    + this.playerEquipped.player_necklace.life 
+                    + this.playerEquipped.player_ring.life 
+                    + this.playerEquipped.player_belt.life 
+                );
+            this.playerStartingHealth = (this.playerStartingHealth + this.healthBonus);
+            this.playerHealth = (this.playerHealth + this.healthBonus);
+            },
+
         }
 
     })
