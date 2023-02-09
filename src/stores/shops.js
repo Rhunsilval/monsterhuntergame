@@ -8,6 +8,8 @@ export const useShopStore =
             apothecary: [
                 {
                     id: 'apo_health_1',
+                    // id: Math.floor(Math.random() * 10000)
+                    // note: this works to generate a random#, but it only does it once.  how to generate a new # with each sale?
                     itemSlot: 'null',
                     itemShop: 'Apothecary',
                     name: 'Simple Healing Draught',                    
@@ -192,7 +194,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_skull_1',
-                    itemSlot: 'null',
+                    itemSlot: 'player_necklace',
                     itemShop: 'Oddities',
                     name: 'Raven Skull',
                     description:"Useful for potions and spellwork.",
@@ -216,7 +218,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_herb_1',
-                    itemSlot: 'null',
+                    itemSlot: 'player_belt',
                     itemShop: 'Oddities',
                     name: "Mountain's Bane",
                     description: "A very rare herb of very potent magic",

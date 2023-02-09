@@ -41,6 +41,7 @@
                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
                   <PopoverPanel class="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
 
+                      <!-- <player-inventory-2></player-inventory-2> -->
                       <player-inventory></player-inventory>
 
                   </PopoverPanel>
@@ -115,6 +116,7 @@
   import { ref,  computed } from 'vue'
   import { usePlayerStore } from '@/stores/player'
   import PlayerInventory from './PlayerInventory.vue'
+  // import PlayerInventory2 from './PlayerInventory2.vue'
   import PlayerEquipped from './PlayerEquipped.vue'
 
   const playerStore = usePlayerStore();

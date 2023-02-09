@@ -372,7 +372,6 @@
     function buyProduct(productId) {
         chosenProdId.value = productId;
         checkInventory();
-        // checkSale();
         playerStore.coinOnHand = (playerStore.coinOnHand - chosenProd.value.price);                
     }
 // to check that there's inventory space to add another item, 
