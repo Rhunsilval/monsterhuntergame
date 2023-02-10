@@ -116,7 +116,6 @@
   import { ref,  computed } from 'vue'
   import { usePlayerStore } from '@/stores/player'
   import PlayerInventory from './PlayerInventory.vue'
-  // import PlayerInventory2 from './PlayerInventory2.vue'
   import PlayerEquipped from './PlayerEquipped.vue'
 
   const playerStore = usePlayerStore();

@@ -185,7 +185,6 @@
 
 // initiate the hunt  
   const startGame = ref(false);
-
   function startHunt() {
     findMonster();
     startGame.value = true;
@@ -210,7 +209,6 @@
 
 // don't find a monster, try again - with image toggling to visually see that the button is working
   const toggleImage = ref(false);
-
   function tryAgain() {
     findMonster();
     toggleImage.value = !toggleImage.value;
@@ -218,6 +216,7 @@
 
 // if monster found and player wants to run, reset everything
   function runAway() {
+    const attackValue = monsterStore.getMonsterHitAbility();
     startGame.value = false;
     toggleImage.value = false;
     monsterStore.monsterFound = false;
@@ -225,13 +224,15 @@
     monsterStore.monsterName = '';
     monsterStore.monsterHealth = null;
     monsterStore.monsterStartingHealth = null;
-    const attackValue = Math.ceil((getRandomValue(1, 10)) - ((playerStore.playerDefense * .1) + (playerStore.playerStrength))); //adjusting attack power for available player defense/strength
-    playerStore.playerHealth -= attackValue; //monster hits as player runs, takes some damage
+    // const attackValue = getRandomValue(1, 10);
+    const attackEffect = ref(Math.ceil(attackValue - ((playerStore.playerDefense *.1) + playerStore.playerStrength)))//adjusting attack power for available player defense/strength
+    if (attackEffect.value < 0) {
+      attackEffect.value = 0;
+    }
+    playerStore.playerHealth -= attackEffect.value; //monster hits as player runs, takes some damage
     if (playerStore.playerHealth < 0) {
       playerStore.playerHealth = 0;
-    } else {
-      playerStore.playerHealth;
-    }
+    } 
     currentRound.value = 0;
     monsterRound.value = 0;
     monsterStore.battleLog = [];
@@ -273,13 +274,13 @@
 // creating a battle log for user clarity in battle
   // const battleLog = ref([]);
   // moved this to monster pinia store since, for reasons i don't understand, it breaks here
-
-  function addLogEntry(who, what, value) {
+  function addLogEntry(who, what, value, effect) {
     monsterStore.battleLog.unshift({
       entryId: new Date().toISOString(),
       actionBy: who,
       actionType: what,
       actionValue: value,
+      actionEffect: effect,
     })
   }
 
@@ -289,7 +290,8 @@
     monsterRound.value = monsterRound.value + 1;
     const attackValue = Math.ceil(getRandomValue(5, 10) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
     monsterStore.monsterHealth -= attackValue;
-    addLogEntry('player', 'attacks', attackValue);
+    const monsterHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
+    addLogEntry('player', 'attacks', attackValue, monsterHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -309,7 +311,8 @@
     monsterRound.value = monsterRound.value + 1;
     const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
     monsterStore.monsterHealth -= attackValue;
-    addLogEntry('player', 'uses special-attack', attackValue);
+    const monsterHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
+    addLogEntry('player', 'uses special-attack', attackValue, monsterHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -327,8 +330,12 @@
 // monster strikes back
   function attackPlayer() {
     const attackValue = monsterStore.getMonsterHitAbility();
-    playerStore.playerHealth -= Math.ceil(attackValue - ((playerStore.playerDefense * .1) + (playerStore.playerStrength)));
-    addLogEntry('monster', 'attacks', attackValue);
+    const attackEffect = ref(Math.ceil(attackValue - ((playerStore.playerDefense *.1) + playerStore.playerStrength)))
+    if (attackEffect.value < 0) {
+      attackEffect.value = 0;
+    }
+    playerStore.playerHealth -= attackEffect.value;
+    addLogEntry('monster', 'attacks', attackValue, attackEffect.value);
   }
 
 // player healing

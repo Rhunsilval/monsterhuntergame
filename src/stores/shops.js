@@ -208,7 +208,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_skull_1',
-                    itemSlot: 'player_necklace',
+                    itemSlot: 'null',
                     itemUse: 'null',
                     itemShop: 'Oddities',
                     name: 'Raven Skull',

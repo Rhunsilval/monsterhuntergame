@@ -306,8 +306,7 @@ export const usePlayerStore =
                     (this.horseInventory.horse_shoes[0].carryBonus * .1)
                 );
                 this.carryCapacity = (this.baseCarryCapacity + (this.baseCarryCapacity * this.carryCapacityBonus));
-            }
+            },
 
         }
-
     })
