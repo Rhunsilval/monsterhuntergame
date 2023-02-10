@@ -188,35 +188,44 @@ export const usePlayerStore =
             swapHolder2: [],     
             playerPacked: [],
             carryCapacity: 10,
+            baseCarryCapacity: 10,
+            carryCapacityBonus: 0,
 
             horseInventory: {
-                horse_shoes: {
-                    id: 'shoes',
-                    itemSlot: 'horse_shoes',
-                    name: 'shoes',
-                    description: "",
-                    value: '',
-                    price: '',
-                    imageSrc: require('../assets/images/placeholders/horseshoes.png'),            
-                },
-                horse_saddle: {
-                    id: 'saddle',
-                    itemSlot: 'horse_saddle',
-                    name: 'saddle',            
-                    description: "",
-                    value: '',
-                    price: '',
-                    imageSrc: require('../assets/images/placeholders/saddle.png'),            
-                },
-                horse_bag: {
-                    id: 'bag',
-                    itemSlot: 'horse_bag',
-                    name: 'bag',
-                    description: "",
-                    value: '',
-                    price: '',
-                    imageSrc: require('../assets/images/placeholders/bags.png'),        
-                },
+                horse_shoes: [
+                    {
+                        id: 'shoes',
+                        itemSlot: 'horse_shoes',
+                        name: 'shoes',
+                        description: "",
+                        value: '',
+                        carryBonus: 0,
+                        price: '',
+                        imageSrc: require('../assets/images/placeholders/horseshoes.png'),            
+                    },
+                ],
+                horse_saddle: [
+                    {
+                        id: 'saddle',
+                        itemSlot: 'horse_saddle',
+                        name: 'saddle',            
+                        description: "",
+                        value: '',
+                        price: '',
+                        imageSrc: require('../assets/images/placeholders/saddle.png'),            
+                    },
+                ],
+                horse_bag: [
+                    {
+                        id: 'bag',
+                        itemSlot: 'horse_bag',
+                        name: 'bag',
+                        description: "",
+                        value: '',
+                        price: '',
+                        imageSrc: require('../assets/images/placeholders/bags.png'),        
+                    },
+                ],
             },
 
             nextLevel: 100,
@@ -291,6 +300,13 @@ export const usePlayerStore =
             this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
             this.playerHealth = (this.playerBaseHealth + this.healthBonus);
             },
+            getCarryCapacity() {
+                this.carryCapacityBonus =
+                (
+                    (this.horseInventory.horse_shoes[0].carryBonus * .1)
+                );
+                this.carryCapacity = (this.baseCarryCapacity + (this.baseCarryCapacity * this.carryCapacityBonus));
+            }
 
         }
 

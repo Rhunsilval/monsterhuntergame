@@ -12,7 +12,7 @@
         <div v-if="actionsVisible" class="flex flex-col items-center">
             <button @click="emitEquipItem" class="rounded-md w-16 mt-1 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
                 Equip</button>
-            <button class="rounded-md w-16 mt-3 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
+            <button @click="emitUseItem" class="rounded-md w-16 mt-3 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
                 Use</button>
             <button @click="emitDropItem" class="rounded-md w-16 mt-3 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
                 Drop</button>
@@ -50,6 +50,9 @@
 
     function emitEquipItem() {
         emit('emitEquipItem', props.id);
+    }
+    function emitUseItem() {
+        emit('emitUseItem', props.id);
     }
     function emitDropItem() {
         emit('emitDropItem', props.id);

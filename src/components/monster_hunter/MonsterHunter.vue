@@ -225,7 +225,7 @@
     monsterStore.monsterName = '';
     monsterStore.monsterHealth = null;
     monsterStore.monsterStartingHealth = null;
-    const attackValue = getRandomValue(1, 10);
+    const attackValue = Math.ceil((getRandomValue(1, 10)) - ((playerStore.playerDefense * .1) + (playerStore.playerStrength))); //adjusting attack power for available player defense/strength
     playerStore.playerHealth -= attackValue; //monster hits as player runs, takes some damage
     if (playerStore.playerHealth < 0) {
       playerStore.playerHealth = 0;
@@ -287,7 +287,7 @@
   function attackMonster() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
-    const attackValue = getRandomValue(5, 10) + playerStore.playerAttack;
+    const attackValue = Math.ceil(getRandomValue(5, 10) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
     monsterStore.monsterHealth -= attackValue;
     addLogEntry('player', 'attacks', attackValue);
     if (monsterStore.monsterHealth < 0) {
@@ -307,7 +307,7 @@
   function specialAttackMonster() {
     currentRound.value = 0;
     monsterRound.value = monsterRound.value + 1;
-    const attackValue = getRandomValue(10, 25);
+    const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
     monsterStore.monsterHealth -= attackValue;
     addLogEntry('player', 'uses special-attack', attackValue);
     if (monsterStore.monsterHealth < 0) {
@@ -327,7 +327,7 @@
 // monster strikes back
   function attackPlayer() {
     const attackValue = monsterStore.getMonsterHitAbility();
-    playerStore.playerHealth -= attackValue;
+    playerStore.playerHealth -= Math.ceil(attackValue - ((playerStore.playerDefense * .1) + (playerStore.playerStrength)));
     addLogEntry('monster', 'attacks', attackValue);
   }
 

@@ -11,6 +11,7 @@ export const useShopStore =
                     // id: Math.floor(Math.random() * 10000)
                     // note: this works to generate a random#, but it only does it once.  how to generate a new # with each sale?
                     itemSlot: 'null',
+                    itemUse: 'healing',
                     itemShop: 'Apothecary',
                     name: 'Simple Healing Draught',                    
                     description: 'A simple brew that will perk you up a bit.',
@@ -25,20 +26,22 @@ export const useShopStore =
                 {
                     id: 'apo_strength_1',
                     itemSlot: 'null',
+                    itemUse: 'strength',
                     itesmShop: 'Apothecary',
                     name: 'Tincure of Strength',
                     description:"Rub this in and you'll instantly feel stronger.",
-                    value: '+5 strength',
+                    value: '+1 strength',
                     attack: 0,
                     defense: 0,
                     strength: 5,
                     life: 0,
-                    price: 2500,
+                    price: 500,
                     imageSrc: require('../assets/images/village/Apothecary_clay_jar_1.png'),                    
                 },
                 {
                     id: 'apo_poison_1',
                     itemSlot: 'null',
+                    itemUse: 'poison',
                     itemShop: 'Apothecary',
                     name: 'Simple Anti-venom Potion',
                     description:'You would not believe the number of things that are poisonous out there',
@@ -53,15 +56,16 @@ export const useShopStore =
                 {
                     id: 'apo_soup_1',
                     itemSlot: 'null',
+                    itemUse: 'multi',
                     itemShop: 'Apothecary',
                     name: 'Bone Broth Soup',
                     description: "I know how it looks.  Just give it a try - I think you'll like it!",
                     value: '+5-15 health and +1-10 strength',
                     attack: 0,
                     defense: 0,
-                    strength: 8,
-                    life: 12,
-                    price: 35,
+                    strength: Math.floor(Math.random()*(10 - 1)) + 1,
+                    life: Math.floor(Math.random()*(15 - 5)) + 5,
+                    price: 3500,
                     imageSrc: require('../assets/images/village/Apothecary_soup_1.png'),                    
                 },
             ],
@@ -69,6 +73,7 @@ export const useShopStore =
                 {
                     id: 'arm_leath_armor_1',
                     itemSlot: 'player_armor',
+                    itemUse: 'null',
                     itemShop: 'Armory',
                     name: 'Basic Leather Armor',
                     description: 'Cheap, reliable, and sturdy',
@@ -83,6 +88,7 @@ export const useShopStore =
                 {
                     id: 'arm_leath_gauntlet_1',
                     itemSlot: 'player_gloves',
+                    itemUse: 'null',
                     itemShop: 'Armory',
                     name: 'Leather Gauntlets',
                     description:"Just the thing to help you keep a strong grip on your sword.",
@@ -97,6 +103,7 @@ export const useShopStore =
                 {
                     id: 'arm_leather_boots_1',
                     itemSlot: 'player_boots',
+                    itemUse: 'null',
                     itemShop: 'Armory',
                     name: 'Sturdy Leather Boots',
                     description:'Hunting monsters with bad boots is a bad idea.  You need good footwear.',
@@ -111,6 +118,7 @@ export const useShopStore =
                 {
                     id: 'arm_enchant_boots_1',
                     itemSlot: 'player_boots',
+                    itemUse: 'null',
                     itemShop: 'Armory',
                     name: 'Enchanted Boots',
                     description: "A gift from a friendly 'Shroom Spirit, these are great if you're considering adding magic items to your armor",
@@ -127,6 +135,7 @@ export const useShopStore =
                 {
                     id: 'smith_sword_1',
                     itemSlot: 'player_sword',
+                    itemUse: 'null',
                     itemShop: 'Blacksmith',
                     name: 'Basic Steel Sword',
                     description: 'A good sword to start out with',
@@ -141,6 +150,7 @@ export const useShopStore =
                   {
                     id: 'smith_helm_1',
                     itemSlot: 'player_helm',
+                    itemUse: 'null',
                     itemShop: 'Blacksmith',
                     name: 'Metal Helmet',
                     description:"Some basic head protection.  You're going to want it.",
@@ -155,6 +165,7 @@ export const useShopStore =
                   {
                     id: 'smith_shield_1',
                     itemSlot: 'player_shield', 
+                    itemUse: 'null',
                     itemShop: 'Blacksmith',                   
                     name: 'Basic Wooden Shield',
                     description:"Won't help much against fire-based monsters, but useful against pretty much everything else.",
@@ -168,11 +179,13 @@ export const useShopStore =
                   },
                   {
                     id: 'smith_misc_1',
-                    itemSlot: 'horse_shoes',   
+                    itemSlot: 'horse_shoes',  
+                    itemUse: 'null', 
                     itemShop: 'Blacksmith',                 
                     name: 'Horseshoes',
                     description: "Everyone feels better with proper footware, horses included",
                     value: 'allows your horse to carry 10% more items',
+                    carryBonus: 1,
                     price: 200,
                     imageSrc: require('../assets/images/village/Blacksmith_horseshoes_1.png'),
                   },
@@ -181,6 +194,7 @@ export const useShopStore =
                 {
                     id: 'odd_ring_1',
                     itemSlot: 'player_ring',
+                    itemUse: 'null',
                     itemShop: 'Oddities',
                     name: 'Enchanted Ring of Vigor',
                     description: 'Made by elves.  Good on the battlefield, and in the bedroom!',
@@ -195,6 +209,7 @@ export const useShopStore =
                   {
                     id: 'odd_skull_1',
                     itemSlot: 'player_necklace',
+                    itemUse: 'null',
                     itemShop: 'Oddities',
                     name: 'Raven Skull',
                     description:"Useful for potions and spellwork.",
@@ -205,6 +220,7 @@ export const useShopStore =
                   {
                     id: 'odd_gloves_1',
                     itemSlot: 'player_gloves',
+                    itemUse: 'null',
                     itemShop: 'Oddities',
                     name: 'Mysterious Leather Gloves',
                     description:"No telling what they do - but they're magic!",
@@ -219,6 +235,7 @@ export const useShopStore =
                   {
                     id: 'odd_herb_1',
                     itemSlot: 'player_belt',
+                    itemUse: 'null',
                     itemShop: 'Oddities',
                     name: "Mountain's Bane",
                     description: "A very rare herb of very potent magic",

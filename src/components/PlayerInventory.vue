@@ -10,7 +10,17 @@
                 <img src="../assets/images/horse.png" alt="" class="h-96  w-auto border border-slate-600 "/>
             </div>
             <ul class="grid grid-cols-3 gap-x-5 px-5 py-5">
-                <li v-for="item in playerStore.horseInventory" :key="item.id" class="relative" >
+                <li v-for="item in playerStore.horseInventory.horse_shoes" :key="item.id" class="relative" >
+                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                        <img :src="item.imageSrc" alt="" />
+                    </div>
+                </li>
+                <li v-for="item in playerStore.horseInventory.horse_bag" :key="item.id" class="relative" >
+                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                        <img :src="item.imageSrc" alt="" />
+                    </div>
+                </li>
+                <li v-for="item in playerStore.horseInventory.horse_saddle" :key="item.id" class="relative" >
                     <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
@@ -20,7 +30,7 @@
 <!-- inventory -->
         <div class="col-span-3">
             <h1 class="text-center text-4xl text-teal-800 font-semibold my-3">Items on hand</h1>
-            <p class="text-center text-sm">Carry capacity : {{ limit_by }}</p>
+            <p class="text-center text-sm">Carry capacity : {{ playerStore.carryCapacity }}</p>
             <div class="text-center grid grid-cols-10">
                 <playerinventory-pack
                     v-for="(item, index) in playerStore.playerPacked"
@@ -32,41 +42,74 @@
                     :name="item.name"
                     :value="item.value"                    
                     @emitEquipItem="equipItem"
+                    @emitUseItem="useItem"
                     @emitDropItem="dropItem"
                 ></playerinventory-pack>
             </div>
 <!-- unequippable error message -->
-    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
-        <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
-            <transition 
-                enter-active-class="transform ease-out duration-300 transition" 
-                enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
-                enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
-                leave-active-class="transition ease-in duration-100" 
-                leave-from-class="opacity-100" 
-                leave-to-class="opacity-0"
-            >
-                <div v-if="equipshow" class="pointer-events-auto w-44 overflow-hidden rounded-lg bg-teal-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
-                    <div class="p-4">
-                        <div class="flex items-center">
-                            <div class="">
-                                <div>
-                                    <p class="text-center text-xl font-semibold text-gray-900 pb-3">Sorry</p>
-                                    <p class="text-center">This item can't be equipped</p>
+            <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
+                    <transition 
+                        enter-active-class="transform ease-out duration-300 transition" 
+                        enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
+                        enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
+                        leave-active-class="transition ease-in duration-100" 
+                        leave-from-class="opacity-100" 
+                        leave-to-class="opacity-0"
+                    >
+                        <div v-if="equipshow" class="pointer-events-auto w-44 overflow-hidden rounded-lg bg-teal-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <div>
+                                            <p class="text-center text-xl font-semibold text-gray-900 pb-3">Sorry</p>
+                                            <p class="text-center">This item can't be equipped</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-5">
+                                        <button type="button" @click="equipshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                            <span class="sr-only">Close</span>
+                                            <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="pl-5">
-                                <button type="button" @click="equipshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-                                    <span class="sr-only">Close</span>
-                                    <XMarkIcon class="h-5 w-5" aria-hidden="true" />
-                                </button>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+<!-- unusable error message -->
+            <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
+                    <transition 
+                        enter-active-class="transform ease-out duration-300 transition" 
+                        enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
+                        enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
+                        leave-active-class="transition ease-in duration-100" 
+                        leave-from-class="opacity-100" 
+                        leave-to-class="opacity-0"
+                    >
+                        <div v-if="useshow" class="pointer-events-auto w-44 overflow-hidden rounded-lg bg-amber-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <div>
+                                            <p class="text-center text-xl font-semibold text-gray-900 pb-3">Sorry</p>
+                                            <p class="text-center">This item can't be used</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-5">
+                                        <button type="button" @click="useshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                            <span class="sr-only">Close</span>
+                                            <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </transition>
                 </div>
-            </transition>
-        </div>
-    </div>
+            </div>
 
         </div>
     </div>
@@ -90,12 +133,13 @@
     // NEED TO figure out how to prevent a sale or item pickup if inventory max is reached
     const limit_by = playerStore.carryCapacity;
     
-    // to control show/hide of error messages
+    // to control show/hide of equipping error message
     const equipshow = ref(false)
 
     // to move an item from player inventory to player equipped
     // activates message if item is unequippable (based on itemSlot value)
     // removes item from playerPacked/inventory array
+    // swaps item with item in equipped space if item exists there
     function equipItem(id) {
         if(id!==undefined) {
             console.log('chosen ID = ' + id);
@@ -108,29 +152,67 @@
         } 
         else {
             if (chosenItem.value.itemSlot === 'horse_shoes') {
-                playerStore.horseInventory.horse_shoes.id = chosenItem.value.id;
-                playerStore.horseInventory.horse_shoes.name = chosenItem.value.name;
-                playerStore.horseInventory.horse_shoes.description = chosenItem.value.description;
-                playerStore.horseInventory.horse_shoes.value = chosenItem.value.value;
-                playerStore.horseInventory.horse_shoes.price = chosenItem.value.price;
-                playerStore.horseInventory.horse_shoes.imageSrc = chosenItem.value.imageSrc;            
+                if (playerStore.horseInventory.horse_shoes[0].id === 'shoes') {
+                    playerStore.horseInventory.horse_shoes.push(chosenItem.value);
+                    playerStore.horseInventory.horse_shoes.splice(0, 1);
+                } 
+                else {
+                    playerStore.swapHolder1.push(playerStore.horseInventory.horse_shoes[0]);
+                    playerStore.playerPacked.push(playerStore.swapHolder1[0]);
+                    playerStore.swapHolder2.push(chosenItem.value);
+                    playerStore.horseInventory.horse_shoes.push(playerStore.swapHolder2[0]);
+                    playerStore.horseInventory.horse_shoes.splice(0, 1);
+                    playerStore.swapHolder2.splice(0);
+                    playerStore.swapHolder1.splice(0);
+                }          
+                // playerStore.horseInventory.horse_shoes.id = chosenItem.value.id;
+                // playerStore.horseInventory.horse_shoes.name = chosenItem.value.name;
+                // playerStore.horseInventory.horse_shoes.description = chosenItem.value.description;
+                // playerStore.horseInventory.horse_shoes.value = chosenItem.value.value;
+                // playerStore.horseInventory.horse_shoes.price = chosenItem.value.price;
+                // playerStore.horseInventory.horse_shoes.imageSrc = chosenItem.value.imageSrc;            
             } else if (chosenItem.value.itemSlot === 'horse_saddle') {
-                playerStore.horseInventory.horse_saddle.id = chosenItem.value.id;
-                playerStore.horseInventory.horse_saddle.name = chosenItem.value.name;
-                playerStore.horseInventory.horse_saddle.description = chosenItem.value.description;
-                playerStore.horseInventory.horse_saddle.value = chosenItem.value.value;
-                playerStore.horseInventory.horse_saddle.price = chosenItem.value.price;
-                playerStore.horseInventory.horse_saddle.imageSrc = chosenItem.value.imageSrc; 
+                if (playerStore.horseInventory.horse_saddle[0].id === 'saddle') {
+                    playerStore.horseInventory.horse_saddle.push(chosenItem.value);
+                    playerStore.horseInventory.horse_saddle.splice(0, 1);
+                } 
+                else {
+                    playerStore.swapHolder1.push(playerStore.horseInventory.horse_saddle[0]);
+                    playerStore.playerPacked.push(playerStore.swapHolder1[0]);
+                    playerStore.swapHolder2.push(chosenItem.value);
+                    playerStore.horseInventory.horse_saddle.push(playerStore.swapHolder2[0]);
+                    playerStore.horseInventory.horse_saddle.splice(0, 1);
+                    playerStore.swapHolder2.splice(0);
+                    playerStore.swapHolder1.splice(0);
+                } 
+                // playerStore.horseInventory.horse_saddle.id = chosenItem.value.id;
+                // playerStore.horseInventory.horse_saddle.name = chosenItem.value.name;
+                // playerStore.horseInventory.horse_saddle.description = chosenItem.value.description;
+                // playerStore.horseInventory.horse_saddle.value = chosenItem.value.value;
+                // playerStore.horseInventory.horse_saddle.price = chosenItem.value.price;
+                // playerStore.horseInventory.horse_saddle.imageSrc = chosenItem.value.imageSrc; 
             } else if (chosenItem.value.itemSlot === 'horse_bag') {
-                playerStore.horseInventory.horse_bag.id = chosenItem.value.id;
-                playerStore.horseInventory.horse_bag.name = chosenItem.value.name;
-                playerStore.horseInventory.horse_bag.description = chosenItem.value.description;
-                playerStore.horseInventory.horse_bag.value = chosenItem.value.value;
-                playerStore.horseInventory.horse_bag.price = chosenItem.value.price;
-                playerStore.horseInventory.horse_bag.imageSrc = chosenItem.value.imageSrc;
+                if (playerStore.horseInventory.horse_bag[0].id === 'bag') {
+                    playerStore.horseInventory.horse_bag.push(chosenItem.value);
+                    playerStore.horseInventory.horse_bag.splice(0, 1);
+                } 
+                else {
+                    playerStore.swapHolder1.push(playerStore.horseInventory.horse_bag[0]);
+                    playerStore.playerPacked.push(playerStore.swapHolder1[0]);
+                    playerStore.swapHolder2.push(chosenItem.value);
+                    playerStore.horseInventory.horse_bag.push(playerStore.swapHolder2[0]);
+                    playerStore.horseInventory.horse_bag.splice(0, 1);
+                    playerStore.swapHolder2.splice(0);
+                    playerStore.swapHolder1.splice(0);
+                }
+                // playerStore.horseInventory.horse_bag.id = chosenItem.value.id;
+                // playerStore.horseInventory.horse_bag.name = chosenItem.value.name;
+                // playerStore.horseInventory.horse_bag.description = chosenItem.value.description;
+                // playerStore.horseInventory.horse_bag.value = chosenItem.value.value;
+                // playerStore.horseInventory.horse_bag.price = chosenItem.value.price;
+                // playerStore.horseInventory.horse_bag.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_helm') {
                 if (playerStore.playerEquipped.player_helm[0].id === 'helm') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_helm.push(chosenItem.value);
                     playerStore.playerEquipped.player_helm.splice(0, 1);
                 } 
@@ -138,7 +220,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_helm[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_helm.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_helm.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -146,7 +227,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_armor') {
                 if (playerStore.playerEquipped.player_armor[0].id === 'armor') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_armor.push(chosenItem.value);
                     playerStore.playerEquipped.player_armor.splice(0, 1);
                 } 
@@ -154,7 +234,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_armor[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_armor.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_armor.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -162,7 +241,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_shield') {
                 if (playerStore.playerEquipped.player_shield[0].id === 'shield') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_shield.push(chosenItem.value);
                     playerStore.playerEquipped.player_shield.splice(0, 1);
                 } 
@@ -170,7 +248,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_shield[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_shield.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_shield.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -178,7 +255,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_gloves') {
                 if (playerStore.playerEquipped.player_gloves[0].id === 'gloves') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_gloves.push(chosenItem.value);
                     playerStore.playerEquipped.player_gloves.splice(0, 1);
                 } 
@@ -186,7 +262,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_gloves[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_gloves.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_gloves.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -194,7 +269,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_vambraces') {
                 if (playerStore.playerEquipped.player_vambraces[0].id === 'vambraces') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_vambraces.push(chosenItem.value);
                     playerStore.playerEquipped.player_vambraces.splice(0, 1);
                 } 
@@ -202,7 +276,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_vambraces[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_vambraces.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_vambraces.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -210,7 +283,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_sword') {
                 if (playerStore.playerEquipped.player_sword[0].id === 'sword') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_sword.push(chosenItem.value);
                     playerStore.playerEquipped.player_sword.splice(0, 1);
                 } 
@@ -218,7 +290,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_sword[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_sword.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_sword.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -226,7 +297,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_boots') {
                 if (playerStore.playerEquipped.player_boots[0].id === 'boots') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_boots.push(chosenItem.value);
                     playerStore.playerEquipped.player_boots.splice(0, 1);
                 } 
@@ -234,7 +304,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_boots[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_boots.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_boots.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -243,7 +312,6 @@
                 
             } else if (chosenItem.value.itemSlot === 'player_necklace') {
                 if (playerStore.playerEquipped.player_necklace[0].id === 'necklace') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_necklace.push(chosenItem.value);
                     playerStore.playerEquipped.player_necklace.splice(0, 1);
                 } 
@@ -251,7 +319,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_necklace[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_necklace.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_necklace.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -259,7 +326,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_ring') {
                 if (playerStore.playerEquipped.player_ring[0].id === 'ring') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_ring.push(chosenItem.value);
                     playerStore.playerEquipped.player_ring.splice(0, 1);
                 } 
@@ -267,7 +333,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_ring[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_ring.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_ring.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -275,7 +340,6 @@
                 }
             } else if (chosenItem.value.itemSlot === 'player_belt') {
                 if (playerStore.playerEquipped.player_belt[0].id === 'belt') {
-                    // equipBoots();
                     playerStore.playerEquipped.player_belt.push(chosenItem.value);
                     playerStore.playerEquipped.player_belt.splice(0, 1);
                 } 
@@ -283,7 +347,6 @@
                     playerStore.swapHolder1.push(playerStore.playerEquipped.player_belt[0]);
                     playerStore.playerPacked.push(playerStore.swapHolder1[0]);
                     playerStore.swapHolder2.push(chosenItem.value);
-                    // equipBoots2();
                     playerStore.playerEquipped.player_belt.push(playerStore.swapHolder2[0]);
                     playerStore.playerEquipped.player_belt.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
@@ -295,20 +358,52 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getCarryCapacity();
         }      
     }
 
-    // function equipBoots() {
-    //     playerStore.playerEquipped.player_boots.push(chosenItem.value);
-    //     playerStore.playerEquipped.player_boots.splice(0, 1);
-    // }
-    // function equipBoots2() {
-    //     playerStore.playerEquipped.player_boots.push(playerStore.swapHolder2[0]);
-    //     playerStore.playerEquipped.player_boots.splice(0, 1);
-    //     playerStore.swapHolder2.splice(0);
-    // }
+    const useshow = ref(false);
+    function useItem(id) {
+        if(id!==undefined) {
+            console.log('chosen ID = ' + id);
+        }
+        chosenItemId.value = id;
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);    
+
+        if (chosenItem.value.itemUse === 'null') {
+            useshow.value = true;
+        } 
+        else if (chosenItem.value.itemUse === 'healing') {
+            playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+            if (playerStore.playerHealth > playerStore.playerBaseHealth) {
+                playerStore.playerHealth = playerStore.playerBaseHealth;
+            } else {
+                playerStore.playerHealth;
+            }
+        }
+        else if (chosenItem.value.itemUse === 'strength') {
+            playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
+            playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+        }
+        else if (chosenItem.value.itemUse === 'multi') {
+            playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
+            playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+            playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
+            playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
+            playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
+            playerStore.playerBaseDefense = (playerStore.playerBaseDefense + chosenItem.value.defense);
+            playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+            playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+            playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
+        }
+
+        playerStore.playerPacked.splice(x, 1);
+    } 
 
     function dropItem(id) {
+        if(id!==undefined) {
+            console.log('chosen ID = ' + id);
+        }
         chosenItemId.value = id;
         let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);
         playerStore.playerPacked.splice(x, 1);
