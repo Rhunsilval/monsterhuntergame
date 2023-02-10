@@ -13,8 +13,8 @@
                             </span>
                             <span v-if="entry.actionType === 'heals' && entry.actionBy === 'player'"> heals themselves for <span class="log--heal">{{ entry.actionValue }}</span> </span>
                             <span v-else-if="entry.actionType === 'heals' && entry.actionBy === 'monster'"> healed itself for <span class="log--heal">{{ entry.actionValue }}</span> </span>
-                            <span v-else-if="entry.actionType === 'attacks'"> attacks for <span class="log--damage">{{ entry.actionValue }}</span> </span>
-                            <span v-else> uses their Special Attack and hits for <span class="log--damage">{{ entry.actionValue }}</span> </span>
+                            <span v-else-if="entry.actionType === 'attacks'"> attacks for <span class="log--damage">{{ entry.actionValue }}</span> and deals <span class="log--damage"> {{ entry.actionEffect }} damage</span> </span>
+                            <span v-else> uses their Special Attack, hits for <span class="log--damage">{{ entry.actionValue }}</span>, and deals <span class="log--damage">  {{ entry.actionEffect }} damage</span> </span>
                         </li>
                         
                     </div>
@@ -26,20 +26,7 @@
 
 <script setup>
     import { useMonsterStore } from '@/stores/monster'
-    const monsterStore = useMonsterStore();
-
-    // const props = defineProps({
-    //     battleLog:{}
-    // })
-    
-    // export default {
-    //     components: {},
-    //     props: [
-    //         'battleLog',
-    //     ],
-    //     emits: [],
-    //     setup() {}
-    // }  
+    const monsterStore = useMonsterStore(); 
 </script>
 
 <style scoped> 

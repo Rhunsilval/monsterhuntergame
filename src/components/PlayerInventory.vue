@@ -124,22 +124,20 @@
     
     const playerStore = usePlayerStore();
 
-    // to know which item is being selected in the rendered playerPack array
+// to know which item is being selected in the rendered playerPack array
     const chosenItemId = ref('')
     const chosenItem = computed(function() {
         return playerStore.playerPacked.find(item => item.id === chosenItemId.value);
     })
-    // flexibly limits how many items a player can carry
-    // NEED TO figure out how to prevent a sale or item pickup if inventory max is reached
+// flexibly limits how many items a player can carry
     const limit_by = playerStore.carryCapacity;
-    
-    // to control show/hide of equipping error message
-    const equipshow = ref(false)
 
-    // to move an item from player inventory to player equipped
-    // activates message if item is unequippable (based on itemSlot value)
-    // removes item from playerPacked/inventory array
-    // swaps item with item in equipped space if item exists there
+// to move an item from player inventory to player equipped
+// activates message if item is unequippable (based on itemSlot value)
+// removes item from playerPacked/inventory array
+// swaps item with item in equipped space if item exists there
+// items affect user stats
+    const equipshow = ref(false)
     function equipItem(id) {
         if(id!==undefined) {
             console.log('chosen ID = ' + id);
@@ -164,13 +162,7 @@
                     playerStore.horseInventory.horse_shoes.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
                     playerStore.swapHolder1.splice(0);
-                }          
-                // playerStore.horseInventory.horse_shoes.id = chosenItem.value.id;
-                // playerStore.horseInventory.horse_shoes.name = chosenItem.value.name;
-                // playerStore.horseInventory.horse_shoes.description = chosenItem.value.description;
-                // playerStore.horseInventory.horse_shoes.value = chosenItem.value.value;
-                // playerStore.horseInventory.horse_shoes.price = chosenItem.value.price;
-                // playerStore.horseInventory.horse_shoes.imageSrc = chosenItem.value.imageSrc;            
+                }                      
             } else if (chosenItem.value.itemSlot === 'horse_saddle') {
                 if (playerStore.horseInventory.horse_saddle[0].id === 'saddle') {
                     playerStore.horseInventory.horse_saddle.push(chosenItem.value);
@@ -184,13 +176,7 @@
                     playerStore.horseInventory.horse_saddle.splice(0, 1);
                     playerStore.swapHolder2.splice(0);
                     playerStore.swapHolder1.splice(0);
-                } 
-                // playerStore.horseInventory.horse_saddle.id = chosenItem.value.id;
-                // playerStore.horseInventory.horse_saddle.name = chosenItem.value.name;
-                // playerStore.horseInventory.horse_saddle.description = chosenItem.value.description;
-                // playerStore.horseInventory.horse_saddle.value = chosenItem.value.value;
-                // playerStore.horseInventory.horse_saddle.price = chosenItem.value.price;
-                // playerStore.horseInventory.horse_saddle.imageSrc = chosenItem.value.imageSrc; 
+                }  
             } else if (chosenItem.value.itemSlot === 'horse_bag') {
                 if (playerStore.horseInventory.horse_bag[0].id === 'bag') {
                     playerStore.horseInventory.horse_bag.push(chosenItem.value);
@@ -205,12 +191,6 @@
                     playerStore.swapHolder2.splice(0);
                     playerStore.swapHolder1.splice(0);
                 }
-                // playerStore.horseInventory.horse_bag.id = chosenItem.value.id;
-                // playerStore.horseInventory.horse_bag.name = chosenItem.value.name;
-                // playerStore.horseInventory.horse_bag.description = chosenItem.value.description;
-                // playerStore.horseInventory.horse_bag.value = chosenItem.value.value;
-                // playerStore.horseInventory.horse_bag.price = chosenItem.value.price;
-                // playerStore.horseInventory.horse_bag.imageSrc = chosenItem.value.imageSrc;
             } else if (chosenItem.value.itemSlot === 'player_helm') {
                 if (playerStore.playerEquipped.player_helm[0].id === 'helm') {
                     playerStore.playerEquipped.player_helm.push(chosenItem.value);
@@ -362,6 +342,10 @@
         }      
     }
 
+// to use one-time-use items
+// item affects user stats
+// item removed from player inventory after use
+// error message activated if item is unusable
     const useshow = ref(false);
     function useItem(id) {
         if(id!==undefined) {
@@ -372,34 +356,35 @@
 
         if (chosenItem.value.itemUse === 'null') {
             useshow.value = true;
-        } 
-        else if (chosenItem.value.itemUse === 'healing') {
-            playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
-            if (playerStore.playerHealth > playerStore.playerBaseHealth) {
-                playerStore.playerHealth = playerStore.playerBaseHealth;
-            } else {
-                playerStore.playerHealth;
+        } else {
+            if (chosenItem.value.itemUse === 'healing') {
+                if ((playerStore.playerHealth + chosenItem.value.life) > playerStore.playerBaseHealth) {
+                    playerStore.playerHealth = playerStore.playerBaseHealth;
+                } else {
+                    playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+                }
             }
+            else if (chosenItem.value.itemUse === 'strength') {
+                playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
+                playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+            }
+            else if (chosenItem.value.itemUse === 'multi') {
+                playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
+                playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+                playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
+                playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
+                playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
+                playerStore.playerBaseDefense = (playerStore.playerBaseDefense + chosenItem.value.defense);
+                playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+                playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
+                playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+            }
+            playerStore.playerPacked.splice(x, 1);
         }
-        else if (chosenItem.value.itemUse === 'strength') {
-            playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
-            playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
-        }
-        else if (chosenItem.value.itemUse === 'multi') {
-            playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
-            playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
-            playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
-            playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
-            playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
-            playerStore.playerBaseDefense = (playerStore.playerBaseDefense + chosenItem.value.defense);
-            playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
-            playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
-            playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
-        }
-
-        playerStore.playerPacked.splice(x, 1);
     } 
 
+// to drop unwanted items from player inventory
     function dropItem(id) {
         if(id!==undefined) {
             console.log('chosen ID = ' + id);
@@ -408,7 +393,5 @@
         let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);
         playerStore.playerPacked.splice(x, 1);
     }
-
-
 
 </script>
