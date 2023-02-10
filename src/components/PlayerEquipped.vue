@@ -15,39 +15,89 @@
                     <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }} <br/>
                         Total Defense: {{ playerStore.playerDefense }}</p>
                     <p>Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }} <br/>
-                        Total Strength: {{ playerStore.playerStrength }}</p>
+                        Total Strength: {{ playerStore.playerStrength }}</p>                    
                 </div>
 
                 <div class="col-span-1 mt-20 -ml-64 ">
                     <div class="flex justify-center mb-5 ">
-                        <img :src="playerStore.playerEquipped.player_necklace.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                        <li v-for="item in playerStore.playerEquipped.player_necklace" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_necklace.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" /> -->
                     </div>
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_ring.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                        <li v-for="item in playerStore.playerEquipped.player_ring" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_ring.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" /> -->
                     </div>
                     <div class="flex justify-center">
-                        <img :src="playerStore.playerEquipped.player_belt.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                        <li v-for="item in playerStore.playerEquipped.player_belt" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_belt.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" /> -->
                     </div>
                 </div>
 
                 <div class="col-span-1 mt-1 mx-10 pb-10 pr-28 ">
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_helm.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                        <li v-for="item in playerStore.playerEquipped.player_helm" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_helm.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" /> -->
                     </div>
                     <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_shield.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5 mt-5" />
-                        <img :src="playerStore.playerEquipped.player_gloves.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" /> 
-                        <img :src="playerStore.playerEquipped.player_vambraces.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" /> 
-                        <img :src="playerStore.playerEquipped.player_sword.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mt-5" />
+                        <li v-for="item in playerStore.playerEquipped.player_shield" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_shield.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5 mt-5" /> -->
+                        <li v-for="item in playerStore.playerEquipped.player_gloves" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_gloves.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" />  -->
+                        <li v-for="item in playerStore.playerEquipped.player_vambraces" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_vambraces.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" />  -->
+                        <li v-for="item in playerStore.playerEquipped.player_sword" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_sword.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mt-5" /> -->
                     </div>
                      <div class="flex justify-center mb-5">
-                        <img :src="playerStore.playerEquipped.player_armor.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
-                    </div>                   
+                        <li v-for="item in playerStore.playerEquipped.player_armor" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
+                        <!-- <img :src="playerStore.playerEquipped.player_armor.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" /> -->
+                    </div> 
+
                     <div class="flex justify-center">
-                        <img :src="playerStore.playerEquipped.player_boots.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                        <li v-for="item in playerStore.playerEquipped.player_boots" :key="item.id">
+                            <ul>
+                                <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                            </ul>
+                        </li>
                     </div>
-                </div>
-                
+
+                </div>                
             </div>
         </div>        
 <!-- figure -->
@@ -61,7 +111,6 @@
 </template>
 
 <script setup>
-    // import { ref } from 'vue'
     import { usePlayerStore } from '@/stores/player'
     const playerStore = usePlayerStore();
 
