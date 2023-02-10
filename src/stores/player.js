@@ -20,7 +20,7 @@ export const usePlayerStore =
             playerDefense: 1,
             playerBaseStrength: 1,
             strengthBonus: 0, 
-            playerStrength: 1,
+            playerStrength: 15,
 
             playerQuests: [],
             playerEquipped: {

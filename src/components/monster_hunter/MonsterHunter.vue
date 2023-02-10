@@ -135,7 +135,7 @@
               <the-winner
                 :winner="winner"
                 :mapName="mapName"
-                @emit-loot-collected="lootCollected"
+                :monsterId="monsterId"
               ></the-winner>
             </div>
           </div>
@@ -343,8 +343,8 @@
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
     const healValue = getRandomValue(10, 25);
-    if (playerStore.playerHealth + healValue > 100) {
-      playerStore.playerHealth = 100;
+    if (playerStore.playerHealth + healValue > playerStore.playerBaseHealth) {
+      playerStore.playerHealth = playerStore.playerBaseHealth;
     } else {
       playerStore.playerHealth += healValue;
     }
@@ -361,6 +361,7 @@
 // setting winning conditions:
   const gameover = ref(false)
   const winner = ref(null);
+  const monsterId = monsterStore.monsterId
   const storePlayerHealth = storeToRefs(playerStore)
   const storeMonsterHealth = storeToRefs(monsterStore)
 
@@ -394,20 +395,6 @@
     }
   })   
 
-
-// collect loot!
-      // function lootCollected() {
-      //   startGame.value = false; 
-      // }
-
-
-    // my emitLootCollected emission is throwing an error in the map_page component.  
-    // page is receiving emit-loot-collected from winner component and executing lootCollected function:
-    // which sets the startGame value back to false, to return to the landing screen
-    // error:  Uncaught TypeError: Cannot read properties of undefined (reading 'emit')
-    // research not yet finding a solution
-    // workaround is to turn button into a router-link that takes user back to the map
-    // NOT IDEAL - i want the user to return to the landing page view of the map_page they're already on
 </script>
 
 <style scoped>
