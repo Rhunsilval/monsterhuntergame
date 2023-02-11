@@ -9,7 +9,7 @@
             </div>
             
             <div> 
-                <button @click="openModal = true" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                <button @click="generateLoot()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Collect Loot</button>
             </div>
             <br/>
@@ -67,10 +67,12 @@
                 <div class="mx-auto flex items-center justify-center rounded-3xl pb-8 bg-white">                    
                   <div class="mt-3 bg-gray-300 pb-3 w-2/3 text-center border border-black rounded-2xl sm:mt-5">
 
-                    <DialogTitle as="h3" class="font-bold font-serif leading-6 text-4xl text-gray-900 mt-3">{{ mapName }}</DialogTitle>
+                    <DialogTitle as="h3" class="font-bold font-serif leading-6 text-4xl text-gray-900 mt-3">{{props.mapName }}</DialogTitle>
 
                     <div> 
-                      <p> List of Loot </p>
+                      <the-winner-loot
+                        :monsterId="monsterId"
+                      ></the-winner-loot>
                     </div>
 
                     <div> 
@@ -92,50 +94,35 @@
   </TransitionRoot>
 </template>
 
-<script>
+<script setup>
     import { ref } from 'vue'
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+    import { useLootStore } from '@/stores/loot'
+    import TheWinnerLoot from './TheWinnerLoot.vue'
 
-    export default {
-        components: {
-            Dialog,
-            DialogPanel,
-            DialogTitle,
-            TransitionChild,
-            TransitionRoot
-        },
-        props: [
-            'winner',
-            'mapName',
-        ],
-        emits: [
-            // 'emit-loot-collected'
-        ],
-        setup() {
-            const openModal = ref(false);
+    const props = defineProps({
+      winner: {},
+      mapName: {},
+      monsterId: {},
+    })
 
-            function collectLoot() {
-                openModal.value = false;                                
-            }
+    const lootStore = useLootStore();
 
-            // function emitLootCollected() {
-            //     context.emit('emit-loot-collected');                
-            // }
+    const openModal = ref(false);
 
-            return {
-                openModal,
-                collectLoot,
-                // emitLootCollected,
-            }
-        }
-    }  
+    function collectLoot() {
+        openModal.value = false;                                
+    }
 
-    // my emitLootCollected emission is throwing an error in the map_page component.  
-    // map page is receiving emit-loot-collected and executing lootCollected function:
-    // which sets the startGame value back to false, to return to the landing screen
-    // error:  Uncaught TypeError: Cannot read properties of undefined (reading 'emit')
-    // research not yet finding a solution
-    // workaround is to turn button into a router-link that takes user back to the map
-    // NOT IDEAL - i want the user to return to the landing page view of the map_page they're already on
+    function getMonsterId() {
+      lootStore.monsterId = props.monsterId;
+    }
+
+    function generateLoot() {
+      openModal.value = true;
+      getMonsterId();
+      lootStore.generateCoins();
+      lootStore.generateLoot();
+    }
 
 </script>
