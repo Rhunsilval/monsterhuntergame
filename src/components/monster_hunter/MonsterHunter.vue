@@ -135,7 +135,6 @@
               <the-winner
                 :winner="winner"
                 :mapName="mapName"
-                :monsterId="monsterId"
               ></the-winner>
             </div>
           </div>
@@ -152,12 +151,14 @@
   import { storeToRefs } from 'pinia'  
   import { usePlayerStore } from '@/stores/player'
   import { useMonsterStore } from '@/stores/monster'
+  import { useLootStore } from '@/stores/loot'
   import MonsterFighter from './MonsterFighter.vue'
   import BattleLog from './BattleLog.vue'
   import TheWinner from './TheWinner.vue'
 
   const playerStore = usePlayerStore();
   const monsterStore = useMonsterStore();
+  const lootStore = useLootStore();
   const props = defineProps({
     mapName: {
       type:String
@@ -201,6 +202,7 @@
       monsterStore.getMonsterName();
       monsterStore.getMonsterStartingHealth();
       monsterStore.getMonsterHealth();
+      lootStore.monsterId = monsterStore.monsterId;
     } else {
       monsterStore.monsterFound = false;
     }
@@ -361,7 +363,6 @@
 // setting winning conditions:
   const gameover = ref(false)
   const winner = ref(null);
-  const monsterId = monsterStore.monsterId
   const storePlayerHealth = storeToRefs(playerStore)
   const storeMonsterHealth = storeToRefs(monsterStore)
 

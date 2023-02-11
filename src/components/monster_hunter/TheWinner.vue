@@ -9,7 +9,7 @@
             </div>
             
             <div> 
-                <button @click="generateLoot()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                <button @click="getLoot()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Collect Loot</button>
             </div>
             <br/>
@@ -103,7 +103,6 @@
     const props = defineProps({
       winner: {},
       mapName: {},
-      monsterId: {},
     })
 
     const lootStore = useLootStore();
@@ -114,14 +113,9 @@
         openModal.value = false;                                
     }
 
-    function getMonsterId() {
-      lootStore.monsterId = props.monsterId;
-    }
-
-    function generateLoot() {
+    function getLoot() {
       openModal.value = true;
-      getMonsterId();
-      lootStore.generateCoins();
+      // lootStore.generateCoins();
       lootStore.generateLoot();
     }
 
