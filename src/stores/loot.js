@@ -4,13 +4,38 @@ export const useLootStore =
     defineStore({
         id: 'loot',
         state: () => ({
+            lootCoins: [],
             lootList: [],
             monsterId: '',
+            monsterName:'',
 
         }),
         actions: {
             getRandomValue(min, max) {
                 return Math.floor(Math.random()*(max - min)) + min;
+            },
+
+            generateCoins() {
+                if (this.monsterId === 'desert_monster1' || 
+                    this.monsterId === 'forest_monster1' ||
+                    this.monsterId === 'grassland_monster1' ||
+                    this.monsterId === 'jungle_monster1' ||
+                    this.monsterId === 'marshes_monster1' ||
+                    this.monsterId === 'mountains_monster1' ||
+                    this.monsterId === 'swamp_monster1' ) {
+                        const val = this.getRandomValue(1,100);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                    }
+                    
+
             },
 
             generateLoot() {

@@ -109,7 +109,7 @@
 <!-- found monsters -->
               <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 py-16">
               
-                <div class="col-span-2"> 
+                <div class="col-span-2 px-5"> 
                   <monster-fighter
                     :specialAttackAvailable="specialAttackAvailable"
                     @emit-attack-monster="attackMonster"
@@ -119,7 +119,7 @@
                   ></monster-fighter>
                 </div>
 
-                <div class="border border-black"> 
+                <div class="col-span-1 border border-black"> 
                   <battle-log
                     :battleLog="battleLog"
                   ></battle-log>
@@ -135,6 +135,7 @@
               <the-winner
                 :winner="winner"
                 :mapName="mapName"
+                @emit-loot-collected="lootCollected"
               ></the-winner>
             </div>
           </div>
@@ -203,6 +204,7 @@
       monsterStore.getMonsterStartingHealth();
       monsterStore.getMonsterHealth();
       lootStore.monsterId = monsterStore.monsterId;
+      lootStore.monsterName = monsterStore.monsterName;
     } else {
       monsterStore.monsterFound = false;
     }
@@ -395,6 +397,22 @@
       storeMonsterHealth.monsterFound = false;
     }
   })   
+
+// resetting game after a victory
+  function lootCollected() {
+    gameover.value = false;
+    winner.value = false;
+    startGame.value = false;
+    toggleImage.value = false;
+    monsterStore.monsterFound = false;
+    monsterStore.monsterId = '';
+    monsterStore.monsterName = '';
+    monsterStore.monsterHealth = null;
+    monsterStore.monsterStartingHealth = null;
+    currentRound.value = 0;
+    monsterRound.value = 0;
+    monsterStore.battleLog = [];
+  }
 
 </script>
 
