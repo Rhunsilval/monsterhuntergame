@@ -22,8 +22,8 @@
         <div class="">
             <div class="py-3 ">  
                 <h2 class="font-bold text-3xl font-serif">{{ monsterStore.monsterName }}</h2>   
-                <div class="border border-black mt-3 ">       
-                    <img v-if="monsterStore.monsterId == 'mountain_monster1'" src="../../assets/images/mountains/mountain_monster_1.png" alt="" class="h-56 w-full object-cover object-center" />
+                <div class="border border-black mt-3 mx-2 ">       
+                    <img v-if="monsterStore.monsterId == 'mountain_monster1'" src="../../assets/images/mountains/mountain_monster_1.png" alt="" class="h-56 w-64   object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'mountain_monster2'" src="../../assets/images/mountains/mountain_monster_2.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'mountain_monster3'" src="../../assets/images/mountains/mountain_monster_3.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'mountain_monster4'" src="../../assets/images/mountains/mountain_monster_4.png" alt="" class="h-56 w-full object-cover object-center" />
@@ -63,7 +63,7 @@
                     <img v-if="monsterStore.monsterId == 'grassland_monster8'" src="../../assets/images/grassland/grassland_monster_8.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'grassland_monster9'" src="../../assets/images/grassland/grassland_monster_9.png" alt="" class="h-56 w-full object-cover object-top" />
                     <img v-if="monsterStore.monsterId == 'grassland_monster10'" src="../../assets/images/grassland/grassland_monster_10.png" alt="" class="h-56 w-full object-cover object-center" />
-                    <img v-if="monsterStore.monsterId == 'jungle_monster1'" src="../../assets/images/jungle/jungle_monster_1.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'jungle_monster1'" src="../../assets/images/jungle/jungle_monster_1.png" alt="" class="h-56 w-64  object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'jungle_monster2'" src="../../assets/images/jungle/jungle_monster_2.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'jungle_monster3'" src="../../assets/images/jungle/jungle_monster_3.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'jungle_monster4'" src="../../assets/images/jungle/jungle_monster_4.png" alt="" class="h-56 w-full object-cover object-center" />
@@ -97,14 +97,14 @@
             </div>
         
 <!-- monster name and healthbar -->
-            <div v-if="monsterStore.monsterName" class="ml-3 text-center font-medium text-gray-600 w-60 "> {{ monsterStore.monsterName }}'s Health: {{ monsterStore.monsterHealth }}/{{ monsterStore.monsterStartingHealth }}
+            <div v-if="monsterStore.monsterName" class="ml-2 text-center font-medium text-gray-600 w-60 "> {{ monsterStore.monsterName }}'s Health: {{ monsterStore.monsterHealth }}/{{ monsterStore.monsterStartingHealth }}
                 <div class="healthbar">
                     <div class="healthbar_value" :style="monsterBarStyle"></div>
                 </div>
             </div>
 
 <!-- player name and healthbar -->
-            <div v-if="monsterStore.monsterName" class="ml-3 text-center font-medium text-gray-600 w-60 "> {{ playerStore.playerId }}'s Life: {{ playerStore.playerHealth }}/{{ playerStore.playerStartingHealth }}
+            <div v-if="monsterStore.monsterName" class="ml-2 text-center font-medium text-gray-600 w-60 "> {{ playerStore.playerId }}'s Life: {{ playerStore.playerHealth }}/{{ playerStore.playerStartingHealth }}
                 <div class="healthbar">
                     <div class="healthbar_value" :style="playerBarStyle"></div>
                 </div>

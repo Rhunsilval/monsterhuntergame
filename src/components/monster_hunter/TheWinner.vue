@@ -8,17 +8,14 @@
                 <p class="py-3 font-bold text-2xl">Victory is yours!</p>
             </div>
             
-            <div> 
+            <div v-if="lootAvailable"> 
                 <button @click="getLoot()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Collect Loot</button>
             </div>
             <br/>
-            <!-- <div> 
-                <button @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">Done</button>
-            </div> -->
             <div> 
-                <router-link :to="'/map'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
-                  Done</router-link>
+                <button @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                  Hunt again</button>
             </div>
         </div>
 
@@ -67,17 +64,15 @@
                 <div class="mx-auto flex items-center justify-center rounded-3xl pb-8 bg-white">                    
                   <div class="mt-3 bg-gray-300 pb-3 w-2/3 text-center border border-black rounded-2xl sm:mt-5">
 
-                    <DialogTitle as="h3" class="font-bold font-serif leading-6 text-4xl text-gray-900 mt-3">{{props.mapName }}</DialogTitle>
+                    <DialogTitle as="h3" class="font-bold font-serif leading-6 text-4xl text-gray-900 mt-3 pb-5">{{props.mapName }}</DialogTitle>
 
                     <div> 
-                      <the-winner-loot
-                        :monsterId="monsterId"
-                      ></the-winner-loot>
+                      <the-winner-loot></the-winner-loot>
                     </div>
 
                     <div> 
-                      <button @click="collectLoot()" class="px-2 py-2 bg-white border border-black">
-                        Collect Loot</button>
+                      <button @click="collectLoot()" class="px-2 py-2 mt-3 rounded-xl bg-white border border-black">
+                        Done Collecting</button>
                     </div>
 
                   </div>
@@ -105,18 +100,28 @@
       mapName: {},
     })
 
+    const emit = defineEmits([
+      'emitLootCollected'
+    ])    
+
     const lootStore = useLootStore();
 
     const openModal = ref(false);
+    const lootAvailable = ref(true);
 
     function collectLoot() {
-        openModal.value = false;                                
+      lootAvailable.value = false;
+      openModal.value = false;                                
     }
 
     function getLoot() {
       openModal.value = true;
-      // lootStore.generateCoins();
+      lootStore.generateCoins();
       lootStore.generateLoot();
+    }
+
+    function emitLootCollected() {
+      emit('emitLootCollected');
     }
 
 </script>
