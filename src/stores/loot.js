@@ -16,13 +16,29 @@ export const useLootStore =
             },
 
             generateCoins() {
-                if (this.monsterId === 'desert_monster1' || 
+                if (
+                    this.monsterId === 'desert_monster1' || 
+                    this.monsterId === 'desert_monster2' || 
+                    this.monsterId === 'desert_monster3' || 
                     this.monsterId === 'forest_monster1' ||
+                    this.monsterId === 'forest_monster2' ||
+                    this.monsterId === 'forest_monster3' ||
                     this.monsterId === 'grassland_monster1' ||
+                    this.monsterId === 'grassland_monster2' ||
+                    this.monsterId === 'grassland_monster3' ||
                     this.monsterId === 'jungle_monster1' ||
+                    this.monsterId === 'jungle_monster2' ||
+                    this.monsterId === 'jungle_monster3' ||
                     this.monsterId === 'marshes_monster1' ||
+                    this.monsterId === 'marshes_monster2' ||
+                    this.monsterId === 'marshes_monster3' ||
                     this.monsterId === 'mountains_monster1' ||
-                    this.monsterId === 'swamp_monster1' ) {
+                    this.monsterId === 'mountains_monster2' ||
+                    this.monsterId === 'mountains_monster3' ||
+                    this.monsterId === 'swamp_monster1' ||
+                    this.monsterId === 'swamp_monster2' ||
+                    this.monsterId === 'swamp_monster3' 
+                    ) {
                         const val = this.getRandomValue(1,100);
                         this.lootCoins.push(
                             {
@@ -33,9 +49,141 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/coins.png'),
                             }
                         )
-                    }
+                } else if (
+                    this.monsterId === 'desert_monster4' ||
+                    this.monsterId === 'forest_monster4' ||
+                    this.monsterId === 'grassland_monster4' ||
+                    this.monsterId === 'jungle_monster4' ||
+                    this.monsterId === 'marshes_monster4' ||
+                    this.monsterId === 'mountains_monster4' ||
+                    this.monsterId === 'swamp_monster4'
+                    ) {
+                        const val = this.getRandomValue(50-150);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                } else if (
+                    this.monsterId === 'desert_monster5' ||
+                    this.monsterId === 'forest_monster5' ||
+                    this.monsterId === 'grassland_monster5' ||
+                    this.monsterId === 'jungle_monster5' ||
+                    this.monsterId === 'marshes_monster5' ||
+                    this.monsterId === 'mountains_monster5' ||
+                    this.monsterId === 'swamp_monster5'
+                    ) {
+                        const val = this.getRandomValue(50-300);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )                        
+                } else if (
+                    this.monsterId === 'desert_monster6' ||
+                    this.monsterId === 'forest_monster6' ||
+                    this.monsterId === 'grassland_monster6' ||
+                    this.monsterId === 'jungle_monster6' ||
+                    this.monsterId === 'marshes_monster6' ||
+                    this.monsterId === 'mountains_monster6' ||
+                    this.monsterId === 'swamp_monster6'
+                    ) {
+                        const val = this.getRandomValue(150-400);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                } else if (
+                    this.monsterId === 'desert_monster7' ||
+                    this.monsterId === 'forest_monster7' ||
+                    this.monsterId === 'grassland_monster7' ||
+                    this.monsterId === 'jungle_monster7' ||
+                    this.monsterId === 'marshes_monster7' ||
+                    this.monsterId === 'mountains_monster7' ||
+                    this.monsterId === 'swamp_monster7'
+                    ) {
+                        const val = this.getRandomValue(300-500);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                } else if (
+                    this.monsterId === 'desert_monster8' ||
+                    this.monsterId === 'forest_monster8' ||
+                    this.monsterId === 'grassland_monster8' ||
+                    this.monsterId === 'jungle_monster8' ||
+                    this.monsterId === 'marshes_monster8' ||
+                    this.monsterId === 'mountains_monster8' ||
+                    this.monsterId === 'swamp_monster8'
+                    ) {
+                        const val = this.getRandomValue(400-600);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                } else if (
+                    this.monsterId === 'desert_monster9' ||
+                    this.monsterId === 'forest_monster9' ||
+                    this.monsterId === 'grassland_monster9' ||
+                    this.monsterId === 'jungle_monster9' ||
+                    this.monsterId === 'marshes_monster9' ||
+                    this.monsterId === 'mountains_monster9' ||
+                    this.monsterId === 'swamp_monster9'
+                    ) {
+                        const val = this.getRandomValue(500-700);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                } else if (
+                    this.monsterId === 'desert_monster10' ||
+                    this.monsterId === 'forest_monster10' ||
+                    this.monsterId === 'grassland_monster10' ||
+                    this.monsterId === 'jungle_monster10' ||
+                    this.monsterId === 'marshes_monster10' ||
+                    this.monsterId === 'mountains_monster10' ||
+                    this.monsterId === 'swamp_monster10'
+                    ) {
+                        const val = this.getRandomValue(700-10000);
+                        this.lootCoins.push(
+                            {
+                                id: 'looted_coins',
+                                description: val,
+                                name: 'coins',
+                                amount: val,
+                                imageSrc: require('../assets/images/coins.png'),
+                            }
+                        )
+                }                   
                     
-
             },
 
             generateLoot() {
