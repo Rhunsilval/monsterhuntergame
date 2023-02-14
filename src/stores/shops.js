@@ -234,7 +234,7 @@ export const useShopStore =
                   },
                   {
                     id: 'odd_herb_1',
-                    itemSlot: 'player_belt',
+                    itemSlot: 'null',
                     itemUse: 'null',
                     itemShop: 'Oddities',
                     name: "Mountain's Bane",
