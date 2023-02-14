@@ -1,8 +1,8 @@
 <template>
     <div v-if="props.index < props.limit_by" class="overflow-hidden bg-white mx-5 mt-8">
 <!-- item image -->
-        <button @click="openActions" class="pb-5 mb-2 aspect-w-1 aspect-h-1 w-24 h-24 align-top">
-            <img :src="imageSrc" alt="" class="w-24 h-24" />
+        <button @click="openActions" class="pb-5 mb-2 w-16 align-top">
+            <img :src="imageSrc" alt="" class="" />
         </button>
         <div v-if="examineItem">
             <p class="font-semibold"> {{ props.name }}</p>
