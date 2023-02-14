@@ -1,12 +1,12 @@
 <template>
     <div v-if="props.index < props.limit_by" class="overflow-hidden bg-white mx-5 mt-8">
 <!-- item image -->
-        <button @click="openActions" class="pb-5 mb-2 w-16 align-top">
+        <button @click="openActions" class="pb-3 mb-2 w-24 align-top ">
             <img :src="imageSrc" alt="" class="" />
         </button>
         <div v-if="examineItem">
-            <p class="font-semibold"> {{ props.name }}</p>
-            <p class="text-xs "> {{ props.value }}</p>
+            <p class="font-semibold text-black"> {{ props.name }}</p>
+            <p class="text-xs text-black"> {{ props.description }}</p>
         </div>
 <!-- action buttons -->
         <div v-if="actionsVisible" class="flex flex-col items-center">
@@ -17,7 +17,7 @@
             <button @click="emitDropItem" class="rounded-md w-16 mt-3 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
                 Drop</button>
             <button @click="examineItem = !examineItem" class="rounded-md w-16 mt-3 px-1 py-1 bg-slate-300 border border-black text-sm font-medium hover:bg-slate-500 hover:text-white hover:border-2">
-                {{ examineItem? 'Hide Info' : 'Show Info' }}</button>
+                {{ examineItem? 'Hide Details' : 'Examine' }}</button>
         </div>               
     </div>
 </template>
@@ -32,7 +32,8 @@
         },
         id: {},
         imageSrc: {},
-        value: {},
+        name:{},
+        description: {},
     });
 
     const emit = defineEmits([

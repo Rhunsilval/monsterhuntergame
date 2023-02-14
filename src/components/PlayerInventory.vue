@@ -40,7 +40,7 @@
                     :id="item.id"
                     :imageSrc="item.imageSrc"
                     :name="item.name"
-                    :value="item.value"                    
+                    :description="item.description"                    
                     @emitEquipItem="equipItem"
                     @emitUseItem="useItem"
                     @emitDropItem="dropItem"
