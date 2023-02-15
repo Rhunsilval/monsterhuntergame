@@ -71,7 +71,7 @@
                     </div>
 
                     <div> 
-                      <button @click="collectLoot()" class="px-2 py-2 mt-3 rounded-xl bg-white border border-black">
+                      <button @click="doneCollectingLoot()" class="px-2 py-2 mt-3 rounded-xl bg-white border border-black">
                         Done Collecting</button>
                     </div>
 
@@ -109,9 +109,10 @@
     const openModal = ref(false);
     const lootAvailable = ref(true);
 
-    function collectLoot() {
+    function doneCollectingLoot() {
       lootAvailable.value = false;
-      openModal.value = false;                                
+      openModal.value = false;     
+      lootStore.lootList = [];                           
     }
 
     function getLoot() {

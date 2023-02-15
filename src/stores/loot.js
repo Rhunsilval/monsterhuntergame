@@ -207,14 +207,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/desert/desert_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"Can I interest you in a nice handful of sand?",
-                            imageSrc: require('../assets/images/desert/desert_notreasure.png'),
-                        },
-                    )}
+                    } 
                 } 
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -236,14 +229,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/forest/forest_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"Maybe you can use it for firewood?",
-                            imageSrc: require('../assets/images/forest/forest_notreasure.png'),
-                        },
-                    )}
+                    } 
                 } 
                 else if (this.monsterId === 'grassland_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -265,14 +251,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/grassland/grassland_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"At least you found a snack for your horse.",
-                            imageSrc: require('../assets/images/grassland/grassland_notreasure.png'),
-                        },
-                    )}
+                    } 
                 } 
                 else if (this.monsterId === 'jungle_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -294,14 +273,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/jungle/jungle_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"Hey!  A cool leaf!",
-                            imageSrc: require('../assets/images/jungle/jungle_notreasure.png'),
-                        },
-                    )}
+                    } 
                 }
                 else if (this.monsterId === 'marshes_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -323,14 +295,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/marshes/marshes_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"So ... many ... mosquitos!",
-                            imageSrc: require('../assets/images/marshes/marshes_notreasure.png'),
-                        },
-                    )}
+                    } 
                 }
                 else if (this.monsterId === 'mountain_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -352,14 +317,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/mountains/mountain_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"Oh look; a rock.",
-                            imageSrc: require('../assets/images/mountains/mountain_notreasure.png'),
-                        },
-                    )}
+                    } 
                 }
                 else if (this.monsterId === 'swamp_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -381,14 +339,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/swamp/swamp_monster_1_treasure.png'), 
                             },
                         );
-                    } else {this.lootList.push(
-                        {
-                            id: this.getRandomValue(1, 100000),
-                            name: 'No treasure',
-                            description:"Gross",
-                            imageSrc: require('../assets/images/swamp/swamp_notreasure.png'),
-                        },
-                    )}
+                    } 
                 }
 
             }
