@@ -209,6 +209,28 @@ export const useLootStore =
                         );
                     } 
                 } 
+                else if (this.monsterId === 'desert_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Foul Camel Tail',
+                                description:"Why is it sticky!?",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                } 
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -227,6 +249,28 @@ export const useLootStore =
                                 life: -3,
                                 price: 500,
                                 imageSrc: require('../assets/images/forest/forest_monster_1_treasure.png'), 
+                            },
+                        );
+                    } 
+                } 
+                else if (this.monsterId === 'forest_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Mossy Foot',
+                                description:"So fuzzy",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_2_treasure.png'), 
                             },
                         );
                     } 
@@ -253,6 +297,28 @@ export const useLootStore =
                         );
                     } 
                 } 
+                else if (this.monsterId === 'grassland_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Lucky Gold',
+                                description:"So shiny!",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                } 
                 else if (this.monsterId === 'jungle_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -271,6 +337,28 @@ export const useLootStore =
                                 life: 0,
                                 price: 500,
                                 imageSrc: require('../assets/images/jungle/jungle_monster_1_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'jungle_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Unlucky Monkey Paw',
+                                description:"Do your best not to touch it",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_2_treasure.png'), 
                             },
                         );
                     } 
@@ -297,6 +385,28 @@ export const useLootStore =
                         );
                     } 
                 }
+                else if (this.monsterId === 'marshes_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_armor',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Kappa Shell',
+                                description:"I wonder if it would fit me?",
+                                value: '?',
+                                attack: 0,
+                                defense: 8,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
                 else if (this.monsterId === 'mountain_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -319,6 +429,28 @@ export const useLootStore =
                         );
                     } 
                 }
+                else if (this.monsterId === 'mountain_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'nulll',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Troll Berries',
+                                description:"Those better not be what I think they are.",
+                                value: '?',
+                                attack: 6,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 350,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
                 else if (this.monsterId === 'swamp_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -337,6 +469,28 @@ export const useLootStore =
                                 life: 0,
                                 price: 350,
                                 imageSrc: require('../assets/images/swamp/swamp_monster_1_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'swamp_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Sickly Light',
+                                description:"I feel sick just looking at it.",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_2_treasure.png'), 
                             },
                         );
                     } 
