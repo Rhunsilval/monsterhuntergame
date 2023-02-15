@@ -9,7 +9,7 @@
             <h1 class="text-center text-3xl text-teal-800 font-semibold mt-3">Equipped Items</h1>
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
 <!-- player stats left -->
-                <div class="col-span-1 text-center -ml-36 mt-36">
+                <div class="col-span-1 text-center my-36 w-36">
                     <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }} <br/>
                         Total Attack: {{ playerStore.playerAttack }}</p>
                     <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }} <br/>
@@ -18,20 +18,20 @@
                         Total Strength: {{ playerStore.playerStrength }}</p>
                 </div>
 <!-- equipment center -->
-                <div class="col-span-1 mt-20 -ml-64 ">
+                <div class="col-span-1 mt-20 -ml-64">
                     <div class="grid grid-cols-2">
-                        <div class="col-span-1 ml-20">
+                        <div class="col-span-1">
 <!-- necklace -->
                             <div class="flex justify-center mb-5">
-                                <button @click="necklaceOptionsVisible">
-                                    <li v-for="item in playerStore.playerEquipped.player_necklace" :key="item.id" class="ml-20">
+                                <button @click="necklaceOptionsVisible"> 
+                                    <li v-for="item in playerStore.playerEquipped.player_necklace" :key="item.id" class="">
                                         <ul>
-                                            <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
+                                            <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
                                     </li>                                                                                               
                                 </button>                    
                             </div>
-                            <div v-if="examineNecklaceItem" class="grid grid-cols-1 text-center mb-7 -mt-24 ml-16 border rounded-xl bg-green-300">
+                            <div v-if="examineNecklaceItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-0 w-full border rounded-xl bg-green-300">
                                 <p class="font-semibold bg-white bg-opacity-90 ">{{ playerStore.playerEquipped.player_necklace[0].name }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_necklace[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_necklace[0].value }}</p>
@@ -47,14 +47,14 @@
 <!-- ring -->
                             <div class="flex justify-center mb-5">
                                 <button @click="ringOptionsVisible">
-                                    <li v-for="item in playerStore.playerEquipped.player_ring" :key="item.id" class="ml-20">
+                                    <li v-for="item in playerStore.playerEquipped.player_ring" :key="item.id" class="">
                                         <ul>
-                                            <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
+                                            <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
                                     </li>                                                                                               
                                 </button>                    
                             </div>
-                            <div v-if="examineRingItem" class="grid grid-cols-1 text-center mb-7 -mt-24 ml-16 bg-green-300 border rounded-xl">
+                            <div v-if="examineRingItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-0 w-full border rounded-xl bg-green-300">
                                 <p class="font-semibold bg-white bg-opacity-90  ">{{ playerStore.playerEquipped.player_ring[0].name }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_ring[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_ring[0].value }}</p>
@@ -70,14 +70,14 @@
 <!-- belt -->
                             <div class="flex justify-center mb-5">
                                 <button @click="beltOptionsVisible">
-                                    <li v-for="item in playerStore.playerEquipped.player_belt" :key="item.id" class="ml-20">
+                                    <li v-for="item in playerStore.playerEquipped.player_belt" :key="item.id" class="">
                                         <ul>
-                                            <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
+                                            <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
                                     </li>                                                                                               
                                 </button>                    
                             </div>
-                            <div v-if="examineBeltItem" class="grid grid-cols-1 text-center mb-7 -mt-24 ml-16 bg-green-300 border rounded-xl">
+                            <div v-if="examineBeltItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-0 w-full border rounded-xl bg-green-300">
                                 <p class="font-semibold bg-white bg-opacity-90  ">{{ playerStore.playerEquipped.player_belt[0].name }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_belt[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_belt[0].value }}</p>
@@ -92,7 +92,7 @@
                             </div>
                         </div>
 <!-- no inventory space -->
-                        <div class="col-span-1 ">
+                        <div class="col-span-1">
                             <div v-if="openMessage" class="mt-32 text-center ">
                                 <img src="../assets/images/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                                 <h1 class="font-semibold">Looks like you've overpacked</h1>
@@ -103,33 +103,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-1 mt-1 mx-10 pb-10 pr-28 -ml-5 w-full">
+                <div class="col-span-1 mt-1 pb-10 w-full">
 <!-- helm -->                    
-                    <div class="flex justify-center pl-10 mb-5">
+                    <div class="flex justify-center mb-5">
                         <button @click="helmOptionsVisible">
                             <li v-for="item in playerStore.playerEquipped.player_helm" :key="item.id" class="">
                                 <ul>
-                                    <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
+                                    <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                               
                         </button>                    
                     </div>
-                    <div v-if="examineHelmItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-16 bg-green-300 border rounded-xl">
+                    <div v-if="examineHelmItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-0 w-full border rounded-xl bg-green-300">
                         <p class="font-semibold bg-white bg-opacity-90  ">{{ playerStore.playerEquipped.player_helm[0].name }}</p>
                         <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_helm[0].description }}</p>
                         <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_helm[0].value }}</p>
                     </div> 
-                    <div v-if="helmOptions" class="w-56 ml-20  grid grid-cols-1 object-center items-center text-center " >
-                        <button @click="unequipHelm()" class="px-2 py-2 mb-1 mx-16 -mt-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                    <div v-if="helmOptions" class="grid grid-cols-1 -ml-2" >
+                        <button @click="unequipHelm()" class="w-24 px-2 py-2 mb-1 mx-48 -mt-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             Unequip</button>
-                        <button @click="dropHelm()" class="px-2 py-2 mb-1 mx-16 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                        <button @click="dropHelm()" class="w-24 px-2 py-2 mb-1 mx-48 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             Drop</button>
-                        <button @click="examineHelmItem = !examineHelmItem" class="px-2 py-2 mb-1 mx-16 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                        <button @click="examineHelmItem = !examineHelmItem" class="w-24 px-2 py-2 mb-1 mx-48 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             {{ examineHelmItem? 'Hide Details' : 'Examine' }}</button>
                     </div>                    
-                    <div class="flex justify-center mb-5 w-96 ">
+                    <div class="flex justify-center mb-5 w-full ">
 <!-- shield -->
-                        <div>
+                        <div class="ml-2">
                             <button @click="shieldOptionsVisible">
                                 <li v-for="item in playerStore.playerEquipped.player_shield" :key="item.id" class="">
                                     <ul class="">
@@ -230,11 +230,11 @@
                         </div>
                     </div>
 <!-- armor -->
-                    <div class="flex justify-center mb-5 pl-10">
+                    <div class="flex justify-center mb-5">
                         <button @click="armorOptionsVisible">
                             <li v-for="item in playerStore.playerEquipped.player_armor" :key="item.id">
                                 <ul>
-                                    <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
+                                    <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                 </ul>
                             </li>
                         </button>
@@ -246,38 +246,44 @@
                             <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_armor[0].value }}</p>
                         </div> 
                     </div>
-                    <div v-if="armorOptions" class="w-24 mt-4 grid grid-cols-1 object-center items-center text-center " >
-                        <button @click="unequipArmor()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                    <div v-if="armorOptions" class="grid grid-cols-1 -ml-2" >
+                        <button @click="unequipArmor()" class=" w-24 px-2 py-2 mb-1 mx-48 -mt-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             Unequip</button>
-                        <button @click="dropArmor()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                        <button @click="dropArmor()" class="w-24 px-2 py-2 mb-1 mx-48 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             Drop</button>
-                        <button @click="examineArmorItem = !examineArmorItem" class="px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                        <button @click="examineArmorItem = !examineArmorItem" class="w-24 px-2 py-2 mb-1 mx-48 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                             {{ examineArmorItem? 'Hide Details' : 'Examine' }}</button>
                     </div>
 <!-- boots -->
-                    <div class="flex justify-center mb-5 pl-10">
-                        <button @click="bootsOptionsVisible">
-                            <li v-for="item in playerStore.playerEquipped.player_boots" :key="item.id">
-                                <ul>
-                                    <img :src="item.imageSrc" alt="" class="h-24 -ml-1 w-24 rounded-lg border border-black" />
-                                </ul>
-                            </li>
-                        </button>
-                    </div>
-                    <div class="w-24">
-                        <div v-if="examineBootsItem" class="grid grid-cols-1 text-center mb-7 mr-24 -mt-24 -ml-4 w-32 bg-green-300 border rounded-xl">
-                            <p class="font-semibold bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].name }}</p>
-                            <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].description }}</p>
-                            <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].value }}</p>
-                        </div> 
-                    </div>
-                    <div v-if="bootsOptions" class="w-24 mt-4 grid grid-cols-1 object-center items-center text-center " >
-                        <button @click="unequipBoots()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
-                            Unequip</button>
-                        <button @click="dropBoots()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
-                            Drop</button>
-                        <button @click="examineBootsItem = !examineBootsItem" class="px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
-                            {{ examineBootsItem? 'Hide Details' : 'Examine' }}</button>
+                    <div class="grid grid-cols-2 items-center text-center object-center">                        
+
+                        <div class="">
+                            <div class="flex justify-end mb-5 -mr-12">
+                                <button @click="bootsOptionsVisible" class="">
+                                    <li v-for="item in playerStore.playerEquipped.player_boots" :key="item.id">
+                                        <ul>
+                                            <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
+                                        </ul>
+                                    </li>
+                                </button>
+                            </div>
+                            <div class="w-full">
+                                <div v-if="examineBootsItem" class="grid grid-cols-1 text-center mb-7 -mt-28 ml-10 w-full border rounded-xl bg-green-300">
+                                    <p class="font-semibold bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].name }}</p>
+                                    <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].description }}</p>
+                                    <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_boots[0].value }}</p>
+                                </div> 
+                            </div>
+                        </div>
+                        <div v-if="bootsOptions" class="mt-4 grid grid-cols-1 object-center items-center text-center" >
+                            <button @click="unequipBoots()" class="w-24 px-2 py-2 mb-1 mx-16  rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                Unequip</button>
+                            <button @click="dropBoots()" class="w-24 px-2 py-2 mb-1 mx-16 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                Drop</button>
+                            <button @click="examineBootsItem = !examineBootsItem" class="w-24 px-2 py-2 mx-16 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                {{ examineBootsItem? 'Hide Details' : 'Examine' }}</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
