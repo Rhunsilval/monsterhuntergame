@@ -187,6 +187,7 @@ export const useLootStore =
             },
 
             generateLoot() {
+        // desert monsters
                 if (this.monsterId === 'desert_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -271,6 +272,7 @@ export const useLootStore =
                         )
                     }
                 } 
+        // forests monsters
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -315,6 +317,47 @@ export const useLootStore =
                         );
                     } 
                 } 
+                else if (this.monsterId === 'forest_monster3') {
+                    const val = this.getRandomValue(1,3);
+                    if (val === 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Satyr's Aulos",
+                                description:"Enchanting",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                price: 900,
+                                imageSrc: require('../assets/images/forest/forest_monster_3_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Satyr Belt',
+                                description:"An enchanted belt of red silk and gold.",
+                                value: '?',
+                                attack: 0,
+                                defense: 10,
+                                strength: 0,
+                                life: 10,
+                                price: 1500,
+                                imageSrc: require('../assets/images/forest/forest_monster_3_treasure2.png'), 
+                            }
+                        )
+                    }
+                }
+        // grassland monsters
                 else if (this.monsterId === 'grassland_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -399,6 +442,7 @@ export const useLootStore =
                         )
                     }
                 } 
+        // jungle monsters
                 else if (this.monsterId === 'jungle_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -483,6 +527,7 @@ export const useLootStore =
                         )
                     }
                 } 
+        // marshes monsters
                 else if (this.monsterId === 'marshes_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -567,6 +612,7 @@ export const useLootStore =
                         )
                     }
                 } 
+        // mountain monsters
                 else if (this.monsterId === 'mountain_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -651,6 +697,7 @@ export const useLootStore =
                         )
                     }
                 } 
+        // swamp monsters
                 else if (this.monsterId === 'swamp_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
