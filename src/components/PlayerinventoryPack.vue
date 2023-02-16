@@ -4,9 +4,11 @@
         <button @click="openActions" class="pb-3 mb-2 w-24 align-top ">
             <img :src="imageSrc" alt="" class="" />
         </button>
-        <div v-if="examineItem">
-            <p class="font-semibold text-black"> {{ props.name }}</p>
-            <p class="text-xs text-black"> {{ props.description }}</p>
+        <div v-if="examineItem" class="-mt-24 ">
+            <div class="">
+                <p class="font-semibold text-black bg-gray-200 opacity-80 "> {{ props.name }}</p>
+                <p class="text-xs text-black bg-gray-200 opacity-80 "> {{ props.value }}</p>
+            </div>
         </div>
 <!-- action buttons -->
         <div v-if="actionsVisible" class="flex flex-col items-center">
@@ -34,6 +36,7 @@
         imageSrc: {},
         name:{},
         description: {},
+        value:{},
     });
 
     const emit = defineEmits([
