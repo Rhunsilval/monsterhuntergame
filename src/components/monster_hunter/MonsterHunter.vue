@@ -120,9 +120,7 @@
                 </div>
 
                 <div class="col-span-1 border border-black"> 
-                  <battle-log
-                    :battleLog="battleLog"
-                  ></battle-log>
+                  <battle-log></battle-log>
                 </div>
                 <!-- for some reason, when the empty log array is store on this page as a data property, 
                 it causes this component to not work?  moving the array to the monster pinia store fixed the issue -->

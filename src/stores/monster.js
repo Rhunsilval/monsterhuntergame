@@ -21,7 +21,8 @@ export const useMonsterStore =
             // generate 1 of 10 types of monsters for each environment, from common to rare
             generateMonster(val) {
                 // val = 10;
-                val = 25;
+                // val = 25;
+                val = 50;
                 // val = this.getRandomValue(1, 100);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
