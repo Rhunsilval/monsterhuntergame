@@ -25,7 +25,8 @@
       <div class="flex justify-center">
         <div class="text-center w-1/3 bg-white bg-opacity-75 flex justify-center">
             <div class="pt-8 pb-8 font-semibold font-mono">
-                <router-link type="button" :to="'/questfinder'" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">Return to Tavern</router-link>
+                <router-link type="button" :to="'/questhuntertavern'" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">
+                  Return to Tavern</router-link>
             </div>             
         </div>        
       </div>

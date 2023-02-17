@@ -7,10 +7,10 @@ export const usePlayerStore =
             playerId: 'Player One',
             coinOnHand: 10000,            
 
-            playerStartingHealth: 100,
-            playerBaseStartingHealth: 100,
-            playerHealth: 100,
-            playerBaseHealth: 100,
+            playerStartingHealth: 100,      // what renders on screen
+            playerBaseStartingHealth: 100,  // for temporary results
+            playerHealth: 100,              // on screen
+            playerBaseHealth: 100,          // for temporary results
             healthBonus: 0,         // from equipped items
             tempHealthBonus: 0,     // from potions etc
             healthPerSec: .1,       // Fortitude - how fast player heals

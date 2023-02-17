@@ -23,9 +23,11 @@
                 <div class="pt-8 pb-8 font-semibold font-mono">
                     <p>What level are you again? <br/> Not so sure you're in the right place, friend. <br/> But if you want to try, good luck to you. <br/> You'll need it.</p>
                     <p><br/></p>
-                    <router-link type="button" :to="'/questfinder'" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">Return to Tavern</router-link>
+                    <router-link type="button" :to="'/questhuntertavern'" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">
+                      Return to Tavern</router-link>
                     <p><br/></p>
-                    <button @click="openListModal = !openListModal" type="button" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">Check Guild Postings</button>
+                    <button @click="openListModal = !openListModal" type="button" class="px-3 py-3 bg-slate-400 hover:bg-slate-600 border border-slate-600 rounded-lg">
+                      Check Guild Postings</button>
                 </div>             
             </div>        
         </div>
