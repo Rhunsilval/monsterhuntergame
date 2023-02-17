@@ -4,7 +4,7 @@ import './assets/tailwind.css'
 import router from './router.js'
 import { createPinia } from 'pinia'
 
-import TheHeader from './components/TheHeader.vue';
+import TheHeader from './components/header/TheHeader.vue';
 import MonsterHunter from './components/monster_hunter/MonsterHunter.vue';
 import ShopGuts from './components/ShopGuts.vue';
 

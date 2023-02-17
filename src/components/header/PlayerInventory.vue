@@ -7,7 +7,7 @@
 <!-- horse -->
         <div class="col-span-1">
             <div class="px-3 py-3 flex justify-center">
-                <img src="../assets/images/horse.png" alt="" class="h-96  w-auto border border-slate-600 "/>
+                <img src="../../assets/images/horse.png" alt="" class="h-96  w-auto border border-slate-600 "/>
             </div>
             <ul class="grid grid-cols-3 gap-x-5 px-5 py-5">
                 <li v-for="item in playerStore.horseInventory.horse_shoes" :key="item.id" class="relative" >

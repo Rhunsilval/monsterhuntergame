@@ -11,19 +11,45 @@ export const usePlayerStore =
             playerBaseStartingHealth: 100,
             playerHealth: 100,
             playerBaseHealth: 100,
-            healthBonus: 0,
+            healthBonus: 0,         // from equipped items
+            tempHealthBonus: 0,     // from potions etc
+            healthPerSec: .1,       // Fortitude - how fast player heals
+
+            playerStartingMana: 100,
+            playerBaseStartingMana: 100,
+            playerMana: 100,
+            playerBaseMana: 100,
+            manaBonus: 0,           // from equipped items
+            tempManaBonus: 0,       // from potions,etc
+            manaPerSec: .1,         // how fast player restores mana
             
             playerBaseAttack: 1,
-            attackBonus: 0,
+            attackBonus: 0,         // from equipped items
+            tempAttackBonus: 0,     // from potions etc
             playerAttack: 1,
 
             playerBaseDefense: 1,
-            defenseBonus: 0,
+            defenseBonus: 0,        // from equipped items
+            tempDefenseBonus: 0,    // from potions etc
             playerDefense: 1,
 
             playerBaseStrength: 1,
-            strengthBonus: 0, 
+            strengthBonus: 0,       // from equipped items
+            tempStrengthBonus: 0,   // from potions etc
             playerStrength: 15,
+
+            playerBaseIntelligence: 1,
+            intelligenceBonus: 0,       // from equipped items
+            tempIntelligenceBonus: 0,   // from potions etc
+            playerIntelligence: 1,
+
+            playerLevel: 1,
+            playerPoints: 5,    // points to spend on increasing stats
+            nextLevel: 500,
+            increase: 2,
+
+            playerXP: 0,
+            playerTotalXP: 0,
 
             playerQuests: [],
 
@@ -196,6 +222,8 @@ export const usePlayerStore =
             baseCarryCapacity: 10,
             carryCapacityBonus: 0,
 
+            playerBank: [], // for storing items not in pack
+
             horseInventory: {
                 horse_shoes: [
                     {
@@ -233,12 +261,9 @@ export const usePlayerStore =
                 ],
             },
 
-            playerLevel: 1,
-            nextLevel: 100,
-            increase: 3,
-            playerXP: 0,
-            playerTotalXP: 0,
-            healthPerSec: 0,
+
+
+            
         }),
         actions: {
             getAttackValues() {
@@ -255,7 +280,7 @@ export const usePlayerStore =
                         + this.playerEquipped.player_ring[0].attack 
                         + this.playerEquipped.player_belt[0].attack 
                     );
-                this.playerAttack = (this.playerBaseAttack + this.attackBonus);
+                this.playerAttack = (this.playerBaseAttack + this.attackBonus + this.tempAttackBonus);
             },
             getDefenseValues() {
                 this.defenseBonus = 
@@ -271,7 +296,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].defense 
                     + this.playerEquipped.player_belt[0].defense 
                 );
-            this.playerDefense = (this.playerBaseDefense + this.defenseBonus);
+            this.playerDefense = (this.playerBaseDefense + this.defenseBonus + this.tempDefenseBonus);
             },
             getStrengthValues() {
                 this.strengthBonus = 
@@ -287,7 +312,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].strength 
                     + this.playerEquipped.player_belt[0].strength 
                 );
-            this.playerStrength = (this.playerBaseStrength + this.strengthBonus);
+            this.playerStrength = (this.playerBaseStrength + this.strengthBonus + this.tempStrengthBonus);
             },
             getExtraHealth() {
                 this.healthBonus = 
@@ -303,8 +328,8 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].life 
                     + this.playerEquipped.player_belt[0].life 
                 );
-            this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
-            this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus + this.tempHealthBonus);
+            this.playerHealth = (this.playerBaseHealth + this.healthBonus + this.tempHealthBonus);
             },
             getCarryCapacity() {
                 this.carryCapacityBonus =
