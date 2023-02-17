@@ -424,10 +424,9 @@
       offerPrice.value = (chosenSell.value.price - (chosenSell.value.price * .2))
     }
 // sell the item if player chooses to sell
-    function confirmSale(id) {
+    function confirmSale() {
       playerStore.coinOnHand = (playerStore.coinOnHand + offerPrice.value);
-      chosenSellId.value = id;
-      let x = playerStore.playerPacked.findIndex(item => item.id === chosenSellId.value); 
+      let x = playerStore.playerPacked.findIndex(item => item.id === chosenSell.value.id); 
       playerStore.playerPacked.splice(x, 1);
       acceptSale.value = false;
     }

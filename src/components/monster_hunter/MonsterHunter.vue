@@ -291,6 +291,8 @@
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
     const attackValue = Math.ceil(getRandomValue(5, 10) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+    playerStore.playerXP += attackValue;        // to gain XP
+    playerStore.playerTotalXP += attackValue;   // to keep track of XP
     monsterStore.monsterHealth -= attackValue;
     const monsterHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
     addLogEntry('player', 'attacks', attackValue, monsterHit);

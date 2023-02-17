@@ -94,7 +94,7 @@
 <!-- no inventory space -->
                         <div class="col-span-1">
                             <div v-if="openMessage" class="mt-32 text-center ">
-                                <img src="../assets/images/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
+                                <img src="../../assets/images/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                                 <h1 class="font-semibold">Looks like you've overpacked</h1>
                                 <p class="text-sm">There's no room left in your inventory.</p>
                                 <button @click="openMessage = false" class="px-2 py-2 mt-2 border border-gray-500 rounded-lg bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
@@ -291,7 +291,7 @@
 <!-- figure -->
         <div class="col-span-1">
             <div class="px-3 pb-3 pt-16 mt-2 flex justify-center">
-                <img src="../assets/images/human.png" alt="" class="h-96 w-auto border border-slate-600 "/>
+                <img src="../../assets/images/human.png" alt="" class="h-96 w-auto border border-slate-600 "/>
             </div>
         </div>
     </div>
@@ -333,7 +333,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/necklace.png'),
+                    imageSrc: require('../../assets/images/placeholders/necklace.png'),
                 }
             );
             necklaceOptions.value = false;
@@ -353,7 +353,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/necklace.png'),
+                imageSrc: require('../../assets/images/placeholders/necklace.png'),
             }
         );
         necklaceOptions.value = false;
@@ -386,7 +386,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/ring.png'),
+                    imageSrc: require('../../assets/images/placeholders/ring.png'),
                 },
             );
             ringOptions.value = false;
@@ -407,7 +407,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/ring.png'),
+                imageSrc: require('../../assets/images/placeholders/ring.png'),
             },
         );
         ringOptions.value = false;
@@ -440,7 +440,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/belt.png'),
+                    imageSrc: require('../../assets/images/placeholders/belt.png'),
                 },
             );
             beltOptions.value = false;
@@ -461,7 +461,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/belt.png'),
+                imageSrc: require('../../assets/images/placeholders/belt.png'),
             },
         );
         beltOptions.value = false;
@@ -494,7 +494,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/helm.png'),
+                    imageSrc: require('../../assets/images/placeholders/helm.png'),
                 },
             );
             helmOptions.value = false;
@@ -515,7 +515,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/helm.png'),
+                imageSrc: require('../../assets/images/placeholders/helm.png'),
             },
         );
         helmOptions.value = false;
@@ -548,7 +548,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/shield.png'),
+                    imageSrc: require('../../assets/images/placeholders/shield.png'),
                 },
             );
             shieldOptions.value = false;
@@ -569,7 +569,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/shield.png'),
+                imageSrc: require('../../assets/images/placeholders/shield.png'),
             },
         );
         shieldOptions.value = false;
@@ -602,7 +602,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/gloves.png'),
+                    imageSrc: require('../../assets/images/placeholders/gloves.png'),
                 },
             );
             glovesOptions.value = false;
@@ -623,7 +623,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/gloves.png'),
+                imageSrc: require('../../assets/images/placeholders/gloves.png'),
             },
         );
         glovesOptions.value = false;
@@ -656,7 +656,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/vambraces.png'),
+                    imageSrc: require('../../assets/images/placeholders/vambraces.png'),
                 },
             );
             vambracesOptions.value = false;
@@ -677,7 +677,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/vambraces.png'),
+                imageSrc: require('../../assets/images/placeholders/vambraces.png'),
             },
         );
         vambracesOptions.value = false;
@@ -710,7 +710,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/sword.png'),
+                    imageSrc: require('../../assets/images/placeholders/sword.png'),
                 },
             );
             swordOptions.value = false;
@@ -731,7 +731,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/sword.png'),
+                imageSrc: require('../../assets/images/placeholders/sword.png'),
             },
         );
         swordOptions.value = false;
@@ -764,7 +764,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/armor.png'),
+                    imageSrc: require('../../assets/images/placeholders/armor.png'),
                 },
             );
             armorOptions.value = false;
@@ -785,7 +785,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/armor.png'),
+                imageSrc: require('../../assets/images/placeholders/armor.png'),
             },
         );
         armorOptions.value = false;
@@ -818,7 +818,7 @@
                     strength: null,
                     life: null,
                     price: '',
-                    imageSrc: require('../assets/images/placeholders/boots.png'),
+                    imageSrc: require('../../assets/images/placeholders/boots.png'),
                 },
             );
             bootsOptions.value = false;
@@ -839,7 +839,7 @@
                 strength: null,
                 life: null,
                 price: '',
-                imageSrc: require('../assets/images/placeholders/boots.png'),
+                imageSrc: require('../../assets/images/placeholders/boots.png'),
             },
         );
         bootsOptions.value = false;

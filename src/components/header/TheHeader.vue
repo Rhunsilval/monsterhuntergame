@@ -10,14 +10,15 @@
 <!-- START OVER button -->
           <div class="">
             <router-link :to="'/home'" class="flex">
-              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../assets/images/startover.png" alt="" />
+              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../../assets/images/startover.png" alt="" />
             </router-link>            
           </div>
 
-<!-- EQUIPPED button -->
           <div class=" md:flex md:flex-1 md:items-center md:justify-between">
             <br/>
             <PopoverGroup as="nav" class="flex space-x-10">
+
+<!-- EQUIPPED button -->              
               <Popover v-slot="{ open }">
                 <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md px-2 py-2 bg-white text-base font-medium hover:text-gray-900 border border-transparent hover:border-teal-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
                   <span>Equipped</span>
@@ -41,7 +42,6 @@
                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
                   <PopoverPanel class="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
 
-                      <!-- <player-inventory-2></player-inventory-2> -->
                       <player-inventory></player-inventory>
 
                   </PopoverPanel>
@@ -50,13 +50,37 @@
             </PopoverGroup>
 
 <!-- PLAYER STATS buttons -->
-            <div class="flex items-center pl-5 w-1/3 md:ml-12 max-h-20">
+            <div class="flex items-center pl-5 w-1/2 md:ml-12 max-h-20 justify-end">
               <div class="text-base font-medium text-gray-600 text-center">Level:<br/> {{ playerStore.playerLevel }}</div>
-              <button @click="openStatsModal = !openStatsModal" class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#305c79] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-200 hover:text-black">View <br/>Stats</button>
-              <div class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#ccba78] px-4 py-2 text-base font-medium text-gray-700 shadow-sm text-center">Purse:<br/>{{ playerStore.coinOnHand }}</div>
+              <button @click="openStatsModal = !openStatsModal" class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#305c79] px-6 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-200 hover:text-black">
+                View <br/>Stats</button>
+
+              <Popover class="justify-end ">
+                <PopoverButton 
+                class="ml-8 px-2 py-2 inline-flex items-center justify-center rounded-md border border-gray-800 shadow-sm bg-slate-400 hover:bg-slate-200 text-base font-medium text-gray-700 hover:text-black">
+                <!-- :class="[open ? 'text-gray-700' : 'text-gray-700', 'group inline-flex items-center rounded-md bg-white text-base font-medium px-2 py-2 border border-transparent hover:text-gray-900 hover:border-teal-600 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2']"> -->
+                  <span>Active Quests</span>
+                  <!-- <ChevronDownIcon :class="[open ? 'text-gray-600, -rotate-180' : 'text-gray-400, rotate-0', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" /> -->
+                </PopoverButton>  
+                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
+                  <PopoverPanel class="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
+
+                      <player-active-quests></player-active-quests>
+
+                  </PopoverPanel>
+                </transition>
+              </Popover>
+
+              <div class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#d2b55b] px-4 py-2 text-base font-medium text-gray-700 shadow-sm text-center">
+                Purse:<br/>{{ playerStore.coinOnHand }}</div>
               <div class="text-center font-medium text-gray-600 ml-8 w-60 ">Life: {{ playerStore.playerHealth }}/{{ playerStore.playerStartingHealth }}
                 <div class="healthbar">
                   <div class="healthbar_value" :style="playerBarStyle"></div>
+                </div>
+              </div>
+              <div class="text-center font-medium text-gray-600 mx-5 w-60 ">Mana: {{ playerStore.playerMana }}/{{ playerStore.playerStartingMana }}
+                <div class="manabar">
+                  <div class="manabar_value" :style="playerBarStyle"></div>
                 </div>
               </div>
             </div>
@@ -85,11 +109,10 @@
 
                         <DialogTitle as="h3" class="leading-6 text-gray-900 text-4xl font-medium pt-5">{{ playerStore.playerId }}'s Stats:</DialogTitle>
                         <div class="mt-2"> 
-                          <div>
                             <p class="text-lg text-gray-700 font-semibold py-4">Attack: level {{ playerStore.playerAttack }}</p>
-                          </div>
                             <p class="text-lg text-gray-700 font-semibold py-4">Defense: level {{ playerStore.playerDefense }}</p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Strength: level {{ playerStore.playerStrength }}</p>
+                            <p class="text-lg text-gray-700 font-semibold py-4">Intelligence: level {{ playerStore.playerIntelligence }}</p>
                         </div>
 
                     </div>
@@ -117,6 +140,7 @@
   import { usePlayerStore } from '@/stores/player'
   import PlayerInventory from './PlayerInventory.vue'
   import PlayerEquipped from './PlayerEquipped.vue'
+  import PlayerActiveQuests from './PlayerActiveQuests.vue'
 
   const playerStore = usePlayerStore();
 
