@@ -5,24 +5,28 @@ export const usePlayerStore =
         id: 'player',
         state: () => ({
             playerId: 'Player One',
-            playerLevel: 1,
+            coinOnHand: 10000,            
+
             playerStartingHealth: 100,
             playerBaseStartingHealth: 100,
             playerHealth: 100,
             playerBaseHealth: 100,
             healthBonus: 0,
-            coinOnHand: 10000,
+            
             playerBaseAttack: 1,
             attackBonus: 0,
             playerAttack: 1,
+
             playerBaseDefense: 1,
             defenseBonus: 0,
             playerDefense: 1,
+
             playerBaseStrength: 1,
             strengthBonus: 0, 
             playerStrength: 15,
 
             playerQuests: [],
+
             playerEquipped: {
                 player_helm: [
                     {
@@ -187,6 +191,7 @@ export const usePlayerStore =
             swapHolder1: [],     
             swapHolder2: [],     
             playerPacked: [],
+
             carryCapacity: 10,
             baseCarryCapacity: 10,
             carryCapacityBonus: 0,
@@ -228,6 +233,7 @@ export const usePlayerStore =
                 ],
             },
 
+            playerLevel: 1,
             nextLevel: 100,
             increase: 3,
             playerXP: 0,

@@ -407,7 +407,7 @@
     monsterStore.monsterName = '';
     monsterStore.monsterHealth = null;
     monsterStore.monsterStartingHealth = null;
-    currentRound.value = 0;
+    currentRound.value = 0; 
     monsterRound.value = 0;
     monsterStore.battleLog = [];
   }
