@@ -11,17 +11,17 @@
             </div>
             <ul class="grid grid-cols-3 gap-x-5 px-5 py-5">
                 <li v-for="item in playerStore.horseInventory.horse_shoes" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
                 <li v-for="item in playerStore.horseInventory.horse_bag" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
                 <li v-for="item in playerStore.horseInventory.horse_saddle" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
@@ -365,21 +365,61 @@
                     playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
                 }
             }
+            else if (chosenItem.value.itemUse === 'health') {
+                playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+                playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
+            }
+            else if (chosenItem.value.itemUse === 'manaing') {
+                if ((playerStore.playerMana + chosenItem.value.mana) > playerStore.playerBaseMana) {
+                    playerStore.playerMana = playerStore.playerBaseMana;
+                } else {
+                    playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
+                }
+            }
+            else if (chosenItem.value.itemUse === 'mana') {
+                playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
+                playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
+            }
+            else if (chosenItem.value.itemUse === 'attacking') {
+                playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);            
+            }
+            else if (chosenItem.value.itemUse === 'attack') {
+                playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
+                playerStore.playerBaseAttack= (playerStore.playerBaseAttack + chosenItem.value.attack);
+            }
+            else if (chosenItem.value.itemUse === 'defending') {
+                playerStore.tempDefenseBonus = (playerStore.tempDefenseBonus + chosenItem.value.defense);            
+            }
+            else if (chosenItem.value.itemUse === 'defense') {
+                playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
+                playerStore.playerBaseDefense= (playerStore.playerBaseDefense + chosenItem.value.defense);
+            }
+            else if (chosenItem.value.itemUse === 'strengthening') {
+                playerStore.tempStrengthBonus = (playerStore.tempStrengthBonus + chosenItem.value.strength);            
+            }
             else if (chosenItem.value.itemUse === 'strength') {
                 playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
                 playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
             }
             else if (chosenItem.value.itemUse === 'multi') {
-                playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
-                playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
-                playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
-                playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
-                playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
-                playerStore.playerBaseDefense = (playerStore.playerBaseDefense + chosenItem.value.defense);
                 playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
                 playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+
+                playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
+                playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
+                playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
+                playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                
+                playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
+                playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
+                playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
+                playerStore.playerBaseDefense = (playerStore.playerBaseDefense + chosenItem.value.defense);
+                playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
+                playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+                playerStore.playerIntelligence = (playerStore.playerIntelligence + chosenItem.value.intelligence);
+                playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             playerStore.playerPacked.splice(x, 1);
         }

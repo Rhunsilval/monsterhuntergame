@@ -12,7 +12,7 @@ export const usePlayerStore =
             playerHealth: 100,              // on screen
             playerBaseHealth: 100,          // for temporary results
             healthBonus: 0,         // from equipped items
-            tempHealthBonus: 0,     // from potions etc
+            // tempHealthBonus: 0,     // from potions etc - needed?
             healthPerSec: .1,       // Fortitude - how fast player heals
 
             playerStartingMana: 100,
@@ -328,8 +328,8 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].life 
                     + this.playerEquipped.player_belt[0].life 
                 );
-            this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus + this.tempHealthBonus);
-            this.playerHealth = (this.playerBaseHealth + this.healthBonus + this.tempHealthBonus);
+            this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
+            this.playerHealth = (this.playerBaseHealth + this.healthBonus);
             },
             getCarryCapacity() {
                 this.carryCapacityBonus =

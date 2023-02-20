@@ -337,6 +337,10 @@
                 }
             );
             necklaceOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropNecklace() {
@@ -357,6 +361,10 @@
             }
         );
         necklaceOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // ring actions
@@ -390,6 +398,10 @@
                 },
             );
             ringOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropRing() {
@@ -411,6 +423,10 @@
             },
         );
         ringOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // belt actions
@@ -444,6 +460,10 @@
                 },
             );
             beltOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropBelt() {
@@ -465,6 +485,10 @@
             },
         );
         beltOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // helm actions
@@ -498,6 +522,10 @@
                 },
             );
             helmOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropHelm() {
@@ -519,6 +547,10 @@
             },
         );
         helmOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // shield actions
@@ -552,6 +584,10 @@
                 },
             );
             shieldOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropShield() {
@@ -573,6 +609,10 @@
             },
         );
         shieldOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // gloves actions
@@ -606,6 +646,10 @@
                 },
             );
             glovesOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropGloves() {
@@ -627,6 +671,10 @@
             },
         );
         glovesOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // vambraces actions
@@ -660,6 +708,10 @@
                 },
             );
             vambracesOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropVambraces() {
@@ -681,6 +733,10 @@
             },
         );
         vambracesOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // sword actions
@@ -714,6 +770,10 @@
                 },
             );
             swordOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropSword() {
@@ -735,6 +795,10 @@
             },
         );
         swordOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // armor actions
@@ -768,6 +832,10 @@
                 },
             );
             armorOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropArmor() {
@@ -789,6 +857,10 @@
             },
         );
         armorOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 // boots actions
@@ -822,6 +894,10 @@
                 },
             );
             bootsOptions.value = false;
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
         }      
     }
     function dropBoots() {
@@ -843,6 +919,10 @@
             },
         );
         bootsOptions.value = false;
+        playerStore.getAttackValues();
+        playerStore.getDefenseValues();
+        playerStore.getStrengthValues();
+        playerStore.getExtraHealth();
     }
 
 </script>
