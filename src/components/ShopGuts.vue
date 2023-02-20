@@ -319,13 +319,16 @@
   
 
 <script setup>
-    import { ref, computed } from 'vue';
+    import { ref, computed, onMounted } from 'vue';
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import { usePlayerStore } from '@/stores/player'
     import { useShopStore } from '@/stores/shops'
 
     const playerStore = usePlayerStore();
     const shopStore = useShopStore();
+    onMounted(() => {
+      shopStore.playerId = playerStore.playerId;
+    })
 
     // NEED TO:
     // either remove items from store inventory after sale OR

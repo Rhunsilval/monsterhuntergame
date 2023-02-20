@@ -5,6 +5,7 @@ export const useShopStore =
         id: 'shops',
         state: () => ({
             playerId: 'Player One',
+            playerLevel: 1,
             apothecary: [
                 {
                     id: 'apo_health_1',
@@ -23,6 +24,7 @@ export const useShopStore =
                     mana: 0, 
                     intelligence: 0,
                     price: 10,
+                    unlocksAt: 1,
                     imageSrc: require('../assets/images/village/Apothecary_clay_bottle_1.png'),                    
                 },
                 {
@@ -38,6 +40,7 @@ export const useShopStore =
                     strength: 5,
                     life: 0,
                     price: 500,
+                    unlocksAt: 2,
                     imageSrc: require('../assets/images/village/Apothecary_clay_jar_1.png'),                    
                 },
                 {
@@ -53,6 +56,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 350,
+                    unlocksAt: 1,
                     imageSrc: require('../assets/images/village/Apothecary_potions_bottle_1.png'),                    
                 },
                 {
@@ -68,6 +72,7 @@ export const useShopStore =
                     strength: Math.floor(Math.random()*(10 - 1)) + 1,
                     life: Math.floor(Math.random()*(15 - 5)) + 5,
                     price: 3500,
+                    unlocksAt: 2,
                     imageSrc: require('../assets/images/village/Apothecary_soup_1.png'),                    
                 },
             ],
@@ -85,6 +90,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 200,
+                    unlocksAt: 1,
                     imageSrc: require('../assets/images/village/Armory_leather_armor_1.png'),
                 },
                 {
@@ -100,6 +106,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 100,
+                    unlocksAt: 2,
                     imageSrc: require('../assets/images/village/Armory_leather_gauntlets_1.png'),
                 },
                 {
@@ -115,6 +122,7 @@ export const useShopStore =
                     strength: 2,
                     life: 0,
                     price: 150,
+                    unlocksAt: 1,
                     imageSrc: require('../assets/images/village/Armory_leather_boots_1.png'),
                 },
                 {
@@ -251,6 +259,14 @@ export const useShopStore =
         actions: {
             getUniqueID() {
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
+            },
+            availableApoInventory() {
+                return this.apothecary.filter(item => {
+                    if (item.unlocksAt <= this.playerLevel) {
+                        item.disabled = false;
+                        return item;
+                    } //else if () //33.48
+                })
             }
         }
     })

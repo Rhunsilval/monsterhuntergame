@@ -293,9 +293,16 @@
     const attackValue = Math.ceil(getRandomValue(5, 10) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
     playerStore.playerXP += attackValue;        // to gain XP
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
-    monsterStore.monsterHealth -= attackValue;
-    const monsterHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
-    addLogEntry('player', 'attacks', attackValue, monsterHit);
+    playerStore.XPUntilNextLevel();             // to level up if applicable
+    if (playerStore.playerNeededXP <= 0) {
+      playerStore.playerLevel++;
+      playerStore.nextLevel *= playerStore.increase;
+      playerStore.playerXP = 0;
+    }
+    
+    // monsterStore.monsterHealth -= attackValue;
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
+    addLogEntry('player', 'attacks', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -314,9 +321,18 @@
     currentRound.value = 0;
     monsterRound.value = monsterRound.value + 1;
     const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+        playerStore.playerXP += attackValue;    // to gain XP
+    playerStore.playerTotalXP += attackValue;   // to keep track of XP
+    playerStore.XPUntilNextLevel();             // to level up if applicable
+    if (playerStore.playerNeededXP <= 0) {
+      playerStore.playerLevel++;
+      playerStore.nextLevel *= playerStore.increase;
+      playerStore.playerXP = 0;
+    }
+
     monsterStore.monsterHealth -= attackValue;
-    const monsterHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
-    addLogEntry('player', 'uses special-attack', attackValue, monsterHit);
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
+    addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -362,11 +378,20 @@
   }
 
 
+//making variables watchable
+  const storePlayerHealth = storeToRefs(playerStore)
+  const storeMonsterHealth = storeToRefs(monsterStore)
+// allowing for player leveling up:
+  // watch(storePlayerHealth.playerNeededXP, function(value) {
+  //   if (value <= 0) {
+  //     playerStore.playerLevel++;
+  //     playerStore.nextLevel *= playerStore.increase;
+  //   }
+  // })
+
 // setting winning conditions:
   const gameover = ref(false)
   const winner = ref(null);
-  const storePlayerHealth = storeToRefs(playerStore)
-  const storeMonsterHealth = storeToRefs(monsterStore)
 
   watch(storePlayerHealth.playerHealth, function(value) {
     if (value === 0) {

@@ -5,7 +5,7 @@
 <script setup>
   // function loop () {
     // GAME LOOP
-  //   requestAnimationFrame(this.loop);
+  //   requestAnimationFrame(this.loop); //animationframe calls 60 frames per second
   // }
 
 </script>
