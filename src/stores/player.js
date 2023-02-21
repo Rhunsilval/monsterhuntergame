@@ -20,7 +20,7 @@ export const usePlayerStore =
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
-            tempManaBonus: 0,       // from potions,etc
+            //tempManaBonus: 0,       // from potions,etc - needed?
             manaPerSec: .1,         // how fast player restores mana
             
             playerBaseAttack: 1,
@@ -45,11 +45,12 @@ export const usePlayerStore =
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
-            nextLevel: 500,
+            nextLevel: 100,
             increase: 2,
 
-            playerXP: 0,
-            playerTotalXP: 0,
+            playerXP: 0,        // what player has now
+            playerTotalXP: 0,   // what player has in total
+            playerNeededXP: 0,  // what player needs to level up
 
             playerQuests: [],
 
@@ -339,5 +340,10 @@ export const usePlayerStore =
                 this.carryCapacity = (this.baseCarryCapacity + (this.baseCarryCapacity * this.carryCapacityBonus));
             },
 
-        }
+            XPUntilNextLevel() {
+               return this.playerNeededXP = Math.round((this.nextLevel - this.playerXP));
+            },
+        },
+
+        getters: { }
     })

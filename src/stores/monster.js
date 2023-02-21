@@ -9,7 +9,7 @@ export const useMonsterStore =
             monsterName: '',
             monsterStartingHealth: null,
             monsterHealth: null,
-            monsterHit: null,
+            monsterHit: null,  //how hard the monster can hit, not how hard it IS hit
             monsterMap: '',
             battleLog: [],
         }),

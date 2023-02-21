@@ -80,7 +80,7 @@
               <div class="text-center font-medium text-gray-600 mx-5 w-60 ">
                 Mana: {{ playerStore.playerMana }}/{{ playerStore.playerStartingMana }}
                 <div class="manabar">
-                  <div class="manabar_value" :style="playerBarStyle"></div>
+                  <div class="manabar_value" :style="manaBarStyle"></div>
                 </div>
               </div>
             </div>
@@ -109,6 +109,11 @@
 
                         <DialogTitle as="h3" class="leading-6 text-gray-900 text-4xl font-medium pt-5">{{ playerStore.playerId }}'s Stats:</DialogTitle>
                         <div class="mt-2"> 
+                            <p class="text-lg text-gray-700 font-semibold py-4">Player Level: level {{ playerStore.playerLevel }}</p>
+                            <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelstate: {{ playerStore.playerNeededXP }} </p>
+                            <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                   
+                            <p>{{ playerStore.playerXP }} / {{ playerStore.nextLevel }} </p>
+                            <p class="text-lg text-gray-700 font-semibold py-4">Total XP aquired: {{ playerStore.playerTotalXP }} </p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Attack: level {{ playerStore.playerAttack }}</p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Defense: level {{ playerStore.playerDefense }}</p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Strength: level {{ playerStore.playerStrength }}</p>
