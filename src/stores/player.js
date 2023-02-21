@@ -33,7 +33,7 @@ export const usePlayerStore =
             tempDefenseBonus: 0,    // from potions etc
             playerDefense: 1,
 
-            playerBaseStrength: 1,
+            playerBaseStrength: 15,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             playerStrength: 15,
@@ -342,6 +342,14 @@ export const usePlayerStore =
 
             XPUntilNextLevel() {
                return this.playerNeededXP = Math.round((this.nextLevel - this.playerXP));
+            },
+            levelUp() {
+                if (this.playerNeededXP <= 0) {
+                    this.playerLevel++;
+                    this.playerPoints++;
+                    this.nextLevel *= this.increase;
+                    this.playerXP = 0;                    
+                  }
             },
         },
 

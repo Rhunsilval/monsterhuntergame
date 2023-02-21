@@ -294,11 +294,7 @@
     playerStore.playerXP += attackValue;        // to gain XP
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
-    if (playerStore.playerNeededXP <= 0) {
-      playerStore.playerLevel++;
-      playerStore.nextLevel *= playerStore.increase;
-      playerStore.playerXP = 0;
-    }
+    playerStore.levelUp();
     
     // monsterStore.monsterHealth -= attackValue;
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
@@ -324,13 +320,9 @@
         playerStore.playerXP += attackValue;    // to gain XP
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
-    if (playerStore.playerNeededXP <= 0) {
-      playerStore.playerLevel++;
-      playerStore.nextLevel *= playerStore.increase;
-      playerStore.playerXP = 0;
-    }
+    playerStore.levelUp();
 
-    monsterStore.monsterHealth -= attackValue;
+    // monsterStore.monsterHealth -= attackValue;
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
     addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
