@@ -50,7 +50,7 @@
         <div v-if="shopName === 'Apothecary'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
-            v-for="product in shopStore.apothecary"
+            v-for="product in availableApoInventory"
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group "
@@ -361,6 +361,24 @@
     const convoThread1 = ref(false)
     const convoThread2 = ref(false)
     const sellItemsDialog = ref(false)
+
+// TO DISPLAY INVENTORY AVAILABLE BY PLAYER LEVEL
+    const availableApoInventory = computed(function() {
+      let apoList = shopStore.apothecary;
+      return (apoList = apoList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    })
+    // const availableArmInventory = computed(function() {
+    //   let armList = shopStore.armory;
+    //   return (armList = armList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    // })
+    // const availableSmithInventory = computed(function() {
+    //   let blackList = shopStore.blacksmith;
+    //   return (blackList = blackList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    // })
+    // const availableOddInventory = computed(function() {
+    //   let oddList = shopStore.oddities;
+    //   return (oddList = oddList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    // })
 
 //TO PURCHASE ITEMS
 // to know which item in the shop is being selected

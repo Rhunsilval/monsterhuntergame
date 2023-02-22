@@ -110,6 +110,7 @@
                         <DialogTitle as="h3" class="leading-6 text-gray-900 text-4xl font-medium pt-5">{{ playerStore.playerId }}'s Stats:</DialogTitle>
                         <div class="mt-2"> 
                             <p class="text-lg text-gray-700 font-semibold py-4">Player Level: level {{ playerStore.playerLevel }}</p>
+                            <p class="text-lg text-gray-700 font-semibold py-4">Points to Spend: {{ playerStore.playerPoints }}</p>
                             <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelstate: {{ playerStore.playerNeededXP }} </p>
                             <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                   
                             <p>{{ playerStore.playerXP }} / {{ playerStore.nextLevel }} </p>
@@ -155,8 +156,16 @@
     return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
   })
 
+  const playerManaPercentage = computed(function () {
+    return (100 * playerStore.playerMana)/playerStore.playerStartingMana;
+  })
+
   const playerBarStyle = computed(function () {
     return {width: playerHealthPercentage.value + '%'};
+  })
+
+  const manaBarStyle = computed(function () {
+      return {width: playerManaPercentage.value + '%'};
   })
 
 </script>

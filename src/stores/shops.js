@@ -260,13 +260,14 @@ export const useShopStore =
             getUniqueID() {
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
             },
-            availableApoInventory() {
-                return this.apothecary.filter(item => {
-                    if (item.unlocksAt <= this.playerLevel) {
-                        item.disabled = false;
-                        return item;
-                    } //else if () //33.48
-                })
-            }
+            // availableApoInventory() {
+                // return this.apothecary.filter(item => {
+                //     if (item.unlocksAt <= this.playerLevel) {
+                //         item.disabled = false;
+                //         return item;
+                //     } //else if () //33.48
+                // })
+            //     return this.apothecary.filter(item => item.unlocksAt <= this.playerLevel)
+            // }
         }
     })
