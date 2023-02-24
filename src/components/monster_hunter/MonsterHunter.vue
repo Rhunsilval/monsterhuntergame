@@ -370,14 +370,14 @@
   }
 
 
-//making variables watchable
+// making variables watchable
   const storePlayerHealth = storeToRefs(playerStore)
   const storeMonsterHealth = storeToRefs(monsterStore)
-// allowing for player leveling up:
-  // watch(storePlayerHealth.playerNeededXP, function(value) {
-  //   if (value <= 0) {
-  //     playerStore.playerLevel++;
-  //     playerStore.nextLevel *= playerStore.increase;
+
+// autohealing?
+  // watch(storePlayerHealth.playerHealth, function(value) {
+  //   if (value < storePlayerHealth.playerBaseHealth) {
+  //     storePlayerHealth.autoHeal();
   //   }
   // })
 
