@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import HomePage from './views/primary_pages/HomePage.vue';
 import TheVillage from './views/primary_pages/TheVillage.vue';
+import TheVillage2 from './views/primary_pages/TheVillage2.vue';
 import TheApothecary from './views/village_shops/TheApothecary.vue';
 import TheArmory from './views/village_shops/TheArmory.vue';
 import TheBlacksmith from './views/village_shops/TheBlacksmith.vue';
@@ -28,11 +29,12 @@ const router = createRouter({
         { path: '/', redirect: '/home' },
         { path: '/home', component: HomePage },
         { path: '/village', component: TheVillage },
+        { path: '/village2', component: TheVillage2 },
         { path: '/village_apothecary', component: TheApothecary },
         { path: '/village_armory', component: TheArmory }, 
         { path: '/village_blacksmith', component: TheBlacksmith }, 
         { path: '/village_oddities', component: TheOdditiesShop },
-        { path: '/questhuntertavern', component: QuestHunterTavern },
+        { path: '/questhunter_tavern', component: QuestHunterTavern },
         { path: '/questhunter_pub', component: ThePub },
         { path: '/questhunter_biergarten', component: TheBiergarten },
         { path: '/questhunter_gossips', component: TheGossips },
