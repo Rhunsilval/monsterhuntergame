@@ -25,37 +25,19 @@
         <br/>
       </div>
 
-<!-- shops -->
-      <!-- <div class="mt-12 space-y-4 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
-        <div v-for="shop in shops" :key="shop.name" class="bg-[#a6bf8e]  divide-y divide-gray-200 rounded-lg border border-gray-200 shadow-sm">
-          <div class="p-6">
+      <div class="pt-6 block mx-auto w-2/3">
+          <img src="../../assets/images/village/village_map.png" alt="Village Map" width="1000" height="1000" usemap="#villagemap" class="block mx-auto">
+      </div>
 
-            <h2 class="text-lg text-center font-medium leading-6 text-gray-900">{{ shop.name }}</h2>
-            <p class="mt-4 text-sm text-gray-600">{{ shop.description }}</p>
-            <router-link :to="shop.href" class="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900">Visit shop</router-link>
-          </div>
-
-          <div class="px-6 pt-6 pb-8">
-            <h3 class="text-sm font-medium text-gray-900">What they sell:</h3>
-            <ul role="list" class="mt-6 space-y-4">
-              <li v-for="feature in shop.includedFeatures" :key="feature" class="flex space-x-3">
-                <span class="text-sm text-gray-600">{{ feature }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>   -->
-
-        <div class="pt-6 block mx-auto w-2/3">
-            <img src="../../assets/images/village/village_map.png" alt="Village Map" width="1000" height="1000" usemap="#villagemap" class="block mx-auto">
-
-            <map name="villagemap">
-                <area shape="circle" coords="470,160,50" href="village_oddities" alt="Oddities Shop" class="hover:fill-blue-400">
-                <area shape="rect" coords="475,330, 540,390" href="village_apothecary" alt="Oddities Shop">
-                <area shape="poly" coords="300,330, 370,430, 345,495, 200,370, 300,330 " href="questhunter_tavern" >
-                <area shape="rect" coords="675,330, 800,790" href="home">
-            </map>
-        </div>
+      <map name="villagemap">
+          <area href="village_oddities" alt="Oddities Shop" shape="circle" coords="470,160,50" />
+          <area href="village_apothecary" alt="Apothecary Shop" shape="rect" coords="475,330, 540,390" />
+          <area href="questhunter_tavern" alt="QuestHunter Tavern" shape="poly" coords="300,330, 370,430, 345,495, 200,370, 300,330 " />
+          <area href="guild" alt="Guild" shape="poly" coords="520,400, 580,450, 565,530, 470,460, 520,400" />
+          <area href="village_blacksmith" alt="Blacksmithy" shape="poly" coords="300,550, 310,620, 220,650, 215,590, 300,550" />
+          <area href="village_armory" alt="Armory" shape="circle" coords="340,555,30" />
+      </map>
+      
 
     </div>
   </div>
@@ -63,64 +45,5 @@
 
 
 <script setup>
-//   const shops = [
-//     {
-//       name: "Bobby Baker's Botanical Brews",
-//       goods: 'potions',
-//       href: '/village_apothecary',
-//       priceMonthly: 12,
-//       description: 'Potions, tincures, and general herbal remedies for all that ailes you.',
-//       includedFeatures: [
-//         'Health potions', 
-//         'Strengthening rubs', 
-//         'Herbal soaks', 
-//         'Anti-venom treatments', 
-//         'Spiritual aids',
-//         "The best soups you'll find anywhere in Thornstalk!"],
-//     },
-//     {
-//       name: 'Threads and Thongs and Things',
-//       goods: 'armor',
-//       href: '/village_armory',
-//       priceMonthly: 24,
-//       description: 'Useful armors made from leather, silk, and enchanted fabrics.',
-//       includedFeatures: [
-//         'Leather armor',
-//         'Enchanted robes',
-//         'Hats, gloves, and boots',
-//         'Saddlebags'
-//       ],
-//     },
-//     {
-//       name: "Sally's Smithy Supplies",
-//       goods: 'weapons',
-//       href: '/village_blacksmith',
-//       priceMonthly: 32,
-//       description: 'All metal-made items for all your hunting needs. Sometimes, enchanted.',
-//       includedFeatures: [
-//         'Swords',
-//         'Maces',
-//         'Arrows',
-//         'Shields',
-//         'Chainmail and helms',
-//         'Horseshoes'
-//       ],
-//     },
-//     {
-//       name: "Abernathy's Oddities",
-//       goods: 'random junk',
-//       href: '/village_oddities',
-//       priceMonthly: 48,
-//       description: "Rare, bizarre, powerful, sometimes dangerous items you won't find anywhere else",
-//       includedFeatures: [
-//         'Magic charms',
-//         'Rare substances',
-//         'Bizarre collectables',
-//         'Unique books',
-//         'Legendary items',
-//         'An occasional cursed trinket or two',
-//         '',
-//       ],
-//     },
-//   ];
+
 </script>
