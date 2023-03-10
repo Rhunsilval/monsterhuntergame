@@ -351,6 +351,13 @@ export const usePlayerStore =
                     this.playerXP = 0;                    
                   }
             },
+            autoHeal() {
+                // if (this.playerHealth < this.playerBaseHealth) {
+                    // this.playerHealth = ((this.playerHealth + this.healthPerSec)/60);
+                    return ((this.playerHealth + this.healthPerSec) / 60)
+                // }
+                // requestAnimationFrame(this.autoHeal()); //executes the function 60 times every second?
+            }
         },
 
         getters: { }

@@ -3,10 +3,15 @@
 </template>
 
 <script setup>
-  // function loop () {
-    // GAME LOOP
-  //   requestAnimationFrame(this.loop); //animationframe calls 60 frames per second
-  // }
+  import { onMounted } from 'vue';
+  import { usePlayerStore } from '@/stores/player';
+  const playerStore = usePlayerStore();
+
+  onMounted(() => {
+    console.log('whatevs');
+    // const autoheal = playerStore.autoHeal();
+    requestAnimationFrame(playerStore.autoHeal()); //executes the function 60 times every second?
+  })
 
 </script>
 

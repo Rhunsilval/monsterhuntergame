@@ -257,17 +257,9 @@ export const useShopStore =
 
         }),
         actions: {
-            getUniqueID() {
+            getUniqueID() {  //trying to get unique ids for items in shop ... still not working.  executes once when store is created, not each time an item is sold
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
             },
-            // availableApoInventory() {
-                // return this.apothecary.filter(item => {
-                //     if (item.unlocksAt <= this.playerLevel) {
-                //         item.disabled = false;
-                //         return item;
-                //     } //else if () //33.48
-                // })
-            //     return this.apothecary.filter(item => item.unlocksAt <= this.playerLevel)
-            // }
+            
         }
     })
