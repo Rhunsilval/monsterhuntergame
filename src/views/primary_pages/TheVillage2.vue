@@ -25,7 +25,9 @@
         <br/>
       </div>
 
-      <div class="pt-6 block mx-auto w-2/3">
+      <village-map></village-map>
+
+      <!-- <div class="pt-6 block mx-auto w-2/3">
           <img src="../../assets/images/village/village_map.png" alt="Village Map" width="1000" height="1000" usemap="#villagemap" class="block mx-auto">
       </div>
 
@@ -36,7 +38,7 @@
           <area href="guild" alt="Guild" shape="poly" coords="520,400, 580,450, 565,530, 470,460, 520,400" />
           <area href="village_blacksmith" alt="Blacksmithy" shape="poly" coords="300,550, 310,620, 220,650, 215,590, 300,550" />
           <area href="village_armory" alt="Armory" shape="circle" coords="340,555,30" />
-      </map>
+      </map> -->
       
 
     </div>
@@ -45,5 +47,5 @@
 
 
 <script setup>
-
+import VillageMap from '../../components/VillageMap.vue';
 </script>
