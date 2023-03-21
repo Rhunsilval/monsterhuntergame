@@ -12,7 +12,7 @@ import ThePub from './views/quest_sources/ThePub.vue';
 import TheBiergarten from './views/quest_sources/TheBiergarten.vue';
 import TheGossips from './views/quest_sources/TheGossips.vue';
 import TheStranger from './views/quest_sources/TheStranger.vue';
-import TheGuild from './views/primary_pages/TheGuild.vue';
+import TheGuild from './views/quest_sources/TheGuild.vue';
 import TheMap from './views/primary_pages/TheMap.vue';
 import TheForest from './views/map_pages/TheForest.vue';
 import TheJungle from './views/map_pages/TheJungle.vue';

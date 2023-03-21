@@ -2,7 +2,7 @@
   <the-header></the-header>
 
 <!-- background -->
-  <div class="bg-[url('../assets/images/village/Thornstalk_Village.png')] bg-cover ">
+  <div class="bg-[url('../assets/images/allpurpose/Thornstalk_Village.png')] bg-cover ">
 
     <div class="mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:px-8">
 
