@@ -25,7 +25,7 @@ export const useShopStore =
                     intelligence: 0,
                     price: 10,
                     unlocksAt: 1,
-                    imageSrc: require('../assets/images/village/Apothecary_clay_bottle_1.png'),                    
+                    imageSrc: require('../assets/images/village_apothecary/Apothecary_clay_bottle_1.png'),                    
                 },
                 {
                     id: 'apo_strength_1',
@@ -41,7 +41,7 @@ export const useShopStore =
                     life: 0,
                     price: 500,
                     unlocksAt: 2,
-                    imageSrc: require('../assets/images/village/Apothecary_clay_jar_1.png'),                    
+                    imageSrc: require('../assets/images/village_apothecary/Apothecary_clay_jar_1.png'),                    
                 },
                 {
                     id: 'apo_poison_1',
@@ -57,7 +57,7 @@ export const useShopStore =
                     life: 0,
                     price: 350,
                     unlocksAt: 1,
-                    imageSrc: require('../assets/images/village/Apothecary_potions_bottle_1.png'),                    
+                    imageSrc: require('../assets/images/village_apothecary/Apothecary_potions_bottle_1.png'),                    
                 },
                 {
                     id: 'apo_soup_1',
@@ -73,7 +73,7 @@ export const useShopStore =
                     life: Math.floor(Math.random()*(15 - 5)) + 5,
                     price: 3500,
                     unlocksAt: 2,
-                    imageSrc: require('../assets/images/village/Apothecary_soup_1.png'),                    
+                    imageSrc: require('../assets/images/village_apothecary/Apothecary_soup_1.png'),                    
                 },
             ],
             armory: [
@@ -91,7 +91,7 @@ export const useShopStore =
                     life: 0,
                     price: 200,
                     unlocksAt: 1,
-                    imageSrc: require('../assets/images/village/Armory_leather_armor_1.png'),
+                    imageSrc: require('../assets/images/village_armory/Armory_leather_armor_1.png'),
                 },
                 {
                     id: 'arm_leath_gauntlet_1',
@@ -107,7 +107,7 @@ export const useShopStore =
                     life: 0,
                     price: 100,
                     unlocksAt: 2,
-                    imageSrc: require('../assets/images/village/Armory_leather_gauntlets_1.png'),
+                    imageSrc: require('../assets/images/village_armory/Armory_leather_gauntlets_1.png'),
                 },
                 {
                     id: 'arm_leather_boots_1',
@@ -123,7 +123,7 @@ export const useShopStore =
                     life: 0,
                     price: 150,
                     unlocksAt: 1,
-                    imageSrc: require('../assets/images/village/Armory_leather_boots_1.png'),
+                    imageSrc: require('../assets/images/village_armory/Armory_leather_boots_1.png'),
                 },
                 {
                     id: 'arm_enchant_boots_1',
@@ -138,7 +138,7 @@ export const useShopStore =
                     strength: 0,
                     life: 5,
                     price: 350,
-                    imageSrc: require('../assets/images/village/Armory_enchanted_boots_1.png'),
+                    imageSrc: require('../assets/images/village_armory/Armory_enchanted_boots_1.png'),
                 },
             ],
             blacksmith: [
@@ -155,7 +155,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 150,
-                    imageSrc: require('../assets/images/village/Blacksmith_sword_1.png'),
+                    imageSrc: require('../assets/images/village_blacksmith/Blacksmith_sword_1.png'),
                   },
                   {
                     id: 'smith_helm_1',
@@ -170,7 +170,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 150,
-                    imageSrc: require('../assets/images/village/Blacksmith_helmet_1.png'),                    
+                    imageSrc: require('../assets/images/village_blacksmith/Blacksmith_helmet_1.png'),                    
                   },
                   {
                     id: 'smith_shield_1',
@@ -185,7 +185,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 100,
-                    imageSrc: require('../assets/images/village/Blacksmith_shield_1.png'),
+                    imageSrc: require('../assets/images/village_blacksmith/Blacksmith_shield_1.png'),
                   },
                   {
                     id: 'smith_misc_1',
@@ -197,7 +197,7 @@ export const useShopStore =
                     value: 'allows your horse to carry 10% more items',
                     carryBonus: 1,
                     price: 200,
-                    imageSrc: require('../assets/images/village/Blacksmith_horseshoes_1.png'),
+                    imageSrc: require('../assets/images/village_blacksmith/Blacksmith_horseshoes_1.png'),
                   },
             ],
             oddities: [
@@ -214,7 +214,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     price: 500,
-                    imageSrc: require('../assets/images/village/Oddities_enchanted_ring_1.png'),
+                    imageSrc: require('../assets/images/village_oddities/Oddities_enchanted_ring_1.png'),
                   },
                   {
                     id: 'odd_skull_1',
@@ -225,7 +225,7 @@ export const useShopStore =
                     description:"Useful for potions and spellwork.",
                     value: 'Potency results may vary',
                     price: 50,
-                    imageSrc: require('../assets/images/village/Oddities_skull_1.png'),
+                    imageSrc: require('../assets/images/village_oddities/Oddities_skull_1.png'),
                   },
                   {
                     id: 'odd_gloves_1',
@@ -240,7 +240,7 @@ export const useShopStore =
                     strength: 0,
                     life: 10,
                     price: 750,
-                    imageSrc: require('../assets/images/village/Oddities_enchanted_gloves_1.png'),
+                    imageSrc: require('../assets/images/village_oddities/Oddities_enchanted_gloves_1.png'),
                   },
                   {
                     id: 'odd_herb_1',
@@ -251,7 +251,7 @@ export const useShopStore =
                     description: "A very rare herb of very potent magic",
                     value: 'Results vary by application',
                     price: 3000,
-                    imageSrc: require('../assets/images/village/Oddities_herb_1.png'),
+                    imageSrc: require('../assets/images/village_oddities/Oddities_herb_1.png'),
                   },
             ],
 

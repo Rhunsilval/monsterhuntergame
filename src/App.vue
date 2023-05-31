@@ -3,15 +3,15 @@
 </template>
 
 <script setup>
-  import { onMounted } from 'vue';
-  import { usePlayerStore } from '@/stores/player';
-  const playerStore = usePlayerStore();
+  // import { onMounted } from 'vue';
+  // import { usePlayerStore } from '@/stores/player';
+  // const playerStore = usePlayerStore();
 
-  onMounted(() => {
-    console.log('whatevs');
-    // const autoheal = playerStore.autoHeal();
-    requestAnimationFrame(playerStore.autoHeal()); //executes the function 60 times every second?
-  })
+  // onMounted(() => {
+  //   console.log('whatevs');
+  //   // const autoheal = playerStore.autoHeal();
+  //   requestAnimationFrame(playerStore.autoHeal()); //executes the function 60 times every second?
+  // })
 
 </script>
 

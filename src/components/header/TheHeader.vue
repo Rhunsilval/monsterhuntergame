@@ -56,7 +56,7 @@
                 View <br/>Stats</button>
 
               <Popover v-slot="{ open }" class="justify-end ">
-                <PopoverButton class="ml-8 px-2 py-2 inline-flex items-center justify-center rounded-md border border-gray-800 shadow-sm bg-slate-400 hover:bg-slate-200 text-base font-medium text-gray-700 hover:text-black">
+                <PopoverButton class="ml-8 px-2 py-2 inline-flex items-center justify-center rounded-md border border-gray-800 shadow-sm bg-slate-400 hover:bg-slate-600 text-base font-medium text-gray-700 hover:text-white">
                   <span>Active Quests</span>
                   <ChevronDownIcon :class="[open ? 'text-gray-600, -rotate-180' : 'text-gray-400, rotate-0', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
                 </PopoverButton>  
@@ -109,16 +109,25 @@
 
                         <DialogTitle as="h3" class="leading-6 text-gray-900 text-4xl font-medium pt-5">{{ playerStore.playerId }}'s Stats:</DialogTitle>
                         <div class="mt-2"> 
-                            <p class="text-lg text-gray-700 font-semibold py-4">Player Level: level {{ playerStore.playerLevel }}</p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">Points to Spend: {{ playerStore.playerPoints }}</p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelstate: {{ playerStore.playerNeededXP }} </p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                   
-                            <p>{{ playerStore.playerXP }} / {{ playerStore.nextLevel }} </p>
+                            <p class="text-lg text-gray-700 font-semibold pt-4">Player Level: level {{ playerStore.playerLevel }}</p>
+                            <p class="text-lg text-gray-700 font-semibold ">Points to Spend: {{ playerStore.playerPoints }}</p>
+                            <p class="text-lg text-gray-700 font-semibold ">XP to next levelstate: {{ playerStore.playerNeededXP }} </p>
+                            <p class="text-lg text-gray-700 font-semibold ">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                   
+                            <p class="font-bold text-cyan-700 text-2xl " >{{ playerStore.playerXP }} / {{ playerStore.nextLevel }} </p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Total XP aquired: {{ playerStore.playerTotalXP }} </p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">Attack: level {{ playerStore.playerAttack }}</p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">Defense: level {{ playerStore.playerDefense }}</p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">Strength: level {{ playerStore.playerStrength }}</p>
-                            <p class="text-lg text-gray-700 font-semibold py-4">Intelligence: level {{ playerStore.playerIntelligence }}</p>
+                            
+                            <div class="columns-2 text-left mx-3 ">
+                              <div>
+                                <p class="text-lg text-gray-700 font-semibold py-4" >Life: <br/> points: {{ playerStore.playerHealth }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4">Attack: <br/>level {{ playerStore.playerAttack }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4">Defense: <br/>level {{ playerStore.playerDefense }}</p>
+                              </div>
+                              <div>
+                                <p class="text-lg text-gray-700 font-semibold py-4" >Mana: <br/> points: {{ playerStore.playerMana }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4">Strength: <br/>level {{ playerStore.playerStrength }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4">Intelligence: <br/>level {{ playerStore.playerIntelligence }}</p>
+                              </div>
+                            </div>
                         </div>
 
                     </div>
@@ -126,7 +135,10 @@
               </div>
               
               <div class="mt-5 justify items-center">
-                <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-orange-800 px-4 py-2 text-base font-medium text-white  shadow-sm hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm" @click="openStatsModal = false">Close Stats</button>
+                <router-link type="button" :to="'/guild'" class="inline-flex w-full justify-center rounded-md border border-transparent bg-slate-400 px-4 py-2 mb-3 text-base font-medium text-black  shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
+                  Spend Points</router-link>
+                <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-orange-800 px-4 py-2 text-base font-medium text-white  shadow-sm hover:bg-[#c21a09] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm" @click="openStatsModal = false">
+                  Close Stats</button>
               </div>
             </DialogPanel>
             
