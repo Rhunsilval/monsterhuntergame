@@ -245,6 +245,7 @@ export const usePlayerStore =
                         name: 'saddle',            
                         description: "",
                         value: '',
+                        carryBonus: 0,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/saddle.png'),            
                     },
@@ -256,6 +257,7 @@ export const usePlayerStore =
                         name: 'bag',
                         description: "",
                         value: '',
+                        carryBonus: 0,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/bags.png'),        
                     },
@@ -335,9 +337,11 @@ export const usePlayerStore =
             getCarryCapacity() {
                 this.carryCapacityBonus =
                 (
-                    (this.horseInventory.horse_shoes[0].carryBonus * .1)
+                    (this.horseInventory.horse_shoes[0].carryBonus * .1) +
+                    (this.horseInventory.horse_bag[0].carryBonus * .1) +
+                    (this.horseInventory.horse_saddle[0].carryBonus *.1) 
                 );
-                this.carryCapacity = (this.baseCarryCapacity + (this.baseCarryCapacity * this.carryCapacityBonus));
+                this.carryCapacity = Math.ceil(this.baseCarryCapacity + (this.baseCarryCapacity * this.carryCapacityBonus));
             },
 
             XPUntilNextLevel() {
