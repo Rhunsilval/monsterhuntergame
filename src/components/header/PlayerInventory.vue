@@ -339,6 +339,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
             playerStore.getCarryCapacity();
         }      
     }
@@ -400,6 +402,13 @@
             else if (chosenItem.value.itemUse === 'strength') {
                 playerStore.playerStrength = (playerStore.playerStrength + chosenItem.value.strength);
                 playerStore.playerBaseStrength = (playerStore.playerBaseStrength + chosenItem.value.strength);
+            }
+            else if (chosenItem.value.itemUse === 'smarting') {
+                playerStore.tempIntelligenceBonus = (playerStore.tempIntelligenceBonus + chosenItem.value.intelligence);            
+            }
+            else if (chosenItem.value.itemUse === 'smart') {
+                playerStore.playerIntelligence = (playerStore.playerIntelligence + chosenItem.value.intelligence);
+                playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             else if (chosenItem.value.itemUse === 'multi') {
                 playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);

@@ -332,6 +332,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/necklace.png'),
                 }
@@ -341,6 +343,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropNecklace() {
@@ -356,6 +360,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/necklace.png'),
             }
@@ -365,6 +371,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // ring actions
@@ -393,6 +401,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/ring.png'),
                 },
@@ -402,6 +412,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropRing() {
@@ -418,6 +430,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/ring.png'),
             },
@@ -427,6 +441,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // belt actions
@@ -455,6 +471,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/belt.png'),
                 },
@@ -464,6 +482,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropBelt() {
@@ -480,6 +500,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/belt.png'),
             },
@@ -489,6 +511,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // helm actions
@@ -517,6 +541,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/helm.png'),
                 },
@@ -526,6 +552,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropHelm() {
@@ -542,6 +570,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/helm.png'),
             },
@@ -551,6 +581,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // shield actions
@@ -579,6 +611,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/shield.png'),
                 },
@@ -588,6 +622,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropShield() {
@@ -604,6 +640,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/shield.png'),
             },
@@ -613,6 +651,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // gloves actions
@@ -641,6 +681,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/gloves.png'),
                 },
@@ -650,6 +692,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropGloves() {
@@ -666,6 +710,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/gloves.png'),
             },
@@ -675,6 +721,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // vambraces actions
@@ -703,6 +751,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/vambraces.png'),
                 },
@@ -712,6 +762,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropVambraces() {
@@ -728,6 +780,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/vambraces.png'),
             },
@@ -737,6 +791,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // sword actions
@@ -765,6 +821,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/sword.png'),
                 },
@@ -774,6 +832,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropSword() {
@@ -790,6 +850,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/sword.png'),
             },
@@ -799,6 +861,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // armor actions
@@ -827,6 +891,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/armor.png'),
                 },
@@ -836,6 +902,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropArmor() {
@@ -852,6 +920,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/armor.png'),
             },
@@ -861,6 +931,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 // boots actions
@@ -889,6 +961,8 @@
                     defense: null,
                     strength: null,
                     life: null,
+                    mana: null,
+                    intelligence: null,
                     price: '',
                     imageSrc: require('../../assets/images/placeholders/boots.png'),
                 },
@@ -898,6 +972,8 @@
             playerStore.getDefenseValues();
             playerStore.getStrengthValues();
             playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }      
     }
     function dropBoots() {
@@ -914,6 +990,8 @@
                 defense: null,
                 strength: null,
                 life: null,
+                mana: null,
+                intelligence: null,
                 price: '',
                 imageSrc: require('../../assets/images/placeholders/boots.png'),
             },
@@ -923,6 +1001,8 @@
         playerStore.getDefenseValues();
         playerStore.getStrengthValues();
         playerStore.getExtraHealth();
+        playerStore.getExtraMana();
+        playerStore.getIntelligenceValues();
     }
 
 </script>
