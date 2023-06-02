@@ -930,7 +930,7 @@ export const useShopStore =
                     value: 'allows your horse to carry 25% more items',
                     carryBonus: 2.5,
                     price: 1500,
-                    imageSrc: require('../assets/images/village_armory/Armory_bags_1.png'),
+                    imageSrc: require('../assets/images/village_armory/Armory_bags_2.png'),
                 },
                 {
                     id: 'arm_horse_saddle_1',
@@ -1191,7 +1191,7 @@ export const useShopStore =
                     imageSrc: require('../assets/images/village_oddities/Oddities_enchanted_ring_1.png'),
                   },
                   {
-                    id: 'odd_skull_1',
+                    id: 'odd_talisman_1',
                     itemSlot: 'null',
                     itemUse: 'null',
                     itemShop: 'Oddities',
@@ -1199,7 +1199,7 @@ export const useShopStore =
                     description:"Useful for potions and spellwork.",
                     value: 'Potency results may vary',
                     price: 50,
-                    imageSrc: require('../assets/images/village_oddities/Oddities_skull_1.png'),
+                    imageSrc: require('../assets/images/village_oddities/Oddities_talisman_1.png'),
                   },
                   {
                     id: 'odd_gloves_1',
