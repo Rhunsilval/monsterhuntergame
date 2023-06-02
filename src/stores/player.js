@@ -33,10 +33,10 @@ export const usePlayerStore =
             tempDefenseBonus: 0,    // from potions etc
             playerDefense: 1,
 
-            playerBaseStrength: 15,
+            playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
-            playerStrength: 15,
+            playerStrength: 1,
 
             playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
@@ -67,6 +67,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/helm.png'),
                     },
@@ -83,6 +85,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/armor.png'),
                     },
@@ -99,6 +103,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/shield.png'),
                     },
@@ -115,6 +121,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/gloves.png'),
                     },
@@ -131,6 +139,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/vambraces.png'),
                     },
@@ -147,6 +157,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/sword.png'),
                     },
@@ -163,6 +175,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/boots.png'),
                     },
@@ -178,6 +192,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/necklace.png'),
                     },
@@ -194,6 +210,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/ring.png'),
                     },
@@ -210,6 +228,8 @@ export const usePlayerStore =
                         defense: null,
                         strength: null,
                         life: null,
+                        mana: null,
+                        intelligence: null,
                         price: '',
                         imageSrc: require('../assets/images/placeholders/belt.png'),
                     },
@@ -333,6 +353,39 @@ export const usePlayerStore =
                 );
             this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
             this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            },
+            getExtraMana() {
+                this.manaBonus = 
+                (
+                    this.playerEquipped.player_helm[0].mana
+                    + this.playerEquipped.player_armor[0].mana 
+                    + this.playerEquipped.player_shield[0].mana 
+                    + this.playerEquipped.player_gloves[0].mana 
+                    + this.playerEquipped.player_vambraces[0].mana
+                    + this.playerEquipped.player_sword[0].mana 
+                    + this.playerEquipped.player_boots[0].mana 
+                    + this.playerEquipped.player_necklace[0].mana 
+                    + this.playerEquipped.player_ring[0].mana 
+                    + this.playerEquipped.player_belt[0].mana 
+                );
+            this.playerStartingMana = (this.playerBaseStartingMana + this.manaBonus);
+            this.playerMana = (this.playerBaseMana + this.manaBonus);
+            },
+            getIntelligenceValues() {
+                this.intelligenceBonus = 
+                (
+                    this.playerEquipped.player_helm[0].intelligence
+                    + this.playerEquipped.player_armor[0].intelligence 
+                    + this.playerEquipped.player_shield[0].intelligence 
+                    + this.playerEquipped.player_gloves[0].intelligence 
+                    + this.playerEquipped.player_vambraces[0].intelligence
+                    + this.playerEquipped.player_sword[0].intelligence 
+                    + this.playerEquipped.player_boots[0].intelligence 
+                    + this.playerEquipped.player_necklace[0].intelligence 
+                    + this.playerEquipped.player_ring[0].intelligence 
+                    + this.playerEquipped.player_belt[0].intelligence 
+                );
+                this.playerIntelligence = (this.playerBaseIntelligence + this.intelligenceBonus + this.tempIntelligenceBonus);
             },
             getCarryCapacity() {
                 this.carryCapacityBonus =
