@@ -25,7 +25,7 @@
 
 <!-- shops -->
       <div class="mt-12 space-y-4 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
-        <div v-for="shop in shops" :key="shop.name" class="bg-[#a6bf8e]  divide-y divide-gray-200 rounded-lg border border-gray-200 shadow-sm">
+        <div v-for="shop in shops" :key="shop.name" class="bg-[#a6bf8e] divide-y divide-gray-200 rounded-lg border border-gray-200 shadow-sm">
           <div class="p-6">
             <h2 class="text-lg text-center font-medium leading-6 text-gray-900">{{ shop.name }}</h2>
             <p class="mt-4 text-sm text-gray-600">{{ shop.description }}</p>
@@ -34,6 +34,19 @@
           </div>
         </div>
       </div> 
+
+      <div class="grid grid-cols-1 pt-14">
+        <div class="flex justify-center">
+          <div class="bg-[#a6bf8e] rounded-lg border border-gray-200 shadow-sm w-80">
+            <div class="p-6">
+              <h2 class="text-lg text-center font-medium leading-6 text-gray-900">Ye Olde Magik Shoppe</h2>
+              <p class="mt-4 text-sm text-gray-600">Everything you need to learn and execute battle magics of your own.</p>
+              <router-link :to="'/village_magicshop'" class="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900">
+              Visit shop</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="grid grid-cols-2 pt-14">
         <div class="flex justify-center">
@@ -60,8 +73,8 @@
             </div>
           </div>
         </div>
+      </div> 
 
-      </div>     
     </div>
   </div>
 </template>

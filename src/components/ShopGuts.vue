@@ -10,6 +10,7 @@
                 <p v-if="shopName === 'Apothecary'" class="font-extrabold font-serif text-6xl ">Bobby Baker's Botanical Brews</p>                
                 <p v-else-if="shopName === 'Armory'" class="font-extrabold font-serif text-6xl ">Threads and Thongs and Things</p>                
                 <p v-else-if="shopName === 'Blacksmith'" class="font-extrabold font-serif text-6xl ">Sally's Smithy Supplies</p>                
+                <p v-else-if="shopName === 'Magic'" class="font-extrabold font-serif text-6xl ">Ye Olde Magik Shoppe</p>                
                 <p v-else class="font-extrabold font-serif text-6xl ">Abernathy's Oddities</p>                
             </div>                        
         </div>        
@@ -22,6 +23,7 @@
                 <img v-if="shopName === 'Apothecary'"  src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800 "/>                 
                 <img v-else-if="shopName === 'Armory'"  src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800 "/>                 
                 <img v-else-if="shopName === 'Blacksmith'"  src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
+                <img v-else-if="shopName === 'Magic'"  src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
                 <img v-else  src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800 "/>
             </div>
         </div>
@@ -32,6 +34,7 @@
                 <p v-if="shopName === 'Apothecary'" class="">Welcome to my apothecary shop! <br/> Please have a look around. <br/> Let me know if you're looking for something in particular.</p>
                 <p v-else-if="shopName === 'Armory'" class="">Hi!  Welcome to my shop. <br/> Please try not to touch anything. <br/> Some of my items are enchanted, and they can be temperamental. <br/> If you need any help, just ask!</p>
                 <p v-else-if="shopName === 'Blacksmith'" class="">If you're needing a good sword, you're in the right place. <br/> Let me know if I can help.</p>
+                <p v-else-if="shopName === 'Magic'" class="">If you're interested in magic, you've come to the right place. <br/> Ask me before you touch anything.</p>
                 <p v-else class="">I'll make you a deal.<br/> Don't ask me where I got anything, <br/>and I won't ask you what you intend to do with it.<br/>Ha!</p>
                 <div class="pt-4">  
                   <button @click="openDialogModal = !openDialogModal" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
@@ -70,7 +73,7 @@
         <div v-else-if="shopName === 'Armory'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
-            v-for="product in shopStore.armory"
+            v-for="product in availableArmInventory"
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -90,7 +93,27 @@
         <div v-else-if="shopName === 'Blacksmith'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
-            v-for="product in shopStore.blacksmith"
+            v-for="product in availableSmithInventory"
+            @click="buyProduct(product.id)"
+            :key="product.id" 
+            class="group"
+          >
+            <div class="aspect-w-1 aspect-h-1 w-72 h-72 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+              <img :src="product.imageSrc" :alt="''" class="h-full w-full object-cover object-center group-hover:opacity-30" />
+            </div>
+            <div class="text-center">
+                <h2 class="mt-4 font-semibold text-lg text-gray-700">{{ product.name }}</h2>
+                <h3 class="mt-4 text-base text-gray-700">{{ product.description }}</h3>
+                <h4 class="mt-4 text-sm text-gray-700">{{ product.value }}</h4>
+                <p class="mt-1 text-lg font-medium text-gray-900">{{ product.price }} coin</p>
+            </div>
+          </button>
+        </div>
+
+        <div v-else-if="shopName === 'Magic'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
+          <button
+            type="button"
+            v-for="product in availableMagicInventory"
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -110,7 +133,7 @@
         <div v-else class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
-            v-for="product in shopStore.oddities"
+            v-for="product in availableOddInventory"
             @click="buyProduct(product.id)"
             :key="product.id" 
             class="group"
@@ -146,6 +169,7 @@
                   <img v-if="shopName === 'Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
                   <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>                
                 <!-- landing dialog -->
@@ -153,11 +177,13 @@
                   <DialogTitle v-if="shopName ==='Apothecary'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hi there!</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Armory'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hey there.</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Blacksmith'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hello.</DialogTitle>
+                  <DialogTitle v-else-if="shopName === 'Magic'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Welcome.</DialogTitle>
                   <DialogTitle v-else as="h3" class="text-lg font-medium leading-6 text-gray-900">What?</DialogTitle>
                   <div class="mt-2">
                     <p v-if="shopName ==='Apothecary'" class="text-sm text-gray-500">How can I help you?</p>
                     <p v-else-if="shopName === 'Armory'" class="text-sm text-gray-500">Anything I can help you with?</p>
                     <p v-else-if="shopName === 'Blacksmith'" class="text-sm text-gray-500">What can I do for you?</p>
+                    <p v-else-if="shopName === 'Magic'" class="text-sm text-gray-500">How may I help you?</p>
                     <p v-else class="text-sm text-gray-500">What do you want?</p>
                   </div>
                 </div>
@@ -166,11 +192,13 @@
                   <DialogTitle v-if="shopName ==='Apothecary'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Of course!</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Armory'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Sure.</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Blacksmith'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Okay.</DialogTitle>
+                  <DialogTitle v-else-if="shopName === 'Magic'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Oh, yes.</DialogTitle>
                   <DialogTitle v-else as="h3" class="text-lg font-medium leading-6 text-gray-900">Errr?</DialogTitle>
                   <div class="mt-2">
                     <p v-if="shopName ==='Apothecary'" class="text-sm text-gray-500">What would you like to know?</p>
                     <p v-else-if="shopName === 'Armory'" class="text-sm text-gray-500">What do you want to know?</p>
                     <p v-else-if="shopName === 'Blacksmith'" class="text-sm text-gray-500">How can I help you?</p>
+                    <p v-else-if="shopName === 'Magic'" class="text-sm text-gray-500">I encourage you to ask lots of questions before buying anything in here.</p>
                     <p v-else class="text-sm text-gray-500">I don't really know much about anything, friend.  But sure; I guess you can ask.</p>
                   </div>
                 </div>
@@ -178,11 +206,13 @@
                   <DialogTitle v-if="shopName ==='Apothecary'" as="h3" class="text-lg font-medium leading-6 text-gray-900">I'm afraid so.</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Armory'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Nah.</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Blacksmith'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hmm.</DialogTitle>
+                  <DialogTitle v-else-if="shopName === 'Magic'" as="h3" class="text-lg font-medium leading-6 text-gray-900">It is.</DialogTitle>
                   <DialogTitle v-else as="h3" class="text-lg font-medium leading-6 text-gray-900">What? It's not good enough for you?</DialogTitle>
                   <div class="mt-2">
                     <p v-if="shopName ==='Apothecary'" class="text-sm text-gray-500">Don't worry though! I'm working on making lots more.  Be sure to check back later!</p>
                     <p v-else-if="shopName === 'Armory'" class="text-sm text-gray-500">Right now, sure; but I'm making more things.  If you come back later, they should be ready.</p>
                     <p v-else-if="shopName === 'Blacksmith'" class="text-sm text-gray-500">For now, yes.  But, I'm working on making more items.  It'll take me some time, but if you come back later, I should have something to interest you.</p>
+                    <p v-else-if="shopName === 'Magic'" class="text-sm text-gray-500">If you come back another time, I may have a few more things.  Otherwise, yes.  This is what I have.</p>
                     <p v-else class="text-sm text-gray-500">I kid, I kid.  Yes, this is everything right now.  But there's always people buying and selling.  Come back later and I'll probably have different inventory.</p>
                   </div>
                 </div>
@@ -346,7 +376,8 @@
         Apothecary: require('../assets/images/village_apothecary/Apothecary_Shop.png'),
         Armory: require('../assets/images/village_armory/Armory_Shop.png'),
         Blacksmith: require('../assets/images/village_blacksmith/Blacksmith_Shop.png'),
-        Oddities: require('../assets/images/village_oddities/Oddities_Shop.png')
+        Oddities: require('../assets/images/village_oddities/Oddities_Shop.png'),
+        Magic: require('../assets/images/village_magic/Magic_Shop.png')
     }
     function getStoreType() {
         return props.shopName;
@@ -367,18 +398,22 @@
       let apoList = shopStore.apothecary;
       return (apoList = apoList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
     })
-    // const availableArmInventory = computed(function() {
-    //   let armList = shopStore.armory;
-    //   return (armList = armList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
-    // })
-    // const availableSmithInventory = computed(function() {
-    //   let blackList = shopStore.blacksmith;
-    //   return (blackList = blackList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
-    // })
-    // const availableOddInventory = computed(function() {
-    //   let oddList = shopStore.oddities;
-    //   return (oddList = oddList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
-    // })
+    const availableArmInventory = computed(function() {
+      let armList = shopStore.armory;
+      return (armList = armList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    })
+    const availableSmithInventory = computed(function() {
+      let blackList = shopStore.blacksmith;
+      return (blackList = blackList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    })
+    const availableOddInventory = computed(function() {
+      let oddList = shopStore.oddities;
+      return (oddList = oddList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    })
+    const availableMagicInventory = computed(function() {
+      let magicList = shopStore.magic;
+      return (magicList = magicList.filter(item => (item.unlocksAt <= playerStore.playerLevel)))
+    })
 
 //TO PURCHASE ITEMS
 // to know which item in the shop is being selected
@@ -387,7 +422,8 @@
         return shopStore.apothecary.find(product => product.id === chosenProdId.value) ||
         shopStore.armory.find(product => product.id === chosenProdId.value) ||
         shopStore.blacksmith.find(product => product.id === chosenProdId.value) ||
-        shopStore.oddities.find(product => product.id === chosenProdId.value)
+        shopStore.oddities.find(product => product.id === chosenProdId.value) ||
+        shopStore.magic.find(product => product.id === chosenProdId.value)
     })
 // to exchange coins for the product, if there's inventory space
     function buyProduct(productId) {

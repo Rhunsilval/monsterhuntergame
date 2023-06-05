@@ -8,17 +8,72 @@
         <div class="col-span-3 pb-10">
             <h1 class="text-center text-3xl text-teal-800 font-semibold mt-3">Equipped Items</h1>
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
-<!-- player stats left -->
-                <div class="col-span-1 text-center my-36 w-36">
-                    <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }} <br/>
-                        Total Attack: {{ playerStore.playerAttack }}</p>
-                    <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }} <br/>
-                        Total Defense: {{ playerStore.playerDefense }}</p>
-                    <p>Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }} <br/>
-                        Total Strength: {{ playerStore.playerStrength }}</p>
+<!-- magics -->
+                <div class="col-span-1 text-center my-12 w-80 border border-black">
+                    <div class="col-span-3">
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/fire_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2 ">
+                                <img src="../../assets/images/spells/fire_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/fire_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/water_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/water_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/water_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/earth_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/earth_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/earth_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/air_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/air_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/air_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/dark_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/dark_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/dark_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/light_1.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/light_2.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                            <button class="mx-2">
+                                <img src="../../assets/images/spells/light_3.png" class="w-20 h-20 border border-gray-400"/>
+                            </button>
+                    </div>                    
                 </div>
 <!-- equipment center -->
-                <div class="col-span-1 mt-20 -ml-64">
+                <div class="col-span-1 mt-20 -ml-40 ">
                     <div class="grid grid-cols-2">
                         <div class="col-span-1">
 <!-- necklace -->
@@ -92,7 +147,7 @@
                             </div>
                         </div>
 <!-- no inventory space -->
-                        <div class="col-span-1">
+                        <div class="col-span-1 -ml-16">
                             <div v-if="openMessage" class="mt-32 text-center ">
                                 <img src="../../assets/images/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                                 <h1 class="font-semibold">Looks like you've overpacked</h1>
@@ -100,7 +155,22 @@
                                 <button @click="openMessage = false" class="px-2 py-2 mt-2 border border-gray-500 rounded-lg bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Okay</button>
                             </div>
+<!-- player stats center -->
+                            <div class="flex justify-center">
+                                <div class="text-center my-20 w-36">
+                                    <p class="mb-5">Attack: {{ playerStore.playerBaseAttack }} + {{ playerStore.attackBonus }} <br/>
+                                        Total Attack: {{ playerStore.playerAttack }}</p>
+                                    <p class="mb-5">Defense: {{ playerStore.playerBaseDefense }} + {{ playerStore.defenseBonus }} <br/>
+                                        Total Defense: {{ playerStore.playerDefense }}</p>
+                                    <p class="mb-5">Strength: {{ playerStore.playerBaseStrength }} + {{ playerStore.strengthBonus }} <br/>
+                                        Total Strength: {{ playerStore.playerStrength }}</p>
+                                    <p>Intelligence: {{ playerStore.playerBaseIntelligence }} + {{ playerStore.intelligenceBonus }} <br/>
+                                        Total Intelligence: {{ playerStore.playerIntelligence }}</p>
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
                 <div class="col-span-1 mt-1 pb-10 w-full">
