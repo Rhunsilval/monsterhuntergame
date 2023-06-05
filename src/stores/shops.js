@@ -2042,7 +2042,7 @@ export const useShopStore =
             magic: [  //note: will buy herbs, gems, talisman items, scales
                 {
                   id: 'magic_script_1',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Easifat Naria script',
@@ -2054,7 +2054,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_script_2',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Fayadan Eamiq script',
@@ -2066,7 +2066,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_script_3',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Hizat Ardia script',
@@ -2078,7 +2078,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_script_4',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Riah Aliesar script',
@@ -2090,7 +2090,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_script_5',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Muntasaf Allial script',
@@ -2102,7 +2102,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_script_6',
-                  itemSlot: 'null',
+                  itemSlot: 'player_script',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Wat Alzahira script',
@@ -2114,7 +2114,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_1',
-                  itemSlot: 'null',
+                  itemSlot: 'player_F1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Little Flame Scroll',
@@ -2128,7 +2128,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_2',
-                  itemSlot: 'null',
+                  itemSlot: 'player_W1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Rainshower Scroll',
@@ -2142,7 +2142,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_3',
-                  itemSlot: 'null',
+                  itemSlot: 'player_E1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Deep Tremor Scroll',
@@ -2156,7 +2156,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_4',
-                  itemSlot: 'null',
+                  itemSlot: 'player_A1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Gusting Scroll',
@@ -2170,7 +2170,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_5',
-                  itemSlot: 'null',
+                  itemSlot: 'player_D1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Twilight Scroll',
@@ -2184,7 +2184,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_scroll_6',
-                  itemSlot: 'null',
+                  itemSlot: 'player_L1_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Dawning Scroll',
@@ -2198,7 +2198,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_1',
-                  itemSlot: 'null',
+                  itemSlot: 'player_F2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Flamma',
@@ -2212,7 +2212,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_2',
-                  itemSlot: 'null',
+                  itemSlot: 'player_F3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Deus Ignus',
@@ -2226,7 +2226,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_3',
-                  itemSlot: 'null',
+                  itemSlot: 'player_W2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Aquami',
@@ -2240,7 +2240,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_4',
-                  itemSlot: 'null',
+                  itemSlot: 'player_W3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Inundatio',
@@ -2254,7 +2254,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_5',
-                  itemSlot: 'null',
+                  itemSlot: 'player_E2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Folium',
@@ -2268,7 +2268,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_6',
-                  itemSlot: 'null',
+                  itemSlot: 'player_E3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Nemusilva',
@@ -2282,7 +2282,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_7',
-                  itemSlot: 'null',
+                  itemSlot: 'player_A2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Aerisforto',
@@ -2296,7 +2296,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_8',
-                  itemSlot: 'null',
+                  itemSlot: 'player_A3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Impetum Ventil',
@@ -2310,7 +2310,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_9',
-                  itemSlot: 'null',
+                  itemSlot: 'player_D2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Prosterno',
@@ -2324,7 +2324,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_10',
-                  itemSlot: 'null',
+                  itemSlot: 'player_D3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Princeps Tenebris Tenere',
@@ -2338,7 +2338,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_11',
-                  itemSlot: 'null',
+                  itemSlot: 'player_L2_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Illustrant Omnia',
@@ -2352,7 +2352,7 @@ export const useShopStore =
                 },
                 {
                   id: 'magic_book_12',
-                  itemSlot: 'null',
+                  itemSlot: 'player_L3_spell',
                   itemUse: 'null',
                   itemShop: 'Magic',
                   name: 'Lux Divinia',

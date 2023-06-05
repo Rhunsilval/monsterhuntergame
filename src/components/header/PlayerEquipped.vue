@@ -10,6 +10,7 @@
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
 <!-- magics -->
                 <div class="col-span-1 text-center my-12 w-80 border border-black">
+                    <p>SPELLS</p>
                     <div class="col-span-3">
                             <button class="mx-2">
                                 <img src="../../assets/images/spells/fire_1.png" class="w-20 h-20 border border-gray-400"/>
@@ -169,10 +170,15 @@
                                 </div>
                             </div>
                         </div>
-
-
+                    </div>
+<!-- scripts -->
+                    <p class="text-center">SCRIPTS</p>
+                    <p>(Up to 5)</p>
+                    <div class="grid grid-cols-5">
+                        <li v-for="item in playerStore.playerScripts" :key="item.id"></li>
                     </div>
                 </div>
+
                 <div class="col-span-1 mt-1 pb-10 w-full">
 <!-- helm -->                    
                     <div class="flex justify-center mb-5">
