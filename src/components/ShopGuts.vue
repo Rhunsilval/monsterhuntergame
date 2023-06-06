@@ -281,6 +281,7 @@
                   <img v-if="shopName ==='Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
                   <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>
                 <!-- dialog -->
@@ -321,6 +322,7 @@
                   <img v-if="shopName ==='Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
                   <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>
                 <!-- dialog -->
