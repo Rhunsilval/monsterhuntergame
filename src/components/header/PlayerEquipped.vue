@@ -9,68 +9,160 @@
             <h1 class="text-center text-3xl text-teal-800 font-semibold mt-3">Equipped Items</h1>
             <div class="overflow-hidden bg-white mx-5 mt-5 grid grid-cols-3">
 <!-- magics -->
-                <div class="col-span-1 text-center my-12 w-80 border border-black">
-                    <p>SPELLS</p>
+                <div class="col-span-1 text-center my-12 w-80 ">
+                    <p class="-mt-10 mb-5 text-3xl text-teal-800 font-semibold">SPELLS</p>
                     <div class="col-span-3">
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/fire_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2 ">
-                                <img src="../../assets/images/spells/fire_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/fire_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/water_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/water_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/water_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/earth_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/earth_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/earth_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/air_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/air_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/air_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/dark_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/dark_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/dark_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/light_1.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/light_2.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
-                            <button class="mx-2">
-                                <img src="../../assets/images/spells/light_3.png" class="w-20 h-20 border border-gray-400"/>
-                            </button>
+        <!-- fire -->
+                        <button @click="showF1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="f1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li> 
+                                                                                                                          
+                        </button>                    
+                        <button @click="showF2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="f2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button>                    
+                        <button @click="showF3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="f3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button>                    
+        <!-- water -->
+                        <button @click="showW1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W1_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="w1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showW2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="w2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showW3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="w3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+        <!-- earth -->
+                        <button @click="showE1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E1_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="e1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button>
+                        <button @click="showE2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="e2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button>
+                        <button @click="showE3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="e3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button>
+        <!-- air -->
+                        <button @click="showA1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A1_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="a1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showA2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="a2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showA3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="a3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+        <!-- dark -->
+                        <button @click="showD1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D1_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="d1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showD2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="d2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showD3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="d3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+        <!-- light -->
+                        <button @click="showL1SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L1_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="l1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showL2SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L2_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="l2spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
+                        <button @click="showL3SpellDetails" class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L3_spell" :key="item.id" class="list-none">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
+                                    <p v-if="l3spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
+                                </ul>                                        
+                            </li>                                                                                               
+                        </button> 
                     </div>                    
                 </div>
 <!-- equipment center -->
@@ -80,7 +172,7 @@
 <!-- necklace -->
                             <div class="flex justify-center mb-5">
                                 <button @click="necklaceOptionsVisible"> 
-                                    <li v-for="item in playerStore.playerEquipped.player_necklace" :key="item.id" class="">
+                                    <li v-for="item in playerStore.playerEquipped.player_necklace" :key="item.id" class="list-none">
                                         <ul>
                                             <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
@@ -103,7 +195,7 @@
 <!-- ring -->
                             <div class="flex justify-center mb-5">
                                 <button @click="ringOptionsVisible">
-                                    <li v-for="item in playerStore.playerEquipped.player_ring" :key="item.id" class="">
+                                    <li v-for="item in playerStore.playerEquipped.player_ring" :key="item.id" class="list-none">
                                         <ul>
                                             <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
@@ -126,7 +218,7 @@
 <!-- belt -->
                             <div class="flex justify-center mb-5">
                                 <button @click="beltOptionsVisible">
-                                    <li v-for="item in playerStore.playerEquipped.player_belt" :key="item.id" class="">
+                                    <li v-for="item in playerStore.playerEquipped.player_belt" :key="item.id" class="list-none">
                                         <ul>
                                             <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>                                        
@@ -172,18 +264,31 @@
                         </div>
                     </div>
 <!-- scripts -->
-                    <p class="text-center">SCRIPTS</p>
-                    <p>(Up to 5)</p>
-                    <div class="grid grid-cols-5">
-                        <li v-for="item in playerStore.playerScripts" :key="item.id"></li>
+                    <div class="-mt-16 ">
+                        <h1 class="ml-10 text-center text-2xl text-teal-800 font-semibold my-3">SCRIPTS</h1>
+                        <p class="ml-10 text-center text-sm -mt-4">Carry capacity : 5</p>
+                        <div class="text-center grid grid-cols-5 ml-10">
+                            <playerequipped-scripts
+                                v-for="(item, index) in playerStore.playerScripts"
+                                :key="item.id"
+                                :index="index"
+                                :id="item.id"
+                                :imageSrc="item.imageSrc"
+                                :name="item.name"
+                                :description="item.description"
+                                :value="item.value"
+                                @emitUnequipItem="unequipScript"
+                                @emitDropItem="dropScript"
+                            ></playerequipped-scripts>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-span-1 mt-1 pb-10 w-full">
+                <div class="col-span-1 mt-10 pb-10 w-full">
 <!-- helm -->                    
                     <div class="flex justify-center mb-5">
                         <button @click="helmOptionsVisible">
-                            <li v-for="item in playerStore.playerEquipped.player_helm" :key="item.id" class="">
+                            <li v-for="item in playerStore.playerEquipped.player_helm" :key="item.id" class="list-none">
                                 <ul>
                                     <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                 </ul>                                        
@@ -207,7 +312,7 @@
 <!-- shield -->
                         <div class="ml-2">
                             <button @click="shieldOptionsVisible">
-                                <li v-for="item in playerStore.playerEquipped.player_shield" :key="item.id" class="">
+                                <li v-for="item in playerStore.playerEquipped.player_shield" :key="item.id" class="list-none">
                                     <ul class="">
                                         <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5 mt-5" />
                                     </ul>
@@ -232,7 +337,7 @@
 <!-- gloves -->
                         <div>
                             <button @click="glovesOptionsVisible">
-                                <li v-for="item in playerStore.playerEquipped.player_gloves" :key="item.id" class="">
+                                <li v-for="item in playerStore.playerEquipped.player_gloves" :key="item.id" class="list-none">
                                     <ul class="">
                                         <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" />
                                     </ul>
@@ -257,7 +362,7 @@
 <!-- vambraces -->
                         <div>
                             <button @click="vambracesOptionsVisible">
-                                <li v-for="item in playerStore.playerEquipped.player_vambraces" :key="item.id">
+                                <li v-for="item in playerStore.playerEquipped.player_vambraces" :key="item.id" class="list-none">
                                     <ul>
                                         <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mr-5" />
                                     </ul>
@@ -282,7 +387,7 @@
 <!-- sword -->
                         <div>
                             <button @click="swordOptionsVisible">
-                                <li v-for="item in playerStore.playerEquipped.player_sword" :key="item.id">
+                                <li v-for="item in playerStore.playerEquipped.player_sword" :key="item.id" class="list-none">
                                     <ul>
                                         <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black mt-5 mr-3" />
                                     </ul>
@@ -308,7 +413,7 @@
 <!-- armor -->
                     <div class="flex justify-center mb-5">
                         <button @click="armorOptionsVisible">
-                            <li v-for="item in playerStore.playerEquipped.player_armor" :key="item.id">
+                            <li v-for="item in playerStore.playerEquipped.player_armor" :key="item.id" class="list-none">
                                 <ul>
                                     <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                 </ul>
@@ -336,7 +441,7 @@
                         <div class="">
                             <div class="flex justify-end mb-5 -mr-12">
                                 <button @click="bootsOptionsVisible" class="">
-                                    <li v-for="item in playerStore.playerEquipped.player_boots" :key="item.id">
+                                    <li v-for="item in playerStore.playerEquipped.player_boots" :key="item.id" class="list-none">
                                         <ul>
                                             <img :src="item.imageSrc" alt="" class="h-24 w-24 rounded-lg border border-black" />
                                         </ul>
@@ -377,8 +482,9 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
     import { usePlayerStore } from '@/stores/player'
+    import PlayerequippedScripts from './PlayerequippedScripts.vue';
     const playerStore = usePlayerStore();
 
     const openMessage = ref(false)
@@ -1079,6 +1185,113 @@
         playerStore.getExtraHealth();
         playerStore.getExtraMana();
         playerStore.getIntelligenceValues();
+    }
+
+// spell actions
+    const f1spellDetailsVisible = ref(false)
+    function showF1SpellDetails() {
+        f1spellDetailsVisible.value = !f1spellDetailsVisible.value;
+    }
+    const f2spellDetailsVisible = ref(false)
+    function showF2SpellDetails() {
+        f2spellDetailsVisible.value = !f2spellDetailsVisible.value;
+    }
+    const f3spellDetailsVisible = ref(false)
+    function showF3SpellDetails() {
+        f3spellDetailsVisible.value = !f3spellDetailsVisible.value;
+    }
+    
+    const w1spellDetailsVisible = ref(false)
+    function showW1SpellDetails() {
+        w1spellDetailsVisible.value = !w1spellDetailsVisible.value;
+    }
+    const w2spellDetailsVisible = ref(false)
+    function showW2SpellDetails() {
+        w2spellDetailsVisible.value = !w2spellDetailsVisible.value;
+    }
+    const w3spellDetailsVisible = ref(false)
+    function showW3SpellDetails() {
+        w3spellDetailsVisible.value = !w3spellDetailsVisible.value;
+    }
+    
+    const e1spellDetailsVisible = ref(false)
+    function showE1SpellDetails() {
+        e1spellDetailsVisible.value = !e1spellDetailsVisible.value;
+    }
+    const e2spellDetailsVisible = ref(false)
+    function showE2SpellDetails() {
+        e2spellDetailsVisible.value = !e2spellDetailsVisible.value;
+    }
+    const e3spellDetailsVisible = ref(false)
+    function showE3SpellDetails() {
+        e3spellDetailsVisible.value = !e3spellDetailsVisible.value;
+    }
+    
+    const a1spellDetailsVisible = ref(false)
+    function showA1SpellDetails() {
+        a1spellDetailsVisible.value = !a1spellDetailsVisible.value;
+    }
+    const a2spellDetailsVisible = ref(false)
+    function showA2SpellDetails() {
+        a2spellDetailsVisible.value = !a2spellDetailsVisible.value;
+    }
+    const a3spellDetailsVisible = ref(false)
+    function showA3SpellDetails() {
+        a3spellDetailsVisible.value = !a3spellDetailsVisible.value;
+    }
+    
+    const d1spellDetailsVisible = ref(false)
+    function showD1SpellDetails() {
+        d1spellDetailsVisible.value = !d1spellDetailsVisible.value;
+    }
+    const d2spellDetailsVisible = ref(false)
+    function showD2SpellDetails() {
+        d2spellDetailsVisible.value = !d2spellDetailsVisible.value;
+    }
+    const d3spellDetailsVisible = ref(false)
+    function showD3SpellDetails() {
+        d3spellDetailsVisible.value = !d3spellDetailsVisible.value;
+    }
+    
+    const l1spellDetailsVisible = ref(false)
+    function showL1SpellDetails() {
+        l1spellDetailsVisible.value = !l1spellDetailsVisible.value;
+    }
+    const l2spellDetailsVisible = ref(false)
+    function showL2SpellDetails() {
+        l2spellDetailsVisible.value = !l2spellDetailsVisible.value;
+    }
+    const l3spellDetailsVisible = ref(false)
+    function showL3SpellDetails() {
+        l3spellDetailsVisible.value = !l3spellDetailsVisible.value;
+    }
+
+// script actions
+    const chosenItemId = ref('')
+    const chosenItem = computed(function() {
+        return playerStore.playerScripts.find(item => item.id === chosenItemId.value);
+    })
+    function unequipScript(id) {
+        if(id!==undefined) {
+            console.log('chosen ID = ' + id);
+        }
+        chosenItemId.value = id;
+        let x = playerStore.playerScripts.findIndex(item => item.id === chosenItem.value.id);
+
+        if (playerStore.playerPacked.length >= playerStore.carryCapacity) {
+            openMessage.value = true;
+        } else {
+            playerStore.playerPacked.push(chosenItem.value);
+            playerStore.playerScripts.splice(x, 1);
+        }
+    }
+    function dropScript(id) {
+        if(id!==undefined) {
+            console.log('chosen Id = ' + id);
+        }
+        chosenItemId.value = id;
+        let x = playerStore.playerScripts.findIndex(item => item.id === chosenItem.value.id);
+        playerStore.playerScripts.splice(x, 1);
     }
 
 </script>

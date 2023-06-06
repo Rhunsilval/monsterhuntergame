@@ -333,6 +333,63 @@
                     playerStore.swapHolder2.splice(0);
                     playerStore.swapHolder1.splice(0);
                 }
+            } else if (chosenItem.value.itemSlot === 'player_F1_spell') {
+                // no swapping of spells - just one for each slot
+                    playerStore.playerEquipped.player_F1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_F1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_F2_spell') {
+                    playerStore.playerEquipped.player_F2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_F2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_F3_spell') {
+                    playerStore.playerEquipped.player_F3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_F3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_W1_spell') {
+                    playerStore.playerEquipped.player_W1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_W1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_W2_spell') {
+                    playerStore.playerEquipped.player_W2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_W2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_W3_spell') {
+                    playerStore.playerEquipped.player_W3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_W3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_E1_spell') {
+                    playerStore.playerEquipped.player_E1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_E1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_E2_spell') {
+                    playerStore.playerEquipped.player_E2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_E2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_E3_spell') {
+                    playerStore.playerEquipped.player_E3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_E3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_A1_spell') {
+                    playerStore.playerEquipped.player_A1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_A1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_A2_spell') {
+                    playerStore.playerEquipped.player_A2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_A2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_A3_spell') {
+                    playerStore.playerEquipped.player_A3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_A3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_D1_spell') {
+                    playerStore.playerEquipped.player_D1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_D1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_D2_spell') {
+                    playerStore.playerEquipped.player_D2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_D2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_D3_spell') {
+                    playerStore.playerEquipped.player_D3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_D3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_L1_spell') {
+                    playerStore.playerEquipped.player_L1_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_L1_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_L2_spell') {
+                    playerStore.playerEquipped.player_L2_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_L2_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_L3_spell') {
+                    playerStore.playerEquipped.player_L3_spell.push(chosenItem.value);
+                    playerStore.playerEquipped.player_L3_spell.splice(0, 1);
+            } else if (chosenItem.value.itemSlot === 'player_script') {
+                    playerStore.playerScripts.push(chosenItem.value);
             }             
             playerStore.playerPacked.splice(x, 1);
             playerStore.getAttackValues();

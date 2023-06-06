@@ -5,7 +5,7 @@ export const usePlayerStore =
         id: 'player',
         state: () => ({
             playerId: 'Player One',
-            coinOnHand: 10000,            
+            coinOnHand: 100000,            
 
             playerStartingHealth: 100,      // what renders on screen
             playerBaseStartingHealth: 100,  // for temporary results
@@ -244,7 +244,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/fire.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/fire.png'),
                     },
                 ],
                 player_F2_spell: [
@@ -257,7 +258,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/fire.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/fire.png'),
                     },
                 ],
                 player_F3_spell: [
@@ -270,7 +272,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/fire.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/fire.png'),
                     },
                 ],
                 player_W1_spell: [
@@ -283,7 +286,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/water.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/water.png'),
                     },
                 ],
                 player_W2_spell: [
@@ -296,7 +300,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/water.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/water.png'),
                     },
                 ],
                 player_W3_spell: [
@@ -309,7 +314,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/water.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/water.png'),
                     },
                 ],
                 player_E1_spell: [
@@ -322,7 +328,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/earth.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/earth.png'),
                     },
                 ],
                 player_E2_spell: [
@@ -335,7 +342,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/earth.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/earth.png'),
                     },
                 ],
                 player_E3_spell: [
@@ -348,7 +356,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/earth.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/earth.png'),
                     },
                 ],
                 player_A1_spell: [
@@ -361,7 +370,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/air.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/air.png'),
                     },
                 ],
                 player_A2_spell: [
@@ -374,7 +384,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/air.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/air.png'),
                     },
                 ],
                 player_A3_spell: [
@@ -387,7 +398,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/air.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/air.png'),
                     },
                 ],
                 player_D1_spell: [
@@ -400,7 +412,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/dark.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/dark.png'),
                     },
                 ],
                 player_D2_spell: [
@@ -413,7 +426,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/dark.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/dark.png'),
                     },
                 ],
                 player_D3_spell: [
@@ -426,7 +440,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/dark.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/dark.png'),
                     },
                 ],
                 player_L1_spell: [
@@ -439,7 +454,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/light.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/light.png'),
                     },
                 ],
                 player_L2_spell: [
@@ -452,7 +468,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/light.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/light.png'),
                     },
                 ],
                 player_L3_spell: [
@@ -465,7 +482,8 @@ export const usePlayerStore =
                         value: '',
                         mana: null,
                         price: '',
-                        imageSrc: require('../assets/images/placeholders/light.png'),
+                        imageSrc: '',
+                        imageSrc2: require('../assets/images/placeholders/light.png'),
                     },
                 ],
             },      
@@ -518,8 +536,6 @@ export const usePlayerStore =
                     },
                 ],
             },
-
-
 
             
         }),
