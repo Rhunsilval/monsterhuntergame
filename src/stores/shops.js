@@ -2125,6 +2125,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 5,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_1.png'),
+                  imageSrc2: require('../assets/images/spells/fire_1.png'),
                 },
                 {
                   id: 'magic_scroll_2',
@@ -2139,6 +2140,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 5,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_2.png'),
+                  imageSrc2: require('../assets/images/spells/water_1.png'),
                 },
                 {
                   id: 'magic_scroll_3',
@@ -2153,6 +2155,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 5,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_3.png'),
+                  imageSrc2: require('../assets/images/spells/earth_1.png'),
                 },
                 {
                   id: 'magic_scroll_4',
@@ -2167,6 +2170,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 8,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_4.png'),
+                  imageSrc2: require('../assets/images/spells/air_1.png'),
                 },
                 {
                   id: 'magic_scroll_5',
@@ -2181,6 +2185,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 15,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_5.png'),
+                  imageSrc2: require('../assets/images/spells/dark_1.png'),
                 },
                 {
                   id: 'magic_scroll_6',
@@ -2195,6 +2200,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 17,
                   imageSrc: require('../assets/images/village_magic/Magic_scroll_6.png'),
+                  imageSrc2: require('../assets/images/spells/light_1.png'),
                 },
                 {
                   id: 'magic_book_1',
@@ -2209,6 +2215,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 3,
                   imageSrc: require('../assets/images/village_magic/Magic_book_1.png'),
+                  imageSrc2: require('../assets/images/spells/fire_2.png'),
                 },
                 {
                   id: 'magic_book_2',
@@ -2223,6 +2230,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 25,
                   imageSrc: require('../assets/images/village_magic/Magic_book_2.png'),
+                  imageSrc2: require('../assets/images/spells/fire_3.png'),
                 },
                 {
                   id: 'magic_book_3',
@@ -2237,6 +2245,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 5,
                   imageSrc: require('../assets/images/village_magic/Magic_book_3.png'),
+                  imageSrc2: require('../assets/images/spells/water_2.png'),
                 },
                 {
                   id: 'magic_book_4',
@@ -2251,6 +2260,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 30,
                   imageSrc: require('../assets/images/village_magic/Magic_book_4.png'),
+                  imageSrc2: require('../assets/images/spells/water_3.png'),
                 },
                 {
                   id: 'magic_book_5',
@@ -2265,6 +2275,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 7,
                   imageSrc: require('../assets/images/village_magic/Magic_book_5.png'),
+                  imageSrc2: require('../assets/images/spells/earth_2.png'),
                 },
                 {
                   id: 'magic_book_6',
@@ -2279,6 +2290,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 30,
                   imageSrc: require('../assets/images/village_magic/Magic_book_6.png'),
+                  imageSrc2: require('../assets/images/spells/earth_3.png'),
                 },
                 {
                   id: 'magic_book_7',
@@ -2293,6 +2305,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 30,
                   imageSrc: require('../assets/images/village_magic/Magic_book_7.png'),
+                  imageSrc2: require('../assets/images/spells/air_2.png'),
                 },
                 {
                   id: 'magic_book_8',
@@ -2307,6 +2320,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 30,
                   imageSrc: require('../assets/images/village_magic/Magic_book_8.png'),
+                  imageSrc2: require('../assets/images/spells/air_3.png'),
                 },
                 {
                   id: 'magic_book_9',
@@ -2321,6 +2335,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 15,
                   imageSrc: require('../assets/images/village_magic/Magic_book_9.png'),
+                  imageSrc2: require('../assets/images/spells/dark_2.png'),
                 },
                 {
                   id: 'magic_book_10',
@@ -2335,6 +2350,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 30,
                   imageSrc: require('../assets/images/village_magic/Magic_book_10.png'),
+                  imageSrc2: require('../assets/images/spells/dark_3.png'),
                 },
                 {
                   id: 'magic_book_11',
@@ -2349,6 +2365,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 18,
                   imageSrc: require('../assets/images/village_magic/Magic_book_11.png'),
+                  imageSrc2: require('../assets/images/spells/light_2.png'),
                 },
                 {
                   id: 'magic_book_12',
@@ -2363,6 +2380,7 @@ export const useShopStore =
                   unlocksAt: 1,
                   intelUnlock: 39,
                   imageSrc: require('../assets/images/village_magic/Magic_book_12.png'),
+                  imageSrc2: require('../assets/images/spells/light_3.png'),
                 },
                 {
                   id: 'magic_amulet_1',

@@ -3,17 +3,172 @@
 
 <!-- fight buttons -->
         <div>
-            <div class="pt-52 pr-10">
-                <div class="mt-2" >
-                    <button @click="emitattackMonster()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 ">Fight </button> 
-                    &nbsp;
-                    <button @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >Heal</button>
+            <div class="-mt-8 ">
+        <!-- spells -->
+                <div class="col-span-3">
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_F3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_W3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_E3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_A3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_D3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
+                    <div>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L1_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L2_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                        <button class="mx-2"> 
+                            <li v-for="item in playerStore.playerEquipped.player_L3_spell" :key="item.id" class="list-none ">
+                                <ul>
+                                    <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
+                                </ul>                                        
+                            </li>                                                                                                                           
+                        </button>
+                    </div>
                 </div>
-                <div v-if="specialAttackAvailable" class="mt-2" >
-                    <button @click="emitspecialAttack()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >Special Attack!</button>
+        <!-- general attack options -->
+                <div class="mt-2" >
+                    <button @click="emitattackMonster()" class="mr-2 text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 ">
+                        Fight </button>                     
+                    <button @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >
+                        Heal</button>
+                </div>
+                <div v-if="props.specialAttackAvailable" class="mt-2" >
+                    <button @click="emitspecialAttack()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >
+                        Special Attack!</button>
                 </div>
                 <div class="mt-2" >
-                    <button @click="emitrunAway()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >Run Away!</button>
+                    <button @click="emitrunAway()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >
+                        Run Away!</button>
+                </div>
+        <!-- scripts -->
+                <div class="mt-5 grid grid-cols-3">
+                    <li v-for="(script) in playerStore.playerScripts" :key="script.id" class="list-none">
+                        <ul>
+                            <button @click="useScript(script.id)" class="h-20 w-20 border border-black my-2">
+                                <img :src="script.imageSrc" class="h-20 w-20 " />
+                            </button>
+                        </ul>
+                    </li>
                 </div>
             </div>
         </div>    
@@ -115,70 +270,68 @@
 </template>
 
 
-<script>
-    import { computed } from 'vue';
+<script setup>
+    import { ref, computed } from 'vue';
+    // import { computed } from 'vue';
     import { usePlayerStore } from '@/stores/player';
     import { useMonsterStore } from '@/stores/monster';
 
-    export default {
-        components: {},
-        props: [
-            'specialAttackAvailable'
-        ],
-        emits: [
+    const props = defineProps({
+        specialAttackAvailable: {},
+    })
+
+    const emit = defineEmits([
             'emit-attack-monster',
             'emit-run-away',
             'emit-special-attack',
             'emit-heal-player',
-        ],
-        setup(props, context) {
-            const playerStore = usePlayerStore();
-            const monsterStore = useMonsterStore();
+            'emit-use-script',
+        ])
 
-            const playerHealthPercentage = computed(function () {
-                return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
-            })
+    const playerStore = usePlayerStore();
+    const monsterStore = useMonsterStore();
 
-            const playerBarStyle = computed(function () {
-                return {width: playerHealthPercentage.value + '%'};
-            })
+    const playerHealthPercentage = computed(function () {
+        return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
+    })
 
-            const monsterHealthPercentage = computed(function() {
-                return (100* monsterStore.monsterHealth)/monsterStore.monsterStartingHealth;
-            })
+    const playerBarStyle = computed(function () {
+        return {width: playerHealthPercentage.value + '%'};
+    })
 
-            const monsterBarStyle = computed(function() {
-                return {width: monsterHealthPercentage.value + '%'}
-            })
+    const monsterHealthPercentage = computed(function() {
+        return (100* monsterStore.monsterHealth)/monsterStore.monsterStartingHealth;
+    })
 
-            function emitattackMonster() {
-                context.emit('emit-attack-monster');
-            }
+    const monsterBarStyle = computed(function() {
+        return {width: monsterHealthPercentage.value + '%'}
+    })
 
-            function emitrunAway() {
-                context.emit('emit-run-away');
-            }
-
-            function emitspecialAttack() {
-                context.emit('emit-special-attack');
-            }
-
-            function emithealPlayer() {
-                context.emit('emit-heal-player');
-            }
-
-           
-            return {
-                playerStore,
-                monsterStore,
-                playerBarStyle,
-                monsterBarStyle,
-                emitattackMonster,
-                emitrunAway,
-                emitspecialAttack,
-                emithealPlayer,
-            }
+    const chosenScriptId = ref('')
+    const chosenScript = computed(function() {
+        return playerStore.playerScripts.find(item => item.id === chosenScriptId.value);
+    })
+    function useScript(scriptId) {
+        if(scriptId!==undefined) {
+            console.log('chosen ID = ' + scriptId);
         }
-    }  
-
+        chosenScriptId.value = scriptId;
+        let x = playerStore.playerScripts.findIndex(item => item.id === chosenScript.value.id); 
+        
+        emit('emit-use-script', scriptId);
+        playerStore.playerScripts.splice(x, 1);
+    }
+    function emitattackMonster() {
+        emit('emit-attack-monster');
+    }
+    function emitrunAway() {
+        emit('emit-run-away');
+    }
+    function emitspecialAttack() {
+        emit('emit-special-attack');
+    }
+    function emithealPlayer() {
+        emit('emit-heal-player');
+    }
+           
 </script>

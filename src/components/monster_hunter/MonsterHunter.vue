@@ -116,6 +116,7 @@
                     @emit-run-away="runAway"
                     @emit-special-attack="specialAttackMonster"
                     @emit-heal-player="healPlayer"
+                    @emit-use-script="useScript"
                   ></monster-fighter>
                 </div>
 
@@ -337,6 +338,48 @@
       playerStore.playerHealth
     }
     specialAttackAvailable.value = false;
+  }
+
+// attack using a one-time-use script
+  const scriptAttackValue = ref(0)
+  function useScript(id) {
+    currentRound.value = currentRound.value + 1;
+    monsterRound.value = monsterRound.value + 1;
+    if (id === 'magic_script_1') {
+      if (props.mapName === 'The Great Grass Sea') {
+        scriptAttackValue.value = (20 + 10);
+      } else (scriptAttackValue.value = 20)
+      
+    } else if (id === 'magic_script_2') {
+      scriptAttackValue.value = 20
+    } else if (id === 'magic_script_3') {
+      scriptAttackValue.value = 20
+    } else if (id === 'magic_script_4') {
+      scriptAttackValue.value = 20
+    }
+    else {
+      scriptAttackValue.value = 35
+    }
+    
+    playerStore.playerXP += scriptAttackValue.value;        // to gain XP
+    playerStore.playerTotalXP += scriptAttackValue.value;   // to keep track of XP
+    playerStore.XPUntilNextLevel();             // to level up if applicable
+    playerStore.levelUp();
+    
+    // monsterStore.monsterHealth -= attackValue;
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= scriptAttackValue.value));
+    addLogEntry('player', 'attacks', scriptAttackValue.value, monsterisHit);
+    if (monsterStore.monsterHealth < 0) {
+      monsterStore.monsterHealth = 0;
+    } else {
+      monsterStore.monsterHealth;
+    }
+    attackPlayer();
+    if (playerStore.playerHealth < 0) {
+      playerStore.playerHealth = 0;
+    } else {
+      playerStore.playerHealth;
+    }
   }
 
 // monster strikes back
