@@ -19,8 +19,7 @@
                                     <img :src="item.imageSrc2" alt="" class="h-20 w-20 rounded-lg border border-black" />
                                     <p v-if="f1spellDetailsVisible" class="w-20 text-xs"> {{ item.value }}</p>
                                 </ul>                                        
-                            </li> 
-                                                                                                                          
+                            </li>                                                                                                                           
                         </button>                    
                         <button @click="showF2SpellDetails" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_F2_spell" :key="item.id" class="list-none">
