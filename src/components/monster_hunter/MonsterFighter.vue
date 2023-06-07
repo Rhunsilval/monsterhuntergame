@@ -272,7 +272,6 @@
 
 <script setup>
     import { ref, computed } from 'vue';
-    // import { computed } from 'vue';
     import { usePlayerStore } from '@/stores/player';
     import { useMonsterStore } from '@/stores/monster';
 
@@ -307,6 +306,7 @@
         return {width: monsterHealthPercentage.value + '%'}
     })
 
+// for scripts (one time use)
     const chosenScriptId = ref('')
     const chosenScript = computed(function() {
         return playerStore.playerScripts.find(item => item.id === chosenScriptId.value);
@@ -321,6 +321,10 @@
         emit('emit-use-script', scriptId);
         playerStore.playerScripts.splice(x, 1);
     }
+
+// for scrolls (one battle use)
+
+
     function emitattackMonster() {
         emit('emit-attack-monster');
     }
