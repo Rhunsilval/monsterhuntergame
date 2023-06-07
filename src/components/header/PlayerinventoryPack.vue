@@ -41,6 +41,7 @@
 
     const emit = defineEmits([
         'emitEquipItem',
+        'emitUseItem',
         'emitDropItem',
     ])
 

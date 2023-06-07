@@ -108,7 +108,7 @@ export const useShopStore =
                     description:"Apply this potion and get what you need to succeed.  Lasts for one battle.",
                     value: '+10 attack',
                     attack: 10,
-                    defense: 0,
+                    defense: 0, 
                     strength: 0,
                     life: 0,
                     mana: 0,
