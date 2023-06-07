@@ -241,6 +241,7 @@
         } else if (chosenItem.value.itemSlot === 'player_D3_spell') {
             if (playerStore.playerEquipped.player_D3_spell[0].id != 'D3_spell') {
                 spellshow.value = true;
+            } else (equipItem())
         } else if (chosenItem.value.itemSlot === 'player_L1_spell') {
             if (playerStore.playerEquipped.player_L1_spell[0].id != 'L1_spell') {
                 spellshow.value = true;
@@ -255,8 +256,8 @@
             } else (equipItem())
         } 
         else (equipItem())
-        }
     }
+    
 
 // to move an item from player inventory to player equipped
 // activates message if item is unequippable (based on itemSlot value)
@@ -264,12 +265,7 @@
 // swaps item with item in equipped space if item exists there
 // items affect user stats
     function equipItem() {
-        // if(id!==undefined) {
-        //     console.log('chosen ID = ' + id);
-        // }
-        // chosenItemId.value = id;
-        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);    
-
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);
         if (chosenItem.value.itemSlot === 'null') {
             equipshow.value = true;
         } 

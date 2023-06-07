@@ -7,21 +7,21 @@
         <!-- spells -->
                 <div class="col-span-3">
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_F1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_F1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_F2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_F2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_F3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_F3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -30,21 +30,21 @@
                         </button>
                     </div>
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_W1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_W1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_W2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_W2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_W3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_W3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -53,21 +53,21 @@
                         </button>
                     </div>
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_E1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_E1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_E2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_E2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_E3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_E3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -76,21 +76,21 @@
                         </button>
                     </div>
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_A1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_A1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_A2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_A2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_A3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_A3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -99,21 +99,21 @@
                         </button>
                     </div>
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_D1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_D1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_D2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_D2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_D3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_D3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -122,21 +122,21 @@
                         </button>
                     </div>
                     <div>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_L1_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_L1_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_L2_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_L2_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
                                 </ul>                                        
                             </li>                                                                                                                           
                         </button>
-                        <button class="mx-2"> 
+                        <button @click="useSpell(playerStore.playerEquipped.player_L3_spell[0].id)" class="mx-2"> 
                             <li v-for="item in playerStore.playerEquipped.player_L3_spell" :key="item.id" class="list-none ">
                                 <ul>
                                     <img :src="item.imageSrc2" alt="" class="h-12 w-12 rounded-lg border border-black" />
@@ -285,6 +285,7 @@
             'emit-special-attack',
             'emit-heal-player',
             'emit-use-script',
+            'emit-use-spell',
         ])
 
     const playerStore = usePlayerStore();
@@ -322,8 +323,10 @@
         playerStore.playerScripts.splice(x, 1);
     }
 
-// for scrolls (one battle use)
 
+    function useSpell(spellId) {
+        emit('emit-use-spell', spellId);
+    }
 
     function emitattackMonster() {
         emit('emit-attack-monster');
