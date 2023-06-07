@@ -117,6 +117,7 @@
                     @emit-special-attack="specialAttackMonster"
                     @emit-heal-player="healPlayer"
                     @emit-use-script="useScript"
+                    @emit-use-spell="useSpell"
                   ></monster-fighter>
                 </div>
 
@@ -271,6 +272,8 @@
       monsterRound.value = 0;
     }
   })
+  // NOTE: would like a player auto-heal function as well, but based on actual time passed vs # of actions taken
+  // haven't gotten this to work yet
 
 
 // gameplay
@@ -287,7 +290,7 @@
     })
   }
 
-// attack the monster
+// attack the monster (basic)
   function attackMonster() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
@@ -295,9 +298,7 @@
     playerStore.playerXP += attackValue;        // to gain XP
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
-    playerStore.levelUp();
-    
-    // monsterStore.monsterHealth -= attackValue;
+    playerStore.levelUp();    
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
     addLogEntry('player', 'attacks', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
@@ -313,57 +314,31 @@
     }
   }
 
-// charged special attack 
-  function specialAttackMonster() {
-    currentRound.value = 0;
-    monsterRound.value = monsterRound.value + 1;
-    const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
-        playerStore.playerXP += attackValue;    // to gain XP
-    playerStore.playerTotalXP += attackValue;   // to keep track of XP
-    playerStore.XPUntilNextLevel();             // to level up if applicable
-    playerStore.levelUp();
-    // monsterStore.monsterHealth -= attackValue;
-    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
-    addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
-    if (monsterStore.monsterHealth < 0) {
-      monsterStore.monsterHealth = 0;
-    } else {
-      monsterStore.monsterHealth;
-    }
-    attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
-    } else {
-      playerStore.playerHealth
-    }
-    specialAttackAvailable.value = false;
-  }
-
 // attack using a one-time-use script
-  const scriptAttackValue = ref(0)
+  const magicAttackValue = ref(0)
   function useScript(id) {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
     if (id === 'magic_script_1') {
       if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
-        scriptAttackValue.value = (20 + 10);
+        magicAttackValue.value = (20 + 10);
       } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
-        scriptAttackValue.value = (20 - 10);
-      } else (scriptAttackValue.value = 20)            
+        magicAttackValue.value = (20 - 10);
+      } else (magicAttackValue.value = 20)            
     } else if (id === 'magic_script_2') {
       if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
-        scriptAttackValue.value = (20 + 10);
+        magicAttackValue.value = (20 + 10);
       } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
-        scriptAttackValue.value = (20 - 10);
-      } else (scriptAttackValue.value = 20)
+        magicAttackValue.value = (20 - 10);
+      } else (magicAttackValue.value = 20)
     } else if (id === 'magic_script_3') {
       if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
-        scriptAttackValue.value = (20 + 10);
+        magicAttackValue.value = (20 + 10);
       } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
-        scriptAttackValue.value = (20 - 10);
-      } else (scriptAttackValue.value = 20)
+        magicAttackValue.value = (20 - 10);
+      } else (magicAttackValue.value = 20)
     } else if (id === 'magic_script_4') {
-      scriptAttackValue.value = 20;
+      magicAttackValue.value = 20;
     } else if (id === 'magic_script_5') {
       if (monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -387,7 +362,7 @@
           monsterStore.monsterName == 'Iron Dragon' ||
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
-        scriptAttackValue.value = (35 + 10);
+        magicAttackValue.value = (35 + 10);
       } else if (
           monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -404,8 +379,8 @@
           monsterStore.monsterName == 'Bog Zombie' ||
           monsterStore.monsterName == 'Rusalka' ||
           monsterStore.monsterName == 'Phantom') {
-        scriptAttackValue.value = (35 - 10);
-      } else (scriptAttackValue.value = 35);
+        magicAttackValue.value = (35 - 10);
+      } else (magicAttackValue.value = 35);
     } else {
       if (monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -434,7 +409,7 @@
           monsterStore.monsterName == 'Iron Dragon' ||
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
-        scriptAttackValue.value = (35 + 10);
+        magicAttackValue.value = (35 + 10);
       } else if (
           monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -446,15 +421,15 @@
           monsterStore.monsterName == 'Water Knight' ||
           monsterStore.monsterName == 'Rootbeast' ||
           monsterStore.monsterName == 'Wood Nymph' ) {
-        scriptAttackValue.value = (35 - 10);
-      } else (scriptAttackValue.value = 35);
+        magicAttackValue.value = (35 - 10);
+      } else (magicAttackValue.value = 35);
     }    
-    playerStore.playerXP += scriptAttackValue.value;        // to gain XP
-    playerStore.playerTotalXP += scriptAttackValue.value;   // to keep track of XP
+    playerStore.playerXP += magicAttackValue.value;        // to gain XP
+    playerStore.playerTotalXP += magicAttackValue.value;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();    
-    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= scriptAttackValue.value));
-    addLogEntry('player', 'attacks', scriptAttackValue.value, monsterisHit);
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= magicAttackValue.value));
+    addLogEntry('player', 'attacks', magicAttackValue.value, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -467,6 +442,416 @@
       playerStore.playerHealth;
     }
   }
+
+// attack using a spell
+// tried writing this more efficiently using item values ... didn't work yet
+// this is ugly code - but it works
+  function useSpell(id) {
+    currentRound.value = currentRound.value + 1;
+    monsterRound.value = monsterRound.value + 1;
+    if (id === 'magic_scroll_1') {
+      if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = (20 + 20);
+        playerStore.playerMana -= 8;
+      } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = (20 - 20);
+        playerStore.playerMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+    } else if (id === 'magic_book_1') {
+      if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = (20 + 10);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = (20 - 10);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 20, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+    } else if (id === 'magic_book_2') {
+      if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = (Math.floor(getRandomValue(30,60)) + 30);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,25)));
+      } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = (Math.floor(getRandomValue(30,60))-20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,25)));
+      } else (magicAttackValue.value = 20, playerStore.playerMana -= (Math.floor(getRandomValue(10,25))))
+    } else if (id === 'magic_scroll_2') {
+      if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = (20 + 20);
+        playerStore.playerMana -= 8;
+      } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = (20 - 20);
+        playerStore.playerMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+    } else if (id === 'magic_book_3') {
+      if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = (15 + 20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = (15 - 15);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 15, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+    } else if (id === 'magic_book_4') {
+      if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = ((Math.floor(getRandomValue(30,60))) + 30);
+        playerStore.playerMana -= (Math.floor(getRandomValue(12,20)));
+      } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
+        magicAttackValue.value = ((Math.floor(getRandomValue(30,60))) - 20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(12,20)));
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(30,60))), playerStore.playerMana -= (Math.floor(getRandomValue(12,20))))
+    } else if (id === 'magic_scroll_3') {
+      if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = (20 + 20);
+        playerStore.playerMana -= 8;
+      } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = (20 - 15);
+        playerStore.playerMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+    } else if (id === 'magic_book_5') {
+      if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = (17 + 12);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = (17 - 13);
+        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 17, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+    } else if (id === 'magic_book_6') {
+      if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        magicAttackValue.value = ((Math.floor(getRandomValue(25,60))) + 20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,30)));
+      } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        magicAttackValue.value = ((Math.floor(getRandomValue(25,60))) - 25);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,30)));
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(25,60))), playerStore.playerMana -= (Math.floor(getRandomValue(10,30))))
+    } else if (id === 'magic_scroll_4') {
+      magicAttackValue.value = 20;
+      playerStore.playerMana -= 8;
+    } else if (id === 'magic_book_7') {
+      magicAttackValue.value = 25;
+      playerStore.playerMana -= (Math.floor(getRandomValue(8,20)));
+    } else if (id === 'magic_book_8') {
+      magicAttackValue.value = (Math.floor(getRandomValue(30-65)));
+      playerStore.playerMana -= (Math.floor(getRandomValue(15,20)));
+    } else if (id === 'magic_scroll_5') {
+      if (monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ||
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = (35 + 15);
+        playerStore.playerMana -= 10;
+        playerStore.playerHealth -= 1;
+      } else if (
+          monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom') {
+        magicAttackValue.value = (35 - 15);
+        playerStore.playerMana -= 10;
+        playerStore.playerHealth -= 1;
+      } else (magicAttackValue.value = 35, playerStore.playerMana -= 10, playerStore.playerHealth -= 1);
+    } else if (id === 'magic_book_9') {
+      if (monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ||
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = (25 + 20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,15)));
+        playerStore.playerHealth -= 3;
+      } else if (
+          monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom') {
+        magicAttackValue.value = (25 - 30);
+        playerStore.playerMana -= (Math.floor(getRandomValue(10,15)));
+        playerStore.playerHealth -= 3;
+      } else (magicAttackValue.value = 25, playerStore.playerMana -= (Math.floor(getRandomValue(10,15))), playerStore.playerHealth -= 3);
+    } else if (id === 'magic_book_10') {
+      if (monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ||
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = (50 + 40);
+        playerStore.playerMana -= 30;
+        playerStore.playerHealth -= 10;
+      } else if (
+          monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom') {
+        magicAttackValue.value = (50 - 20);
+        playerStore.playerMana -= 30;
+        playerStore.playerHealth -= 10;
+      } else (magicAttackValue.value = 50, playerStore.playerMana -= 30, playerStore.playerHealth -= 10);
+    } else if (id === 'magic_scroll_6') {
+      if (monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom' ||          
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = (35 + 15);
+        playerStore.playerMana -= 10;
+        playerStore.playerHealth += 1;
+      } else if (
+          monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ) {
+        magicAttackValue.value = (35 - 15);
+        playerStore.playerMana -= 10;
+        playerStore.playerHealth += 1
+      } else (magicAttackValue.value = 35, playerStore.playerMana -= 10, playerStore.playerHealth += 1);
+    } else if (id === 'magic_book_11') {
+      if (monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom' ||          
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = (30 + 20);
+        playerStore.playerMana -= (Math.floor(getRandomValue(5,20)));
+        playerStore.playerHealth += 3;
+      } else if (
+          monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ) {
+        magicAttackValue.value = (30 - 10);
+        playerStore.playerMana -= (Math.floor(getRandomValue(5,20)));
+        playerStore.playerHealth += 3
+      } else (magicAttackValue.value = 30, playerStore.playerMana -= (Math.floor(getRandomValue(5,20))), playerStore.playerHealth += 3);
+    } else if (id === 'magic_book_12') {
+      if (monsterStore.monsterName == 'Mountain Troll' ||
+          monsterStore.monsterName == 'Snow Cat' ||
+          monsterStore.monsterName == 'Yeti' ||
+          monsterStore.monsterName == 'Ice Giant' ||
+          monsterStore.monsterName == 'Grim Owl' ||
+          monsterStore.monsterName == 'Vampire' ||
+          monsterStore.monsterName == 'Baba Yaga' ||
+          monsterStore.monsterName == 'Undead Soldier' ||
+          monsterStore.monsterName == 'Banshee' ||
+          monsterStore.monsterName == 'Ghoul' ||
+          monsterStore.monsterName == 'Dire Moth' ||
+          monsterStore.monsterName == 'Oni' ||
+          monsterStore.monsterName == 'Bog Zombie' ||
+          monsterStore.monsterName == 'Rusalka' ||
+          monsterStore.monsterName == 'Phantom' ||          
+          monsterStore.monsterName == 'Fire River Drake' ||
+          monsterStore.monsterName == 'Basilisk' ||
+          monsterStore.monsterName == 'Kitsune' ||
+          monsterStore.monsterName == 'Cockatrice' ||
+          monsterStore.monsterName == 'Chimera' ||
+          monsterStore.monsterName == 'Golden Dragon' ||
+          monsterStore.monsterName == 'Heron King' ||
+          monsterStore.monsterName == 'Gargoyle' ||
+          monsterStore.monsterName == 'Dire Eagle' ||
+          monsterStore.monsterName == 'Iron Dragon' ||
+          monsterStore.monsterName == 'Moss Dragon' ||
+          monsterStore.monsterName == 'Hydra') {
+        magicAttackValue.value = ((Math.floor(getRandomValue(40,70))) + 20);
+        playerStore.playerMana -= 30;
+        playerStore.playerHealth += 10;
+      } else if (
+          monsterStore.monsterName == 'Djinn' || 
+          monsterStore.monsterName == 'Phoenix' || 
+          monsterStore.monsterName == 'Mushroom Spirit' ||
+          monsterStore.monsterName == 'Forest Guardian' ||
+          monsterStore.monsterName == 'Forest God' ||
+          monsterStore.monsterName == 'Vine Clinger' ||
+          monsterStore.monsterName == 'Will-O-Wisp' ||
+          monsterStore.monsterName == 'Water Knight' ||
+          monsterStore.monsterName == 'Rootbeast' ||
+          monsterStore.monsterName == 'Wood Nymph' ) {
+        magicAttackValue.value = ((Math.floor(getRandomValue(40,70))) - 10);
+        playerStore.playerMana -= 30;
+        playerStore.playerHealth += 10;
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(40,70))), playerStore.playerMana -= 30, playerStore.playerHealth += 10);
+    }    
+    playerStore.playerXP += magicAttackValue.value;        // to gain XP
+    playerStore.playerTotalXP += magicAttackValue.value;   // to keep track of XP
+    playerStore.XPUntilNextLevel();             // to level up if applicable
+    playerStore.levelUp();    
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= magicAttackValue.value));
+    addLogEntry('player', 'attacks', magicAttackValue.value, monsterisHit);
+    if (monsterStore.monsterHealth < 0) {
+      monsterStore.monsterHealth = 0;
+    } else {
+      monsterStore.monsterHealth;
+    }
+    attackPlayer();
+    if (playerStore.playerHealth < 0) {
+      playerStore.playerHealth = 0;
+    } else {
+      playerStore.playerHealth;
+    }
+  }
+
+// charged special attack 
+  function specialAttackMonster() {
+    currentRound.value = 0;
+    monsterRound.value = monsterRound.value + 1;
+    const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+        playerStore.playerXP += attackValue;    // to gain XP
+    playerStore.playerTotalXP += attackValue;   // to keep track of XP
+    playerStore.XPUntilNextLevel();             // to level up if applicable
+    playerStore.levelUp();
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
+    addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
+    if (monsterStore.monsterHealth < 0) {
+      monsterStore.monsterHealth = 0;
+    } else {
+      monsterStore.monsterHealth;
+    }
+    attackPlayer();
+    if (playerStore.playerHealth < 0) {
+      playerStore.playerHealth = 0;
+    } else {
+      playerStore.playerHealth
+    }
+    specialAttackAvailable.value = false;
+  }
+
+
 
 // monster strikes back
   function attackPlayer() {
