@@ -42,7 +42,7 @@
                     :name="item.name"
                     :description="item.description" 
                     :value="item.value"                   
-                    @emitEquipItem="equipItem"
+                    @emitEquipItem="checkInventory"
                     @emitUseItem="useItem"
                     @emitDropItem="dropItem"
                 ></playerinventory-pack>
@@ -69,6 +69,38 @@
                                     </div>
                                     <div class="pl-5">
                                         <button type="button" @click="equipshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                            <span class="sr-only">Close</span>
+                                            <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+<!-- inventory full message for spells and scripts -->
+            <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
+                    <transition 
+                        enter-active-class="transform ease-out duration-300 transition" 
+                        enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
+                        enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
+                        leave-active-class="transition ease-in duration-100" 
+                        leave-from-class="opacity-100" 
+                        leave-to-class="opacity-0"
+                    >
+                        <div v-if="spellshow" class="pointer-events-auto w-44 overflow-hidden rounded-lg bg-teal-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <div>
+                                            <p class="text-center text-xl font-semibold text-gray-900 pb-3">Whoops!</p>
+                                            <p class="text-center">Looks like you don't have a free space for this item.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-5">
+                                        <button type="button" @click="spellshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                                             <span class="sr-only">Close</span>
                                             <XMarkIcon class="h-5 w-5" aria-hidden="true" />
                                         </button>
@@ -133,17 +165,109 @@
 // flexibly limits how many items a player can carry
     const limit_by = playerStore.carryCapacity;
 
+// if no inventory space messagges:
+    const equipshow = ref(false)
+    const spellshow = ref(false)
+
+// becauses script items are limited to 5 on hand, 
+// and magic spells are only populated 1x at a time
+// i need to check spells inventory spaces before i equip items so that items don't collect
+    function checkInventory(id) {
+        if(id == undefined) {
+            console.log('chosen ID = ' + id);
+        }
+        chosenItemId.value = id;
+        
+        if (chosenItem.value.itemSlot === 'player_script') {
+            if (playerStore.playerScripts.length >= 5) {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_F1_spell') {
+            if (playerStore.playerEquipped.player_F1_spell[0].id != 'F1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_F2_spell') {
+            if (playerStore.playerEquipped.player_F2_spell[0].id != 'F2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_F3_spell') {
+            if (playerStore.playerEquipped.player_F3_spell[0].id != 'F3_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_W1_spell') {
+            if (playerStore.playerEquipped.player_W1_spell[0].id != 'W1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_W2_spell') {
+            if (playerStore.playerEquipped.player_W2_spell[0].id != 'W2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_W3_spell') {
+            if (playerStore.playerEquipped.player_W3_spell[0].id != 'W3_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_E1_spell') {
+            if (playerStore.playerEquipped.player_E1_spell[0].id != 'E1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_E2_spell') {
+            if (playerStore.playerEquipped.player_E2_spell[0].id != 'E2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_E3_spell') {
+            if (playerStore.playerEquipped.player_E3_spell[0].id != 'E3_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_A1_spell') {
+            if (playerStore.playerEquipped.player_A1_spell[0].id != 'A1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_A2_spell') {
+            if (playerStore.playerEquipped.player_A2_spell[0].id != 'A2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_A3_spell') {
+            if (playerStore.playerEquipped.player_A3_spell[0].id != 'A3_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_D1_spell') {
+            if (playerStore.playerEquipped.player_D1_spell[0].id != 'D1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_D2_spell') {
+            if (playerStore.playerEquipped.player_D2_spell[0].id != 'D2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_D3_spell') {
+            if (playerStore.playerEquipped.player_D3_spell[0].id != 'D3_spell') {
+                spellshow.value = true;
+        } else if (chosenItem.value.itemSlot === 'player_L1_spell') {
+            if (playerStore.playerEquipped.player_L1_spell[0].id != 'L1_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_L2_spell') {
+            if (playerStore.playerEquipped.player_L2_spell[0].id != 'L2_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } else if (chosenItem.value.itemSlot === 'player_L3_spell') {
+            if (playerStore.playerEquipped.player_L3_spell[0].id != 'L3_spell') {
+                spellshow.value = true;
+            } else (equipItem())
+        } 
+        else (equipItem())
+        }
+    }
+
 // to move an item from player inventory to player equipped
 // activates message if item is unequippable (based on itemSlot value)
 // removes item from playerPacked/inventory array
 // swaps item with item in equipped space if item exists there
 // items affect user stats
-    const equipshow = ref(false)
-    function equipItem(id) {
-        if(id!==undefined) {
-            console.log('chosen ID = ' + id);
-        }
-        chosenItemId.value = id;
+    function equipItem() {
+        // if(id!==undefined) {
+        //     console.log('chosen ID = ' + id);
+        // }
+        // chosenItemId.value = id;
         let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);    
 
         if (chosenItem.value.itemSlot === 'null') {
@@ -334,7 +458,6 @@
                     playerStore.swapHolder1.splice(0);
                 }
             } else if (chosenItem.value.itemSlot === 'player_F1_spell') {
-                // no swapping of spells - just one for each slot
                     playerStore.playerEquipped.player_F1_spell.push(chosenItem.value);
                     playerStore.playerEquipped.player_F1_spell.splice(0, 1);
             } else if (chosenItem.value.itemSlot === 'player_F2_spell') {
@@ -389,7 +512,7 @@
                     playerStore.playerEquipped.player_L3_spell.push(chosenItem.value);
                     playerStore.playerEquipped.player_L3_spell.splice(0, 1);
             } else if (chosenItem.value.itemSlot === 'player_script') {
-                    playerStore.playerScripts.push(chosenItem.value);
+                    playerStore.playerScripts.push(chosenItem.value)                   
             }             
             playerStore.playerPacked.splice(x, 1);
             playerStore.getAttackValues();
