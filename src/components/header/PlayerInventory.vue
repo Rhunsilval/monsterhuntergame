@@ -560,7 +560,7 @@
             }
             else if (chosenItem.value.itemUse === 'attacking') {
                 playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);            
-            }
+            } 
             else if (chosenItem.value.itemUse === 'attack') {
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack= (playerStore.playerBaseAttack + chosenItem.value.attack);
@@ -607,6 +607,12 @@
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             playerStore.playerPacked.splice(x, 1);
+            playerStore.getAttackValues();
+            playerStore.getDefenseValues();
+            playerStore.getStrengthValues();
+            playerStore.getExtraHealth();
+            playerStore.getExtraMana();
+            playerStore.getIntelligenceValues();
         }
     } 
 
