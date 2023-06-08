@@ -108,7 +108,7 @@ export const useShopStore =
                     description:"Apply this potion and get what you need to succeed.  Lasts for one battle.",
                     value: '+10 attack',
                     attack: 10,
-                    defense: 0,
+                    defense: 0, 
                     strength: 0,
                     life: 0,
                     mana: 0,
@@ -2748,7 +2748,6 @@ export const useShopStore =
         actions: {
             getUniqueID() {  //trying to get unique ids for items in shop ... still not working.  executes once when store is created, not each time an item is sold
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
-            },
-            
+            },            
         }
     })

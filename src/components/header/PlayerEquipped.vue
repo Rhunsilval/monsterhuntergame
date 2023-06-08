@@ -183,12 +183,12 @@
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_necklace[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_necklace[0].value }}</p>
                             </div> 
-                            <div v-if="necklaceOptions" class="w-24 ml-32 -mt-3 grid grid-cols-1 object-center items-center text-center " >
-                                <button @click="unequipNecklace()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                            <div v-if="necklaceOptions" class="w-24 ml-28 -mt-3 grid grid-cols-1 object-center items-center text-center " >
+                                <button @click="unequipNecklace()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Unequip</button>
-                                <button @click="dropNecklace()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="dropNecklace()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Drop</button>
-                                <button @click="examineNecklaceItem = !examineNecklaceItem" class="px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="examineNecklaceItem = !examineNecklaceItem" class="mb-2 -ml-2 px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     {{ examineNecklaceItem? 'Hide Details' : 'Examine' }}</button>
                             </div>
 <!-- ring -->
@@ -206,12 +206,12 @@
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_ring[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_ring[0].value }}</p>
                             </div> 
-                            <div v-if="ringOptions" class="w-24 ml-32 -mt-3 grid grid-cols-1 object-center items-center text-center " >
-                                <button @click="unequipRing()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                            <div v-if="ringOptions" class="w-24 ml-28 -mt-3 grid grid-cols-1 object-center items-center text-center " >
+                                <button @click="unequipRing()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Unequip</button>
-                                <button @click="dropRing()" class="px-2 py-2 mb-1 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="dropRing()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Drop</button>
-                                <button @click="examineRingItem = !examineRingItem" class="px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="examineRingItem = !examineRingItem" class="mb-2 -ml-2 px-2 py-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     {{ examineRingItem? 'Hide Details' : 'Examine' }}</button>
                             </div>
 <!-- belt -->
@@ -229,12 +229,12 @@
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_belt[0].description }}</p>
                                 <p class="text-sm bg-white bg-opacity-90">{{ playerStore.playerEquipped.player_belt[0].value }}</p>
                             </div> 
-                            <div v-if="beltOptions" class="w-24 ml-32 -mt-3grid grid-cols-1 object-center items-center text-center " >
-                                <button @click="unequipBelt()" class="px-2 py-2 mb-1 w-20 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                            <div v-if="beltOptions" class="w-24 ml-28 -mt-3 grid grid-cols-1 object-center items-center text-center " >
+                                <button @click="unequipBelt()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Unequip</button>
-                                <button @click="dropBelt()" class="px-2 py-2 mb-1 w-20 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="dropBelt()" class="px-2 py-2 mb-1 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     Drop</button>
-                                <button @click="examineBeltItem = !examineBeltItem" class="px-2 py-2 mb-1 w-20 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
+                                <button @click="examineBeltItem = !examineBeltItem" class="px-2 py-2 mb-2 -ml-2 rounded-lg border border-gray-500 bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
                                     {{ examineBeltItem? 'Hide Details' : 'Examine' }}</button>
                             </div>
                         </div>
