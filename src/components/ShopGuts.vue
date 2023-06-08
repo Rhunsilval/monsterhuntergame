@@ -1,7 +1,7 @@
 <template>
      
 <!-- background -->
-    <div :style="{ backgroundImage: `url(${storeTypes[getStoreType()]})` }" alt="" class="bg-cover max-w-full">
+    <div :style="{ backgroundImage: `url(${storeTypes[getStoreType()]})` }" alt="" class="bg-contain ">
 
 <!-- header -->    
       <div class="flex justify-center">                
