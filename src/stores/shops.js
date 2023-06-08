@@ -2748,7 +2748,6 @@ export const useShopStore =
         actions: {
             getUniqueID() {  //trying to get unique ids for items in shop ... still not working.  executes once when store is created, not each time an item is sold
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
-            },
-            
+            },            
         }
     })

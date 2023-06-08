@@ -43,7 +43,7 @@
             </div>
 
             <div>
-                <router-link :to="'/home'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                <router-link :to="'/home'" type="button" @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Start Over</router-link>
             </div>
         </div>
@@ -56,7 +56,7 @@
             </div>
             
             <div>
-                <router-link :to="'/village'" type="button" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                <router-link :to="'/village'" type="button" @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Return to Village</router-link>
             </div>
         </div>
@@ -88,6 +88,11 @@
       lootVisible.value = true;
     } 
 
+// even though losing/draws don't return me to MonsterHunter page where the code lives,
+// it seems to work anyway to reset all player variables
+// and it isn't throwing any errors?  
+// perhaps because the fight is happening on monsterhunter and just being rendered here
+// so the code actually does pass through that page before routing to wherever it's going?
     function emitLootCollected() {
       lootAvailable.value = false;
       lootVisible.value = false;

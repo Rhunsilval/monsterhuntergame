@@ -8,11 +8,10 @@ export const usePlayerStore =
             coinOnHand: 100000,            
 
             playerStartingHealth: 100,      // what renders on screen
-            playerBaseStartingHealth: 100,  // for temporary results
+            playerBaseStartingHealth: 100,  // for calculating temporary results
             playerHealth: 100,              // on screen
-            playerBaseHealth: 100,          // for temporary results
+            playerBaseHealth: 100,          // for calculating temporary results
             healthBonus: 0,         // from equipped items
-            // tempHealthBonus: 0,     // from potions etc - needed?
             healthPerSec: .1,       // Fortitude - how fast player heals
 
             playerStartingMana: 100,
@@ -20,7 +19,6 @@ export const usePlayerStore =
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
-            //tempManaBonus: 0,       // from potions,etc - needed?
             manaPerSec: .1,         // how fast player restores mana
             
             playerBaseAttack: 1,
@@ -41,7 +39,7 @@ export const usePlayerStore =
             playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
-            playerIntelligence: 1,
+            playerIntelligence: 1, // total intel level including all bonuses from items
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
@@ -247,6 +245,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/fire.png'),
@@ -265,6 +264,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/fire.png'),
@@ -283,6 +283,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/fire.png'),
@@ -301,6 +302,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/water.png'),
@@ -319,6 +321,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/water.png'),
@@ -337,6 +340,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/water.png'),
@@ -355,6 +359,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/earth.png'),
@@ -373,6 +378,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/earth.png'),
@@ -391,6 +397,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/earth.png'),
@@ -409,6 +416,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/air.png'),
@@ -427,6 +435,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/air.png'),
@@ -445,6 +454,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/air.png'),
@@ -463,6 +473,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/dark.png'),
@@ -481,6 +492,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/dark.png'),
@@ -499,6 +511,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/dark.png'),
@@ -517,6 +530,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/light.png'),
@@ -535,6 +549,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/light.png'),
@@ -553,6 +568,7 @@ export const usePlayerStore =
                         antiAttackValue: null,
                         life: null,
                         mana: null,
+                        intelUnlock: null,
                         price: '',
                         imageSrc: '',
                         imageSrc2: require('../assets/images/placeholders/light.png'),
@@ -675,9 +691,10 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].life 
                 );
             this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
-            this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            // this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            this.playerHealth = (this.playerHealth + this.healthBonus);
             },
-            getExtraMana() {
+            getExtraMana() { 
                 this.manaBonus = 
                 (
                     this.playerEquipped.player_helm[0].mana
@@ -692,7 +709,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].mana 
                 );
             this.playerStartingMana = (this.playerBaseStartingMana + this.manaBonus);
-            this.playerMana = (this.playerBaseMana + this.manaBonus);
+            this.playerMana = (this.playerMana + this.manaBonus);
             },
             getIntelligenceValues() {
                 this.intelligenceBonus = 

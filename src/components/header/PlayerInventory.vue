@@ -111,6 +111,72 @@
                     </transition>
                 </div>
             </div>
+<!-- missing prior knowlege for level 3 magic book equipping message -->
+            <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
+                    <transition 
+                        enter-active-class="transform ease-out duration-300 transition" 
+                        enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
+                        enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
+                        leave-active-class="transition ease-in duration-100" 
+                        leave-from-class="opacity-100" 
+                        leave-to-class="opacity-0"
+                    >
+                        <div v-if="missingKnowledge" class="pointer-events-auto w-80  overflow-hidden rounded-lg bg-teal-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <div>
+                                            <p class="text-center text-xl font-semibold text-gray-900 pb-3">You're missing something.</p>
+                                            <p class="text-center">You need to learn the lesser magics contained in the previous book before you can learn what this book contains.</p>
+                                            <p class="text-center">Go read the other book and try again.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-5">
+                                        <button type="button" @click="missingKnowledge = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                            <span class="sr-only">Close</span>
+                                            <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+<!-- insufficient intelligence for magic book equipping message -->
+            <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
+                    <transition 
+                        enter-active-class="transform ease-out duration-300 transition" 
+                        enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" 
+                        enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" 
+                        leave-active-class="transition ease-in duration-100" 
+                        leave-from-class="opacity-100" 
+                        leave-to-class="opacity-0"
+                    >
+                        <div v-if="bookshow" class="pointer-events-auto w-72 overflow-hidden rounded-lg bg-teal-400  shadow-lg ring-1 ring-black ring-opacity-30 ">
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <div>
+                                            <p class="text-center text-xl font-semibold text-gray-900 pb-3">Sorry, no.</p>
+                                            <p class="text-center">Looks like you don't have sufficient intelligence ({{ chosenItem.intelUnlock }}) to learn the spell contained in this book.</p>
+                                            <p class="text-center">Go get yourself some learning and try again.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-5">
+                                        <button type="button" @click="bookshow = false" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                            <span class="sr-only">Close</span>
+                                            <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
 <!-- unusable error message -->
             <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
                 <div class="flex w-2/3 pt-52 flex-col items-center space-y-4 sm:items-end">
@@ -168,10 +234,12 @@
 // if no inventory space messagges:
     const equipshow = ref(false)
     const spellshow = ref(false)
+    const bookshow = ref(false)
+    const missingKnowledge = ref(false)
 
 // becauses script items are limited to 5 on hand, 
 // and magic spells are only populated 1x at a time
-// i need to check spells inventory spaces before i equip items so that items don't collect
+// i need to check spells inventory spaces before i equip items so that items don't collect or just vanish
     function checkInventory(id) {
         if(id == undefined) {
             console.log('chosen ID = ' + id);
@@ -185,79 +253,112 @@
         } else if (chosenItem.value.itemSlot === 'player_F1_spell') {
             if (playerStore.playerEquipped.player_F1_spell[0].id != 'F1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_F2_spell') {
             if (playerStore.playerEquipped.player_F2_spell[0].id != 'F2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_F3_spell') {
             if (playerStore.playerEquipped.player_F3_spell[0].id != 'F3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } else if (chosenItem.value.itemSlot === 'player_W1_spell') {
             if (playerStore.playerEquipped.player_W1_spell[0].id != 'W1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_W2_spell') {
             if (playerStore.playerEquipped.player_W2_spell[0].id != 'W2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_W3_spell') {
             if (playerStore.playerEquipped.player_W3_spell[0].id != 'W3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } else if (chosenItem.value.itemSlot === 'player_E1_spell') {
             if (playerStore.playerEquipped.player_E1_spell[0].id != 'E1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_E2_spell') {
             if (playerStore.playerEquipped.player_E2_spell[0].id != 'E2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_E3_spell') {
             if (playerStore.playerEquipped.player_E3_spell[0].id != 'E3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } else if (chosenItem.value.itemSlot === 'player_A1_spell') {
             if (playerStore.playerEquipped.player_A1_spell[0].id != 'A1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_A2_spell') {
             if (playerStore.playerEquipped.player_A2_spell[0].id != 'A2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_A3_spell') {
             if (playerStore.playerEquipped.player_A3_spell[0].id != 'A3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } else if (chosenItem.value.itemSlot === 'player_D1_spell') {
             if (playerStore.playerEquipped.player_D1_spell[0].id != 'D1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_D2_spell') {
             if (playerStore.playerEquipped.player_D2_spell[0].id != 'D2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_D3_spell') {
             if (playerStore.playerEquipped.player_D3_spell[0].id != 'D3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } else if (chosenItem.value.itemSlot === 'player_L1_spell') {
             if (playerStore.playerEquipped.player_L1_spell[0].id != 'L1_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_L2_spell') {
             if (playerStore.playerEquipped.player_L2_spell[0].id != 'L2_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkIntelligence())
         } else if (chosenItem.value.itemSlot === 'player_L3_spell') {
             if (playerStore.playerEquipped.player_L3_spell[0].id != 'L3_spell') {
                 spellshow.value = true;
-            } else (equipItem())
+            } else (checkKnowledge())
         } 
         else (equipItem())
     }
-    
+    function checkIntelligence() {
+        if (chosenItem.value.intelUnlock > playerStore.playerIntelligence) {
+            bookshow.value = true;
+        } else (equipItem())
+    }    
+    function checkKnowledge() {
+        if (chosenItem.value.itemSlot === 'player_F3_spell') {
+            if (playerStore.playerEquipped.player_F2_spell[0].id === 'F2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else if (chosenItem.value.itemSlot === 'player_W3_spell') {
+            if (playerStore.playerEquipped.player_W2_spell[0].id === 'W2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else if (chosenItem.value.itemSlot === 'player_E3_spell') {
+            if (playerStore.playerEquipped.player_E2_spell[0].id === 'E2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else if (chosenItem.value.itemSlot === 'player_A3_spell') {
+            if (playerStore.playerEquipped.player_A2_spell[0].id === 'A2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else if (chosenItem.value.itemSlot === 'player_D3_spell') {
+            if (playerStore.playerEquipped.player_D2_spell[0].id === 'D2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else if (chosenItem.value.itemSlot === 'player_L3_spell') {
+            if (playerStore.playerEquipped.player_L2_spell[0].id === 'L2_spell') {
+                missingKnowledge.value = true;
+            } else (checkIntelligence())
+        } else (equipItem())
+    } 
+
+
 
 // to move an item from player inventory to player equipped
 // activates message if item is unequippable (based on itemSlot value)
@@ -587,14 +688,14 @@
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             else if (chosenItem.value.itemUse === 'multi') {
-                playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+                playerStore.playerHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
-                playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
+                playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
                 playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
 
-                playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
+                playerStore.playerMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
-                playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
+                playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);

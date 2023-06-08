@@ -22,8 +22,8 @@ export const useMonsterStore =
             generateMonster(val) {
                 // val = 10;
                 // val = 25;
-                // val = 50;
-                val = 90;
+                val = 50;
+                // val = 90;
                 // val = this.getRandomValue(1, 100);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
