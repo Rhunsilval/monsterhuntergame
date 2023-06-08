@@ -38,10 +38,10 @@ export const usePlayerStore =
             tempStrengthBonus: 0,   // from potions etc
             playerStrength: 1,
 
-            playerBaseIntelligence: 1,
+            playerBaseIntelligence: 100,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
-            playerIntelligence: 1, // total intel level including all bonuses from items
+            playerIntelligence: 100, // total intel level including all bonuses from items
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
@@ -693,9 +693,10 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].life 
                 );
             this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
-            this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            // this.playerHealth = (this.playerBaseHealth + this.healthBonus);
+            this.playerHealth = (this.playerHealth + this.healthBonus);
             },
-            getExtraMana() {
+            getExtraMana() { 
                 this.manaBonus = 
                 (
                     this.playerEquipped.player_helm[0].mana
@@ -710,7 +711,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].mana 
                 );
             this.playerStartingMana = (this.playerBaseStartingMana + this.manaBonus);
-            this.playerMana = (this.playerBaseMana + this.manaBonus);
+            this.playerMana = (this.playerMana + this.manaBonus);
             },
             getIntelligenceValues() {
                 this.intelligenceBonus = 

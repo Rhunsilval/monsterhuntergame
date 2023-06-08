@@ -688,19 +688,15 @@
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             else if (chosenItem.value.itemUse === 'multi') {
-                playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
-                // playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
-                playerStore.playerBaseHealth = playerStore.playerHealth;
-                playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
-                // playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
-                playerStore.playerBaseStartingHealth = playerStore.playerStartingHealth;
+                playerStore.playerHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+                playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
 
-                playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
-                // playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
-                playerStore.playerBaseMana = playerStore.playerMana;
-                playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
-                // playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
-                playerStore.playerBaseStartingMana = playerStore.playerStartingMana;
+                playerStore.playerMana = (playerStore.playerBaseMana + chosenItem.value.mana);
+                playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
+                playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);

@@ -88,6 +88,11 @@
       lootVisible.value = true;
     } 
 
+// even though losing/draws don't return me to MonsterHunter page where the code lives,
+// it seems to work anyway to reset all player variables
+// and it isn't throwing any errors?  
+// perhaps because the fight is happening on monsterhunter and just being rendered here
+// so the code actually does pass through that page before routing to wherever it's going?
     function emitLootCollected() {
       lootAvailable.value = false;
       lootVisible.value = false;
