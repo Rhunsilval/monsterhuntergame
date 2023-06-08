@@ -38,10 +38,10 @@ export const usePlayerStore =
             tempStrengthBonus: 0,   // from potions etc
             playerStrength: 1,
 
-            playerBaseIntelligence: 10,
+            playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
-            playerIntelligence: 10, // total intel level including all bonuses from items
+            playerIntelligence: 1, // total intel level including all bonuses from items
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats

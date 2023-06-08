@@ -107,6 +107,11 @@
               </div>
             
 <!-- found monsters -->
+              <div v-if="cantUse" class="border border-black rounded-lg w-48 ml-14 px-3 py-3 bg-red-800 font-semibold text-white"> 
+                <button @click="cantUse = false">
+                  <p>You lack the intelligence necessary to execute this spell.</p>
+                </button>
+              </div>
               <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 py-16">
               
                 <div class="col-span-2 px-5"> 
@@ -117,7 +122,7 @@
                     @emit-special-attack="specialAttackMonster"
                     @emit-heal-player="healPlayer"
                     @emit-use-script="useScript"
-                    @emit-use-spell="useSpell"
+                    @emit-use-spell="checkIntelligence"
                   ></monster-fighter>
                 </div>
 
@@ -444,11 +449,99 @@
   }
 
 // attack using a spell
+// check intelligence before executing
+  const cantUse = ref(false)
+  const spellId = ref('')
+  function checkIntelligence(id) {
+    if (id === 'magic_scroll_1') {
+      if (playerStore.playerEquipped.player_F1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_1') {
+      if (playerStore.playerEquipped.player_F2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_2') {
+      if (playerStore.playerEquipped.player_F3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_scroll_2') {
+      if (playerStore.playerEquipped.player_W1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_3') {
+      if (playerStore.playerEquipped.player_W2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_4') {
+      if (playerStore.playerEquipped.player_W3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_scroll_3') {
+      if (playerStore.playerEquipped.player_E1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_5') {
+      if (playerStore.playerEquipped.player_E2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_6') {
+      if (playerStore.playerEquipped.player_E3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_scroll_4') {
+      if (playerStore.playerEquipped.player_A1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_7') {
+      if (playerStore.playerEquipped.player_A2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_8') {
+      if (playerStore.playerEquipped.player_A3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_scroll_5') {
+      if (playerStore.playerEquipped.player_D1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_9') {
+      if (playerStore.playerEquipped.player_D2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_10') {
+      if (playerStore.playerEquipped.player_D3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_scroll_6') {
+      if (playerStore.playerEquipped.player_L1_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_11') {
+      if (playerStore.playerEquipped.player_L2_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    } else if (id === 'magic_book_12') {
+      if (playerStore.playerEquipped.player_L3_spell[0].intelUnlock > playerStore.playerIntelligence) {
+        cantUse.value = true;
+      } else (spellId.value = id, useSpell())
+    }
+    // even if player can't execute the spell, monster still hits
+    // doesn't count as a round for the player, but does for the monster
+    monsterRound.value = monsterRound.value + 1;
+    attackPlayer();
+    if (playerStore.playerHealth < 0) {
+      playerStore.playerHealth = 0;
+    } else {
+      playerStore.playerHealth
+    }
+  }
 // tried writing this more efficiently using item values ... didn't work yet
-// this is ugly code - but it works
-  function useSpell(id) {
+// this is ugly code - but it works  
+  function useSpell() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
+    let id = spellId.value;
     if (id === 'magic_scroll_1') {
       if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (20 + 20);

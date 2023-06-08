@@ -1667,7 +1667,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     mana: 0,
-                    intelligence: 0,
+                    intelligence: 30,
                     price: 500,
                     unlocksAt: 1,
                     imageSrc: require('../assets/images/village_oddities/Oddities_enchanted_ring_1.png'),
