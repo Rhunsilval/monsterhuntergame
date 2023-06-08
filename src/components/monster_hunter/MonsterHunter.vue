@@ -112,6 +112,11 @@
                   <p>You lack the intelligence necessary to execute this spell.</p>
                 </button>
               </div>
+              <div v-if="outOfMana" class="border border-black rounded-lg w-48 ml-80 px-3 py-3 bg-green-400 font-semibold text-white"> 
+                <button @click="outOfMana = false">
+                  <p>You don't have enough mana to execute that spell!</p>
+                </button>
+              </div>
               <div v-if="monsterStore.monsterFound" class="grid grid-cols-3 gap-16 items-center mb-28 py-16">
               
                 <div class="col-span-2 px-5"> 
@@ -120,7 +125,7 @@
                     @emit-attack-monster="attackMonster"
                     @emit-run-away="runAway"
                     @emit-special-attack="specialAttackMonster"
-                    @emit-heal-player="healPlayer"
+                    @emit-heal-player="checkHealingMana"
                     @emit-use-script="useScript"
                     @emit-use-spell="checkIntelligence"
                   ></monster-fighter>
@@ -944,8 +949,6 @@
     specialAttackAvailable.value = false;
   }
 
-
-
 // monster strikes back
   function attackPlayer() {
     const attackValue = monsterStore.getMonsterHitAbility();
@@ -958,6 +961,13 @@
   }
 
 // player healing
+// uses mana to execute - if no mana, no healing
+  const outOfMana = ref(false)
+  function checkHealingMana() {
+    if (playerStore.playerMana === 0) {
+      outOfMana.value = true;
+    } else (healPlayer())
+  }
   function healPlayer() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
@@ -967,6 +977,13 @@
     } else {
       playerStore.playerHealth += healValue;
     }
+    // const manaUse = getRandomValue(1,5);
+    const manaUse = 80;
+    if (playerStore.playerMana - manaUse < 0) {
+      playerStore.playerMana = 0;
+    } else (
+      playerStore.playerMana = playerStore.playerMana - manaUse
+    )
     addLogEntry('player', 'heals', healValue);
     attackPlayer();
     if (playerStore.playerHealth < 0) {
