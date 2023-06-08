@@ -238,7 +238,6 @@
     monsterStore.monsterName = '';
     monsterStore.monsterHealth = null;
     monsterStore.monsterStartingHealth = null;
-    // const attackValue = getRandomValue(1, 10);
     const attackEffect = ref(Math.ceil(attackValue - ((playerStore.playerDefense *.1) + playerStore.playerStrength)))//adjusting attack power for available player defense/strength
     if (attackEffect.value < 0) {
       attackEffect.value = 0;
@@ -250,6 +249,136 @@
     currentRound.value = 0;
     monsterRound.value = 0;
     monsterStore.battleLog = [];
+    // remove any activated scrolls 
+    playerStore.playerEquipped.player_F1_spell.splice(0);
+    playerStore.playerEquipped.player_F1_spell.push(
+        {
+            id: 'F1_spell',
+            itemSlot: 'player_F1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/fire.png'),
+        },
+    );
+    playerStore.playerEquipped.player_W1_spell.splice(0);
+    playerStore.playerEquipped.player_W1_spell.push(
+        {
+            id: 'W1_spell',
+            itemSlot: 'player_W1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/water.png'),
+        },
+    );
+    playerStore.playerEquipped.player_E1_spell.splice(0);
+    playerStore.playerEquipped.player_E1_spell.push(
+        {
+            id: 'E1_spell',
+            itemSlot: 'player_E1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/earth.png'),
+        },
+    );
+    playerStore.playerEquipped.player_A1_spell.splice(0);
+    playerStore.playerEquipped.player_A1_spell.push(
+        {
+            id: 'A1_spell',
+            itemSlot: 'player_A1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/air.png'),
+        },
+    );
+    playerStore.playerEquipped.player_D1_spell.splice(0);
+    playerStore.playerEquipped.player_D1_spell.push(
+        {
+            id: 'D1_spell',
+            itemSlot: 'player_D1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/dark.png'),
+        },
+    );
+    playerStore.playerEquipped.player_L1_spell.splice(0);
+    playerStore.playerEquipped.player_L1_spell.push(
+        {
+            id: 'L1_spell',
+            itemSlot: 'player_L1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/light.png'),
+        },
+    );
+    // remove any activated potions
+    playerStore.tempAttackBonus = 0;
+    playerStore.getAttackValues();
+    playerStore.tempDefenseBonus = 0;
+    playerStore.getDefenseValues();
+    playerStore.tempStrengthBonus = 0;
+    playerStore.getStrengthValues();
+    playerStore.tempIntelligenceBonus = 0;
+    playerStore.getIntelligenceValues();
   }
 
   function getMonsterMap() {
