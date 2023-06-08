@@ -1667,7 +1667,7 @@ export const useShopStore =
                     strength: 0,
                     life: 0,
                     mana: 0,
-                    intelligence: 30,
+                    intelligence: 0,
                     price: 500,
                     unlocksAt: 1,
                     imageSrc: require('../assets/images/village_oddities/Oddities_enchanted_ring_1.png'),
@@ -2748,7 +2748,6 @@ export const useShopStore =
         actions: {
             getUniqueID() {  //trying to get unique ids for items in shop ... still not working.  executes once when store is created, not each time an item is sold
                 this.id = (this.id + Math.ceil(Math.random()*1000000));
-            },
-            
+            },            
         }
     })

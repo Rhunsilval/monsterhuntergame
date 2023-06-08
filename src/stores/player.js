@@ -8,11 +8,10 @@ export const usePlayerStore =
             coinOnHand: 100000,            
 
             playerStartingHealth: 100,      // what renders on screen
-            playerBaseStartingHealth: 100,  // for temporary results
+            playerBaseStartingHealth: 100,  // for calculating temporary results
             playerHealth: 100,              // on screen
-            playerBaseHealth: 100,          // for temporary results
+            playerBaseHealth: 100,          // for calculating temporary results
             healthBonus: 0,         // from equipped items
-            // tempHealthBonus: 0,     // from potions etc - needed?
             healthPerSec: .1,       // Fortitude - how fast player heals
 
             playerStartingMana: 100,
@@ -20,7 +19,6 @@ export const usePlayerStore =
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
-            //tempManaBonus: 0,       // from potions,etc - needed?
             manaPerSec: .1,         // how fast player restores mana
             
             playerBaseAttack: 1,
@@ -38,10 +36,10 @@ export const usePlayerStore =
             tempStrengthBonus: 0,   // from potions etc
             playerStrength: 1,
 
-            playerBaseIntelligence: 100,
+            playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
-            playerIntelligence: 100, // total intel level including all bonuses from items
+            playerIntelligence: 1, // total intel level including all bonuses from items
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
