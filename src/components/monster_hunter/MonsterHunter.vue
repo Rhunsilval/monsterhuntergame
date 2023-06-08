@@ -461,75 +461,75 @@
     if (id === 'magic_scroll_1') {
       if (playerStore.playerEquipped.player_F1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_1') {
       if (playerStore.playerEquipped.player_F2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_2') {
       if (playerStore.playerEquipped.player_F3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_2') {
       if (playerStore.playerEquipped.player_W1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_3') {
       if (playerStore.playerEquipped.player_W2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_4') {
       if (playerStore.playerEquipped.player_W3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_3') {
       if (playerStore.playerEquipped.player_E1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_5') {
       if (playerStore.playerEquipped.player_E2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_6') {
       if (playerStore.playerEquipped.player_E3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_4') {
       if (playerStore.playerEquipped.player_A1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_7') {
       if (playerStore.playerEquipped.player_A2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_8') {
       if (playerStore.playerEquipped.player_A3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_5') {
       if (playerStore.playerEquipped.player_D1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_9') {
       if (playerStore.playerEquipped.player_D2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_10') {
       if (playerStore.playerEquipped.player_D3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_6') {
       if (playerStore.playerEquipped.player_L1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_11') {
       if (playerStore.playerEquipped.player_L2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_12') {
       if (playerStore.playerEquipped.player_L3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
-      } else (spellId.value = id, useSpell())
+      } else (spellId.value = id, checkSpellMana())
     }
     // even if player can't execute the spell, monster still hits
     // doesn't count as a round for the player, but does for the monster
@@ -540,6 +540,14 @@
     } else {
       playerStore.playerHealth
     }
+  }
+// check mana levels - 
+// right now, player can execute even a high mana spell with even 1 mana left
+// i need to fix this once i figure out the logic of how - since execute and mana use levels are in the same useSpell code right now
+  function checkSpellMana() {
+    if (playerStore.playerMana === 0) {
+      outOfMana.value = true;
+    } else (useSpell())
   }
 // tried writing this more efficiently using item values ... didn't work yet
 // this is ugly code - but it works  
@@ -911,6 +919,9 @@
     playerStore.levelUp();    
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= magicAttackValue.value));
     addLogEntry('player', 'attacks', magicAttackValue.value, monsterisHit);
+    if (playerStore.playerMana < 0 ) {
+      playerStore.playerMana = 0;
+    }
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
