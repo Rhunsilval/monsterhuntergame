@@ -14,8 +14,10 @@
         <div class="flex justify-center">
             <div class="text-center w-1/2 bg-white bg-opacity-70 flex justify-center">
                 <div class="pt-8 pb-24 ">
-                    <button @click="startHunt()" type="button" class="my-4 px-16 pt-16 pb-28  w-96 h-16 bg-[#305c79] hover:bg-blue-200 hover:text-black border border-slate-800 rounded-2xl font-semibold font-serif text-white text-2xl">
+                    <button v-if="noHealth === false" @click="checkLife()" type="button" class="my-4 px-16 pt-16 pb-28  w-96 h-16 bg-[#305c79] hover:bg-blue-200 hover:text-black border border-slate-800 rounded-2xl font-semibold font-serif text-white text-2xl">
                       Hunt for Monsters</button>        
+                    <button v-if="noHealth" type="button" class="my-4 px-16 pt-10 pb-36 w-96 h-16 bg-[#305c79] hover:bg-blue-200 hover:text-black border border-slate-800 rounded-2xl font-semibold font-serif text-white text-2xl">
+                      You're not healthy enough to be hunting right now.</button>        
 
                     <br/>
                     <router-link :to="'/map'" type="button" class="my-4 px-16 pt-16 pb-28 w-96 h-16 bg-[#305c79] hover:bg-blue-200 hover:text-black border border-slate-800 rounded-2xl font-semibold font-serif text-white text-2xl">
@@ -197,6 +199,12 @@
 
 // initiate the hunt  
   const startGame = ref(false);
+  const noHealth = ref(false);
+  function checkLife() {
+    if (playerStore.playerHealth === 0) {
+      noHealth.value = true;
+    } else (startHunt())
+  }
   function startHunt() {
     findMonster();
     startGame.value = true;
@@ -584,90 +592,208 @@
 
 // attack using a spell
 // check intelligence before executing
+// even if player can't execute the spell, monster still hits
+// doesn't count as a round for the player, but does for the monster  
   const cantUse = ref(false)
   const spellId = ref('')
   function checkIntelligence(id) {
     if (id === 'magic_scroll_1') {
       if (playerStore.playerEquipped.player_F1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_1') {
       if (playerStore.playerEquipped.player_F2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_2') {
       if (playerStore.playerEquipped.player_F3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_2') {
       if (playerStore.playerEquipped.player_W1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_3') {
       if (playerStore.playerEquipped.player_W2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_4') {
       if (playerStore.playerEquipped.player_W3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_3') {
       if (playerStore.playerEquipped.player_E1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_5') {
       if (playerStore.playerEquipped.player_E2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_6') {
       if (playerStore.playerEquipped.player_E3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_4') {
       if (playerStore.playerEquipped.player_A1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_7') {
       if (playerStore.playerEquipped.player_A2_spell[0].intelUnlock > playerStore.playerIntelligence) {
-        cantUse.value = true;
+        cantUse.value = true;monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_8') {
       if (playerStore.playerEquipped.player_A3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_5') {
       if (playerStore.playerEquipped.player_D1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_9') {
       if (playerStore.playerEquipped.player_D2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_10') {
       if (playerStore.playerEquipped.player_D3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_6') {
       if (playerStore.playerEquipped.player_L1_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_11') {
       if (playerStore.playerEquipped.player_L2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_12') {
       if (playerStore.playerEquipped.player_L3_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;
+        monsterRound.value = monsterRound.value + 1;
+        attackPlayer();
+        if (playerStore.playerHealth < 0) {
+          playerStore.playerHealth = 0;
+        } else {
+          playerStore.playerHealth
+        }
       } else (spellId.value = id, checkSpellMana())
-    }
-    // even if player can't execute the spell, monster still hits
-    // doesn't count as a round for the player, but does for the monster
-    monsterRound.value = monsterRound.value + 1;
-    attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
-    } else {
-      playerStore.playerHealth
     }
   }
 // check mana levels - 
@@ -1193,6 +1319,136 @@
     currentRound.value = 0; 
     monsterRound.value = 0;
     monsterStore.battleLog = [];
+    // remove any activated scrolls 
+    playerStore.playerEquipped.player_F1_spell.splice(0);
+    playerStore.playerEquipped.player_F1_spell.push(
+        {
+            id: 'F1_spell',
+            itemSlot: 'player_F1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/fire.png'),
+        },
+    );
+    playerStore.playerEquipped.player_W1_spell.splice(0);
+    playerStore.playerEquipped.player_W1_spell.push(
+        {
+            id: 'W1_spell',
+            itemSlot: 'player_W1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/water.png'),
+        },
+    );
+    playerStore.playerEquipped.player_E1_spell.splice(0);
+    playerStore.playerEquipped.player_E1_spell.push(
+        {
+            id: 'E1_spell',
+            itemSlot: 'player_E1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/earth.png'),
+        },
+    );
+    playerStore.playerEquipped.player_A1_spell.splice(0);
+    playerStore.playerEquipped.player_A1_spell.push(
+        {
+            id: 'A1_spell',
+            itemSlot: 'player_A1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/air.png'),
+        },
+    );
+    playerStore.playerEquipped.player_D1_spell.splice(0);
+    playerStore.playerEquipped.player_D1_spell.push(
+        {
+            id: 'D1_spell',
+            itemSlot: 'player_D1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/dark.png'),
+        },
+    );
+    playerStore.playerEquipped.player_L1_spell.splice(0);
+    playerStore.playerEquipped.player_L1_spell.push(
+        {
+            id: 'L1_spell',
+            itemSlot: 'player_L1_spell',
+            itemShop: '',
+            name: '',
+            description: '',
+            value: '',
+            magicAttackValue: null,
+            bonusAttackValue: null,
+            antiAttackValue: null,
+            life: null,
+            mana: null,
+            intelUnlock: null,
+            price: '',
+            imageSrc: '',
+            imageSrc2: require('../../assets/images/placeholders/light.png'),
+        },
+    );
+    // remove any activated potions
+    playerStore.tempAttackBonus = 0;
+    playerStore.getAttackValues();
+    playerStore.tempDefenseBonus = 0;
+    playerStore.getDefenseValues();
+    playerStore.tempStrengthBonus = 0;
+    playerStore.getStrengthValues();
+    playerStore.tempIntelligenceBonus = 0;
+    playerStore.getIntelligenceValues();
   }
 
 </script>
