@@ -588,14 +588,18 @@
             }
             else if (chosenItem.value.itemUse === 'multi') {
                 playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
-                playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                // playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                playerStore.playerBaseHealth = playerStore.playerHealth;
                 playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
-                playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+                // playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+                playerStore.playerBaseStartingHealth = playerStore.playerStartingHealth;
 
                 playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
-                playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
+                // playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
+                playerStore.playerBaseMana = playerStore.playerMana;
                 playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
-                playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                // playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                playerStore.playerBaseStartingMana = playerStore.playerStartingMana;
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
