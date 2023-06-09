@@ -187,8 +187,7 @@ export const useLootStore =
             },
 
             generateLoot() {
-    // talismans
-        // desert monsters
+// desert monsters
                 if (this.monsterId === 'desert_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -257,7 +256,7 @@ export const useLootStore =
                         )
                     }
                 } 
-        // forest monsters
+// forest monsters
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -330,7 +329,7 @@ export const useLootStore =
                         )
                     }
                 }
-        // grassland monsters
+// grassland monsters
                 else if (this.monsterId === 'grassland_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -403,7 +402,7 @@ export const useLootStore =
                         )
                     }
                 } 
-        // jungle monsters
+// jungle monsters
                 else if (this.monsterId === 'jungle_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -472,7 +471,7 @@ export const useLootStore =
                         )
                     }
                 } 
-        // marshes monsters
+// marshes monsters
                 else if (this.monsterId === 'marshes_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -545,7 +544,7 @@ export const useLootStore =
                         )
                     }
                 } 
-        // mountain monsters
+// mountain monsters
                 else if (this.monsterId === 'mountain_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
@@ -570,7 +569,7 @@ export const useLootStore =
                         this.lootList.push(
                             {
                                 id: this.getRandomValue(1, 100000),
-                                itemSlot: 'null',
+                                itemSlot: 'player_helm',
                                 itemUse: 'null',
                                 itesmShop: 'null',
                                 name: 'Were Horns',
@@ -622,7 +621,7 @@ export const useLootStore =
                         )
                     }
                 } 
-        // swamp monsters
+// swamp monsters
                 else if (this.monsterId === 'swamp_monster1') {
                     const val = this.getRandomValue(1,3);
                     if (val <= 1) {
