@@ -256,6 +256,213 @@ export const useLootStore =
                         )
                     }
                 } 
+                else if (this.monsterId === 'desert_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Sandstone Scales',
+                                description:"Hard as a rock!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Stone Teeth',
+                                description:"What does a creature eat with teeth like these?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getDesertGems();
+                    }
+                } 
+                else if (this.monsterId === 'desert_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Basilisk Scales',
+                            description:"This would make a pretty pair of boots.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Basilisk Fangs',
+                                description:"Probably shouldn't touch those.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Basilisk Venom',
+                                description:"Hmm ... smells minty.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getDesertHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'desert_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Genie's Bottle",
+                            description:"This would look great on my bookshelf!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Golden Belt',
+                                description:"I think this is shining with more than just gold...",
+                                value: '?',
+                                attack: null,
+                                defense: 20,
+                                strength: null,
+                                life: 40,
+                                mana: 20,
+                                intelligence: null,
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Bottled Sandstorm',
+                                description:"It sounds angry.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getDesertGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getDesertHerbs();
+                    } else (this.getDesertGems())
+                } 
+                else if (this.monsterId === 'desert_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Phoenix Ashes",
+                            description:"Is it me, or are these ashes getting hotter?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Phoenix Feather",
+                            description:"It looks so soft and warm!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Phoenix Egg',
+                                description:"Huh - it's actually really cold to the touch?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Phoenix Talon',
+                                description:"Super sharp.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getDesertGems();
+                            this.getDesertGems();
+                        } else if (val2 <=2) {
+                            this.getDesertHerbs();
+                            this.getDesertHerbs();
+                        } else (this.getDesertGems(), this.getDesertHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
 // forest monsters
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -690,7 +897,612 @@ export const useLootStore =
                     }
                 } 
 
-            }
-        }
+            },
 
+            getDesertGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Fire Gem',
+                            description: "Tantalizingly shiny, but hot to the touch.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/desert/desert_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Sandstone Gem',
+                            description: "Who knew sand could be so pretty?",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/desert/desert_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Ruby',
+                            description: "It's so red!",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/desert/desert_gem_3.png')
+                        }
+                    )
+                }
+            },
+
+            getDesertHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Resurrection Flower',
+                            description: "It only looks like it's dead.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/desert/desert_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Desert Sage',
+                            description: "A very useful plant",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/desert/desert_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Prickle Plant',
+                            description: "It sounds like there's water inside, but how do you get to it?",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/desert/desert_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getPotionDrop() {
+                const val = this.getRandomValue(1, 25);
+                if (val <=1) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'healing',
+                            itemShop: 'Apothecary',
+                            name: 'Basic Healing Draught',                    
+                            description: 'A simple brew that will perk you up a bit.',
+                            value: '+10 health',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 10,
+                            mana: 0, 
+                            intelligence: 0,
+                            price: 50,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_1.png'),                    
+                        },
+                    )
+                } else if (val <=2) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'healing',
+                            itemShop: 'Apothecary',
+                            name: 'Concentrated Healing Draught',                    
+                            description: "A strong spirit that will reinvigorate you if you're feeling down.",
+                            value: '+25 health',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 25,
+                            mana: 0, 
+                            intelligence: 0,
+                            price: 150,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_2.png'),                    
+                        }
+                    )
+                } else if (val <=3) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'healing',
+                            itemShop: 'Apothecary',
+                            name: 'Greater Healing Draught',                    
+                            description: 'A potent cordial that will get you feeling much better',
+                            value: '+50 health',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 50,
+                            mana: 0, 
+                            intelligence: 0,
+                            price: 300,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_3.png'),                    
+                        },
+                    )
+                } else if (val <=4) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'healing',
+                            itemShop: 'Apothecary',
+                            name: 'Blessed Healing Draught',                    
+                            description: 'The strongest healing brew I make.  For most adventurers, it offers full healing.',
+                            value: '+200 health',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 200,
+                            mana: 0, 
+                            intelligence: 0,
+                            price: 1000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_4.png'),                    
+                        },
+                    )
+                } else if (val<=5) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'attacking',
+                            itesmShop: 'Apothecary',
+                            name: 'Energizing Tincure',
+                            description:"Rub this in and you'll instantly feel the effects. Lasts for one battle",
+                            value: '+5 attack',
+                            attack: 5,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 500,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_1.png'),                    
+                        },
+                    )
+                } else if (val<=6) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'attacking',
+                            itesmShop: 'Apothecary',
+                            name: 'Tincure of Motivation',
+                            description:"Apply this potion and get what you need to succeed.  Lasts for one battle.",
+                            value: '+10 attack',
+                            attack: 10,
+                            defense: 0, 
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_2.png'),                    
+                        },
+                    )
+                } else if (val<=7) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'attacking',
+                            itesmShop: 'Apothecary',
+                            name: 'Tincure of Inspiration',
+                            description:"When applied, you'll aspire to greatness. Lasts for one battle",
+                            value: '+25 attack',
+                            attack: 25,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1500,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_3.png'),                    
+                        },
+                    )
+                } else if (val<=8) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'attack',
+                            itesmShop: 'Apothecary',
+                            name: 'Tincure of Vigor',
+                            description:"Slather this on to gain a new energy toward life.  Effects are permanent!",
+                            value: '+1 attack',
+                            attack: 1,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 2000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_4.png'),                    
+                        },
+                    )
+                } else if (val<=9) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'attack',
+                            itesmShop: 'Apothecary',
+                            name: 'Tincure of Ruthlessness',
+                            description:"Douse yourself with this and see your enemies flee.  Effects are permanent!",
+                            value: '+5 attack',
+                            attack: 5,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 5000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_5.png'),                    
+                        },
+                    )
+                } else if (val<=10) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'defending',
+                            itemShop: 'Apothecary',
+                            name: 'Small Shot Potion',
+                            description:'Down this potion to gain a quick defense bonus.  Lasts for one battle.',
+                            value: '+5 defense',
+                            attack: 0,
+                            defense: 5,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 350,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_1.png'),                    
+                        },
+                    )
+                } else if (val<=11) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'defending',
+                            itemShop: 'Apothecary',
+                            name: "Defender's Doubleshot",
+                            description:'Drink this to gain a good bit of defense power.  Lasts for one battle.',
+                            value: '+15 defense',
+                            attack: 0,
+                            defense: 15,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_2.png'),                    
+                        },
+                    )
+                } else if (val<=12) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'defense',
+                            itemShop: 'Apothecary',
+                            name: "Defender's Potion",
+                            description:'Sip on this potion and gain a permanent defense bonus.',
+                            value: '+1 defense',
+                            attack: 0,
+                            defense: 1,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 2000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_3.png'),                    
+                        },
+                    )
+                } else if (val<=13) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'defense',
+                            itemShop: 'Apothecary',
+                            name: "Shell of Protection",
+                            description:'Savor this potion.  The effects are permanent!',
+                            value: '+5 defense',
+                            attack: 0,
+                            defense: 5,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 4000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_4.png'),                    
+                        },
+                    )
+                } else if (val<=14) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'strengthening',
+                            itemShop: 'Apothecary',
+                            name: 'Strength Potion',
+                            description:'Simple enough.  Drink this; get stronger.  Until you win your next battle, anyway.',
+                            value: '+3 strength',
+                            attack: 0,
+                            defense: 0,
+                            strength: 3,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 300,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_1.png'),                    
+                        },
+                    )
+                } else if (val<=15) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'strengthening',
+                            itemShop: 'Apothecary',
+                            name: 'Hardiness Potion',
+                            description:'Drink this and you can handle whatever comes!  Lasts for one battle.',
+                            value: '+8 strength',
+                            attack: 0,
+                            defense: 0,
+                            strength: 8,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_2.png'),                    
+                        },
+                    )
+                } else if (val<=16) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'strength',
+                            itemShop: 'Apothecary',
+                            name: 'Potion of Brawn',
+                            description:'This potion will permanently bulk you up!',
+                            value: '+1 strength',
+                            attack: 0,
+                            defense: 0,
+                            strength: 1,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1300,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_3.png'),                    
+                        },
+                    )
+                } else if (val<=17) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'strength',
+                            itemShop: 'Apothecary',
+                            name: 'Potion of Durability',
+                            description:'Give it a try and see how much harder you can hit!  Effects are permanent.',
+                            value: '+5 strength',
+                            attack: 0,
+                            defense: 0,
+                            strength: 5,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 2000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_4.png'),                    
+                        },
+                    )
+                } else if (val<=18) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'smart',
+                            itemShop: 'Oddities',
+                            name: 'Smarts Potion',                    
+                            description: "Sure, you could study hard to get smarter.  Or ... just take this potion!",
+                            value: '+3 intelligence',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0, 
+                            intelligence: 3,
+                            price: 4000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_oddities/Oddities_potion_1.png'),
+                        },
+                    )
+                } else if (val<=19) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'smart',
+                            itemShop: 'Oddities',
+                            name: 'Cleverness Potion',                    
+                            description: "Sure, you could study hard to get smarter.  Or ... just take this potion!",
+                            value: '+8 intelligence',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0, 
+                            intelligence: 8,
+                            price: 8000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_oddities/Oddities_potion_2.png'),
+                        },
+                    )
+                } else if (val<=20) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'smart',
+                            itemShop: 'Oddities',
+                            name: 'Genius Potion',                    
+                            description: "Sure, you could study hard to get smarter.  Or ... just take this potion!",
+                            value: '+17 intelligence',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0, 
+                            intelligence: 17,
+                            price: 11000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_oddities/Oddities_potion_3.png'),
+                        },
+                    )
+                } else if (val<=21) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'smart',
+                            itemShop: 'Oddities',
+                            name: 'Prodigy Potion',                    
+                            description: "Sure, you could study hard to get smarter.  Or ... just take this potion!",
+                            value: '+40 intelligence',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 0, 
+                            intelligence: 40,
+                            price: 24000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_oddities/Oddities_potion_4.png'),
+                        },
+                    )
+                } else if (val<=22) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'manaing',
+                            itemShop: 'Magic',
+                            name: "Lesser Mana potion",
+                            description: 'Drink this to recover from mana fatigue',
+                            value: '+5 mana',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 5,
+                            intelligence: 0,
+                            price: 200,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_magic/Magic_potion_1.png'),
+                        },
+                    )
+                } else if (val<=23) {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'manaing',
+                            itemShop: 'Magic',
+                            name: "Mana potion",
+                            description: 'Drink this to recover from mana fatigue',
+                            value: '+20 mana',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 20,
+                            intelligence: 0,
+                            price: 600,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_magic/Magic_potion_2.png'),
+                        },
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'null',
+                            itemUse: 'manaing',
+                            itemShop: 'Magic',
+                            name: "Greater Mana potion",
+                            description: 'Drink this to recover from mana fatigue',
+                            value: '+50 mana',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 50,
+                            intelligence: 0,
+                            price: 1000,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/village_magic/Magic_potion_3.png'),
+                        },
+                    )
+                }
+            }
+
+        }
     })
