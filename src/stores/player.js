@@ -21,20 +21,20 @@ export const usePlayerStore =
             manaBonus: 0,           // from equipped items
             manaPerSec: .1,         // how fast player restores mana
             
-            playerBaseAttack: 1,
+            playerBaseAttack: 100,
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
-            playerAttack: 1,
+            playerAttack: 100,
 
-            playerBaseDefense: 1,
+            playerBaseDefense: 100,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
-            playerDefense: 1,
+            playerDefense: 100,
 
-            playerBaseStrength: 1,
+            playerBaseStrength: 100,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
-            playerStrength: 1,
+            playerStrength: 100,
 
             playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
