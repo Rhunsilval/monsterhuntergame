@@ -3,7 +3,7 @@
         <div class="mx-auto py-3 px-3 pb-14 ">
             <h2 class="text-lg font-medium text-gray-900">You defeated <span class="font-bold text-xl"> {{ lootStore.monsterName }} </span>!</h2>
             <p class=""> You find: </p>
-            <div class="mt-6 grid grid-cols-3 gap-x-2 gap-y-9">
+            <div class="mt-6 grid grid-cols-3 gap-x-2 gap-y-12 ">
                 <div v-for="item in lootStore.lootCoins" :key="item.id" class="group relative">
                     <button @click="collectCoins">
                         <img :src="item.imageSrc" class="h-32 w-24 object-cover  object-center " />
@@ -25,7 +25,7 @@
                     </button>
                 </div>
             </div>
-            <div v-if="openError">
+            <div v-if="openError" class="mt-3">
                 <img src="../../assets/images/bagsfull.png" alt="" class="mt-8 rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                 <h1 class="font-semibold">Looks like you're full up</h1>
                 <p class="text-sm">There's no room left in your inventory.</p>

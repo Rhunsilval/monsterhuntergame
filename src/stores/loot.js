@@ -58,7 +58,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster4' ||
                     this.monsterId === 'swamp_monster4'
                     ) {
-                        const val = this.getRandomValue(50-150);
+                        const val = this.getRandomValue(50,150);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -77,7 +77,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster5' ||
                     this.monsterId === 'swamp_monster5'
                     ) {
-                        const val = this.getRandomValue(50-300);
+                        const val = this.getRandomValue(50,300);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -96,7 +96,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster6' ||
                     this.monsterId === 'swamp_monster6'
                     ) {
-                        const val = this.getRandomValue(150-400);
+                        const val = this.getRandomValue(150,400);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -115,7 +115,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster7' ||
                     this.monsterId === 'swamp_monster7'
                     ) {
-                        const val = this.getRandomValue(300-500);
+                        const val = this.getRandomValue(300,500);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -134,7 +134,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster8' ||
                     this.monsterId === 'swamp_monster8'
                     ) {
-                        const val = this.getRandomValue(400-600);
+                        const val = this.getRandomValue(400,600);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -153,7 +153,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster9' ||
                     this.monsterId === 'swamp_monster9'
                     ) {
-                        const val = this.getRandomValue(500-700);
+                        const val = this.getRandomValue(500,700);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -172,7 +172,7 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster10' ||
                     this.monsterId === 'swamp_monster10'
                     ) {
-                        const val = this.getRandomValue(700-10000);
+                        const val = this.getRandomValue(700,10000);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -182,8 +182,7 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/coins.png'),
                             }
                         )
-                }                   
-                    
+                } 
             },
 
             generateLoot() {
@@ -461,6 +460,269 @@ export const useLootStore =
                             this.getDesertHerbs();
                         } else (this.getDesertGems(), this.getDesertHerbs())
                     }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'desert_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Karkadaan Horn",
+                            description:"You'll put your eye out with that thing!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Karkadaan Hide",
+                            description:"It'd make good camouflage",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'horse_shoes',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Karkadaan shoes',
+                                description:"These appear sturdy ... and have an air of aggression about them?",
+                                value: '?',
+                                carryBonus: 100,
+                                attack: 10,
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Karkadaan Tail',
+                                description:"How is a tail sharp?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getDesertGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getDesertHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'desert_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Sandworm Steak",
+                            description:"Tender and juicy ... and also a bit gritty.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Sandworm Teeth",
+                            description:"What happens if it bites its tongue?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Digested Sand',
+                                description:"Disgusting",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Sandworm Hide',
+                                description:"No wonder this thing was so hard to kill!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/desert/desert_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getDesertHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itemShop: 'Blacksmith',
+                                name: 'Clawed Sickle',
+                                description: 'So gross, but also so sharp and fast!',
+                                value: '?',
+                                attack: 25,
+                                defense: 10,
+                                strength: 0,
+                                life: 0,
+                                mana: 30,
+                                intelligence: 8,
+                                price: 1800,
+                                unlocksAt: 1,
+                                imageSrc: require('../assets/images/desert/desert_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getDesertGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'desert_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith',
+                            name: "Fire Drake's Sword",
+                            description: 'Beautiful and powerful.',
+                            value: '?',
+                            attack: 50,
+                            defense: 30,
+                            strength: 10,
+                            life: 20,
+                            mana: 30,
+                            intelligence: 0,
+                            price: 1800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/desert/desert_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fire Drake Hide",
+                            description:"What wonderful armor this would make!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fire Drake Scale",
+                            description:"I guess scales and feathers really are a lot alike",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fire River Drake's Eye",
+                            description:"I think it's still looking at me ... ",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fire Drake Egg",
+                            description:"Why would anyone want to eat something like this?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/desert/desert_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getDesertGems();
+                    this.getDesertGems();
+                    this.getDesertGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Fire Drake's Amulet",
+                                description: "Who knew a dragon's nest would hide a treasure like this!",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 50,
+                                mana: 30,
+                                intelligence: 15,
+                                price: 600,
+                                unlocksAt: 1,
+                                imageSrc: require('../assets/images/desert/desert_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_armor',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Fire Drake's Robes",
+                                description: 'Ooh!  Stylish!  I wonder what they do?',
+                                value: '?',
+                                attack: 30,
+                                defense: 50,
+                                strength: 0,
+                                life: 0,
+                                mana: 50,
+                                intelligence: 15,
+                                price: 600,
+                                unlocksAt: 1,
+                                imageSrc: require('../assets/images/desert/desert_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getDesertHerbs();
+                    this.getDesertHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                     this.getPotionDrop();
                 } 
 // forest monsters
