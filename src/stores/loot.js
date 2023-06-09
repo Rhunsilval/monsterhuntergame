@@ -226,7 +226,7 @@ export const useLootStore =
                 } 
                 else if (this.monsterId === 'desert_monster3') {
                     const val = this.getRandomValue(1,3);
-                    if (val === 1) {
+                    if (val <= 1) {
                         this.lootList.push(
                             {
                                 id: this.getRandomValue(1, 100000),

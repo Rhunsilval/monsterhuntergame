@@ -1216,14 +1216,40 @@
   }
 
 // monster strikes back
+// if a player is wearing an amulet, the monster strike is weaker
   function attackPlayer() {
     const attackValue = monsterStore.getMonsterHitAbility();
+    getAmuletEffect();
     const attackEffect = ref(Math.ceil(attackValue - ((playerStore.playerDefense *.1) + playerStore.playerStrength)))
     if (attackEffect.value < 0) {
       attackEffect.value = 0;
     }
-    playerStore.playerHealth -= attackEffect.value;
-    addLogEntry('monster', 'attacks', attackValue, attackEffect.value);
+    const fullAttackEffect = ref(Math.ceil(attackEffect.value - (attackEffect.value * amuletEffect.value)))
+    playerStore.playerHealth -= fullAttackEffect.value;
+    addLogEntry('monster', 'attacks', attackValue, fullAttackEffect.value);
+  }
+
+  const amuletEffect = ref(0)
+  function getAmuletEffect() {
+    if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_1') {
+      if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
+        amuletEffect.value = .10;
+      }
+    } else if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_2') {
+      if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
+        amuletEffect.value = .10;
+      }
+    } else if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_3') {
+      if (props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle' || props.mapName === 'The Great Grass Sea') {
+        amuletEffect.value = .10;
+      }
+    } else if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_4') {
+      amuletEffect.value = .15;
+    } else if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_5') {
+      amuletEffect.value = .25;
+    } else if (playerStore.playerEquipped.player_necklace[0].id === 'magic_amulet_6') {
+      amuletEffect.value = .30;
+    }
   }
 
 // player healing

@@ -359,7 +359,6 @@
     } 
 
 
-
 // to move an item from player inventory to player equipped
 // activates message if item is unequippable (based on itemSlot value)
 // removes item from playerPacked/inventory array
