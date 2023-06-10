@@ -693,7 +693,6 @@ export const useLootStore =
                                 mana: 30,
                                 intelligence: 15,
                                 price: 600,
-                                unlocksAt: 1,
                                 imageSrc: require('../assets/images/desert/desert_monster_10_treasure6.png'), 
                             },
                         );
@@ -714,7 +713,6 @@ export const useLootStore =
                                 mana: 50,
                                 intelligence: 15,
                                 price: 600,
-                                unlocksAt: 1,
                                 imageSrc: require('../assets/images/desert/desert_monster_10_treasure7.png'), 
                             }
                         )
@@ -798,6 +796,514 @@ export const useLootStore =
                         )
                     }
                 }
+                else if (this.monsterId === 'forest_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Werewolf Pelt',
+                                description:"Surprisingly soft!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_helm',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Wolf Hood',
+                                description:"Looks fearsome.",
+                                value: '?',
+                                attack: 13,
+                                defense: 20,
+                                strength: 0,
+                                life: 0,
+                                mana: 0,
+                                intelligence: 15,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getForestGems();
+                    }
+                } 
+                else if (this.monsterId === 'forest_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Glowing Eyes',
+                            description:"Even dead, the eyes still glow!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Grim Owl Feather',
+                                description:"Would a feather as cold as ice keep a creature warm?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dark Energy',
+                                description:"Should I really be holding this?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getForestHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'forest_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Blessed Wreath",
+                            description:"Should I put it on?",
+                            value: '?',
+                            attack: 0,
+                            defense: 7,
+                            strength: 0,
+                            life: 14,
+                            mana: 14,
+                            intelligence: 14,
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'defense',
+                                itesmShop: 'null',
+                                name: "Guardian's Fruit",
+                                description:"So juicy!",
+                                value: '?',
+                                attack: 0,
+                                defense: 20,
+                                strength: 0,
+                                life: 0,
+                                mana: 0,
+                                intelligence: null,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Woodlands Staff',
+                                description:"It's really light!",
+                                value: '?',
+                                attack: 30,
+                                defense: 10,
+                                strength: 0,
+                                life: 30,
+                                mana: 30,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getForestGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getForestHerbs();
+                    } else (this.getForestGems())
+                } 
+                else if (this.monsterId === 'forest_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Vampire Ashes",
+                            description:"Do I even want to know what someone does with these?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_boots',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Dark Boots",
+                            description:"Sexy and supportive!",
+                            value: '?',
+                            attack: 30,
+                            defense: 50,
+                            strength: 8,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Vampiric Blade',
+                                description:"It's so sharp just looking at it makes me bleed!",
+                                value: '?',
+                                attack: 60,
+                                defense: 2,
+                                strength: 8,
+                                life: -12,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Fresh Blood',
+                                description:"Eew.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getForestGems();
+                            this.getForestGems();
+                        } else if (val2 <=2) {
+                            this.getForestHerbs();
+                            this.getForestHerbs();
+                        } else (this.getForestGems(), this.getForestHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'forest_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Nine Tails",
+                            description:"How does anything walk around with this dragging behind them?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Elegant Kimono",
+                            description:"Sure, it's pretty.  But how does it work in battle?",
+                            value: '?',
+                            attack: 0,
+                            defense: 65,
+                            strength: 0,
+                            life: 50,
+                            mana: 50,
+                            intelligence: 15,
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'multi',
+                                itesmShop: 'null',
+                                name: 'Kitsune Udon',
+                                description:"Guess I'm not the only one who walks around with bowls of soup.",
+                                value: '?',
+                                attack: 2,
+                                defense: 2,
+                                strength: 2,
+                                life: 2,
+                                mana: 2,
+                                intelligence: 2,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Mist of Confusion',
+                                description:"What is even happening anymore?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getForestGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getForestHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'forest_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Cursed chicken's Foot",
+                            description:"It doesn't look particularly cursed...",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Dark Feathered Cloak",
+                            description:"So cozy!",
+                            value: '?',
+                            attack: 0,
+                            defense: 28,
+                            strength: 3,
+                            life: -2,
+                            mana: 18,
+                            intelligence: 6,
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Crooked Staff',
+                                description:"Errr ... is it me or is this thing making noises?",
+                                value: '?',
+                                attack: 60,
+                                defense: 12,
+                                strength: 1,
+                                life: -10,
+                                mana: -10,
+                                intelligence: 13,
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dark Pot',
+                                description:"I don't even want to know what they cooked in this thing.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/forest/forest_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getForestHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Skull of the Innocent',
+                                description: "Don't be human!  Don't be human!  Don't be ... danggit!",
+                                value: '?',
+                                price: 1800,
+                                unlocksAt: 1,
+                                imageSrc: require('../assets/images/forest/forest_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getForestGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'forest_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "Forest God's Skull",
+                            description: 'I think the antlers are still growing.',
+                            value: '?',
+                            price: 1800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/forest/forest_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fallen Petals",
+                            description:"How do they smell fresh and rotten at the same time?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Forest God Pelt",
+                            description:"I can't imagine that anything made from this wouldn't be cursed.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Sparks of Dawn",
+                            description:"Shiny",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Fruit of Life",
+                            description:"Will this heal me or hurt me if I ate it?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/forest/forest_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getForestGems();
+                    this.getForestGems();
+                    this.getForestGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_helm',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Forest Crown",
+                                description: "Does wearing this make me ruler of the forest?",
+                                value: '?',
+                                attack: -2,
+                                defense: -2,
+                                strength: -2,
+                                life: 30,
+                                mana: 50,
+                                intelligence: 28,
+                                price: 600,
+                                imageSrc: require('../assets/images/forest/forest_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_armor',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Forest Cloak",
+                                description: 'Is green really my color?',
+                                value: '?',
+                                attack: 0,
+                                defense: 20,
+                                strength: 20,
+                                life: 20,
+                                mana: 20,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/forest/forest_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getForestHerbs();
+                    this.getForestHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
 // grassland monsters
                 else if (this.monsterId === 'grassland_monster1') {
                     const val = this.getRandomValue(1,3);
@@ -1209,6 +1715,54 @@ export const useLootStore =
                 }
             },
 
+            getForestGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Moss Gem',
+                            description: "What a strange texture.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/forest/forest_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Forest Gem',
+                            description: "What would bioluminescence in a stone be called?",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/forest/forest_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Emerald',
+                            description: "It's so green!",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/forest/forest_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -1252,6 +1806,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/desert/desert_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getForestHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Curly Fern',
+                            description: "Looks good enough to eat!",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/forest/forest_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Forest Ginseng',
+                            description: "Rare and invaluable",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/forest/forest_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Datura',
+                            description: "Not to be confused with its non-poisonous cousin",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/forest/forest_herb_3.png')
                         }
                     )
                 }
