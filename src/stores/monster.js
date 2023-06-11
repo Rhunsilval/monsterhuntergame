@@ -30,7 +30,7 @@ export const useMonsterStore =
                 // val = 94;  // level 8
                 // val = 99;  // level 9
                 val = 100  // level 10
-                // val = this.getRandomValue(1, 100);
+                // val = this.getRandomValue(1, 101);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
                 } else if (val <= 40 && this.monsterMap === 'Firesand Desert') {
@@ -169,7 +169,7 @@ export const useMonsterStore =
                     return this.monsterId = 'swamp_monster8';
                   } else if (val <= 99 && this.monsterMap === 'Noxus Swamp') {
                     return this.monsterId = 'swamp_monster9';
-                  } else if (val === 100 && this.monsterMap === 'Noxus Swamp') {
+                  } else if (val >= 100 && this.monsterMap === 'Noxus Swamp') {
                     return this.monsterId = 'swamp_monster10';
                   } else {
                     return this.monsterId = '';

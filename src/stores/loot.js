@@ -1437,11 +1437,11 @@ export const useLootStore =
                                 itemSlot: 'null',
                                 itemUse: 'null',
                                 itesmShop: 'null',
-                                name: 'Forest Gem',
+                                name: 'Gem of the Jungle',
                                 description:"Beautifully green and shiny!",
                                 value: '?',
                                 price: 1000,
-                                imageSrc: require('../assets/images/jungle/jungle_monster_3_treasure2.png'), 
+                                imageSrc: require('../assets/images/jungle/jungle_gem_1.png'), 
                             }
                         )
                     }
