@@ -1186,7 +1186,6 @@ export const useLootStore =
                                 description: "Don't be human!  Don't be human!  Don't be ... danggit!",
                                 value: '?',
                                 price: 1800,
-                                unlocksAt: 1,
                                 imageSrc: require('../assets/images/forest/forest_monster_9_treasure5.png'),
                               },
                         )
@@ -1342,8 +1341,8 @@ export const useLootStore =
                     } 
                 } 
                 else if (this.monsterId === 'grassland_monster3') {
-                    const val = this.getRandomValue(1,3);
-                    if (val === 1) {
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
                         this.lootList.push(
                             {
                                 id: this.getRandomValue(1, 100000),
@@ -1357,11 +1356,13 @@ export const useLootStore =
                                 defense: 8,
                                 strength: 0,
                                 life: 5,
+                                intelligence: 0,
+                                mana: 0,
                                 price: 700,
                                 imageSrc: require('../assets/images/grassland/grassland_monster_3_treasure.png'), 
                             },
                         );
-                    } else {
+                    } else if (val <=2) {
                         this.lootList.push(
                             {
                                 id: this.getRandomValue(1, 100000),
@@ -1375,7 +1376,507 @@ export const useLootStore =
                                 imageSrc: require('../assets/images/grassland/grassland_monster_3_treasure2.png'), 
                             }
                         )
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_armor',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Goblin-made armor',
+                                description:"It's not pretty, but oh my it is strong!",
+                                value: '?',
+                                attack: 4,
+                                defense: 13,
+                                strength: 1,
+                                life: 0,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 700,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_3_treasure3.png'), 
+                            },
+                        )
                     }
+                } 
+                else if (this.monsterId === 'grassland_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Barrows Silk',
+                                description:"Sticks to everything but itself",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Barrows Spider Eyes',
+                                description:"Every single one of them is still looking at me.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getGrasslandGems();
+                    }
+                } 
+                else if (this.monsterId === 'grassland_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Reaper Sword',
+                            description:"Something tells me the centaurs didn't use this to reap grass.",
+                            value: '?',
+                            attack: 13,
+                            defense: 0,
+                            strength: 0,
+                            life: 6,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_shield',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Reed Shield',
+                                description:"You wouldn't think grass would be very good at protecting anything, but ... ",
+                                value: '?',
+                                attack: 0,
+                                defense: 12,
+                                strength: 2,
+                                life: 4,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'horse_bags',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Centaur's Bags",
+                                description:"Very organized",
+                                carryBonus: 80,
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getGrasslandHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'grassland_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Soul Stone",
+                            description:"Was the banshee screaming, or was it just this stone making that noise?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Banshee Tears",
+                                description:"Not liquid ... what is that?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Banshee claws',
+                                description:"The better to grip you with, my dear!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getGrasslandGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getGrasslandHerbs();
+                    } else (this.getGrasslandGems())
+                } 
+                else if (this.monsterId === 'grassland_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Ghoul Skin",
+                            description:"So fragile, it falls apart just touching it.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Ghoul Claws",
+                            description:"Sharp and oh so gross.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Rotten Meat',
+                                description:"There's no telling what this used to be.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dead Devouring Stone',
+                                description:"Why would anyone want one of these?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getGrasslandGems();
+                            this.getGrasslandGems();
+                        } else if (val2 <=2) {
+                            this.getGrasslandHerbs();
+                            this.getGrasslandHerbs();
+                        } else (this.getGrasslandGems(), this.getGrasslandHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'grassland_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Cockatrice Leather",
+                            description:"Red and leathery",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'Cockatrice Egg',
+                            itemUse: 'manaing',
+                            itesmShop: 'null',
+                            name: "Cockatrice Egg",
+                            description:"I wonder if it tastes like chicken?",
+                            value: '?',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: 50,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Cockatrice Foot',
+                                description:"Vicious.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Cockatrice',
+                                description:"Wait, did that one just blink?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getGrasslandGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getGrasslandHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'grassland_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Unicorn Horn",
+                            description:"So much sharper than it looks",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Unicorn Hair",
+                            description:"It really was a horse of many colors!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'horse_shoes',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Unicorn Spirit Shoes',
+                                description:"Forget the horse, I want to wear these!",
+                                value: '?',
+                                carryBonus: 50,
+                                attack: 5,
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Rainbow Essence',
+                                description:"Looks like bubblebath.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getGrasslandHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Belt of Many Colors',
+                                description: "Now I can be as colorful as a unicorn!",
+                                value: '?',
+                                attack: 0,
+                                defense: 15,
+                                strength: 2,
+                                life: 6,
+                                mana: 12,
+                                intelligence: 0,
+                                price: 1800,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getGrasslandGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'grassland_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "Chimera venom",
+                            description: 'I feel dizzy just smeling this stuff.',
+                            value: '?',
+                            price: 1800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Chimera Hide",
+                            description:"Huh.  Even the lion parts of it were scaled.  Is a chimera a reptile?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Clawed Hoof",
+                            description:"It can really grip the ground with these things!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Chimera Egg",
+                            description:"Looks like an evil avocado, tastes like an evil chicken.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Chimera Armor",
+                            description:"Warm and suprisingly snuggly armor",
+                            value: '?',
+                            attack: 10,
+                            defense: 15,
+                            strength: 2,
+                            life: 0,
+                            mana: 8,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getGrasslandGems();
+                    this.getGrasslandGems();
+                    this.getGrasslandGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Sword of Might",
+                                description: "This sword is literally bigger than me.",
+                                value: '?',
+                                attack: 18,
+                                defense: 5,
+                                strength: 0,
+                                life: 10,
+                                mana: 20,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_gloves',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Golden Gloves",
+                                description: 'Very fashionable',
+                                value: '?',
+                                attack: 0,
+                                defense: 12,
+                                strength: 1,
+                                life: 0,
+                                mana: 20,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/grassland/grassland_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getGrasslandHerbs();
+                    this.getGrasslandHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                 } 
 // jungle monsters
                 else if (this.monsterId === 'jungle_monster1') {
@@ -1763,6 +2264,54 @@ export const useLootStore =
                 }
             },
 
+            getGrasslandGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Grass Crystal',
+                            description: "Looks like frozen hay!",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/grassland/grassland_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Topaz',
+                            description: "Golden and shiny",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/grassland/grassland_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Yellow Diamond',
+                            description: "This would look stunning on my horse!",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/grassland/grassland_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -1854,6 +2403,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/forest/forest_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getGrasslandHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Elder Oats',
+                            description: "I think I had some of these for breakfast earlier?",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/grassland/grassland_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Wild-eyed Daisy',
+                            description: "They seem pretty domesticated to me?",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/grassland/grassland_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Saproot',
+                            description: "Smells spicy",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/grassland/grassland_herb_3.png')
                         }
                     )
                 }

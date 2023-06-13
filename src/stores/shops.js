@@ -425,6 +425,7 @@ export const useShopStore =
                 },
             ],
             armory: [  // note: will buy leathers, gems, scales, cloth-based items
+                        // one day may rename this to tailor
                 {
                     id: 'arm_belt_1',
                     itemSlot: 'player_belt',
