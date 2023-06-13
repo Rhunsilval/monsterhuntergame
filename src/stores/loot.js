@@ -1627,7 +1627,7 @@ export const useLootStore =
                         },
                         {
                             id: this.getRandomValue(1, 100000),
-                            itemSlot: 'Cockatrice Egg',
+                            itemSlot: 'null',
                             itemUse: 'manaing',
                             itesmShop: 'null',
                             name: "Cockatrice Egg",
@@ -1665,7 +1665,7 @@ export const useLootStore =
                                 itemSlot: 'null',
                                 itemUse: 'null',
                                 itesmShop: 'null',
-                                name: 'Cockatrice',
+                                name: 'Cockatrice Eye',
                                 description:"Wait, did that one just blink?",
                                 value: '?',
                                 price: 500,
@@ -1939,13 +1939,515 @@ export const useLootStore =
                                 itemUse: 'null',
                                 itesmShop: 'null',
                                 name: 'Gem of the Jungle',
-                                description:"Beautifully green and shiny!",
+                                description:"Sparkles green even in the dark",
                                 value: '?',
                                 price: 1000,
                                 imageSrc: require('../assets/images/jungle/jungle_gem_1.png'), 
                             }
                         )
                     }
+                } 
+                else if (this.monsterId === 'jungle_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Oliphant Hide',
+                                description:"Wow, this stuff is thick!  No wonder my sword had such trouble.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'OliMoss',
+                                description:"I wonder if this grows ON them, or FROM them?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getJungleGems();
+                    }
+                } 
+                else if (this.monsterId === 'jungle_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Dire Moth Wings',
+                            description:"Awfully pretty.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dire Moth Eggs',
+                                description:"How did they even lay this thing?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Jungle Sickness",
+                                description:"Nasty stuff",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getJungleHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'jungle_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Bonecrusher Scales",
+                            description:"Scratchy",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Crushing Fangs",
+                                description:"As opposed to stabby fangs?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Digested Bone',
+                                description:"I'm not sure I'm getting paid enough to touch this stuff.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getJungleGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getJungleHerbs();
+                    } else (this.getJungleGems())
+                } 
+                else if (this.monsterId === 'jungle_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_belt',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Clawed Belt",
+                            description:"It jangles while you walk!",
+                            value: '?',
+                            attack: 0,
+                            defense: 18,
+                            strength: 0,
+                            life: 0,
+                            mana: 14,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Massive Wooden Club",
+                            description:"OMG this thing is heavy!",
+                            value: '?',
+                            attack: 24,
+                            defense: 6,
+                            strength: -2,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Cyclops Eye',
+                                description:"This would look wicked sitting on my mantle!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_vambraces',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Strapped for Strength Bracers',
+                                description:"I feel stronger already!",
+                                value: '?',
+                                attack: 0,
+                                defense: 7,
+                                strength: 5,
+                                life: 0,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getJungleGems();
+                            this.getJungleGems();
+                        } else if (val2 <=2) {
+                            this.getJungleHerbs();
+                            this.getJungleHerbs();
+                        } else (this.getJungleGems(), this.getJungleHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'jungle_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Elfin Ears",
+                            description:"I feel almost bad for the elf",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_vambraces',
+                            itemUse: 'manaing',
+                            itesmShop: 'null',
+                            name: "Elfin Arm Cuffs",
+                            description:"They don't look very protective, but magic!",
+                            value: '?',
+                            attack: 4,
+                            defense: 16,
+                            strength: 1,
+                            life: 0,
+                            mana: 13,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dark Dagger',
+                                description:"It will cut you",
+                                value: '?',
+                                attack: 23,
+                                defense: 0,
+                                strength: 0,
+                                life: 6,
+                                mana: 6,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_boots',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Forest Elf Boots',
+                                description:"Reeeaaallly stretching the definition of 'boots' here ... ",
+                                value: '?',
+                                attack: 0,
+                                defense: 14,
+                                strength: 1,
+                                life: 13,
+                                mana: 12,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getJungleGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getJungleHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'jungle_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Demon's Teeth",
+                            description:"The better to bite you with!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Oni Horns",
+                            description:"Grind them up and put them in a potion!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Cursed stone',
+                                description:"Wait.  If it's cursed, is it even safe for me to carry this thing?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Demonic Dagger',
+                                description:"I'm sure it's perfectly fine if I use this.",
+                                value: '?',
+                                attack: 26,
+                                defense: 4,
+                                strength: -1,
+                                life: -8,
+                                mana: 6,
+                                intelligence: 6,
+                                price: 500,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getJungleHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Oni Mask',
+                                description: "Right ... mask.  It's just a mask ...",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getJungleGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'jungle_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "Golden Dragon Helm",
+                            description: 'Protects everything while scaring your enemies',
+                            value: '?',
+                            attack: 0,
+                            defense: 23,
+                            strength: 0,
+                            life: 8,
+                            mana: 8,
+                            intelligence: 8,
+                            price: 1800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Golden Dragon Leather",
+                            description:"I think this might actually have bits of gold in it!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Golden Dragon's Armor",
+                            description:"My enemies will see me coming for them from a mile away",
+                            value: '?',
+                            attack: 6,
+                            defense: 14,
+                            strength: 3,
+                            life: 0,
+                            mana: 10,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_gloves',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Enchanted Golden Gauntlets",
+                            description:"Not sure what they do, but they're pretty while they do it!",
+                            value: '?',
+                            attack: 8,
+                            defense: 12,
+                            strength: 6,
+                            life: 8,
+                            mana: 8,
+                            intelligence: 8,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_shield',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Golden Dragon's Shield",
+                            description:"If nothing else, you can blind your enemies with this shield!",
+                            value: '?',
+                            attack: 4,
+                            defense: 26,
+                            strength: 0,
+                            life: 10,
+                            mana: 18,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getJungleGems();
+                    this.getJungleGems();
+                    this.getJungleGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Golden Dragon's Egg",
+                                description: "It's an egg.  Got a dragon inside, probably.",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Golden Dragon's Heart",
+                                description: 'A literal heart of gold',
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/jungle/jungle_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getJungleHerbs();
+                    this.getJungleHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                 } 
 // marshes monsters
                 else if (this.monsterId === 'marshes_monster1') {
@@ -2312,6 +2814,54 @@ export const useLootStore =
                 }
             },
 
+            getJungleGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Gem of the Jungle',
+                            description: "Sparkles green even in the dark.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/jungle/jungle_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Jade',
+                            description: "Cooling to the eyes, warm to the touch",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/jungle/jungle_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Heart of the Jungle',
+                            description: "So pink!",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/jungle/jungle_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -2451,6 +3001,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/grassland/grassland_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getJungleHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Sweeter Fruit',
+                            description: "Take it from me, do NOT eat the peel!",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/jungle/jungle_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Monster Leaf',
+                            description: "Useful for magics that weaken certain monsters.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/jungle/jungle_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Oil Plant',
+                            description: "Don't get this stuff on your skin.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/jungle/jungle_herb_3.png')
                         }
                     )
                 }
