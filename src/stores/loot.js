@@ -3629,6 +3629,471 @@ export const useLootStore =
                         )
                     }
                 } 
+                else if (this.monsterId === 'swamp_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Creeper Sap',
+                                description:"OMG so gross!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Vine Creeper Ear',
+                                description:"Good for spells where the magic needs to hear the magician's words",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getMountainGems();
+                    }
+                } 
+                else if (this.monsterId === 'swamp_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Bunyip Tusks',
+                            description:"Not sure what they're used for, but they're worth a small fortune",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Bunyip Fur',
+                                description:"Looks soft, but feels like sandpaper",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Bunyip Eye",
+                                description:"Glows so they can see in the murky water",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getSwampHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'swamp_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Vine Whip",
+                            description: "Will take your skin right off",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Wood Nymph Bark",
+                                description:"Adds emotional impact to spells",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Wood Nymph's Girdle",
+                                description:"Practical and pretty!",
+                                value: '?',
+                                attack: 0,
+                                defense: 17,
+                                strength: 2,
+                                life: 16,
+                                mana: 12,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getSwampGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getSwampHerbs();
+                    } else (this.getSwampGems())
+                } 
+                else if (this.monsterId === 'swamp_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Killer Croc Leather",
+                            description:"Killer leather for killer boots.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Killer Croc Foot",
+                            description:"I bet I could open just all the stubborn potions bottles with this",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Brainfruit',
+                                description:"I bet eating this is what made this monster so weirdly clever!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Killer Croc Teeth',
+                                description:"Makes me want to decorate everything I own with teeth",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getSwampGems();
+                            this.getSwampGems();
+                        } else if (val2 <=2) {
+                            this.getSwampHerbs();
+                            this.getSwampHerbs();
+                        } else (this.getSwampGems(), this.getSwampHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'swamp_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Grootslang Hide",
+                            description:"Very surprisingly colorful",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Grootslang Tentacle",
+                            description:"Ouch!  Those little suckers have teeth hiding in them!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Grootslang Spines",
+                                description: "Pretty sure there's toxins in these.  Best be careful",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Delusion Stone',
+                                description:"It must have taken some messed up magic to make such a messed up monster",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getSwampGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getSwampHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'swamp_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Green Dragon Scales",
+                            description:"Ugh!  They're like glitter!  I've got scales stuck everywhere!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_gloves',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Moss Dragon Gloves",
+                            description:"The inside of the gloves are lined with soft moss",
+                            value: '?',
+                            attack: 0,
+                            defense: 10,
+                            strength: 4,
+                            life: 0,
+                            mana: 10,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Moss Blade',
+                                description:"Who knew moss could be so sharp!",
+                                value: '?',
+                                attack: 40,
+                                defense: 10,
+                                strength: 0,
+                                life: 0,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Moss Dragon Horns',
+                                description:"Looks like the dragon kept every set of horns it ever shed.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getSwampHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Orb of Visions',
+                                description: "What will you see when you gaze into the orb? ",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getSwampGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'swamp_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "Hydra's Blade",
+                            description: "The best blade for killing a hydra is made from a Hydra.",
+                            value: '?',
+                            attack: 30,
+                            defense: 24,
+                            strength: 5,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1800,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Hydra Fins",
+                            description:"Smells like fish",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Hydra Head",
+                            description:"So help me, this thing better not multiply again!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Hydra Steak",
+                            description:"Turnabout is fair play!  Nom nom nom!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Hydra's Armor",
+                            description:"Now you can look like a hydra!  If your opponent really squints their eyes, anyway.",
+                            value: '?',
+                            attack: 0,
+                            defense: 14,
+                            strength: 0,
+                            life: 10,
+                            mana: 10,
+                            intelligence: 2,
+                            price: 500,
+                            imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getSwampGems();
+                    this.getSwampGems();
+                    this.getSwampGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Angry Water Magic",
+                                description: "Hostile and dangerous magic",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Spirit of Wrath",
+                                description: "Just how am I supposed to transport this back with me?",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/swamp/swamp_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getSwampHerbs();
+                    this.getSwampHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
 
             },
 
@@ -3920,6 +4385,54 @@ export const useLootStore =
                 }
             },
 
+            getSwampGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Larsonite',
+                            description: "Kinda looks like a pretty version of swamp water",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/swamp/swamp_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Pearls',
+                            description: "These were hidden beneath all the muck.",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/swamp/swamp_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Gods' Moss",
+                            description: "The gods do seem very fond of the color green.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/swamp/swamp_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -4203,6 +4716,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/mountains/mountain_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getSwampHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Tree Moss',
+                            description: "Grows on trees, useful in potions.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/swamp/swamp_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Duckweed',
+                            description: "Adds stability to water-based magics.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/swamp/swamp_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Tree Knees',
+                            description: "Not to be mistaken with the very similiar 'bees knees'.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/swamp/swamp_herb_3.png')
                         }
                     )
                 }
