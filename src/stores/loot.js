@@ -2894,8 +2894,8 @@ export const useLootStore =
                               },
                         )
                     } else (this.getMarshesGems())
-                    this.getMarshesDrop();
-                    this.getMarshesDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                 } 
                 else if (this.monsterId === 'marshes_monster10') {
                     this.lootList.push(
@@ -2914,7 +2914,6 @@ export const useLootStore =
                             mana: 18,
                             intelligence: 18,
                             price: 1800,
-                            unlocksAt: 1,
                             imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure.png'),
                           },
                         {
@@ -3089,6 +3088,478 @@ export const useLootStore =
                             }
                         )
                     }
+                } 
+                else if (this.monsterId === 'mountain_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Gargoyle Head',
+                                description:"Grotesque",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Internal Fire',
+                                description:"Are gargoyles mini dragons?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getMountainGems();
+                    }
+                } 
+                else if (this.monsterId === 'mountain_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_gloves',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Clawed Gauntlets',
+                            description:"Now you can rock some wicked claws too!",
+                            value: '?',
+                            attack: 15,
+                            defense: 10,
+                            strength: 0,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 1,
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Fierce Mask',
+                                description:"Wish I could wear it, but it doesn't fit my head.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Snow Cat Hide",
+                                description:"Perfect mountain camouflage",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getMountainHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'mountain_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Frozen Eye",
+                            description:"As cold and hard as ice.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Yeti Horns",
+                                description:"How exactly am I supposed to carry these things all the way back?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Yeti Fur',
+                                description:"Would make a great carpet - after it was washed, of course.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getMountainGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getMountainHerbs();
+                    } else (this.getMountainGems())
+                } 
+                else if (this.monsterId === 'mountain_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Griffon Feathers",
+                            description:"There's strong magics contained in these feathers.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Griffon Claws",
+                            description:"These things better not poke holes in my bags",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Griffon Talisman',
+                                description:"It even has a little griffon on it!  In case I forget where I got it.",
+                                value: '?',
+                                attack: 6,
+                                defense: 6,
+                                strength: 4,
+                                life: 30,
+                                mana: 30,
+                                intelligence: 6,
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Griffon Egg',
+                                description:"Aww, I think it's peeping!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getMountainGems();
+                            this.getMountainGems();
+                        } else if (val2 <=2) {
+                            this.getMountainHerbs();
+                            this.getMountainHerbs();
+                        } else (this.getMountainGems(), this.getMountainHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'mountain_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Dire Eagle's Feathers",
+                            description:"What is it with these mountains and giant birds?",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Eagle Steaks",
+                            description:"This would be delicious grilled with some salt and mountain herbs!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'horse_bag',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Mountaineer's Saddlebags",
+                                description: "Holds tons of stuff, so long as you don't mind a few bloodstains.",
+                                value: '?',
+                                carryBonus: 200,
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Mighty Storm',
+                                description:"The eagle stored the magic in its wings!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getMountainGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getMountainHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'mountain_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Ice Giant's Heart",
+                            description:"Pretty for an organ",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Great Horned Helm",
+                            description:"Odd magics make sure this helmet always fits perfectly",
+                            value: '?',
+                            attack: 4,
+                            defense: 12,
+                            strength: 1,
+                            life: 10,
+                            mana: 16,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Trophy Skull',
+                                description:"Was their trophy.  Now it's mine!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Iced Battle Axe',
+                                description:"Make sure you wear thick gloves while swinging this thing around.",
+                                value: '?',
+                                attack: 30,
+                                defense: 0,
+                                strength: -2,
+                                life: 20,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getMarshesHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Blue Ice Crystal',
+                                description: "Definitely not to be confused with not being ice ... ",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getMountainGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'mountain_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_shield',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "Iron Dragon's Shield",
+                            description: "I'd like to see anything try and get through this!",
+                            value: '?',
+                            attack: 0,
+                            defense: 34,
+                            strength: 1,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1800,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Iron Dragon Scales",
+                            description:"Gods, these things weigh a ton!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Iron Dragon's Mask",
+                            description:"Wear it and breathe dragon's fire yourself!",
+                            value: '?',
+                            attack: 15,
+                            defense: 15,
+                            strength: 5,
+                            life: 15,
+                            mana: 20,
+                            intelligence: 8,
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Iron Dragon's Hide",
+                            description:"Light weight and strong.  Good for making armor.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Iron Dragon's Heart",
+                            description:"Heavy as lead.  Might actually be made of lead.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getMountainGems();
+                    this.getMountainGems();
+                    this.getMountainGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Dragon's Fire",
+                                description: "Extremely volatile magic",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Heart of the Mountains",
+                                description: "Don't let the dwarves know you have this ... ",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/mountains/mountain_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getMountainHerbs();
+                    this.getMountainHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                 } 
 // swamp monsters
                 else if (this.monsterId === 'swamp_monster1') {
@@ -3401,6 +3872,54 @@ export const useLootStore =
                 }
             },
 
+            getMountainGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Moondrop',
+                            description: "Glows even more in the moonlight",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/mountains/mountain_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Granite Gem',
+                            description: "Hard enough to be a weapon, pretty enough to be a gem.",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/mountains/mountain_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Sapphire',
+                            description: "As impossibly blue as the sky above the mountains.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/mountains/mountain_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -3636,6 +4155,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/marshes/marshes_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getMountainHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Wolfsbane',
+                            description: "Guess that's why there aren't any wolves in these parts.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/mountains/mountain_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Edelwiss',
+                            description: "Nostalgic and useful in healing potions.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/mountains/mountain_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Goldenrod',
+                            description: "Looks similar, but not the weed that makes you sneeze.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/mountains/mountain_herb_3.png')
                         }
                     )
                 }
