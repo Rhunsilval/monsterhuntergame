@@ -2183,7 +2183,7 @@ export const useLootStore =
                         {
                             id: this.getRandomValue(1, 100000),
                             itemSlot: 'player_vambraces',
-                            itemUse: 'manaing',
+                            itemUse: 'null',
                             itesmShop: 'null',
                             name: "Elfin Arm Cuffs",
                             description:"They don't look very protective, but magic!",
@@ -2521,6 +2521,497 @@ export const useLootStore =
                             }
                         )
                     }
+                } 
+                else if (this.monsterId === 'marshes_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Sticky Tongue',
+                                description:"Gross",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Spawn',
+                                description:"Useful for multiplying magics.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getMarshesGems();
+                    }
+                } 
+                else if (this.monsterId === 'marshes_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Venomous Lotus',
+                            description:"Venomous.  Not poisonous.  There's teeth.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Ruskala beads',
+                                description:"I think they're made of wood?",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Souls of Men",
+                                description:"TFW Necromancers are letting monsters do their dirty work for them",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getMarshesHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'marshes_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Harpie Wings",
+                            description:"Awww, they're so soft!",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: "Lady's Collar",
+                                description:"You don't have to be a lady to wear this",
+                                value: '?',
+                                attack: 0,
+                                defense: 14,
+                                strength: 2,
+                                life: 13,
+                                mana: 0,
+                                intelligence: 8,
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Harpie Egg',
+                                description:"Pretty in pink",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getMarshesGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getMarshesHerbs();
+                    } else (this.getMarshesGems())
+                } 
+                else if (this.monsterId === 'marshes_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Sword of Shadows",
+                            description:"Good luck finding it again if you drop it",
+                            value: '?',
+                            attack: 26,
+                            defense: 5,
+                            strength: 0,
+                            life: -3,
+                            mana: 14,
+                            intelligence: 2,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Dark Hood",
+                            description:"Whoever wears this is basically invisible!",
+                            value: '?',
+                            attack: 12,
+                            defense: 12,
+                            strength: 0,
+                            life: -2,
+                            mana: 12,
+                            intelligence: 6,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Ectoplasma',
+                                description:"Glows in the dark!",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Dark Fog',
+                                description:"Gives me the creeps.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getMarshesGems();
+                            this.getMarshesGems();
+                        } else if (val2 <=2) {
+                            this.getMarshesHerbs();
+                            this.getMarshesHerbs();
+                        } else (this.getMarshesGems(), this.getMarshesHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'marshes_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'horse_saddle',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Waterlogged Saddle",
+                            description:"Carries lots, but nothing will stay dry.",
+                            value: '?',
+                            carryBonus: 70,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Kelpie Hair",
+                            description:"Looks like seaweed, but sure doesn't smell like it.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Kelpie Jaw',
+                                description:"That thing had a serious case of underbite.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Gill Fronds',
+                                description:"Useful if you want to breathe water, I guess.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getMarshesGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getMarshesHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'marshes_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Water Knight's Sword",
+                            description:"An elegant blade",
+                            value: '?',
+                            attack: 27,
+                            defense: 14,
+                            strength: 0,
+                            life: 0,
+                            mana: 5,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Water Helm",
+                            description:"Protect your head and wash your hair at the same time!",
+                            value: '?',
+                            attack: 4,
+                            defense: 18,
+                            strength: 1,
+                            life: 10,
+                            mana: 6,
+                            intelligence: 6,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Living Water',
+                                description:"Will make you dead if you aren't careful with it.",
+                                value: '?',
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itesmShop: 'null',
+                                name: 'Belt of Water',
+                                description:"Keeps you looking and feeling cool.",
+                                value: '?',
+                                attack: 0,
+                                defense: 24,
+                                strength: 0,
+                                life: 0,
+                                mana: 9,
+                                intelligence: 0,
+                                price: 500,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getMarshesHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: 'Crystalized Water',
+                                description: "Definitely not to be confused with ice.",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getMarshesGems())
+                    this.getMarshesDrop();
+                    this.getMarshesDrop();
+                } 
+                else if (this.monsterId === 'marshes_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itemShop: 'null',
+                            name: "The Heron Crown",
+                            description: 'Heavy is the head that wears the crown.',
+                            value: '?',
+                            attack: 0,
+                            defense: 14,
+                            strength: 5,
+                            life: 18,
+                            mana: 18,
+                            intelligence: 18,
+                            price: 1800,
+                            unlocksAt: 1,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Divine Feather",
+                            description:"It can't be good that I killed something so holy.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Cleansing Flame",
+                            description:"Don't touch it.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "King's Eggs",
+                            description:"Shouldn't those be called ... you know what, nevermind.  King.",
+                            value: '?',
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: "Sword of the Heron King",
+                            description:"Light as a feather!",
+                            value: '?',
+                            attack: 24,
+                            defense: 3,
+                            strength: 3,
+                            life: 13,
+                            mana: 13,
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getMarshesGems();
+                    this.getMarshesGems();
+                    this.getMarshesGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'null',
+                                name: "Heron's Nest",
+                                description: "Good for making soup",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic',
+                                name: "Heron King's Ring",
+                                description: 'Powerfully magic',
+                                value: '?',
+                                attack: 10,
+                                defense: 10,
+                                strength: 5,
+                                life: 10,
+                                mana: 25,
+                                intelligence: 15,
+                                price: 600,
+                                imageSrc: require('../assets/images/marshes/marshes_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getMarshesHerbs();
+                    this.getMarshesHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
                 } 
 // mountain monsters
                 else if (this.monsterId === 'mountain_monster1') {
@@ -2862,6 +3353,54 @@ export const useLootStore =
                 }
             },
 
+            getMarshesGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Gem of the Dead',
+                            description: "Wonder why it's called that?",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/marshes/marshes_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Mist Stone',
+                            description: "Formed from the fog itself",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/marshes/marshes_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Aqua Gem',
+                            description: "As clear as the waters of the marshes",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/marshes/marshes_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -3049,6 +3588,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/jungle/jungle_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getMarshesHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Marsh Mallow',
+                            description: "Wonder what happens if you flame roast it?",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/marshes/marshes_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Cat Reed',
+                            description: "A powerful herb in water magics.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/marshes/marshes_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itesmShop: 'null',
+                            name: 'Lily pad',
+                            description: "Good in salads and for floating above troubled waters.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/marshes/marshes_herb_3.png')
                         }
                     )
                 }
