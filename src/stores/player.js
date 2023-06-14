@@ -690,9 +690,9 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].life 
                     + this.playerEquipped.player_belt[0].life 
                 );
-            this.playerStartingHealth = (this.playerBaseStartingHealth + this.healthBonus);
+            this.playerStartingHealth = (this.playerStartingHealth + this.healthBonus);
             // this.playerHealth = (this.playerBaseHealth + this.healthBonus);
-            this.playerHealth = (this.playerHealth + this.healthBonus);
+            // this.playerHealth = (this.playerHealth + this.healthBonus);
             },
             getExtraMana() { 
                 this.manaBonus = 
@@ -709,7 +709,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].mana 
                 );
             this.playerStartingMana = (this.playerBaseStartingMana + this.manaBonus);
-            this.playerMana = (this.playerMana + this.manaBonus);
+            // this.playerMana = (this.playerMana + this.manaBonus);
             },
             getIntelligenceValues() {
                 this.intelligenceBonus = 

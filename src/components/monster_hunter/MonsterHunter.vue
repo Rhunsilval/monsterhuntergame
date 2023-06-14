@@ -1199,6 +1199,7 @@
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();
+    playerStore.playerMana -= (getRandomValue(1,20));
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
     addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
