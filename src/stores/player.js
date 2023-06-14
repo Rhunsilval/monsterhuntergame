@@ -6,16 +6,14 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player One',
             coinOnHand: 100000,            
+            
+            playerActiveHealth: 100,        // constantly changes based on harm/healing
+            playerHealth: 100,              // max health, changes with equip/unequip items           
+            playerBaseHealth: 100,          // default max health value
+            healthBonus: 0,                 // amount of health from equipped items
+            healthPerSec: .1,           // Fortitude - how fast player heals
 
-            playerStartingHealth: 100,      // what renders on screen
-            playerBaseStartingHealth: 100,  // for calculating temporary results
-            playerHealth: 100,              // on screen
-            playerBaseHealth: 100,          // for calculating temporary results
-            healthBonus: 0,         // from equipped items
-            healthPerSec: .1,       // Fortitude - how fast player heals
-
-            playerStartingMana: 100,
-            playerBaseStartingMana: 100,
+            playerActiveMana: 100,
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
@@ -690,9 +688,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].life 
                     + this.playerEquipped.player_belt[0].life 
                 );
-            this.playerStartingHealth = (this.playerStartingHealth + this.healthBonus);
-            // this.playerHealth = (this.playerBaseHealth + this.healthBonus);
-            // this.playerHealth = (this.playerHealth + this.healthBonus);
+            this.playerHealth = (this.playerBaseHealth + this.healthBonus);
             },
             getExtraMana() { 
                 this.manaBonus = 
@@ -708,8 +704,7 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].mana 
                     + this.playerEquipped.player_belt[0].mana 
                 );
-            this.playerStartingMana = (this.playerBaseStartingMana + this.manaBonus);
-            // this.playerMana = (this.playerMana + this.manaBonus);
+            this.playerMana = (this.playerBaseMana + this.manaBonus);
             },
             getIntelligenceValues() {
                 this.intelligenceBonus = 

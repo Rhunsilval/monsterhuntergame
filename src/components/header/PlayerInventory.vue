@@ -637,26 +637,28 @@
             useshow.value = true;
         } else {
             if (chosenItem.value.itemUse === 'healing') {
-                if ((playerStore.playerHealth + chosenItem.value.life) > playerStore.playerBaseHealth) {
-                    playerStore.playerHealth = playerStore.playerBaseHealth;
+                if ((playerStore.playerActiveHealth + chosenItem.value.life) > playerStore.playerHealth) {
+                    playerStore.playerActiveHealth = playerStore.playerHealth;
                 } else {
-                    playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
+                    playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
                 }
             }
             else if (chosenItem.value.itemUse === 'health') {
+                playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
                 playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
-                playerStore.playerStartingHealth = (playerStore.playerStartingHealth + chosenItem.value.life);
+                playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
             }
             else if (chosenItem.value.itemUse === 'manaing') {
-                if ((playerStore.playerMana + chosenItem.value.mana) > playerStore.playerBaseMana) {
-                    playerStore.playerMana = playerStore.playerBaseMana;
+                if ((playerStore.playerActiveMana + chosenItem.value.mana) > playerStore.playerMana) {
+                    playerStore.playerActiveMana = playerStore.playerMana;
                 } else {
-                    playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
+                    playerStore.playerActiveMana = (playerStore.playerActiveMana + chosenItem.value.mana);
                 }
             }
             else if (chosenItem.value.itemUse === 'mana') {
+                playerStore.playerActiveMana = (playerStore.playerActiveMana + chosenItem.value.mana);
                 playerStore.playerMana = (playerStore.playerMana + chosenItem.value.mana);
-                playerStore.playerStartingMana = (playerStore.playerStartingMana + chosenItem.value.mana);
+                playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
             }
             else if (chosenItem.value.itemUse === 'attacking') {
                 playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);            
@@ -707,12 +709,12 @@
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
             playerStore.playerPacked.splice(x, 1);
-            playerStore.getAttackValues();
-            playerStore.getDefenseValues();
-            playerStore.getStrengthValues();
-            playerStore.getExtraHealth();
-            playerStore.getExtraMana();
-            playerStore.getIntelligenceValues();
+            // playerStore.getAttackValues();
+            // playerStore.getDefenseValues();
+            // playerStore.getStrengthValues();
+            // playerStore.getExtraHealth();
+            // playerStore.getExtraMana();
+            // playerStore.getIntelligenceValues();
         }
     } 
 

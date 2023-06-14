@@ -72,13 +72,13 @@
               <div class="ml-8 inline-flex items-center justify-center rounded-md border border-gray-800 bg-[#d2b55b] px-4 py-2 text-base font-medium text-gray-700 shadow-sm text-center">
                 Purse:<br/>{{ playerStore.coinOnHand }}</div>
               <div class="text-center font-medium text-gray-600 ml-8 w-60 ">
-                Life: {{ playerStore.playerHealth }}/{{ playerStore.playerStartingHealth }}
+                Life: {{ playerStore.playerActiveHealth }}/{{ playerStore.playerHealth }}
                 <div class="healthbar">
                   <div class="healthbar_value" :style="playerBarStyle"></div>
                 </div>
               </div>
               <div class="text-center font-medium text-gray-600 mx-5 w-60 ">
-                Mana: {{ playerStore.playerMana }}/{{ playerStore.playerStartingMana }}
+                Mana: {{ playerStore.playerActiveMana }}/{{ playerStore.playerMana }}
                 <div class="manabar">
                   <div class="manabar_value" :style="manaBarStyle"></div>
                 </div>
@@ -118,12 +118,12 @@
                             
                             <div class="columns-2 text-left mx-3 ">
                               <div>
-                                <p class="text-lg text-gray-700 font-semibold py-4" >Life: <br/> points: {{ playerStore.playerHealth }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4" >Life: <br/> points: {{ playerStore.playerBaseHealth }}</p>
                                 <p class="text-lg text-gray-700 font-semibold py-4">Attack: <br/>level {{ playerStore.playerAttack }}</p>
                                 <p class="text-lg text-gray-700 font-semibold py-4">Defense: <br/>level {{ playerStore.playerDefense }}</p>
                               </div>
                               <div>
-                                <p class="text-lg text-gray-700 font-semibold py-4" >Mana: <br/> points: {{ playerStore.playerMana }}</p>
+                                <p class="text-lg text-gray-700 font-semibold py-4" >Mana: <br/> points: {{ playerStore.playerBaseMana }}</p>
                                 <p class="text-lg text-gray-700 font-semibold py-4">Strength: <br/>level {{ playerStore.playerStrength }}</p>
                                 <p class="text-lg text-gray-700 font-semibold py-4">Intelligence: <br/>level {{ playerStore.playerIntelligence }}</p>
                               </div>
@@ -165,11 +165,11 @@
   const openStatsModal = ref(false)
 
   const playerHealthPercentage = computed(function () {
-    return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
+    return (100 * playerStore.playerActiveHealth)/playerStore.playerHealth;
   })
 
   const playerManaPercentage = computed(function () {
-    return (100 * playerStore.playerMana)/playerStore.playerStartingMana;
+    return (100 * playerStore.playerActiveMana)/playerStore.playerMana;
   })
 
   const playerBarStyle = computed(function () {
