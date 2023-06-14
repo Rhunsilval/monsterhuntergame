@@ -578,7 +578,7 @@ export const usePlayerStore =
             playerPacked: [],
             playerScripts: [],
 
-            carryCapacity: 10,
+            carryCapacity: 30,
             baseCarryCapacity: 10,
             carryCapacityBonus: 0,
 

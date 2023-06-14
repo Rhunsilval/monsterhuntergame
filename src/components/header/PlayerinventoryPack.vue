@@ -4,10 +4,10 @@
         <button @click="openActions" class="pb-3 mb-2 w-24 align-top ">
             <img :src="imageSrc" alt="" class="h-24 w-24 border border-gray-400" />
         </button>
-        <div v-if="examineItem" class="-mt-24 ">
+        <div v-if="examineItem" class="-mt-24 mb-10 ">
             <div class="">
                 <p class="font-semibold text-black bg-gray-200 opacity-80 "> {{ props.name }}</p>
-                <p class="text-xs text-black bg-gray-200 opacity-80 "> {{ props.value }}</p>
+                <p class="text-xs text-black bg-gray-200 opacity-80 "> {{ props.description }}</p>
             </div>
         </div>
 <!-- action buttons -->
