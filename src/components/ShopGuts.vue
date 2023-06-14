@@ -458,6 +458,7 @@
       }
     }
 
+
 // TO SELL ITEMS
 // for conditional rendering of dialog/buttons
     const acceptSale = ref(false)
@@ -472,7 +473,7 @@
 // and initiate a price offer if yes
     function attemptSellItem(itemId) {
       chosenSellId.value = itemId;
-      if (chosenSell.value.itemShop === props.shopName) {
+      if (chosenSell.value.itemShop.includes(props.shopName)) {
         acceptSale.value = true;
         getOfferPrice();
       } else {rejectSale.value = true;}

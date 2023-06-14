@@ -201,7 +201,7 @@
   const startGame = ref(false);
   const noHealth = ref(false);
   function checkLife() {
-    if (playerStore.playerHealth === 0) {
+    if (playerStore.playerActiveHealth === 0) {
       noHealth.value = true;
     } else (startHunt())
   }
@@ -250,9 +250,9 @@
     if (attackEffect.value < 0) {
       attackEffect.value = 0;
     }
-    playerStore.playerHealth -= attackEffect.value; //monster hits as player runs, takes some damage
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
+    playerStore.playerActiveHealth -= attackEffect.value; //monster hits as player runs, takes some damage
+    if (playerStore.playerActiveHealth < 0) {
+      playerStore.playerActiveHealth = 0;
     } 
     currentRound.value = 0;
     monsterRound.value = 0;
@@ -454,10 +454,10 @@
       monsterStore.monsterHealth;
     }
     attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
+    if (playerStore.playerActiveHealth < 0) {
+      playerStore.playerActiveHealth = 0;
     } else {
-      playerStore.playerHealth;
+      playerStore.playerActiveHealth;
     }
   }
 
@@ -583,10 +583,10 @@
       monsterStore.monsterHealth;
     }
     attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
+    if (playerStore.playerActiveHealth < 0) {
+      playerStore.playerActiveHealth = 0;
     } else {
-      playerStore.playerHealth;
+      playerStore.playerActiveHealth;
     }
   }
 
@@ -602,10 +602,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_1') {
@@ -613,10 +613,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_2') {
@@ -624,10 +624,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_2') {
@@ -635,10 +635,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_3') {
@@ -646,10 +646,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_4') {
@@ -657,10 +657,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_3') {
@@ -668,10 +668,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_5') {
@@ -679,10 +679,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_6') {
@@ -690,10 +690,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_4') {
@@ -701,20 +701,20 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_7') {
       if (playerStore.playerEquipped.player_A2_spell[0].intelUnlock > playerStore.playerIntelligence) {
         cantUse.value = true;monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_8') {
@@ -722,10 +722,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_5') {
@@ -733,10 +733,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_9') {
@@ -744,10 +744,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_10') {
@@ -755,10 +755,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_scroll_6') {
@@ -766,10 +766,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_11') {
@@ -777,10 +777,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     } else if (id === 'magic_book_12') {
@@ -788,10 +788,10 @@
         cantUse.value = true;
         monsterRound.value = monsterRound.value + 1;
         attackPlayer();
-        if (playerStore.playerHealth < 0) {
-          playerStore.playerHealth = 0;
+        if (playerStore.playerActiveHealth < 0) {
+          playerStore.playerActiveHealth = 0;
         } else {
-          playerStore.playerHealth
+          playerStore.playerActiveHealth
         }
       } else (spellId.value = id, checkSpellMana())
     }
@@ -800,7 +800,7 @@
 // right now, player can execute even a high mana spell with even 1 mana left
 // i need to fix this once i figure out the logic of how - since execute and mana use levels are in the same useSpell code right now
   function checkSpellMana() {
-    if (playerStore.playerMana === 0) {
+    if (playerStore.playerActiveMana === 0) {
       outOfMana.value = true;
     } else (useSpell())
   }
@@ -813,84 +813,84 @@
     if (id === 'magic_scroll_1') {
       if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (20 + 20);
-        playerStore.playerMana -= 8;
+        playerStore.playerActiveMana -= 8;
       } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = (20 - 20);
-        playerStore.playerMana -= 8;
-      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+        playerStore.playerActiveMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerActiveMana -= 8)
     } else if (id === 'magic_book_1') {
       if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (20 + 10);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
       } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = (20 - 10);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
-      } else (magicAttackValue.value = 20, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 20, playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10))))
     } else if (id === 'magic_book_2') {
       if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (Math.floor(getRandomValue(30,60)) + 30);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,25)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,25)));
       } else if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = (Math.floor(getRandomValue(30,60))-20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,25)));
-      } else (magicAttackValue.value = 20, playerStore.playerMana -= (Math.floor(getRandomValue(10,25))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,25)));
+      } else (magicAttackValue.value = 20, playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,25))))
     } else if (id === 'magic_scroll_2') {
       if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = (20 + 20);
-        playerStore.playerMana -= 8;
+        playerStore.playerActiveMana -= 8;
       } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (20 - 20);
-        playerStore.playerMana -= 8;
-      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+        playerStore.playerActiveMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerActiveMana -= 8)
     } else if (id === 'magic_book_3') {
       if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = (15 + 20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
       } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = (15 - 15);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
-      } else (magicAttackValue.value = 15, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 15, playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10))))
     } else if (id === 'magic_book_4') {
       if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = ((Math.floor(getRandomValue(30,60))) + 30);
-        playerStore.playerMana -= (Math.floor(getRandomValue(12,20)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(12,20)));
       } else if (props.mapName === 'The Great Grass Sea' || props.mapName === 'Black Forest' || props.mapName === 'The Moving Jungle') {
         magicAttackValue.value = ((Math.floor(getRandomValue(30,60))) - 20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(12,20)));
-      } else (magicAttackValue.value = (Math.floor(getRandomValue(30,60))), playerStore.playerMana -= (Math.floor(getRandomValue(12,20))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(12,20)));
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(30,60))), playerStore.playerActiveMana -= (Math.floor(getRandomValue(12,20))))
     } else if (id === 'magic_scroll_3') {
       if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = (20 + 20);
-        playerStore.playerMana -= 8;
+        playerStore.playerActiveMana -= 8;
       } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = (20 - 15);
-        playerStore.playerMana -= 8;
-      } else (magicAttackValue.value = 20, playerStore.playerMana -= 8)
+        playerStore.playerActiveMana -= 8;
+      } else (magicAttackValue.value = 20, playerStore.playerActiveMana -= 8)
     } else if (id === 'magic_book_5') {
       if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = (17 + 12);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
       } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = (17 - 13);
-        playerStore.playerMana -= (Math.floor(getRandomValue(3,10)));
-      } else (magicAttackValue.value = 17, playerStore.playerMana -= (Math.floor(getRandomValue(3,10))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10)));
+      } else (magicAttackValue.value = 17, playerStore.playerActiveMana -= (Math.floor(getRandomValue(3,10))))
     } else if (id === 'magic_book_6') {
       if (props.mapName === 'Dead Marshes' || props.mapName === 'Noxus Swamp') {
         magicAttackValue.value = ((Math.floor(getRandomValue(25,60))) + 20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,30)));
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,30)));
       } else if (props.mapName === 'Firesand Desert' || props.mapName === 'Iron Mountains') {
         magicAttackValue.value = ((Math.floor(getRandomValue(25,60))) - 25);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,30)));
-      } else (magicAttackValue.value = (Math.floor(getRandomValue(25,60))), playerStore.playerMana -= (Math.floor(getRandomValue(10,30))))
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,30)));
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(25,60))), playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,30))))
     } else if (id === 'magic_scroll_4') {
       magicAttackValue.value = 20;
-      playerStore.playerMana -= 8;
+      playerStore.playerActiveMana -= 8;
     } else if (id === 'magic_book_7') {
       magicAttackValue.value = 25;
-      playerStore.playerMana -= (Math.floor(getRandomValue(8,20)));
+      playerStore.playerActiveMana -= (Math.floor(getRandomValue(8,20)));
     } else if (id === 'magic_book_8') {
       magicAttackValue.value = (Math.floor(getRandomValue(30-65)));
-      playerStore.playerMana -= (Math.floor(getRandomValue(15,20)));
+      playerStore.playerActiveMana -= (Math.floor(getRandomValue(15,20)));
     } else if (id === 'magic_scroll_5') {
       if (monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -915,8 +915,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = (35 + 15);
-        playerStore.playerMana -= 10;
-        playerStore.playerHealth -= 1;
+        playerStore.playerActiveMana -= 10;
+        playerStore.playerActiveHealth -= 1;
       } else if (
           monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -934,9 +934,9 @@
           monsterStore.monsterName == 'Rusalka' ||
           monsterStore.monsterName == 'Phantom') {
         magicAttackValue.value = (35 - 15);
-        playerStore.playerMana -= 10;
-        playerStore.playerHealth -= 1;
-      } else (magicAttackValue.value = 35, playerStore.playerMana -= 10, playerStore.playerHealth -= 1);
+        playerStore.playerActiveMana -= 10;
+        playerStore.playerActiveHealth -= 1;
+      } else (magicAttackValue.value = 35, playerStore.playerActiveMana -= 10, playerStore.playerActiveHealth -= 1);
     } else if (id === 'magic_book_9') {
       if (monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -961,8 +961,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = (25 + 20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,15)));
-        playerStore.playerHealth -= 3;
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,15)));
+        playerStore.playerActiveHealth -= 3;
       } else if (
           monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -980,9 +980,9 @@
           monsterStore.monsterName == 'Rusalka' ||
           monsterStore.monsterName == 'Phantom') {
         magicAttackValue.value = (25 - 30);
-        playerStore.playerMana -= (Math.floor(getRandomValue(10,15)));
-        playerStore.playerHealth -= 3;
-      } else (magicAttackValue.value = 25, playerStore.playerMana -= (Math.floor(getRandomValue(10,15))), playerStore.playerHealth -= 3);
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,15)));
+        playerStore.playerActiveHealth -= 3;
+      } else (magicAttackValue.value = 25, playerStore.playerActiveMana -= (Math.floor(getRandomValue(10,15))), playerStore.playerActiveHealth -= 3);
     } else if (id === 'magic_book_10') {
       if (monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -1007,8 +1007,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = (50 + 40);
-        playerStore.playerMana -= 30;
-        playerStore.playerHealth -= 10;
+        playerStore.playerActiveMana -= 30;
+        playerStore.playerActiveHealth -= 10;
       } else if (
           monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -1026,9 +1026,9 @@
           monsterStore.monsterName == 'Rusalka' ||
           monsterStore.monsterName == 'Phantom') {
         magicAttackValue.value = (50 - 20);
-        playerStore.playerMana -= 30;
-        playerStore.playerHealth -= 10;
-      } else (magicAttackValue.value = 50, playerStore.playerMana -= 30, playerStore.playerHealth -= 10);
+        playerStore.playerActiveMana -= 30;
+        playerStore.playerActiveHealth -= 10;
+      } else (magicAttackValue.value = 50, playerStore.playerActiveMana -= 30, playerStore.playerActiveHealth -= 10);
     } else if (id === 'magic_scroll_6') {
       if (monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -1058,8 +1058,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = (35 + 15);
-        playerStore.playerMana -= 10;
-        playerStore.playerHealth += 1;
+        playerStore.playerActiveMana -= 10;
+        playerStore.playerActiveHealth += 1;
       } else if (
           monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -1072,9 +1072,9 @@
           monsterStore.monsterName == 'Rootbeast' ||
           monsterStore.monsterName == 'Wood Nymph' ) {
         magicAttackValue.value = (35 - 15);
-        playerStore.playerMana -= 10;
-        playerStore.playerHealth += 1
-      } else (magicAttackValue.value = 35, playerStore.playerMana -= 10, playerStore.playerHealth += 1);
+        playerStore.playerActiveMana -= 10;
+        playerStore.playerActiveHealth += 1
+      } else (magicAttackValue.value = 35, playerStore.playerActiveMana -= 10, playerStore.playerActiveHealth += 1);
     } else if (id === 'magic_book_11') {
       if (monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -1104,8 +1104,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = (30 + 20);
-        playerStore.playerMana -= (Math.floor(getRandomValue(5,20)));
-        playerStore.playerHealth += 3;
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(5,20)));
+        playerStore.playerActiveHealth += 3;
       } else if (
           monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -1118,9 +1118,9 @@
           monsterStore.monsterName == 'Rootbeast' ||
           monsterStore.monsterName == 'Wood Nymph' ) {
         magicAttackValue.value = (30 - 10);
-        playerStore.playerMana -= (Math.floor(getRandomValue(5,20)));
-        playerStore.playerHealth += 3
-      } else (magicAttackValue.value = 30, playerStore.playerMana -= (Math.floor(getRandomValue(5,20))), playerStore.playerHealth += 3);
+        playerStore.playerActiveMana -= (Math.floor(getRandomValue(5,20)));
+        playerStore.playerActiveHealth += 3
+      } else (magicAttackValue.value = 30, playerStore.playerActiveMana -= (Math.floor(getRandomValue(5,20))), playerStore.playerActiveHealth += 3);
     } else if (id === 'magic_book_12') {
       if (monsterStore.monsterName == 'Mountain Troll' ||
           monsterStore.monsterName == 'Snow Cat' ||
@@ -1150,8 +1150,8 @@
           monsterStore.monsterName == 'Moss Dragon' ||
           monsterStore.monsterName == 'Hydra') {
         magicAttackValue.value = ((Math.floor(getRandomValue(40,70))) + 20);
-        playerStore.playerMana -= 30;
-        playerStore.playerHealth += 10;
+        playerStore.playerActiveMana -= 30;
+        playerStore.playerActiveHealth += 10;
       } else if (
           monsterStore.monsterName == 'Djinn' || 
           monsterStore.monsterName == 'Phoenix' || 
@@ -1164,9 +1164,9 @@
           monsterStore.monsterName == 'Rootbeast' ||
           monsterStore.monsterName == 'Wood Nymph' ) {
         magicAttackValue.value = ((Math.floor(getRandomValue(40,70))) - 10);
-        playerStore.playerMana -= 30;
-        playerStore.playerHealth += 10;
-      } else (magicAttackValue.value = (Math.floor(getRandomValue(40,70))), playerStore.playerMana -= 30, playerStore.playerHealth += 10);
+        playerStore.playerActiveMana -= 30;
+        playerStore.playerActiveHealth += 10;
+      } else (magicAttackValue.value = (Math.floor(getRandomValue(40,70))), playerStore.playerActiveMana -= 30, playerStore.playerActiveHealth += 10);
     }    
     playerStore.playerXP += magicAttackValue.value;        // to gain XP
     playerStore.playerTotalXP += magicAttackValue.value;   // to keep track of XP
@@ -1174,8 +1174,8 @@
     playerStore.levelUp();    
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= magicAttackValue.value));
     addLogEntry('player', 'attacks', magicAttackValue.value, monsterisHit);
-    if (playerStore.playerMana < 0 ) {
-      playerStore.playerMana = 0;
+    if (playerStore.playerActiveMana < 0 ) {
+      playerStore.playerActiveMana = 0;
     }
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
@@ -1183,10 +1183,10 @@
       monsterStore.monsterHealth;
     }
     attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
+    if (playerStore.playerActiveHealth < 0) {
+      playerStore.playerActiveHealth = 0;
     } else {
-      playerStore.playerHealth;
+      playerStore.playerActiveHealth;
     }
   }
 
@@ -1199,7 +1199,7 @@
     playerStore.playerTotalXP += attackValue;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();
-    playerStore.playerMana -= (getRandomValue(1,20));
+    playerStore.playerActiveMana -= (getRandomValue(1,20));
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
     addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
@@ -1257,7 +1257,7 @@
 // uses mana to execute - if no mana, no healing
   const outOfMana = ref(false)
   function checkHealingMana() {
-    if (playerStore.playerMana === 0) {
+    if (playerStore.playerActiveMana === 0) {
       outOfMana.value = true;
     } else (healPlayer())
   }
@@ -1265,24 +1265,24 @@
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
     const healValue = getRandomValue(10, 25);
-    if (playerStore.playerHealth + healValue > playerStore.playerBaseHealth) {
-      playerStore.playerHealth = playerStore.playerBaseHealth;
+    if (playerStore.playerActiveHealth + healValue > playerStore.playerHealth) {
+      playerStore.playerActiveHealth = playerStore.playerHealth;
     } else {
       playerStore.playerHealth += healValue;
     }
     // const manaUse = getRandomValue(1,5);
     const manaUse = 80;
-    if (playerStore.playerMana - manaUse < 0) {
-      playerStore.playerMana = 0;
+    if (playerStore.playerActiveMana - manaUse < 0) {
+      playerStore.playerActiveMana = 0;
     } else (
-      playerStore.playerMana = playerStore.playerMana - manaUse
+      playerStore.playerActiveMana = playerStore.playerActiveMana - manaUse
     )
     addLogEntry('player', 'heals', healValue);
     attackPlayer();
-    if (playerStore.playerHealth < 0) {
-      playerStore.playerHealth = 0;
+    if (playerStore.playerActiveHealth < 0) {
+      playerStore.playerActiveHealth = 0;
     } else {
-      playerStore.playerHealth;
+      playerStore.playerActiveHealth;
     }
   }
 
@@ -1302,14 +1302,14 @@
   const gameover = ref(false)
   const winner = ref(null);
 
-  watch(storePlayerHealth.playerHealth, function(value) {
+  watch(storePlayerHealth.playerActiveHealth, function(value) {
     if (value === 0) {
       gameover.value = true;
       storeMonsterHealth.monsterFound = false;
     }
   })     
 
-  watch(storePlayerHealth.playerHealth, function(value) {
+  watch(storePlayerHealth.playerActiveHealth, function(value) {
     if (value <= 0 && storeMonsterHealth.monsterHealth <= 0) {
       winner.value = 'draw';
     } else if (value <=0) {
@@ -1318,7 +1318,7 @@
   })
 
   watch(storeMonsterHealth.monsterHealth, function(value) {
-    if (value <= 0 && storePlayerHealth.playerHealth <=0) {
+    if (value <= 0 && storePlayerHealth.playerActiveHealth <=0) {
       winner.value = 'draw';
     } else if (value <= 0) {
       winner.value = 'player';
