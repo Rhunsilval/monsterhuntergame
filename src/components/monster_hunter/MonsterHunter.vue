@@ -796,6 +796,7 @@
       } else (spellId.value = id, checkSpellMana())
     }
   }
+  
 // check mana levels - 
 // right now, player can execute even a high mana spell with even 1 mana left
 // i need to fix this once i figure out the logic of how - since execute and mana use levels are in the same useSpell code right now

@@ -647,6 +647,7 @@
                 playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
                 playerStore.playerHealth = (playerStore.playerHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
+                console.log('health value :' + chosenItem.value.life);
             }
             else if (chosenItem.value.itemUse === 'manaing') {
                 if ((playerStore.playerActiveMana + chosenItem.value.mana) > playerStore.playerMana) {
