@@ -20,13 +20,13 @@ export const useMonsterStore =
             
             // generate 1 of 10 types of monsters for each environment, from common to rare
             generateMonster(val) {
-                // val = 10;  // level 1
+                val = 10;  // level 1
                 // val = 30;  // level 2
                 // val = 50;  // level 3
                 // val = 60;  // level 4
                 // val = 70;  // level 5
                 // val = 80;  // level 6
-                val = 90;  // level 7
+                // val = 90;  // level 7
                 // val = 94;  // level 8
                 // val = 99;  // level 9
                 // val = 100  // level 10
