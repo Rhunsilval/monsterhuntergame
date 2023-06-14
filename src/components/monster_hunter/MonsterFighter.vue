@@ -259,7 +259,7 @@
             </div>
 
 <!-- player name and healthbar -->
-            <div v-if="monsterStore.monsterName" class="ml-2 text-center font-medium text-gray-600 w-60 "> {{ playerStore.playerId }}'s Life: {{ playerStore.playerHealth }}/{{ playerStore.playerStartingHealth }}
+            <div v-if="monsterStore.monsterName" class="ml-2 text-center font-medium text-gray-600 w-60 "> {{ playerStore.playerId }}'s Life: {{ playerStore.playerActiveHealth }}/{{ playerStore.playerHealth }}
                 <div class="healthbar">
                     <div class="healthbar_value" :style="playerBarStyle"></div>
                 </div>

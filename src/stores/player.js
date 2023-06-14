@@ -41,7 +41,7 @@ export const usePlayerStore =
 
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
-            nextLevel: 100,
+            nextLevel: 1000,
             increase: 2,
 
             playerXP: 0,        // what player has now
@@ -639,6 +639,7 @@ export const usePlayerStore =
                         + this.playerEquipped.player_necklace[0].attack 
                         + this.playerEquipped.player_ring[0].attack 
                         + this.playerEquipped.player_belt[0].attack 
+                        // + this.horseInventory.horse_shoes[0].attack  //have to add it to ALL of them if you add to any of them to get it to work
                     );
                 this.playerAttack = (this.playerBaseAttack + this.attackBonus + this.tempAttackBonus);
             },
@@ -740,7 +741,7 @@ export const usePlayerStore =
                     this.playerLevel++;
                     this.playerPoints++;
                     this.nextLevel *= this.increase;
-                    this.playerXP = 0;                    
+                    this.playerXP = 0;
                   }
             },
             autoHeal() {
