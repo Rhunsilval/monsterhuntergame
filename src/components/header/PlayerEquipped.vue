@@ -419,8 +419,8 @@
                             </li>
                         </button>
                     </div>
-                    <div class="w-24">
-                        <div v-if="examineArmorItem" class="grid grid-cols-1 text-center mb-7 mr-24 -mt-24 -ml-4 w-32 bg-green-300 border rounded-xl">
+                    <div class="w-24 ml-2">
+                        <div v-if="examineArmorItem" class="grid grid-cols-1 text-center mb-9 -mt-24 ml-40 w-32 bg-green-300 border rounded-xl">
                             <p class="font-semibold bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_armor[0].name }}</p>
                             <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_armor[0].description }}</p>
                             <p class="text-sm bg-white bg-opacity-90 px-4">{{ playerStore.playerEquipped.player_armor[0].value }}</p>

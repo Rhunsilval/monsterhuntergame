@@ -26,10 +26,10 @@ export const useMonsterStore =
                 // val = 60;  // level 4
                 // val = 70;  // level 5
                 // val = 80;  // level 6
-                // val = 90;  // level 7
+                val = 90;  // level 7
                 // val = 94;  // level 8
                 // val = 99;  // level 9
-                val = 100  // level 10
+                // val = 100  // level 10
                 // val = this.getRandomValue(1, 101);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
