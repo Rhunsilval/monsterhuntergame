@@ -50,7 +50,7 @@
           <form @submit.prevent="submitForm">
             <div class="relative text-center my-6 flex flex-col items-center self-center rounded-lg p-0.5 sm:mt-8">
               <input type="text" v-model="userName" placeholder="Player_One" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
-              <router-link @click="submitForm" type="button" :to="'/map'" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-3">Done</router-link>
+              <router-link @click="submitForm" type="button" :to="'/guild_gym'" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-3">Done</router-link>
             </div>            
           </form>        
       </div>
