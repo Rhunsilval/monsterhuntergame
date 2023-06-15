@@ -4,7 +4,8 @@ export const usePlayerStore =
     defineStore({
         id: 'player',
         state: () => ({
-            playerId: 'Player One',
+            playerId: 'Player_One',
+            oldGame: false,
             coinOnHand: 100000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
