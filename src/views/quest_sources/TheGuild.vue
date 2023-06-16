@@ -32,8 +32,8 @@
 
                     <div class="grid grid-cols-2 py-5">
                       <div>
-                        <button type="button" class="px-3 py-3 w-5/6 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
-                          Receive Training <br/> & <br/> Spend Points</button>
+                        <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-5/6 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
+                          Receive Training <br/> & <br/> Spend Points</router-link>
                       </div>
                       <div>
                         <button type="button" class="px-3 py-3 w-5/6 h-24 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">

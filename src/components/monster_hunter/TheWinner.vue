@@ -67,6 +67,7 @@
 <script setup>
     import { ref } from 'vue'
     import { useLootStore } from '@/stores/loot'
+    import { usePlayerStore } from '@/stores/player'
     import TheWinnerLoot from './TheWinnerLoot.vue'
 
     const props = defineProps({
@@ -78,6 +79,7 @@
       'emitLootCollected'
     ])    
 
+    const playerStore = usePlayerStore();
     const lootStore = useLootStore();
     const lootVisible = ref(false);
     const lootAvailable = ref(true);
@@ -98,6 +100,7 @@
       lootVisible.value = false;
       lootStore.lootList = [];
       lootStore.lootCoins = [];
+      playerStore.oldGame = true;
       emit('emitLootCollected');
     }
 

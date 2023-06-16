@@ -9,7 +9,7 @@
 
 <!-- START OVER button -->
           <div class="">
-            <router-link :to="'/home'" class="flex">
+            <router-link @click="oldGameAvail" :to="'/home'" type="button" class="flex">
               <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../../assets/images/startover.png" alt="" />
             </router-link>            
           </div>
@@ -163,6 +163,10 @@
   const playerStore = usePlayerStore();
 
   const openStatsModal = ref(false)
+
+  function oldGameAvail() {
+    playerStore.oldGame = true;
+  }
 
   const playerHealthPercentage = computed(function () {
     return (100 * playerStore.playerActiveHealth)/playerStore.playerHealth;

@@ -14,6 +14,8 @@ import TheBiergarten from './views/quest_sources/TheBiergarten.vue';
 import TheGossips from './views/quest_sources/TheGossips.vue';
 import TheStranger from './views/quest_sources/TheStranger.vue';
 import TheGuild from './views/quest_sources/TheGuild.vue';
+import GuildGym from './views/guild_pages/GuildGym.vue';
+import GuildPoints from './views/guild_pages/GuildPoints.vue';
 import TheMap from './views/primary_pages/TheMap.vue';
 import TheForest from './views/map_pages/TheForest.vue';
 import TheJungle from './views/map_pages/TheJungle.vue';
@@ -42,6 +44,8 @@ const router = createRouter({
         { path: '/questhunter_gossips', component: TheGossips },
         { path: '/questhunter_stranger', component: TheStranger },
         { path: '/guild', component: TheGuild },
+        { path: '/guild_gym', component: GuildGym },
+        { path: '/guild_points', component: GuildPoints },
         { path: '/map', component: TheMap }, 
         { path: '/map_forest', component: TheForest },
         { path: '/map_jungle', component: TheJungle },
