@@ -38,8 +38,9 @@
     </main>
   </div>
 
+<!-- if new game start: -->
   <div v-if="newGame" class="bg-[url('../assets/images/allpurpose/map.png')] bg-cover">
-    <div class="mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl pb-24 pt-16  px-4 sm:px-6 lg:px-8">
       <div class="sm:align-center sm:flex sm:flex-col bg-stone-500 bg-opacity-80">
           <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-center">Choose your hunter name!</h1>
           <p class="mt-5 text-xl text-gray-700 sm:text-center"> No one cares much what name you were born with.  This is your chance to re-invent yourself!</p>
@@ -50,12 +51,12 @@
           <form @submit.prevent="submitForm">
             <div class="relative text-center my-6 flex flex-col items-center self-center rounded-lg p-0.5 sm:mt-8">
               <input type="text" v-model="userName" placeholder="Player_One" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
-              <router-link @click="submitForm" type="button" :to="'/guild_gym'" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-3">Done</router-link>
+              <router-link @click="submitForm" type="button" :to="'/guild_points'" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-3">Done</router-link>
             </div>            
           </form>        
       </div>
       <div class="my-5">
-        <img src="../../assets/images/Monster_Hunter.png" class="h-96 w-full w-fill "/>
+        <img src="../../assets/images/allpurpose/monsterfighter.png" class="h-96 w-full w-fill "/>
       </div>
     </div>
   </div>

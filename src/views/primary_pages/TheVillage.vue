@@ -14,7 +14,7 @@
         <p class=" text-sm text-gray500 sm:text-center">Or the next hunter to be the joke of the village?</p>
         
 <!-- nav buttons -->
-        <div class="relative my-6 flex self-center rounded-lg bg-gray-100 p-0.5 sm:mt-8">
+        <div class="relative my-6 flex self-center rounded-lg p-0.5 sm:mt-8">
           <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
             Explore the Village</router-link>
           <router-link :to="'/map'" type="button" class="relative ml-0.5 w-1/2 whitespace-nowrap py-2 rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 text-sm font-medium text-gray-300 hover:text-black focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">

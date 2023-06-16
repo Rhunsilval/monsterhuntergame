@@ -1,7 +1,7 @@
 <template>
   <the-header></the-header>
     <!-- background -->
-  <div class="bg-[url('../assets/images/quests/QuestFinder_Tavern.png')] bg-cover ">
+  <div class="bg-[url('../assets/images/village_guild/guild_gym.png')] bg-cover ">
     <div class="mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:px-8">
 
 <!-- page header -->
