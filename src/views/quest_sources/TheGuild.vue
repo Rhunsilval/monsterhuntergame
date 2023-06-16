@@ -13,7 +13,7 @@
         <div class="flex justify-center">
             <div class="text-center w-1/3 bg-white bg-opacity-50 flex justify-center">
                 <div class="pt-3 ">
-                    <img src="../../assets/images/quests/The_Guildmaster.png" alt="" class="h-56 w-56 border border-black"/>                     
+                    <img src="../../assets/images/village_guild/The_Guildmaster.png" alt="" class="h-56 w-56 border border-black"/>                     
                 </div>             
             </div>        
         </div>
