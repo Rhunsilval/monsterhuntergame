@@ -6,7 +6,7 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player_One',
             oldGame: false,
-            coinOnHand: 100000,            
+            coinOnHand: 1000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
             playerHealth: 100,              // max health, changes with equip/unequip items           
@@ -20,26 +20,26 @@ export const usePlayerStore =
             manaBonus: 0,           // from equipped items
             manaPerSec: .1,         // how fast player restores mana
             
-            playerBaseAttack: 100,
+            playerAttack: 1,
+            playerBaseAttack: 1,  // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
-            playerAttack: 100,
 
-            playerBaseDefense: 100,
+            playerDefense: 1,
+            playerBaseDefense: 1,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
-            playerDefense: 100,
-
-            playerBaseStrength: 100,
+            
+            playerStrength: 1,
+            playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
-            playerStrength: 100,
-
+            
+            playerIntelligence: 1,      // total intel level including all bonuses from items
             playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
-            playerIntelligence: 1, // total intel level including all bonuses from items
-
+            
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
             nextLevel: 1000,

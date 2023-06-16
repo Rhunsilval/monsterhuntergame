@@ -135,7 +135,7 @@
               </div>
               
               <div class="mt-5 justify items-center">
-                <router-link type="button" :to="'/guild'" class="inline-flex w-full justify-center rounded-md border border-transparent bg-slate-400 px-4 py-2 mb-3 text-base font-medium text-black  shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
+                <router-link type="button" :to="'/guild_points'" class="inline-flex w-full justify-center rounded-md border border-transparent bg-slate-400 px-4 py-2 mb-3 text-base font-medium text-black  shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
                   Spend Points</router-link>
                 <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-orange-800 px-4 py-2 text-base font-medium text-white  shadow-sm hover:bg-[#c21a09] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm" @click="openStatsModal = false">
                   Close Stats</button>
