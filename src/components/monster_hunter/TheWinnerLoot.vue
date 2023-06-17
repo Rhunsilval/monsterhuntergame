@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div v-if="openError" class="mt-3">
-                <img src="../../assets/images/bagsfull.png" alt="" class="mt-8 rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
+                <img src="../../assets/images/allpurpose/bagsfull.png" alt="" class="mt-8 rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                 <h1 class="font-semibold">Looks like you're full up</h1>
                 <p class="text-sm">There's no room left in your inventory.</p>
                 <button @click="openError = false" class="px-2 py-2 mt-2 border border-gray-500 rounded-lg bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">

@@ -46,7 +46,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -65,7 +65,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -84,7 +84,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )                        
                 } else if (
@@ -103,7 +103,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -122,7 +122,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -141,7 +141,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -160,7 +160,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } else if (
@@ -179,7 +179,7 @@ export const useLootStore =
                                 description: val,
                                 name: 'coins',
                                 amount: val,
-                                imageSrc: require('../assets/images/coins.png'),
+                                imageSrc: require('../assets/images/allpurpose/coins.png'),
                             }
                         )
                 } 

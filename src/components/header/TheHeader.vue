@@ -10,7 +10,7 @@
 <!-- START OVER button -->
           <div class="">
             <router-link @click="oldGameAvail" :to="'/home'" type="button" class="flex">
-              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../../assets/images/startover.png" alt="" />
+              <img class="h-8 w-auto sm:h-10 border border-transparent hover:border-slate-600" src="../../assets/images/allpurpose/startover.png" alt="" />
             </router-link>            
           </div>
 

@@ -241,7 +241,7 @@
 <!-- no inventory space -->
                         <div class="col-span-1 -ml-16">
                             <div v-if="openMessage" class="mt-32 text-center ">
-                                <img src="../../assets/images/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
+                                <img src="../../assets/images/allpurpose/bagsfull.png" alt="" class="rounded-2xl block mx-auto border border-gray-400 aspect-square h-40 " aria-hidden="true" />
                                 <h1 class="font-semibold">Looks like you've overpacked</h1>
                                 <p class="text-sm">There's no room left in your inventory.</p>
                                 <button @click="openMessage = false" class="px-2 py-2 mt-2 border border-gray-500 rounded-lg bg-slate-300 hover:bg-slate-500 hover:text-white hover:border-black hover:border-2">
@@ -471,7 +471,7 @@
 <!-- figure -->
         <div class="col-span-1">
             <div class="px-3 pb-3 pt-16 mt-2 flex justify-center">
-                <img src="../../assets/images/human.png" alt="" class="h-96 w-auto border border-slate-600 "/>
+                <img src="../../assets/images/allpurpose/human.png" alt="" class="h-96 w-auto border border-slate-600 "/>
             </div>
         </div>
     </div>
