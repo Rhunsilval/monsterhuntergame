@@ -21,9 +21,14 @@ export const usePlayerStore =
             manaPerSec: .1,         // how fast player restores mana
             
             playerAttack: 1,
-            playerBaseAttack: 1,  // default max
+            playerBaseAttack: 1,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
+            nextAttackLevel: 1000,
+            attackLevelIncrease: 2,
+            attackXP: 0,
+            neededAttackXP: 0,
+            attackPrice: 100,
 
             playerDefense: 1,
             playerBaseDefense: 1,
@@ -49,7 +54,8 @@ export const usePlayerStore =
             playerTotalXP: 0,   // what player has in total
             playerNeededXP: 0,  // what player needs to level up
 
-            playerQuests: [],
+            playerActiveQuests: [],
+            playerCompletedQuests: [],
 
             playerEquipped: {
                 player_helm: [
@@ -751,6 +757,17 @@ export const usePlayerStore =
                     return ((this.playerHealth + this.healthPerSec) / 60)
                 // }
                 // requestAnimationFrame(this.autoHeal()); //executes the function 60 times every second?
+            },
+
+            XPUntilNextAttackLevel() {
+                return this.neededAttackXP = Math.round((this.nextAttackLevel - this.attackXP));
+            },
+            attackLevelUp() {
+                if (this.neededAttackXP <=0) {
+                    this.playerBaseAttack++;
+                    this.nextAttackLevel *= this.attackLevelIncrease;
+                    this.attackXP = 0;
+                }
             }
         },
 

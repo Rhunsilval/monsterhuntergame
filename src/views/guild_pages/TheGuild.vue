@@ -1,10 +1,11 @@
 <template>
     <the-header></the-header>
 
-    <div class="bg-[url('../assets/images/quests/The_Guild.png')] w-screen h-screen">
+    <div class="bg-[url('../assets/images/quests/The_Guild.png')] bg-cover ">
         <div class="flex justify-center pt-16">
             <div class="text-center w-1/3 bg-white bg-opacity-50  flex justify-center pb-3">
                 <div class="pt-3">
+<!-- Title elements -->
                     <p class="font-extrabold font-serif text-7xl ">The Monster Hunter's Guild</p>                
                 </div>             
             </div>        
@@ -20,8 +21,8 @@
 
         <div class="flex justify-center">
             <div class="text-center w-1/3 bg-white bg-opacity-50 flex justify-center">
-                <div class="pt-8 pb-8 font-semibold font-mono">
-                    <p class="pb-3">What level are you again? <br/> Not so sure you're in the right place, friend. <br/> But if you want to try, good luck to you. <br/> You'll need it.</p>
+                <div class="w-5/6 pt-8 pb-8 font-semibold font-mono">
+                    <p class="pb-3 px-5">Welcome to the Guild, friend. <br/> We offer services and support tailored toward Hunters of all levels. <br/> Please take a look around and let me know if you have any questions.</p>
                     
                     <div class="grid grid-cols-2 gap-5">
                       <router-link type="button" :to="'/village'" class="px-3 py-3 bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
@@ -30,20 +31,32 @@
                         Hunt for Monsters</router-link>
                     </div>
 
-                    <div class="grid grid-cols-2 py-5">
+                    <div class="grid grid-cols-3 py-5">
                       <div>
-                        <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-5/6 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
-                          Receive Training <br/> & <br/> Spend Points</router-link>
+                        <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
+                          <p class="pt-6">Receive Training</p></router-link>
                       </div>
                       <div>
-                        <button type="button" class="px-3 py-3 w-5/6 h-24 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">
+                        <router-link :to="'/guild_points'" type="button" class="px-3 py-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
+                          <p class="pt-7">Spend Points</p></router-link>
+                      </div>
+                      <div>
+                        <button type="button" class="px-3 py-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">
                           Examine Personal Reputation</button>
                       </div>
                     </div>
-                    <div>
-                        <button @click="openListModal = !openListModal" type="button" class="px-3 py-3 h-24 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
+                    <div class="grid grid-cols-2">
+                      <div>
+                        <router-link :to="''" type="button" class="ml-20 mt-3 px-3 py-3 w-36 h-32 bg-[#ffc0cb] hover:bg-[#de5d83] border border-slate-600 rounded-lg">
+                          <p class="pt-6">Visit Guild Hospital</p></router-link>
+                      </div>
+                      <div>
+                        <button @click="openListModal = !openListModal" type="button" class="-ml-20 mt-3 px-3 py-3 w-36 h-32 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
                           Check Guild Postings</button>
+                      </div>
+                      
                     </div>
+                    
                 </div>             
             </div>        
         </div>

@@ -13,7 +13,7 @@ import ThePub from './views/quest_sources/ThePub.vue';
 import TheBiergarten from './views/quest_sources/TheBiergarten.vue';
 import TheGossips from './views/quest_sources/TheGossips.vue';
 import TheStranger from './views/quest_sources/TheStranger.vue';
-import TheGuild from './views/quest_sources/TheGuild.vue';
+import TheGuild from './views/guild_pages/TheGuild.vue';
 import GuildGym from './views/guild_pages/GuildGym.vue';
 import GuildPoints from './views/guild_pages/GuildPoints.vue';
 import TheMap from './views/primary_pages/TheMap.vue';
