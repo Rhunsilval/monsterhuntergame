@@ -340,7 +340,7 @@
 // basic functions
     function defenseDodgeBasic() {
         if (trainingCommand.value === 'Dodge') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel(); 
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -350,7 +350,7 @@
     }
     function defenseParryBasic() {
         if (trainingCommand.value === 'Parry') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel();
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -362,7 +362,7 @@
 // intermediate functions
     function defenseDodgeIntermediate() {
         if (trainingCommand.value === 'Dodge') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel(); 
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -372,7 +372,7 @@
     }
     function defenseParryIntermediate() {
         if (trainingCommand.value === 'Parry') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel();
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -382,7 +382,7 @@
     }
     function defenseBlockIntermediate() {
         if (trainingCommand.value === 'Block') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel(); 
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -392,7 +392,7 @@
     }
     function defenseDeflectIntermediate() {
         if (trainingCommand.value === 'Deflect') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel();
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -404,7 +404,7 @@
 // expert functions
     function defenseDodgeExpert() {
         if (trainingCommand.value === 'Dodge') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel(); 
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -414,7 +414,7 @@
     }
     function defenseParryExpert() {
         if (trainingCommand.value === 'Parry') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel();
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -424,7 +424,7 @@
     }
     function defenseBlockExpert() {
         if (trainingCommand.value === 'Block') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel(); 
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();
@@ -434,7 +434,7 @@
     }
     function defenseDeflectExpert() {
         if (trainingCommand.value === 'Deflect') {
-            playerStore.defenseXP += 100;
+            playerStore.defenseXP += 10;
             playerStore.XPUntilNextDefenseLevel();
             playerStore.defenseLevelUp();
             playerStore.getDefenseValues();

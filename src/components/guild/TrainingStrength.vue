@@ -339,7 +339,7 @@
 // basic functions
     function strengthLiftBasic() {
         if (trainingCommand.value === 'Lift') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel(); 
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -349,7 +349,7 @@
     }
     function strengthPumpBasic() {
         if (trainingCommand.value === 'Pump') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel();
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -361,7 +361,7 @@
 // intermediate functions
     function strengthLiftIntermediate() {
         if (trainingCommand.value === 'Lift') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel(); 
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -371,7 +371,7 @@
     }
     function strengthPumpIntermediate() {
         if (trainingCommand.value === 'Pump') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel();
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -381,7 +381,7 @@
     }
     function strengthCurlIntermediate() {
         if (trainingCommand.value === 'Curl') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel(); 
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -391,7 +391,7 @@
     }
     function strengthPullIntermediate() {
         if (trainingCommand.value === 'Pull') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel();
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -403,7 +403,7 @@
 // expert functions
     function strengthLiftExpert() {
         if (trainingCommand.value === 'Lift') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel(); 
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -413,7 +413,7 @@
     }
     function strengthPumpExpert() {
         if (trainingCommand.value === 'Pump') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel();
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -423,7 +423,7 @@
     }
     function strengthCurlExpert() {
         if (trainingCommand.value === 'Curl') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel(); 
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();
@@ -433,7 +433,7 @@
     }
     function strengthPullExpert() {
         if (trainingCommand.value === 'Pull') {
-            playerStore.strengthXP += 100;
+            playerStore.strengthXP += 10;
             playerStore.XPUntilNextStrengthLevel();
             playerStore.strengthLevelUp();
             playerStore.getStrengthValues();

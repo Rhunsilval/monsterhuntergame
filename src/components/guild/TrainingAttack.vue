@@ -339,7 +339,7 @@
 // basic functions
     function attackSlashBasic() {
         if (trainingCommand.value === 'Slash') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -349,7 +349,7 @@
     }
     function attackThrustBasic() {
         if (trainingCommand.value === 'Thrust') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -361,7 +361,7 @@
 // intermediate functions
     function attackSlashIntermediate() {
         if (trainingCommand.value === 'Slash') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -371,7 +371,7 @@
     }
     function attackThrustIntermediate() {
         if (trainingCommand.value === 'Thrust') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -381,7 +381,7 @@
     }
     function attackHackIntermediate() {
         if (trainingCommand.value === 'Hack') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -391,7 +391,7 @@
     }
     function attackCutIntermediate() {
         if (trainingCommand.value === 'Cut') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -403,7 +403,7 @@
 // expert functions
     function attackSlashExpert() {
         if (trainingCommand.value === 'Slash') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -413,7 +413,7 @@
     }
     function attackThrustExpert() {
         if (trainingCommand.value === 'Thrust') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -423,7 +423,7 @@
     }
     function attackHackExpert() {
         if (trainingCommand.value === 'Hack') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();
@@ -433,7 +433,7 @@
     }
     function attackCutExpert() {
         if (trainingCommand.value === 'Cut') {
-            playerStore.attackXP += 100;
+            playerStore.attackXP += 10;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
             playerStore.getAttackValues();

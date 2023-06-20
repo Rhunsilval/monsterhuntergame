@@ -38,16 +38,16 @@
             </div>
             <!-- row 2 -->
             <div class="mt-2 flex justify-center">  
-              <button type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                Train Life </button>
+              <button @click="fundsCheckHealth" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Train Life <br/> {{ playerStore.healthPrice }} coin </button>
             </div>
             <div class="mt-2 flex justify-center">  
-              <button type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                Train Intelligence </button>
+              <button @click="fundsCheckIntelligence" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Train Intelligence <br/> {{ playerStore.intelligencePrice }} coin </button>
             </div>
             <div class="mt-2 flex justify-center">  
-              <button type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                Train Mana </button>
+              <button @click="fundsCheckMana" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Train Mana <br/> {{ playerStore.manaPrice }} coin </button>
             </div>
           </div>
         </div>
@@ -85,6 +85,24 @@
             @emitDoneTraining="doneTraining"
           ></training-strength>
         </div>
+
+        <div v-if="inIntelligenceTraining">
+          <training-intelligence
+            @emitDoneTraining="doneTraining"
+          ></training-intelligence>
+        </div>
+
+        <div v-if="inHealthTraining">
+          <training-health
+            @emitDoneTraining="doneTraining"
+          ></training-health>
+        </div>
+
+        <div v-if="inManaTraining">
+          <training-mana
+            @emitDoneTraining="doneTraining"
+          ></training-mana>
+        </div>
                 
       </div>
       <div class="mt-80 pb-1 "></div>      
@@ -99,6 +117,9 @@
   import TrainingAttack from '../../components/guild/TrainingAttack.vue';
   import TrainingDefense from '../../components/guild/TrainingDefense.vue';
   import TrainingStrength from '../../components/guild/TrainingStrength.vue';
+  import TrainingIntelligence from '../../components/guild/TrainingIntelligence.vue';
+  import TrainingHealth from '../../components/guild/TrainingHealth.vue';
+  import TrainingMana from '../../components/guild/TrainingMana.vue';
 
   const playerStore = usePlayerStore();
 
@@ -106,6 +127,9 @@
   const inAttackTraining = ref(false);
   const inDefenseTraining = ref(false);
   const inStrengthTraining = ref(false);
+  const inIntelligenceTraining = ref(false);
+  const inHealthTraining = ref(false);
+  const inManaTraining = ref(false);
   const noCoins = ref(false);
   
   function fundsCheckAttack() {
@@ -146,12 +170,54 @@
     inTraining.value = true;
     inStrengthTraining.value = true;
   }
+  
+  function fundsCheckIntelligence() {
+    if (playerStore.coinOnHand - playerStore.intelligencePrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.intelligencePrice);
+      intelligenceTraining();
+    }
+  }
+  function intelligenceTraining() {    
+    inTraining.value = true;
+    inIntelligenceTraining.value = true;
+  }
+  
+  function fundsCheckHealth() {
+    if (playerStore.coinOnHand - playerStore.healthPrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.healthPrice);
+      healthTraining();
+    }
+  }
+  function healthTraining() {    
+    inTraining.value = true;
+    inHealthTraining.value = true;
+  }
+  
+  function fundsCheckMana() {
+    if (playerStore.coinOnHand - playerStore.manaPrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.manaPrice);
+      manaTraining();
+    }
+  }
+  function manaTraining() {    
+    inTraining.value = true;
+    inManaTraining.value = true;
+  }
 
   function doneTraining() {
     inTraining.value = false;
     inAttackTraining.value = false;
     inDefenseTraining.value = false;
     inStrengthTraining.value = false;
+    inIntelligenceTraining.value = false;
+    inHealthTraining.value = false;
+    inManaTraining.value = false;
   }
 
 </script>
