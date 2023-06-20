@@ -12,23 +12,48 @@
               <h1 class="mt-2 text-xl text-gray-700 font-bold sm:text-center">Strength Training.</h1>
               <p class="font-semibold text-xl">A good choice, {{ playerStore.playerId }}.</p>  
               <p v-if="playerStore.playerBaseStrength < 5" class="mt-2 text-gray-700 sm:text-center">Now, you're obviously a beginner, so we'll start off easy.</p>  
+              <p v-else-if="playerStore.playerBaseStrength < 10" class="mt-2 text-gray-700 sm:text-center">Looks like you've got some experience.  Let's make this a bit more challenging, then.</p>  
               <p class="mt-2 text-sm text-gray-700 sm:text-center">Follow my instructions to gain experience.  Ignore them and gain nothing.</p>  
             </div>
-
+<!-- basic training start -->
             <div v-if="playerStore.playerBaseStrength < 5" class="flex justify-center mb-8">
                 <button v-if="!trainingStarted" @click="startBasicTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
                     {{ trainingCommand }}</button> 
-            </div>            
+            </div>     
+<!-- intermediate training start -->
+            <div v-else-if="playerStore.playerBaseStrength < 10" class="flex justify-center mb-8">
+                <button v-if="!trainingStarted" @click="startIntermediateTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
+                    Ready?</button> 
+                <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
+                    {{ trainingCommand }}</button> 
+            </div>     
           </div>  
+
           <div class="col-span-2 flex justify-center">
             <div v-if="trainingStarted" class="flex items-center justify-center mr-32">
-                <button @click="strengthLift" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
-                    Lift</button>
-                <button @click="strengthPump" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
-                    Pump</button>
+<!-- basic buttons -->
+                <div v-if="basicTrainingActive" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                    <button @click="strengthLiftBasic" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Lift</button>
+                    <button @click="strengthPumpBasic" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Pump</button>
+                </div>
+<!-- intermediate buttons -->
+                <div v-if="intermediateTrainingActive" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                    <button @click="strengthLiftIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Lift</button>
+                    <button @click="strengthPumpIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Pump</button>
+
+                    <button @click="strengthCurlIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Curl</button>
+                    <button @click="strengthPullIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                        Pull</button>
+                </div>
             </div>
+<!-- rotating dummy -->
             <div v-if="!trainingStarted" class="flex items-center justify-center">
               <img src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600" />
             </div>
@@ -94,13 +119,30 @@
     const B = ref(false);
     const A = ref(false);
 
+    const basicTrainingActive = ref(false);
     function startBasicTraining() {
         trainingStarted.value = true;
+        basicTrainingActive.value = true;
         let x = Math.floor(Math.random()*(3-1)+1);
         console.log(x);
         if (x <=1) {
             trainingCommand.value = 'Lift'
         } else (trainingCommand.value = "Pump")
+    }
+
+    const intermediateTrainingActive = ref(false);
+    function startIntermediateTraining() {
+        trainingStarted.value = true;
+        intermediateTrainingActive.value = true;
+        let x = Math.floor(Math.random()*(5-1)+1);
+        console.log(x);
+        if (x <= 1) {
+            trainingCommand.value = "Lift";
+        } else if (x <= 2) {
+            trainingCommand.value = "Pump";
+        } else if (x <= 3) {
+            trainingCommand.value = "Curl";
+        } else (trainingCommand.value = "Pull")
     }
 
     function moveTheDummy() {
@@ -119,7 +161,8 @@
         }
     }
 
-    function strengthLift() {
+// basic functions
+    function strengthLiftBasic() {
         if (trainingCommand.value === 'Lift') {
             playerStore.strengthXP += 100;
             playerStore.XPUntilNextStrengthLevel(); 
@@ -129,7 +172,7 @@
         moveTheDummy();
         startBasicTraining();
     }
-    function strengthPump() {
+    function strengthPumpBasic() {
         if (trainingCommand.value === 'Pump') {
             playerStore.strengthXP += 100;
             playerStore.XPUntilNextStrengthLevel();
@@ -140,9 +183,51 @@
         startBasicTraining();
     }
 
+// intermediate functions
+    function strengthLiftIntermediate() {
+        if (trainingCommand.value === 'Lift') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel(); 
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startIntermediateTraining();
+    }
+    function strengthPumpIntermediate() {
+        if (trainingCommand.value === 'Pump') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel();
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startIntermediateTraining();
+    }
+    function strengthCurlIntermediate() {
+        if (trainingCommand.value === 'Curl') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel(); 
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startIntermediateTraining();
+    }
+    function strengthPullIntermediate() {
+        if (trainingCommand.value === 'Pull') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel();
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startIntermediateTraining();
+    }
+
+// auto end session with levelup
     const storePlayerHealth = storeToRefs(playerStore); // so values are watchable
     const successfulTraining = ref(false);
-
     watch(storePlayerHealth.neededStrengthXP, function(value) {
         if (value === 0) {
         successfulTraining.value = true;
