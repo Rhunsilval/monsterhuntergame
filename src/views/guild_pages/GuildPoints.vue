@@ -1,6 +1,6 @@
 <template>
   <the-header></the-header>
-    <!-- background -->
+<!-- background -->
   <div class="bg-[url('../assets/images/village_guild/levelup_background.png')] w-screen ">
     <div class="mx-auto max-w-7xl pt-10 pb-24 px-4 sm:px-6 lg:px-8">
 

@@ -6,7 +6,7 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player_One',
             oldGame: false,
-            coinOnHand: 1000,            
+            coinOnHand: 100000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
             playerHealth: 100,              // max health, changes with equip/unequip items           
@@ -31,7 +31,7 @@ export const usePlayerStore =
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
             playerAttack: 1,
-            playerBaseAttack: 1,    // default max
+            playerBaseAttack: 8,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -41,7 +41,7 @@ export const usePlayerStore =
             attackPrice: 100,
 
             playerDefense: 1,
-            playerBaseDefense: 1,
+            playerBaseDefense: 8,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -51,7 +51,7 @@ export const usePlayerStore =
             defensePrice: 100,            
             
             playerStrength: 1,
-            playerBaseStrength: 1,
+            playerBaseStrength: 8,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,
@@ -61,13 +61,13 @@ export const usePlayerStore =
             strengthPrice: 500,
             
             playerIntelligence: 1,      // total intel level including all bonuses from items
-            playerBaseIntelligence: 1,
+            playerBaseIntelligence: 8,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
             nextIntelligenceLevel: 1000,
             intelligenceLevelIncrease: 2,
             intelligenceXP: 0,
-            neededIntelligenceXP: 0,
+            neededIntelligenceXP: 1000,
             intelligencePrice: 500,
             
             playerLevel: 1,
@@ -803,7 +803,65 @@ export const usePlayerStore =
                     this.nextAttackLevel *= this.attackLevelIncrease;
                     this.attackXP = 0;
                 }
-            }
+            },
+
+            XPUntilNextDefenseLevel() {
+                return this.neededDefenseXP = Math.round((this.nextDefenseLevel - this.defenseXP));
+            },
+            defenseLevelUp() {
+                if (this.neededDefenseXP <=0) {
+                    this.playerBaseDefense++;
+                    this.nextDefenseLevel *= this.defenseLevelIncrease;
+                    this.defenseXP = 0;
+                }
+            },
+
+            XPUntilNextStrengthLevel() {
+                return this.neededStrengthXP = Math.round((this.nextStrengthLevel - this.strengthXP));
+            },
+            strengthLevelUp() {
+                if (this.neededStrengthXP <=0) {
+                    this.playerBaseStrength++;
+                    this.nextStrengthLevel *= this.strengthLevelIncrease;
+                    this.strengthXP = 0;
+                }
+            },
+
+            XPUntilNextIntelligenceLevel() {
+                return this.neededIntelligenceXP = Math.round((this.nextIntelligenceLevel - this.intelligenceXP));
+            },
+            intelligenceLevelUp() {
+                if (this.neededIntelligenceXP <=0) {
+                    this.playerBaseIntelligence++;
+                    this.nextIntelligenceLevel *= this.intelligenceLevelIncrease;
+                    this.intelligenceXP = 0;
+                }
+            },
+
+            XPUntilNextHealthLevel() {
+                return this.neededHealthXP = Math.round((this.nextHealthLevel - this.healthXP));
+            },
+            healthLevelUp() {
+                if (this.neededHealthXP <=0) {
+                    this.playerBaseHealth++;
+                    this.playerActiveHealth++;
+                    this.nextHealthLevel *= this.healthLevelIncrease;
+                    this.healthXP = 0;
+                }
+            },
+
+            XPUntilNextManaLevel() {
+                return this.neededManaXP = Math.round((this.nextManaLevel - this.manaXP));
+            },
+            manaLevelUp() {
+                if (this.neededManaXP <=0) {
+                    this.playerBaseMana++;
+                    this.playerActiveMana++;
+                    this.nextManaLevel *= this.manaLevelIncrease;
+                    this.manaXP = 0;
+                }
+            },
+
         },
 
         getters: { }
