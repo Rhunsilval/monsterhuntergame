@@ -12,13 +12,23 @@ export const usePlayerStore =
             playerHealth: 100,              // max health, changes with equip/unequip items           
             playerBaseHealth: 100,          // default max health value
             healthBonus: 0,                 // amount of health from equipped items
-            healthPerSec: .1,           // Fortitude - how fast player heals
+            nextHealthLevel: 500,
+            HealthLevelIncrease: 3,
+            healthXP: 0,
+            neededHealthXP: 500,
+            healthPrice: 1000,
+            healthPerSec: .1,           // Fortitude - how fast player heals for not-working autoheal
 
             playerActiveMana: 100,
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
-            manaPerSec: .1,         // how fast player restores mana
+            nextManaLevel: 500,
+            manaLevelIncrease: 3,
+            manaXP: 0,
+            neededManaXP: 500,
+            manaPrice: 1000,
+            manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
             playerAttack: 1,
             playerBaseAttack: 1,    // default max
@@ -27,23 +37,38 @@ export const usePlayerStore =
             nextAttackLevel: 1000,
             attackLevelIncrease: 2,
             attackXP: 0,
-            neededAttackXP: 0,
+            neededAttackXP: 1000,
             attackPrice: 100,
 
             playerDefense: 1,
             playerBaseDefense: 1,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
+            nextDefenseLevel: 1000,
+            defenseLevelIncrease: 2,
+            defenseXP: 0,
+            neededDefenseXP: 1000,
+            defensePrice: 100,            
             
             playerStrength: 1,
             playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
+            nextStrengthLevel: 1000,
+            strengthLevelIncrease: 2,
+            strengthXP: 0,
+            neededStrengthXP: 1000,
+            strengthPrice: 500,
             
             playerIntelligence: 1,      // total intel level including all bonuses from items
             playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
+            nextIntelligenceLevel: 1000,
+            intelligenceLevelIncrease: 2,
+            intelligenceXP: 0,
+            neededIntelligenceXP: 0,
+            intelligencePrice: 500,
             
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
@@ -56,6 +81,16 @@ export const usePlayerStore =
 
             playerActiveQuests: [],
             playerCompletedQuests: [],
+            playerKillLog: [
+                {
+                    id: 'Sand Crab',
+                    quantity: 0,
+                    reputationPoints: 1,
+                },
+                {
+                    id: '',
+                }
+            ],
 
             playerEquipped: {
                 player_helm: [

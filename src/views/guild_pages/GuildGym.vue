@@ -68,7 +68,9 @@
         <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-center mt-5">Hunter's Gym</h1>
 
         <div v-if="inAttackTraining">
-          <training-attack></training-attack>
+          <training-attack
+            @emitDoneTraining="doneTraining"
+          ></training-attack>
         </div>
                 
       </div>
@@ -94,6 +96,11 @@
   function attackTraining() {
     inTraining.value = true;
     inAttackTraining.value = true;
+  }
+
+  function doneTraining() {
+    inTraining.value = false;
+    inAttackTraining.value = false;
   }
 
 </script>

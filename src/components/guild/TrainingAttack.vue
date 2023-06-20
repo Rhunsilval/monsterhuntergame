@@ -21,8 +21,6 @@
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
                     {{ trainingCommand }}</button> 
-                <!-- <button class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
-                    Thrust!</button>  -->
             </div>
             
           </div>         
@@ -34,17 +32,22 @@
                 <button @click="attackThrust" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
                     Thrust</button>
             </div>
-            <div class="flex items-center justify-center">
+            <div v-if="!trainingStarted" class="flex items-center justify-center">
               <img src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600" />
-              <!-- <img src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 rotate-45" /> -->
-              <!-- <img src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 -rotate-45" /> -->
+            </div>
+            <div v-if="trainingStarted" class="flex items-center jusify-c">
+              <img v-if="AB" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
+              <img v-if="BA" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
+              <img v-if="A" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 rotate-45" />
+              <img v-if="B" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 -rotate-45" />
             </div>
           </div>
 
           <div class="col-span-3 flex justify-center">
             <div class="grid grid-cols-1 text-center">
                 <div class="flex justify-center">
-                    <button class="border border-gray-600 rounded-lg px-2 py-2 w-20 bg-[#305c79] text-white">Done?</button>
+                    <button @click="emitDoneTraining" class="border border-gray-600 rounded-lg px-2 py-2 w-20 bg-[#305c79] text-white">
+                        Done?</button>
                 </div>
                 <p class="text-2xl font-semibold">Your current Attack Level: {{ playerStore.playerBaseAttack }}</p>
                 <p class="text-2xl font-semibold">XP until next Attack level:  {{ playerStore.neededAttackXP }}</p>
@@ -59,10 +62,22 @@
     import { ref } from 'vue';
     import { usePlayerStore } from '@/stores/player'
 
+    const emit = defineEmits([
+        'emitDoneTraining',
+    ])
+    function emitDoneTraining() {
+        emit('emitDoneTraining');
+    }
+
     const playerStore = usePlayerStore();
 
     const trainingCommand = ref('');
     const trainingStarted = ref(false);
+    
+    const AB = ref(true);
+    const BA = ref(false);
+    const B = ref(false);
+    const A = ref(false);
 
     function startBasicTraining() {
         trainingStarted.value = true;
@@ -73,12 +88,29 @@
         } else (trainingCommand.value = "Slash")
     }
 
+    function moveTheDummy() {
+        if (AB.value === true) {
+            AB.value = false;
+            A.value = true;
+        } else if (A.value === true) {
+            A.value = false;
+            BA.value = true;
+        } else if (BA.value === true) {
+            BA.value = false;
+            B.value = true;
+        } else if (B.value === true) {
+            B.value = false;
+            AB.value = true;
+        }
+    }
+
     function attackSlash() {
         if (trainingCommand.value === 'Slash') {
             playerStore.attackXP += 100;
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
         }
+        moveTheDummy();
         startBasicTraining();
     }
     function attackThrust() {
@@ -87,6 +119,7 @@
             playerStore.XPUntilNextAttackLevel();
             playerStore.attackLevelUp();
         }
+        moveTheDummy();
         startBasicTraining();
     }
 
