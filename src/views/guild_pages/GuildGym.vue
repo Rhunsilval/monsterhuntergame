@@ -29,12 +29,12 @@
                 Train Attack <br/> {{ playerStore.attackPrice }} coin </button>
             </div>
             <div class="flex justify-center">  
-              <button type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                Train Defense</button>
+              <button @click="fundsCheckDefense" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-yellow-800 hover:bg-[#c49e78] hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Train Defense <br/> {{ playerStore.defensePrice }} coin</button>
             </div>
             <div class="flex justify-center">  
-              <button type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                Train Strength </button>
+              <button @click="fundsCheckStrength" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 hover:text-black text-sm font-serif text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Train Strength <br/> {{ playerStore.strengthPrice }} coin </button>
             </div>
             <!-- row 2 -->
             <div class="mt-2 flex justify-center">  
@@ -73,11 +73,20 @@
             @emitDoneTraining="doneTraining"
           ></training-attack>
         </div>
+
+        <div v-if="inDefenseTraining">
+          <training-defense
+            @emitDoneTraining="doneTraining"
+          ></training-defense>
+        </div>
+
+        <div v-if="inStrengthTraining">
+          <training-strength
+            @emitDoneTraining="doneTraining"
+          ></training-strength>
+        </div>
                 
       </div>
-
-
-
       <div class="mt-80 pb-1 "></div>      
     </div>
   </div>
@@ -88,11 +97,15 @@
   import { usePlayerStore } from '@/stores/player'
   import { ref } from 'vue';
   import TrainingAttack from '../../components/guild/TrainingAttack.vue';
+  import TrainingDefense from '../../components/guild/TrainingDefense.vue';
+  import TrainingStrength from '../../components/guild/TrainingStrength.vue';
 
   const playerStore = usePlayerStore();
 
   const inTraining = ref(false);
   const inAttackTraining = ref(false);
+  const inDefenseTraining = ref(false);
+  const inStrengthTraining = ref(false);
   const noCoins = ref(false);
   
   function fundsCheckAttack() {
@@ -107,10 +120,38 @@
     inTraining.value = true;
     inAttackTraining.value = true;
   }
+  
+  function fundsCheckDefense() {
+    if (playerStore.coinOnHand - playerStore.defensePrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.defensePrice);
+      defenseTraining();
+    }
+  }
+  function defenseTraining() {    
+    inTraining.value = true;
+    inDefenseTraining.value = true;
+  }
+  
+  function fundsCheckStrength() {
+    if (playerStore.coinOnHand - playerStore.strengthPrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.strengthPrice);
+      strengthTraining();
+    }
+  }
+  function strengthTraining() {    
+    inTraining.value = true;
+    inStrengthTraining.value = true;
+  }
 
   function doneTraining() {
     inTraining.value = false;
     inAttackTraining.value = false;
+    inDefenseTraining.value = false;
+    inStrengthTraining.value = false;
   }
 
 </script>

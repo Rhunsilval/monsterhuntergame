@@ -9,13 +9,13 @@
                 </div>                   
             </div>
             <div class="w-60 mb-2 pl-3 ml-16 text-center">  
-              <h1 class="mt-2 text-xl text-gray-700 font-bold sm:text-center">Attack Training.</h1>
+              <h1 class="mt-2 text-xl text-gray-700 font-bold sm:text-center">Strength Training.</h1>
               <p class="font-semibold text-xl">A good choice, {{ playerStore.playerId }}.</p>  
-              <p v-if="playerStore.playerBaseAttack < 5" class="mt-2 text-gray-700 sm:text-center">Now, you're obviously a beginner, so we'll start off easy.</p>  
+              <p v-if="playerStore.playerBaseStrength < 5" class="mt-2 text-gray-700 sm:text-center">Now, you're obviously a beginner, so we'll start off easy.</p>  
               <p class="mt-2 text-sm text-gray-700 sm:text-center">Follow my instructions to gain experience.  Ignore them and gain nothing.</p>  
             </div>
 
-            <div v-if="playerStore.playerBaseAttack < 5" class="flex justify-center mb-8">
+            <div v-if="playerStore.playerBaseStrength < 5" class="flex justify-center mb-8">
                 <button v-if="!trainingStarted" @click="startBasicTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
@@ -24,19 +24,19 @@
           </div>  
           <div class="col-span-2 flex justify-center">
             <div v-if="trainingStarted" class="flex items-center justify-center mr-32">
-                <button @click="attackSlash" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
-                    Slash</button>
-                <button @click="attackThrust" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
-                    Thrust</button>
+                <button @click="strengthLift" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                    Lift</button>
+                <button @click="strengthPump" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                    Pump</button>
             </div>
             <div v-if="!trainingStarted" class="flex items-center justify-center">
-              <img src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600" />
+              <img src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600" />
             </div>
             <div v-if="trainingStarted" class="flex items-center jusify-c">
-              <img v-if="AB" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
-              <img v-if="BA" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
-              <img v-if="A" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 rotate-45" />
-              <img v-if="B" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 -rotate-45" />
+              <img v-if="AB" src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
+              <img v-if="BA" src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600 " />
+              <img v-if="A" src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600 rotate-45" />
+              <img v-if="B" src="../../assets/images/village_guild/gym_strength_dummy.png" alt="" class="h-72 w-72 border border-gray-600 -rotate-45" />
             </div>
           </div>
           <div class="col-span-3 flex justify-center">
@@ -45,9 +45,9 @@
                     <button @click="emitDoneTraining" class="border border-gray-600 rounded-lg px-2 py-2 w-20 bg-[#305c79] text-white">
                         Done?</button>
                 </div>
-                <p class="text-2xl font-semibold">Your current Attack Level: {{ playerStore.playerBaseAttack }}</p>
-                <p class="text-2xl font-semibold">XP until next Attack level:  {{ playerStore.neededAttackXP }}</p>
-                <p class="text-2xl font-semibold ">{{ playerStore.attackXP }}/{{ playerStore.nextAttackLevel }}</p>
+                <p class="text-2xl font-semibold">Your current Strength Level: {{ playerStore.playerBaseStrength }}</p>
+                <p class="text-2xl font-semibold">XP until next Strength level:  {{ playerStore.neededStrengthXP }}</p>
+                <p class="text-2xl font-semibold ">{{ playerStore.strengthXP }}/{{ playerStore.nextStrengthLevel }}</p>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
         emit('emitDoneTraining');
     }
     function finishUp() {
-        playerStore.attackPrice = (playerStore.attackPrice * 5);
+        playerStore.strengthPrice = (playerStore.strengthPrice * 3);
         emitDoneTraining();
     }
 
@@ -99,8 +99,8 @@
         let x = Math.floor(Math.random()*(3-1)+1);
         console.log(x);
         if (x <=1) {
-            trainingCommand.value = 'Thrust'
-        } else (trainingCommand.value = "Slash")
+            trainingCommand.value = 'Lift'
+        } else (trainingCommand.value = "Pump")
     }
 
     function moveTheDummy() {
@@ -119,22 +119,22 @@
         }
     }
 
-    function attackSlash() {
-        if (trainingCommand.value === 'Slash') {
-            playerStore.attackXP += 10;
-            playerStore.XPUntilNextAttackLevel();
-            playerStore.attackLevelUp();
-            playerStore.getAttackValues();
+    function strengthLift() {
+        if (trainingCommand.value === 'Lift') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel(); 
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
         }
         moveTheDummy();
         startBasicTraining();
     }
-    function attackThrust() {
-        if (trainingCommand.value === 'Thrust') {
-            playerStore.attackXP += 10;
-            playerStore.XPUntilNextAttackLevel();
-            playerStore.attackLevelUp();
-            playerStore.getAttackValues();
+    function strengthPump() {
+        if (trainingCommand.value === 'Pump') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel();
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
         }
         moveTheDummy();
         startBasicTraining();
@@ -143,7 +143,7 @@
     const storePlayerHealth = storeToRefs(playerStore); // so values are watchable
     const successfulTraining = ref(false);
 
-    watch(storePlayerHealth.neededAttackXP, function(value) {
+    watch(storePlayerHealth.neededStrengthXP, function(value) {
         if (value === 0) {
         successfulTraining.value = true;
         }

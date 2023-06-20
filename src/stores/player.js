@@ -803,7 +803,30 @@ export const usePlayerStore =
                     this.nextAttackLevel *= this.attackLevelIncrease;
                     this.attackXP = 0;
                 }
-            }
+            },
+
+            XPUntilNextDefenseLevel() {
+                return this.neededDefenseXP = Math.round((this.nextDefenseLevel - this.defenseXP));
+            },
+            defenseLevelUp() {
+                if (this.neededDefenseXP <=0) {
+                    this.playerBaseDefense++;
+                    this.nextDefenseLevel *= this.defenseLevelIncrease;
+                    this.defenseXP = 0;
+                }
+            },
+
+            XPUntilNextStrengthLevel() {
+                return this.neededStrengthXP = Math.round((this.nextStrengthLevel - this.strengthXP));
+            },
+            strengthLevelUp() {
+                if (this.neededStrengthXP <=0) {
+                    this.playerBaseStrength++;
+                    this.nextStrengthLevel *= this.strengthLevelIncrease;
+                    this.strengthXP = 0;
+                }
+            },
+
         },
 
         getters: { }
