@@ -1,6 +1,5 @@
 <template>
-    <div class="grid grid-cols-3 mt-5 mb-10">
-
+    <div v-if="!successfulTraining" class="grid grid-cols-3 mt-5 mb-10">
           <div class="grid grid-cols-1 ml-8">
             <div class="flex justify-center mt-5">
                 <div class="text-center flex justify-center">
@@ -21,10 +20,8 @@
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
                     {{ trainingCommand }}</button> 
-            </div>
-            
-          </div>         
-
+            </div>            
+          </div>  
           <div class="col-span-2 flex justify-center">
             <div v-if="trainingStarted" class="flex items-center justify-center mr-32">
                 <button @click="attackSlash" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
@@ -42,7 +39,6 @@
               <img v-if="B" src="../../assets/images/village_guild/gym_attack_dummy.png" alt="" class="h-72 w-72 border border-gray-600 -rotate-45" />
             </div>
           </div>
-
           <div class="col-span-3 flex justify-center">
             <div class="grid grid-cols-1 text-center">
                 <div class="flex justify-center">
@@ -54,19 +50,38 @@
                 <p class="text-2xl font-semibold ">{{ playerStore.attackXP }}/{{ playerStore.nextAttackLevel }}</p>
             </div>
         </div>
+    </div>
 
+    <div v-if="successfulTraining" class="grid grid-cols-1">
+        <div class="flex justify-center mt-16 mb-3">
+            <img src="../../assets/images/village_guild/gym_trainer.png" class="h-96  " />
+        </div>
+        <div class="text-center mb-3">
+            <h1 class="text-3xl font-bold ">Well done, {{ playerStore.playerId }}!</h1>
+            <p class="text-xl">Whew!  Now that was a workout!</p>
+            <p class="">Enjoy a well-earned break.  And be sure to come back again!</p>
+        </div>
+        <div class="flex justify-center mb-5">
+            <button @click="finishUp" class="border border-gray-600 rounded-lg px-2 py-2 w-20 bg-[#305c79] text-white">
+                Done</button>
+        </div>
     </div>
 </template>
 
 <script setup>
-    import { ref } from 'vue';
-    import { usePlayerStore } from '@/stores/player'
+    import { ref, watch } from 'vue';
+    import { storeToRefs } from 'pinia'; 
+    import { usePlayerStore } from '@/stores/player';
 
     const emit = defineEmits([
         'emitDoneTraining',
     ])
     function emitDoneTraining() {
         emit('emitDoneTraining');
+    }
+    function finishUp() {
+        playerStore.attackPrice = (playerStore.attackPrice * 5);
+        emitDoneTraining();
     }
 
     const playerStore = usePlayerStore();
@@ -122,5 +137,15 @@
         moveTheDummy();
         startBasicTraining();
     }
+
+    const storePlayerHealth = storeToRefs(playerStore); // so values are watchable
+    const successfulTraining = ref(false);
+
+    watch(storePlayerHealth.neededAttackXP, function(value) {
+        if (value === 0) {
+        successfulTraining.value = true;
+        // playerStore.attackPrice = (playerStore.attackPrice * 2);
+        }
+    })
 
 </script>

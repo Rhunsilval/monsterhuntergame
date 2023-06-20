@@ -18,13 +18,14 @@
         <p class="mt-5 text-3xl text-black sm:text-center font-medium">Welcome, {{ playerStore.playerId }}!</p>
         <p class=" text-xl text-gray-700 sm:text-center">It's always good to see a happy, eager face in here.</p>
         <p class="mt-2 text-xl text-gray-700 font-semibold sm:text-center">I'm Hunter, owner of Hunter's Gym</p>
-        <p class="text-gray-700 sm:text-center">I believe that everyone can benefit from a good workout. <br/> And you, my friend, look like you could really use one!</p>
+        <p v-if="!noCoins" class="text-gray-700 sm:text-center">I believe that everyone can benefit from a good workout. <br/> And you, my friend, look like you could really use one!</p>
+        <p v-if="noCoins" class="text-red-700 text-lg font-bold sm:text-center">You might need a workout, but I need to make a living here. <br/> Please come back when you have more coins</p>
     <!-- training options nav buttons -->
         <div class="flex justify-center mt-2">
           <div class="grid grid-cols-3 w-1/2">
           <!-- row 1 -->
             <div class="flex justify-center">
-              <button @click="attackTraining" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 text-sm font-serif text-white hover:text-gray-800 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <button @click="fundsCheckAttack" type="button" class="h-36 w-36 rounded-full border border-gray-600 bg-gray-800 hover:bg-slate-300 text-sm font-serif text-white hover:text-gray-800 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 Train Attack <br/> {{ playerStore.attackPrice }} coin </button>
             </div>
             <div class="flex justify-center">  
@@ -92,8 +93,17 @@
 
   const inTraining = ref(false);
   const inAttackTraining = ref(false);
+  const noCoins = ref(false);
   
-  function attackTraining() {
+  function fundsCheckAttack() {
+    if (playerStore.coinOnHand - playerStore.attackPrice < 0) {
+      noCoins.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - playerStore.attackPrice);
+      attackTraining();
+    }
+  }
+  function attackTraining() {    
     inTraining.value = true;
     inAttackTraining.value = true;
   }
