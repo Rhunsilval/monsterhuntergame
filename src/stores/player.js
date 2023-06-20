@@ -51,7 +51,7 @@ export const usePlayerStore =
             defensePrice: 100,            
             
             playerStrength: 1,
-            playerBaseStrength: 9,
+            playerBaseStrength: 11,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,

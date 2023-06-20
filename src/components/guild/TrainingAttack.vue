@@ -13,6 +13,7 @@
               <p class="font-semibold text-xl">A good choice, {{ playerStore.playerId }}.</p>  
               <p v-if="playerStore.playerBaseAttack < 5" class="mt-2 text-gray-700 sm:text-center">Now, you're obviously a beginner, so we'll start off easy.</p>  
               <p v-else-if="playerStore.playerBaseAttack < 10" class="mt-2 text-gray-700 sm:text-center">Looks like you've got some experience.  Let's make this a bit more challenging, then.</p>  
+              <p v-else class="mt-2 text-gray-700 sm:text-center">You're a pro?  Excellent! <br/>  Let's have some fun, then!</p>  
               <p class="mt-2 text-sm text-gray-700 sm:text-center">Follow my instructions to gain experience.  Ignore them and gain nothing.</p>  
             </div>
 <!-- basic training start -->
@@ -25,6 +26,13 @@
 <!-- intermediate training start -->
             <div v-else-if="playerStore.playerBaseAttack < 10" class="flex justify-center mb-8">
                 <button v-if="!trainingStarted" @click="startIntermediateTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
+                    Ready?</button> 
+                <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
+                    {{ trainingCommand }}</button> 
+            </div>
+<!-- expert training start -->
+            <div v-else class="flex justify-center mb-8">
+                <button v-if="!trainingStarted" @click="startExpertTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
                     {{ trainingCommand }}</button> 
@@ -51,6 +59,129 @@
                         Hack</button>
                     <button @click="attackCutIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
                         Cut</button>
+                </div>
+<!-- expert buttons -->
+                <div v-if="expertTrainingActive" class="">
+                    <div v-if="expertArrangement === 1" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                    </div>
+                    <div v-else-if="expertArrangement === 2" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>                        
+                    </div>
+                    <div v-else-if="expertArrangement === 3" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>                                                
+                    </div>
+                    <div v-else-if="expertArrangement === 4" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                    </div>
+                    <div v-else-if="expertArrangement === 5" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>    
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>                        
+                    </div>
+                    <div v-else-if="expertArrangement === 6" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>    
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>                                                
+                    </div>
+                    <div v-else-if="expertArrangement === 7" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button> 
+                    </div>
+                    <div v-else-if="expertArrangement === 8" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>                         
+                    </div>
+                    <div v-else-if="expertArrangement === 9" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>    
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>                                                 
+                    </div>
+                    <div v-else-if="expertArrangement === 10" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>                                                                         
+                    </div>
+                    <div v-else-if="expertArrangement === 11" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button>                                                                                                 
+                    </div>
+                    <div v-else class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="attackHackExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Hack</button> 
+                        <button @click="attackThrustExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Thrust</button>
+                        <button @click="attackCutExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Cut</button>
+                        <button @click="attackSlashExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Slash</button>                                                                                                                        
+                    </div>
                 </div>
             </div>
 <!-- rotating dummy -->
@@ -145,6 +276,50 @@
         } else (trainingCommand.value = "Cut")
     }
 
+    const expertArrangement = ref(0);
+    const expertTrainingActive = ref(false);
+    function getExpertArrangement() {
+        let x = Math.floor(Math.random()*(13-1)+1);
+        console.log('arrangement num: ' + x);
+        if (x <= 1) {
+            expertArrangement.value = 1;
+        } else if (x <= 2) {
+            expertArrangement.value = 2;
+        } else if (x <= 3) {
+            expertArrangement.value = 3;
+        } else if (x <= 4) {
+            expertArrangement.value = 4;
+        } else if (x <= 5) {
+            expertArrangement.value = 5;
+        } else if (x <= 6) {
+            expertArrangement.value = 6;
+        } else if (x <= 7) {
+            expertArrangement.value = 7;
+        } else if (x <= 8) {
+            expertArrangement.value = 8;
+        } else if (x <= 9) {
+            expertArrangement.value = 9;
+        } else if (x <= 10) {
+            expertArrangement.value = 10;
+        } else if (x <= 11) {
+            expertArrangement.value = 11;
+        } else (expertArrangement.value = 12)        
+    }
+    function startExpertTraining() {
+        trainingStarted.value = true;
+        expertTrainingActive.value = true;
+        getExpertArrangement();
+        let x = Math.floor(Math.random()*(5-1)+1);
+        console.log(x);x
+        if (x <= 1) {
+            trainingCommand.value = "Thrust";
+        } else if (x <= 2) {
+            trainingCommand.value = "Slash";
+        } else if (x <= 3) {
+            trainingCommand.value = "Hack";
+        } else (trainingCommand.value = "Cut")
+    }
+
     function moveTheDummy() {
         if (AB.value === true) {
             AB.value = false;
@@ -223,6 +398,48 @@
         }
         moveTheDummy();
         startIntermediateTraining();
+    }
+
+// expert functions
+    function attackSlashExpert() {
+        if (trainingCommand.value === 'Slash') {
+            playerStore.attackXP += 100;
+            playerStore.XPUntilNextAttackLevel();
+            playerStore.attackLevelUp();
+            playerStore.getAttackValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function attackThrustExpert() {
+        if (trainingCommand.value === 'Thrust') {
+            playerStore.attackXP += 100;
+            playerStore.XPUntilNextAttackLevel();
+            playerStore.attackLevelUp();
+            playerStore.getAttackValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function attackHackExpert() {
+        if (trainingCommand.value === 'Hack') {
+            playerStore.attackXP += 100;
+            playerStore.XPUntilNextAttackLevel();
+            playerStore.attackLevelUp();
+            playerStore.getAttackValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function attackCutExpert() {
+        if (trainingCommand.value === 'Cut') {
+            playerStore.attackXP += 100;
+            playerStore.XPUntilNextAttackLevel();
+            playerStore.attackLevelUp();
+            playerStore.getAttackValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
     }
 
 // auto end session with levelup

@@ -3,7 +3,7 @@
           <div class="grid grid-cols-1 ml-8">
             <div class="flex justify-center mt-5">
                 <div class="text-center flex justify-center">
-                    <div class="pt-3 mt-8 ">
+                    <div class="pt-3 mt-10 ">
                         <img src="../../assets/images/village_guild/gym_trainer.png" alt="" class="h-56 w-56 border border-black"/>                     
                     </div>                               
                 </div>                   
@@ -13,6 +13,7 @@
               <p class="font-semibold text-xl">A good choice, {{ playerStore.playerId }}.</p>  
               <p v-if="playerStore.playerBaseStrength < 5" class="mt-2 text-gray-700 sm:text-center">Now, you're obviously a beginner, so we'll start off easy.</p>  
               <p v-else-if="playerStore.playerBaseStrength < 10" class="mt-2 text-gray-700 sm:text-center">Looks like you've got some experience.  Let's make this a bit more challenging, then.</p>  
+              <p v-else class="mt-2 text-gray-700 sm:text-center">You're a pro? Excellent!  <br/> Let's have some fun, then!</p>
               <p class="mt-2 text-sm text-gray-700 sm:text-center">Follow my instructions to gain experience.  Ignore them and gain nothing.</p>  
             </div>
 <!-- basic training start -->
@@ -28,7 +29,14 @@
                     Ready?</button> 
                 <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
                     {{ trainingCommand }}</button> 
-            </div>     
+            </div>
+<!-- expert training start -->
+            <div v-else class="flex justify-center mb-8">
+                <button v-if="!trainingStarted" @click="startExpertTraining" class="border border-gray-500 rounded-lg bg-[#305c79] px-2 py-2 text-white w-24">
+                    Ready?</button> 
+                <button v-if="trainingStarted" class="border border-gray-500 rounded-lg bg-yellow-700 px-2 py-2 text-white text-2xl w-32 h-24">
+                    {{ trainingCommand }}</button> 
+            </div> 
           </div>  
 
           <div class="col-span-2 flex justify-center">
@@ -52,6 +60,129 @@
                     <button @click="strengthPullIntermediate" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
                         Pull</button>
                 </div>
+<!-- expert buttons -->
+                <div v-if="expertTrainingActive" class="">
+                    <div v-if="expertArrangement === 1" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                    </div>
+                    <div v-else-if="expertArrangement === 2" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>                        
+                    </div>
+                    <div v-else-if="expertArrangement === 3" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>                                                
+                    </div>
+                    <div v-else-if="expertArrangement === 4" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                    </div>
+                    <div v-else-if="expertArrangement === 5" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>    
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>                        
+                    </div>
+                    <div v-else-if="expertArrangement === 6" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>    
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>                                                
+                    </div>
+                    <div v-else-if="expertArrangement === 7" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button> 
+                    </div>
+                    <div v-else-if="expertArrangement === 8" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>                         
+                    </div>
+                    <div v-else-if="expertArrangement === 9" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>    
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>                                                 
+                    </div>
+                    <div v-else-if="expertArrangement === 10" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>                                                                         
+                    </div>
+                    <div v-else-if="expertArrangement === 11" class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button>                                                                                                 
+                    </div>
+                    <div v-else class="grid grid-cols-2 gap-x-2 gap-y-5">
+                        <button @click="strengthCurlExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Curl</button> 
+                        <button @click="strengthPumpExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pump</button>
+                        <button @click="strengthPullExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Pull</button>
+                        <button @click="strengthLiftExpert" class="px-2 py-2 border border-gray-600 rounded-lg w-24 mx-2 bg-gray-600 text-xl text-white hover:bg-red-900">
+                            Lift</button>                                                                                                                        
+                    </div>
+                </div>
             </div>
 <!-- rotating dummy -->
             <div v-if="!trainingStarted" class="flex items-center justify-center">
@@ -66,7 +197,7 @@
           </div>
           <div class="col-span-3 flex justify-center">
             <div class="grid grid-cols-1 text-center">
-                <div class="flex justify-center">
+                <div class="flex justify-center mb-3">
                     <button @click="emitDoneTraining" class="border border-gray-600 rounded-lg px-2 py-2 w-20 bg-[#305c79] text-white">
                         Done?</button>
                 </div>
@@ -136,6 +267,50 @@
         intermediateTrainingActive.value = true;
         let x = Math.floor(Math.random()*(5-1)+1);
         console.log(x);
+        if (x <= 1) {
+            trainingCommand.value = "Lift";
+        } else if (x <= 2) {
+            trainingCommand.value = "Pump";
+        } else if (x <= 3) {
+            trainingCommand.value = "Curl";
+        } else (trainingCommand.value = "Pull")
+    }
+
+    const expertArrangement = ref(0);
+    const expertTrainingActive = ref(false);
+    function getExpertArrangement() {
+        let x = Math.floor(Math.random()*(13-1)+1);
+        console.log('arrangement num: ' + x);
+        if (x <= 1) {
+            expertArrangement.value = 1;
+        } else if (x <= 2) {
+            expertArrangement.value = 2;
+        } else if (x <= 3) {
+            expertArrangement.value = 3;
+        } else if (x <= 4) {
+            expertArrangement.value = 4;
+        } else if (x <= 5) {
+            expertArrangement.value = 5;
+        } else if (x <= 6) {
+            expertArrangement.value = 6;
+        } else if (x <= 7) {
+            expertArrangement.value = 7;
+        } else if (x <= 8) {
+            expertArrangement.value = 8;
+        } else if (x <= 9) {
+            expertArrangement.value = 9;
+        } else if (x <= 10) {
+            expertArrangement.value = 10;
+        } else if (x <= 11) {
+            expertArrangement.value = 11;
+        } else (expertArrangement.value = 12)        
+    }
+    function startExpertTraining() {
+        trainingStarted.value = true;
+        expertTrainingActive.value = true;
+        getExpertArrangement();
+        let x = Math.floor(Math.random()*(5-1)+1);
+        console.log(x);x
         if (x <= 1) {
             trainingCommand.value = "Lift";
         } else if (x <= 2) {
@@ -223,6 +398,48 @@
         }
         moveTheDummy();
         startIntermediateTraining();
+    }
+
+// expert functions
+    function strengthLiftExpert() {
+        if (trainingCommand.value === 'Lift') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel(); 
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function strengthPumpExpert() {
+        if (trainingCommand.value === 'Pump') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel();
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function strengthCurlExpert() {
+        if (trainingCommand.value === 'Curl') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel(); 
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
+    }
+    function strengthPullExpert() {
+        if (trainingCommand.value === 'Pull') {
+            playerStore.strengthXP += 100;
+            playerStore.XPUntilNextStrengthLevel();
+            playerStore.strengthLevelUp();
+            playerStore.getStrengthValues();
+        }
+        moveTheDummy();
+        startExpertTraining();
     }
 
 // auto end session with levelup
