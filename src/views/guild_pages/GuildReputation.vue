@@ -27,19 +27,21 @@
             <div class=" w-2/3 ml-80 "> 
                 <h1 class="text-5xl font-bold text-center my-16">Monsters Vanquished</h1>
                 <div class="flex justify-center">
-                    <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-2/3 rounded-3xl ">
+                    <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
-                            <table class="table-auto border border-black">
+                            <table class="table-auto border border-black ">
                                 <thead class="text-left bg-gray-500">
                                     <tr>
-                                        <th class="pl-5 pt-3">Monster</th>
-                                        <th class="pr-5 pt-3">Count</th>
+                                        <th class="pl-5 py-3 pr-5">Monster</th>
+                                        <th class="pr-5 py-3">Count</th>
+                                        <th class="pr-5 py-3">Points</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="item in playerStore.playerKillLog" :key="item.id" class="bg-gray-500">
-                                        <td class="pl-5">{{ item.name }}</td>
-                                        <td class="text-center">{{ item.count }}</td>
+                                    <tr v-for="item in validMonsterLog" :key="item.id" class="bg-gray-500">
+                                        <td class="pl-5 pt-3">{{ item.name }}</td>
+                                        <td class="text-center pt-3 text-2xl">{{ item.count }}</td>
+                                        <td class="text-center pt-3 text-2xl">{{ item.points }}</td>
                                     </tr>
                                 </tbody>
                             </table>                            
@@ -65,35 +67,34 @@
                         <div class="flex justify-center">
                             <div class="">
                                 <h1 class="text-center text-3xl font-semibold font-serif text-gray-900 pb-1">Reputation</h1>
-                                <p class="text-center text-5xl font-bold pb-2">410 </p>
+                                <p class="text-center text-5xl font-bold pb-2">{{ playerStore.playerReputation }} </p>
                                 <p class="text-center mb-5">Title </p>
                                 <div class="grid grid-cols-2 mb-6"> 
                                     <div class="text-center mr-3"> 
                                         <p class="font-bold text-2xl">Quest Points</p>
-                                        <p class="font-serif text-3xl">200</p>
+                                        <p class="font-serif text-3xl">{{ questPoints }}</p>
                                     </div>
                                     <div class="text-center ml-3"> 
                                         <p class="font-bold text-2xl -ml-2 ">Victory Points</p>
-                                        <p class="font-serif text-3xl">210</p>
+                                        <p class="font-serif text-3xl">{{ victoryPoints }}</p>
                                     </div>
                                 </div>
                                 <div class="flex justify-center -mt-12 -mb-12">
-                <div class="mt-5 grid grid-cols-1">
-                  <div class="flex justify-center">
-                    <div class="relative flex self-center mt-10 -mb-6">
-                      <router-link :to="'/guild'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
-                        Return to Guild Lobby</router-link>
-                    </div>
-                  </div>
-                  <div class="flex self-center rounded-lg p-0.5 pb-20 sm:mt-8">
-                    <router-link :to="'/village'" type="button" class="whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 sm:px-8">
-                      Explore the Village</router-link>
-                    <router-link :to="'/map'" type="button" class=" ml-1 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 sm:px-8">
-                      Hunt for Monsters</router-link>
-                  </div>
-                </div>
-              </div>
-
+                                    <div class="mt-5 grid grid-cols-1">
+                                        <div class="flex justify-center">
+                                            <div class="relative flex self-center mt-10 -mb-6">
+                                            <router-link :to="'/guild'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                                                Return to Guild Lobby</router-link>
+                                            </div>
+                                        </div>
+                                        <div class="flex self-center rounded-lg p-0.5 pb-20 sm:mt-8">
+                                            <router-link :to="'/village'" type="button" class="whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 px-3">
+                                            Explore the Village</router-link>
+                                            <router-link :to="'/map'" type="button" class=" ml-1 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 px-3">
+                                            Hunt for Monsters</router-link>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>                            
                         </div>
                     </div>
@@ -105,6 +106,25 @@
 
 <script setup>
     import { usePlayerStore } from '@/stores/player';
+    import { ref, computed } from 'vue';
 
     const playerStore = usePlayerStore();
+
+    const validMonsterLog = computed(function() {
+        let monsterList = playerStore.playerKillLog;
+        return (monsterList = monsterList.filter(item => item.count > 0))
+    })
+
+    const questPoints = ref(200)   
+    const victoryPoints = playerStore.playerKillLog.map(amount).reduce(sum);
+    playerStore.playerReputation = (questPoints.value + victoryPoints)
+
+    function amount(item) {
+        return item.count * item.points;
+    }
+    function sum(prev,next) {
+        return prev + next;
+    }
+    
+    
 </script>

@@ -20,7 +20,7 @@ export const useMonsterStore =
             
             // generate 1 of 10 types of monsters for each environment, from common to rare
             generateMonster(val) {
-                val = 10;  // level 1
+                // val = 10;  // level 1
                 // val = 30;  // level 2
                 // val = 50;  // level 3
                 // val = 60;  // level 4
@@ -30,7 +30,8 @@ export const useMonsterStore =
                 // val = 94;  // level 8
                 // val = 99;  // level 9
                 // val = 100  // level 10
-                // val = this.getRandomValue(1, 101);
+                val = this.getRandomValue(1, 101);
+                console.log('monster generate: '+val);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
                 } else if (val <= 40 && this.monsterMap === 'Firesand Desert') {
