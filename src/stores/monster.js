@@ -29,8 +29,9 @@ export const useMonsterStore =
                 // val = 90;  // level 7
                 // val = 94;  // level 8
                 // val = 99;  // level 9
-                val = 100  // level 10
-                // val = this.getRandomValue(1, 101);
+                // val = 100  // level 10
+                val = this.getRandomValue(1, 101);
+                console.log('monster generate: '+val);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 
                 } else if (val <= 40 && this.monsterMap === 'Firesand Desert') {
