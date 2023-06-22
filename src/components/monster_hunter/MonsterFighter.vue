@@ -292,7 +292,7 @@
     const monsterStore = useMonsterStore();
 
     const playerHealthPercentage = computed(function () {
-        return (100 * playerStore.playerHealth)/playerStore.playerStartingHealth;
+        return (100 * playerStore.playerActiveHealth)/playerStore.playerHealth;
     })
 
     const playerBarStyle = computed(function () {

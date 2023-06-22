@@ -31,7 +31,7 @@ export const usePlayerStore =
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
             playerAttack: 1,
-            playerBaseAttack: 8,    // default max
+            playerBaseAttack: 100,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -41,7 +41,7 @@ export const usePlayerStore =
             attackPrice: 100,
 
             playerDefense: 1,
-            playerBaseDefense: 8,
+            playerBaseDefense: 100,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -51,7 +51,7 @@ export const usePlayerStore =
             defensePrice: 100,            
             
             playerStrength: 1,
-            playerBaseStrength: 8,
+            playerBaseStrength: 100,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,

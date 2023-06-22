@@ -77,6 +77,23 @@
                                         <p class="font-serif text-3xl">210</p>
                                     </div>
                                 </div>
+                                <div class="flex justify-center -mt-12 -mb-12">
+                <div class="mt-5 grid grid-cols-1">
+                  <div class="flex justify-center">
+                    <div class="relative flex self-center mt-10 -mb-6">
+                      <router-link :to="'/guild'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                        Return to Guild Lobby</router-link>
+                    </div>
+                  </div>
+                  <div class="flex self-center rounded-lg p-0.5 pb-20 sm:mt-8">
+                    <router-link :to="'/village'" type="button" class="whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 sm:px-8">
+                      Explore the Village</router-link>
+                    <router-link :to="'/map'" type="button" class=" ml-1 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 sm:px-8">
+                      Hunt for Monsters</router-link>
+                  </div>
+                </div>
+              </div>
+
                             </div>                            
                         </div>
                     </div>

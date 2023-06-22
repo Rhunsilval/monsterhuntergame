@@ -1227,7 +1227,7 @@
       attackEffect.value = 0;
     }
     const fullAttackEffect = ref(Math.ceil(attackEffect.value - (attackEffect.value * amuletEffect.value)))
-    playerStore.playerHealth -= fullAttackEffect.value;
+    playerStore.playerActiveHealth -= fullAttackEffect.value;
     addLogEntry('monster', 'attacks', attackValue, fullAttackEffect.value);
   }
 
@@ -1269,10 +1269,10 @@
     if (playerStore.playerActiveHealth + healValue > playerStore.playerHealth) {
       playerStore.playerActiveHealth = playerStore.playerHealth;
     } else {
-      playerStore.playerHealth += healValue;
+      playerStore.playerActiveHealth += healValue;
     }
-    // const manaUse = getRandomValue(1,5);
-    const manaUse = 80;
+    const manaUse = getRandomValue(1,5);
+    // const manaUse = 80;
     if (playerStore.playerActiveMana - manaUse < 0) {
       playerStore.playerActiveMana = 0;
     } else (

@@ -65,9 +65,10 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { useLootStore } from '@/stores/loot'
     import { usePlayerStore } from '@/stores/player'
+    import { useMonsterStore } from '@/stores/monster'
     import TheWinnerLoot from './TheWinnerLoot.vue'
 
     const props = defineProps({
@@ -80,6 +81,7 @@
     ])    
 
     const playerStore = usePlayerStore();
+    const monsterStore = useMonsterStore();
     const lootStore = useLootStore();
     const lootVisible = ref(false);
     const lootAvailable = ref(true);
@@ -90,12 +92,22 @@
       lootVisible.value = true;
     } 
 
+// adding a victory to the player's monster kill log
+  const monsterKilledId = monsterStore.monsterId;
+  const monsterKilled = computed(function() {
+    return playerStore.playerKillLog.find(monster => monster.id === monsterKilledId)
+  })
+  function monsterLog() {
+    monsterKilled.value.count++;
+  }
+
 // even though losing/draws don't return me to MonsterHunter page where the code lives,
 // it seems to work anyway to reset all player variables
 // and it isn't throwing any errors?  
 // perhaps because the fight is happening on monsterhunter and just being rendered here
 // so the code actually does pass through that page before routing to wherever it's going?
     function emitLootCollected() {
+      monsterLog();
       lootAvailable.value = false;
       lootVisible.value = false;
       lootStore.lootList = [];
