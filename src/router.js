@@ -17,6 +17,7 @@ import TheGuild from './views/guild_pages/TheGuild.vue';
 import GuildGym from './views/guild_pages/GuildGym.vue';
 import GuildPoints from './views/guild_pages/GuildPoints.vue';
 import GuildHospital from './views/guild_pages/GuildHospital.vue';
+import GuildReputation from './views/guild_pages/GuildReputation.vue';
 import TheMap from './views/primary_pages/TheMap.vue';
 import TheForest from './views/map_pages/TheForest.vue';
 import TheJungle from './views/map_pages/TheJungle.vue';
@@ -48,6 +49,7 @@ const router = createRouter({
         { path: '/guild_gym', component: GuildGym },
         { path: '/guild_points', component: GuildPoints },
         { path: '/guild_hospital', component: GuildHospital },
+        { path: '/guild_reputation', component: GuildReputation },
         { path: '/map', component: TheMap }, 
         { path: '/map_forest', component: TheForest },
         { path: '/map_jungle', component: TheJungle },

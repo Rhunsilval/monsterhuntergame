@@ -1,11 +1,11 @@
 <template>
     <the-header></the-header>
 
-    <div class="bg-[url('../assets/images/village_guild/guild_hospital.png')] bg-cover">
+    <div class="bg-[url('../assets/images/village_guild/guild_hospital.png')] bg-repeat">
       <div class="flex justify-center">
         <div class="w-3/4 bg-white bg-opacity-50">
           <div class="flex justify-center"> 
-            <h1 class="text-7xl font-bold text-center">Monster Hunter's Guild <br/> Hospital</h1>
+            <h1 class="text-7xl font-bold text-center mt-6">Monster Hunter's Guild <br/> Hospital</h1>
           </div> 
           <div class="flex justify-center"> 
             <img src="../../assets/images/village_guild/guild_doctor.png" class="border border-gray-600 my-5 rounded-full w-60" />
@@ -25,12 +25,30 @@
               <p class="text-xl font-semibold mb-2 ">You look to be in fine health, {{ playerStore.playerId }}</p>
               <p>Our services are always available to you,</p>
               <p>but are you sure that you need them?</p>
-              <p class="text-sm pt-4 pb-3">Choose from the options below and we'll fix you right up!</p>
+              <p class="text-sm pt-4">Choose from the options below and we'll fix you right up!</p>
             </div>
           </div>
+<!-- nav buttons -->
+          
           
           <div class="flex justify-center">
-            <div class="bg-green-200 bg-opacity-80 rounded-2xl border border-gray-500 w-2/3 pt-7 mb-10"> 
+            <div class="bg-green-200 bg-opacity-80 rounded-2xl border border-gray-500 w-2/3 pt-7 mb-10">
+              <div class="flex justify-center -mt-12 -mb-12">
+                <div class="grid grid-cols-1">
+                  <div class="flex justify-center">
+                    <div class="relative flex self-center mt-10 -mb-6">
+                      <router-link :to="'/guild'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                        Return to Guild Lobby</router-link>
+                    </div>
+                  </div>
+                  <div class="relative flex self-center rounded-lg p-0.5 pb-20 sm:mt-8">
+                    <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                      Explore the Village</router-link>
+                    <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                      Hunt for Monsters</router-link>
+                  </div>
+                </div>
+              </div>   
               <div class="grid grid-cols-2"> 
 
                 <div class="flex justify-center mb-8"> 
@@ -186,7 +204,7 @@
         noFunds.value = true;
       } else {
         playerStore.coinOnHand = (playerStore.coinOnHand - 200);
-        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + (playerStore.playerHealth*.3));
+        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + Math.round((playerStore.playerHealth*.3)));
       }
       if (playerStore.playerActiveHealth > playerStore.playerHealth) {
         playerStore.playerActiveHealth = playerStore.playerHealth;
@@ -197,7 +215,7 @@
         noFunds.value = true;
       } else {
         playerStore.coinOnHand = (playerStore.coinOnHand - 400);
-        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + (playerStore.playerHealth*.6));
+        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + Math.round((playerStore.playerHealth*.6)));
       }
       if (playerStore.playerActiveHealth > playerStore.playerHealth) {
         playerStore.playerActiveHealth = playerStore.playerHealth;
@@ -208,7 +226,7 @@
         noFunds.value = true;
       } else {
         playerStore.coinOnHand = (playerStore.coinOnHand - 800);
-        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + (playerStore.playerHealth*.9));
+        playerStore.playerActiveHealth = (playerStore.playerActiveHealth + Math.round((playerStore.playerHealth*.9)));
       }
       if (playerStore.playerActiveHealth > playerStore.playerHealth) {
         playerStore.playerActiveHealth = playerStore.playerHealth;
