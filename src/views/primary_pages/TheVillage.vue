@@ -52,7 +52,7 @@
               <p class="text-sm text-gray-600 text-center">Offering specialized training, an emergency hospital, hunter points-management, and Guild-sponsored quests</p>
             </div>
             <div class="flex justify-center mt-4">
-              <img src="../../assets/images/village_guild/gym_attack_dummy.png" class="h-20 w-20 border border-black rounded-xl" />
+              <img src="../../assets/images/village_guild/guild_icon.png" class="h-20 w-20 border border-black rounded-xl" />
             </div>
             <div class="mt-2">
             <router-link :to="'/guild'" class="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900">
