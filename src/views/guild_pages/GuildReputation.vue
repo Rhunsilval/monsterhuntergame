@@ -68,7 +68,7 @@
                             <div class="">
                                 <h1 class="text-center text-3xl font-semibold font-serif text-gray-900 pb-1">Reputation</h1>
                                 <p class="text-center text-5xl font-bold pb-2">{{ playerStore.playerReputation }} </p>
-                                <p class="text-center mb-5">Title </p>
+                                <p class="text-center mb-5">{{ reputationTitle }} </p>
                                 <div class="grid grid-cols-2 mb-6"> 
                                     <div class="text-center mr-3"> 
                                         <p class="font-bold text-2xl">Quest Points</p>
@@ -115,16 +115,26 @@
         return (monsterList = monsterList.filter(item => item.count > 0))
     })
 
-    const questPoints = ref(200)   
+    const questPoints = ref(0)   
     const victoryPoints = playerStore.playerKillLog.map(amount).reduce(sum);
     playerStore.playerReputation = (questPoints.value + victoryPoints)
-
     function amount(item) {
         return item.count * item.points;
     }
     function sum(prev,next) {
         return prev + next;
     }
+
+    const reputationTitle = computed(function() {
+        return  playerStore.playerReputation < 25 ? 'Unknown Nobody' : 
+                playerStore.playerReputation < 50 ? 'Recognized Nobody' :
+                playerStore.playerReputation < 75 ? 'Up-and-comer' :
+                playerStore.playerReputation < 100 ? 'Person of Interest' :
+                playerStore.playerReputation < 150 ? 'Smalltown Hero' :
+                playerStore.playerReputation < 200 ? 'Hunter Extraordinaire' :
+                playerStore.playerReputation < 300 ? 'Respectable' :
+                playerStore.playerReputation < 400 ? 'Hero' : 'Legend'
+    })
         
 </script>
 
