@@ -38,10 +38,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="item in validMonsterLog" :key="item.id" class="bg-gray-500">
-                                        <td class="pl-5 pt-3">{{ item.name }}</td>
-                                        <td class="text-center pt-3 text-2xl">{{ item.count }}</td>
-                                        <td class="text-center pt-3 text-2xl">{{ item.points }}</td>
+                                    <tr v-for="item in validMonsterLog" :key="item.id" :class="item.place" class="bg-gray-500">
+                                        <td class="pl-5 pb-3">{{ item.name }}</td>
+                                        <td class="text-center pb-3 text-2xl">{{ item.count }}</td>
+                                        <td class="text-center pb-3 text-2xl">{{ item.points }}</td>
                                     </tr>
                                 </tbody>
                             </table>                            
@@ -68,7 +68,7 @@
                             <div class="">
                                 <h1 class="text-center text-3xl font-semibold font-serif text-gray-900 pb-1">Reputation</h1>
                                 <p class="text-center text-5xl font-bold pb-2">{{ playerStore.playerReputation }} </p>
-                                <p class="text-center mb-5">Title </p>
+                                <p class="text-center mb-5">{{ reputationTitle }} </p>
                                 <div class="grid grid-cols-2 mb-6"> 
                                     <div class="text-center mr-3"> 
                                         <p class="font-bold text-2xl">Quest Points</p>
@@ -115,16 +115,49 @@
         return (monsterList = monsterList.filter(item => item.count > 0))
     })
 
-    const questPoints = ref(200)   
+    const questPoints = ref(0)   
     const victoryPoints = playerStore.playerKillLog.map(amount).reduce(sum);
     playerStore.playerReputation = (questPoints.value + victoryPoints)
-
     function amount(item) {
         return item.count * item.points;
     }
     function sum(prev,next) {
         return prev + next;
     }
-    
-    
+
+    const reputationTitle = computed(function() {
+        return  playerStore.playerReputation < 25 ? 'Unknown Nobody' : 
+                playerStore.playerReputation < 50 ? 'Recognized Nobody' :
+                playerStore.playerReputation < 75 ? 'Up-and-comer' :
+                playerStore.playerReputation < 100 ? 'Person of Interest' :
+                playerStore.playerReputation < 150 ? 'Smalltown Hero' :
+                playerStore.playerReputation < 200 ? 'Hunter Extraordinaire' :
+                playerStore.playerReputation < 300 ? 'Respectable' :
+                playerStore.playerReputation < 400 ? 'Hero' : 'Legend'
+    })
+        
 </script>
+
+<style scoped>
+    .desert {
+        color: #ff9e3d
+    }
+    .forest {
+        color: #42e0d1
+    }
+    .jungle {
+        color: #ff6fff
+    }
+    .grassland {
+        color: #fdd128
+    }
+    .marshes {
+        color: #3bb143
+    }
+    .mountain {
+        color: #b8d4ff
+    }
+    .swamp {
+        color: #c7ea46
+    }
+</style>
