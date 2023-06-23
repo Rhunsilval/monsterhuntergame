@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomePage from './views/primary_pages/HomePage.vue';
+import TestingPage from './views/primary_pages/TestingPage.vue';
 import TheVillage from './views/primary_pages/TheVillage.vue';
 import TheVillage2 from './views/primary_pages/TheVillage2.vue';
 import TheApothecary from './views/village_shops/TheApothecary.vue';
@@ -33,6 +34,7 @@ const router = createRouter({
     routes: [
         { path: '/', redirect: '/home' },
         { path: '/home', component: HomePage },
+        { path: '/test', component: TestingPage },
         { path: '/village', component: TheVillage },
         { path: '/village2', component: TheVillage2 },
         { path: '/village_apothecary', component: TheApothecary },

@@ -38,10 +38,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="item in validMonsterLog" :key="item.id" class="bg-gray-500">
-                                        <td class="pl-5 pt-3">{{ item.name }}</td>
-                                        <td class="text-center pt-3 text-2xl">{{ item.count }}</td>
-                                        <td class="text-center pt-3 text-2xl">{{ item.points }}</td>
+                                    <tr v-for="item in validMonsterLog" :key="item.id" :class="item.place" class="bg-gray-500">
+                                        <td class="pl-5 pb-3">{{ item.name }}</td>
+                                        <td class="text-center pb-3 text-2xl">{{ item.count }}</td>
+                                        <td class="text-center pb-3 text-2xl">{{ item.points }}</td>
                                     </tr>
                                 </tbody>
                             </table>                            
@@ -125,6 +125,29 @@
     function sum(prev,next) {
         return prev + next;
     }
-    
-    
+        
 </script>
+
+<style scoped>
+    .desert {
+        color: #ff9e3d
+    }
+    .forest {
+        color: #42e0d1
+    }
+    .jungle {
+        color: #ff6fff
+    }
+    .grassland {
+        color: #fdd128
+    }
+    .marshes {
+        color: #3bb143
+    }
+    .mountain {
+        color: #b8d4ff
+    }
+    .swamp {
+        color: #c7ea46
+    }
+</style>
