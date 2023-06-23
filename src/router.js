@@ -9,6 +9,7 @@ import TheArmory from './views/village_shops/TheArmory.vue';
 import TheBlacksmith from './views/village_shops/TheBlacksmith.vue';
 import TheOdditiesShop from './views/village_shops/TheOdditiesShop.vue';
 import TheMagicShop from './views/village_shops/TheMagicShop.vue';
+import SchoolAndSpa from './views/village_shops/SchoolAndSpa.vue';
 import QuestHunterTavern from './views/quest_sources/QuestHunterTavern.vue';
 import ThePub from './views/quest_sources/ThePub.vue';
 import TheBiergarten from './views/quest_sources/TheBiergarten.vue';
@@ -42,6 +43,7 @@ const router = createRouter({
         { path: '/village_blacksmith', component: TheBlacksmith }, 
         { path: '/village_oddities', component: TheOdditiesShop },
         { path: '/village_magicshop', component: TheMagicShop },
+        { path: '/school_N_spa', component: SchoolAndSpa },
         { path: '/questhunter_tavern', component: QuestHunterTavern },
         { path: '/questhunter_pub', component: ThePub },
         { path: '/questhunter_biergarten', component: TheBiergarten },
