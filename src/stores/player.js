@@ -6,7 +6,7 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player_One',
             oldGame: false,
-            coinOnHand: 100000,            
+            coinOnHand: 1000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
             playerHealth: 100,              // max health, changes with equip/unequip items           
@@ -30,8 +30,8 @@ export const usePlayerStore =
             manaPrice: 1000,
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
-            playerAttack: 100,
-            playerBaseAttack: 100,    // default max
+            playerAttack: 1,
+            playerBaseAttack: 1,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -40,8 +40,8 @@ export const usePlayerStore =
             neededAttackXP: 1000,
             attackPrice: 100,
 
-            playerDefense: 100,
-            playerBaseDefense: 100,
+            playerDefense: 1,
+            playerBaseDefense: 1,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -50,8 +50,8 @@ export const usePlayerStore =
             neededDefenseXP: 1000,
             defensePrice: 100,            
             
-            playerStrength: 100,
-            playerBaseStrength: 100,
+            playerStrength: 1,
+            playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,
@@ -61,7 +61,7 @@ export const usePlayerStore =
             strengthPrice: 500,
             
             playerIntelligence: 1,      // total intel level including all bonuses from items
-            playerBaseIntelligence: 8,
+            playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
             nextIntelligenceLevel: 1000,
@@ -1103,7 +1103,7 @@ export const usePlayerStore =
             playerPacked: [],
             playerScripts: [],
 
-            carryCapacity: 30,
+            carryCapacity: 10,
             baseCarryCapacity: 10,
             carryCapacityBonus: 0,
 
@@ -1214,7 +1214,10 @@ export const usePlayerStore =
                     + this.playerEquipped.player_ring[0].life 
                     + this.playerEquipped.player_belt[0].life 
                 );
-            this.playerHealth = (this.playerBaseHealth + this.healthBonus); // increases health max available
+            this.playerHealth = (this.playerBaseHealth + this.healthBonus); // increases health max available ONLY - not active health
+            if (this.playerActiveHealth > this.playerHealth) {
+                this.playerActiveHealth = this.playerHealth;
+            }
             },
             getExtraMana() { 
                 this.manaBonus = 
@@ -1231,6 +1234,9 @@ export const usePlayerStore =
                     + this.playerEquipped.player_belt[0].mana 
                 );
             this.playerMana = (this.playerBaseMana + this.manaBonus);
+            if (this.playerActiveMana > this.playerMana) {
+                this.playerActiveMana = this,this.playerMana;
+            }
             },
             getIntelligenceValues() {
                 this.intelligenceBonus = 

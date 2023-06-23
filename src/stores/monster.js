@@ -11,6 +11,7 @@ export const useMonsterStore =
             monsterHealth: null,
             monsterHit: null,  //how hard the monster can hit, not how hard it IS hit
             monsterMap: '',
+            playerLevel: 1,
             battleLog: [],
         }),
         actions: {
@@ -30,7 +31,36 @@ export const useMonsterStore =
                 // val = 94;  // level 8
                 // val = 99;  // level 9
                 // val = 100  // level 10
-                val = this.getRandomValue(1, 101);
+                if (this.playerLevel < 3) {
+                  val = this.getRandomValue(1,24); //level 1
+                }
+                else if (this.playerLevel < 5) {
+                  val = this.getRandomValue(1,41); //level 2
+                }
+                else if (this.playerLevel < 8) {
+                  val = this.getRandomValue(1,53); // level 3
+                }
+                else if (this.playerLevel < 11) {
+                  val = this.getRandomValue(1,65); // level 4
+                }
+                else if (this.playerLevel < 13) {
+                  val = this.getRandomValue(1,75); // level 5
+                }
+                else if (this.playerLevel < 15) {
+                  val = this.getRandomValue(1,85); // level 6
+                }
+                else if (this.playerLevel < 18) {
+                  val = this.getRandomValue(1,91); // level 7
+                }
+                else if (this.playerLevel < 19) {
+                  val = this.getRandomValue(1,97); // level 8
+                }
+                else if (this.playerLevel < 20) {
+                  val = this.getRandomValue(1,100); // level 9
+                }
+                else {
+                  val = this.getRandomValue(1,101); // level 10
+                }
                 console.log('monster generate: '+val);
                 if (val <= 23 && this.monsterMap === 'Firesand Desert') {
                   return this.monsterId = 'desert_monster1'; 

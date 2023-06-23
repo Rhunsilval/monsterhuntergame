@@ -217,6 +217,7 @@
     if (randomMonsterNumber === 1) {
       monsterStore.monsterFound = true;
       getMonsterMap();
+      monsterStore.playerLevel = playerStore.playerLevel;
       monsterStore.generateMonster();
       monsterStore.getMonsterName();
       monsterStore.getMonsterStartingHealth();
