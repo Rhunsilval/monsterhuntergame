@@ -14,7 +14,7 @@
 
         <div class="grid grid-cols-3">
             <div class="ml-5"> 
-                <button @click="goToSchool" class="px-3 py-3 w-11/12 bg-[#efdecd] border border-gray-600 rounded-full h-full text-4xl font-serif font-semibold">
+                <button @click="goToSchool" class="px-3 py-3 w-11/12 bg-[#efdecd] hover:bg-[url('../assets/images/village_school/school_button.png')] border border-gray-600 rounded-full h-full text-4xl font-serif font-semibold">
                     School of Magic</button>
             </div>
 
@@ -36,6 +36,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="flex justify-center"> 
+                    <div class="w-full bg-white bg-opacity-70 flex justify-center">
+                        <button class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                            Speak with Matilda</button>
+                    </div>
+                </div>
                 <div class="flex justify-center mb-10">
                     <div class="w-full bg-white bg-opacity-70 py-3">
                         <div class="grid grid-cols-2 gap-5 pb-3">
@@ -52,7 +58,7 @@
                 </div>
             </div>
             <div class="flex justify-end mr-5"> 
-                <button @click="goToSpa" class="px-3 py-3 w-11/12 bg-[#add8e6] border border-gray-600 rounded-full text-4xl font-serif font-semibold">
+                <button @click="goToSpa" class="px-3 py-3 w-11/12 bg-[#add8e6] hover:bg-[url('../assets/images/village_school/spa_button.png')] hover:text-white border border-gray-600 rounded-full text-4xl font-serif font-semibold">
                     Restorative Spa</button>
             </div>
         </div>
@@ -138,11 +144,11 @@
                 </div>             
             </div>        
         </div>
-        <div class="flex justify-center">
+        <div v-if="spaOptionsAvailable" class="flex justify-center">
             <div class="w-1/3 bg-white pt-5 flex justify-center pb-10">
                 <div class="grid grid-cols-2 gap-x-12 gap-y-5 ">
                     <div> 
-                        <button class="border border-slate-600 px-3 py-3 rounded-full bg-white ">
+                        <button @click="simpleSoak" class="border border-slate-600 px-3 py-3 rounded-full bg-white hover:bg-black ">
                             <img src="../../assets/images/village_school/spa_package1.png" class="w-28 h-28 border border-slate-600 rounded-full " />
                         </button>
                         <div class="text-center font-serif w-32"> 
@@ -152,7 +158,7 @@
                         </div>                    
                     </div> 
                     <div> 
-                        <button class="border border-slate-600 px-3 py-3 rounded-full bg-white ">
+                        <button @click="freshSoak" class="border border-slate-600 px-3 py-3 rounded-full bg-white hover:bg-black">
                             <img src="../../assets/images/village_school/spa_package2.png" class="w-28 h-28 border border-slate-600 rounded-full " />
                         </button>
                         <div class="text-center font-serif w-32"> 
@@ -162,7 +168,7 @@
                         </div>                    
                     </div> 
                     <div> 
-                        <button class="border border-slate-600 px-3 py-3 rounded-full bg-white ">
+                        <button @click="choiceSoak" class="border border-slate-600 px-3 py-3 rounded-full bg-white hover:bg-black">
                             <img src="../../assets/images/village_school/spa_package3.png" class="w-28 h-28 border border-slate-600 rounded-full " />
                         </button>
                         <div class="text-center font-serif w-32"> 
@@ -172,7 +178,7 @@
                         </div>                    
                     </div> 
                     <div> 
-                        <button class="border border-slate-600 px-3 py-3 rounded-full bg-white ">
+                        <button @click="deluxeSoak" class="border border-slate-600 px-3 py-3 rounded-full bg-white hover:bg-black">
                             <img src="../../assets/images/village_school/spa_package4.png" class="w-28 h-28 border border-slate-600 rounded-full " />
                         </button>
                         <div class="text-center font-serif w-32"> 
@@ -183,6 +189,15 @@
                     </div> 
                 </div>
             </div>        
+        </div>
+        <div v-if="noFunds" class="flex justify-center"> 
+            <div class="w-1/3 bg-white flex justify-center py-44  "> 
+                <div class="text-center text-xl font-semibold font-serif"> 
+                    <p class="text-4xl font-bold">Sorry, pal.</p>
+                    <p>This is a business, not a charity</p>
+                    <p>Come back when you have some coins.</p>
+                </div>
+            </div>
         </div>
         <div class="flex justify-center"> 
             <div class="w-1/3 bg-white bg-opacity-70 flex justify-center py-3 mb-10"> 
@@ -210,9 +225,11 @@
 
 <script setup> 
     import { ref } from 'vue'
+    import { usePlayerStore } from '@/stores/player'
 
-    const inLobby = ref(false);
-    const inschool = ref(true);
+    const playerStore = usePlayerStore();
+    const inLobby = ref(true);
+    const inschool = ref(false);
     const inSpa = ref(false);
 
     function goToSchool() {
@@ -226,7 +243,60 @@
     function returnToLobby() {
         inLobby.value = true;
         inSpa.value = false;
-        inschool.value = false
+        spaOptionsAvailable.value = true;
+        noFunds.value = false;
+        inschool.value = false;
+    }
+
+    const spaOptionsAvailable = ref(true)
+    const noFunds = ref(false);
+    function simpleSoak() {
+        if (playerStore.coinOnHand - 50 < 0 ) {
+            spaOptionsAvailable.value = false;
+            noFunds.value = true;
+        } else {
+            playerStore.coinOnHand = playerStore.coinOnHand - 50;
+            playerStore.playerActiveMana = playerStore.playerActiveMana + (playerStore.playerMana * .25);
+        }
+        if (playerStore.playerActiveMana > playerStore.playerMana) {
+            playerStore.playerActiveMana = playerStore.playerMana;
+        } else (playerStore.playerActiveMana)
+    }
+    function freshSoak() {
+        if (playerStore.coinOnHand - 100 < 0 ) {
+            spaOptionsAvailable.value = false;
+            noFunds.value = true;
+        } else {
+            playerStore.coinOnHand = playerStore.coinOnHand - 100;
+            playerStore.playerActiveMana = playerStore.playerActiveMana + (playerStore.playerMana * .5);
+        }        
+        if (playerStore.playerActiveMana > playerStore.playerMana) {
+            playerStore.playerActiveMana = playerStore.playerMana;
+        } else (playerStore.playerActiveMana)
+    }
+    function choiceSoak() {
+        if (playerStore.coinOnHand - 200 < 0 ) {
+            spaOptionsAvailable.value = false;
+            noFunds.value = true;
+        } else {
+            playerStore.coinOnHand = playerStore.coinOnHand - 200;
+            playerStore.playerActiveMana = playerStore.playerActiveMana + (playerStore.playerMana * .75);
+        }        
+        if (playerStore.playerActiveMana > playerStore.playerMana) {
+            playerStore.playerActiveMana = playerStore.playerMana;
+        } else (playerStore.playerActiveMana)
+    }
+    function deluxeSoak() {
+        if (playerStore.coinOnHand - 400 < 0 ) {
+            spaOptionsAvailable.value = false;
+            noFunds.value = true;
+        } else {
+            playerStore.coinOnHand = playerStore.coinOnHand - 400;
+            playerStore.playerActiveMana = playerStore.playerMana;
+        }        
+        if (playerStore.playerActiveMana > playerStore.playerMana) {
+            playerStore.playerActiveMana = playerStore.playerMana;
+        } else (playerStore.playerActiveMana)
     }
 
 </script>
