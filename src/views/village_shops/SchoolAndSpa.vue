@@ -84,8 +84,14 @@
         </div>
         <div class="flex justify-center"> 
             <div class="w-1/3 bg-white bg-opacity-70 flex justify-center">
-                <button class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                <button @click="speakToMatildaSchool" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
                     Speak with Matilda</button>
+            </div>
+        </div>
+        <div v-if="questAccepted" class="flex justify-center"> 
+            <div class="w-1/3 bg-white bg-opacity-70 flex justify-center pt-4">
+                <button class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                    Complete the Quest</button>
             </div>
         </div>
         <div class="flex justify-center"> 
@@ -93,7 +99,7 @@
                 <div class="grid grid-cols-1 pt-4"> 
                     <div class=" flex justify-center">
                         <button @click="returnToLobby" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
-                            Return to School Lobby</button>
+                            Return to Lobby</button>
                     </div>
                     <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
                         <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
@@ -104,18 +110,134 @@
                 </div>                
             </div>            
         </div>
-        <div class="flex justify-center"> 
+
+
+        <div v-if="!schoolOptionsAvailable" class="flex justify-center"> 
+            <div class="w-1/3 bg-white bg-opacity-70 flex justify-center mb-52 "> 
+                
+            </div>
+        </div>
+        <div v-if="schoolOptionsAvailable" class="flex justify-center"> 
             <div class="w-1/3 bg-white bg-opacity-70 flex justify-center mb-5"> 
                 <div class="grid grid-cols-2 gap-x-24  mb-10">
                     <div> 
-                        <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">Learn Charms</button>
+                        <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                            Learn Charms</button>
                     </div>
                     <div>
-                        <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">Craft Items</button>
+                        <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                            Craft Items</button>
                     </div>
                 </div>
             </div>
         </div>
+        
+<!-- speak with teacher dialog modal display -->
+<TransitionRoot as="template" :show="openDialogModal">
+    <Dialog as="div" class="relative z-10" @close="openDialogModal = false">
+        <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </TransitionChild>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                    <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                        <div>
+                            <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
+                                <img src="../../assets/images/village_school/school_teacher.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                            </div>                
+                <!-- intro dialog -->
+                            <div v-if="introDialog" class="mt-3 text-center sm:mt-5">
+                                <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">Welcome, Hunter</DialogTitle>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500">How can I help you?</p>
+                                </div>
+                            </div>
+                            <div v-if="introDialog2" class="mt-3 text-center sm:mt-5">
+                                <DialogTitle as="h3" class="text-xl font-medium leading-6 text-gray-900">Hmmm.</DialogTitle>
+                                <div class="mt-2 text-sm text-gray-500 ">
+                                    <p class="">Maybe.</p>
+                                    <p class="">But I don't know you.</p>
+                                    <p class="">I don't accept just anyone who walks in, you know.</p>
+                                    <p class="">I'm only interested in investing my time in serious students.</p>
+                                </div>
+                            </div>
+                            <div v-if="introDialog3" class="mt-3 text-center sm:mt-5">
+                                <DialogTitle as="h3" class="text-xl font-medium leading-6 text-gray-900">Perhaps.</DialogTitle>
+                                <div class="mt-2 text-sm text-gray-500 ">
+                                    <p class="">There's something about you that makes me want to believe you.</p>
+                                    <p class="">But I need proof.</p>
+                                </div>
+                            </div>
+                            <div v-if="introDialog4" class="mt-3 text-center sm:mt-5">
+                                <DialogTitle as="h3" class="text-xl font-medium leading-6 text-gray-900">I propose a quest.</DialogTitle>
+                                <div class="mt-2 text-sm text-gray-500 ">
+                                    <p class="">Bring me 3 Sacred Spores from the Mushroom Spirits of the Dark Forest</p>
+                                    <p class="">Prove yourself as a capable hunter,</p>
+                                    <p class="">and as an obedient student,</p>
+                                    <p class="">and I'll let you enroll.</p>
+                                </div>
+                            </div>
+
+
+                        </div>              
+                <!-- buttons -->
+                        <div class="mt-5 ">
+                            <div class=" pb-4">
+                <!-- intro buttons -->
+                                <div v-if="introButton" class="flex justify-center">             
+                                    <button @click="introDialog = false, introDialog2 = true, introButton = false, introButton2 = true" type="button" class="mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
+                                        I'd like to enroll in your school?</button>
+                                </div>                                
+                                <div v-if="introButton2" class="flex justify-center"> 
+                                    <div class="grid grid-cols-2 gap-x-3"> 
+                                        <div class="flex justify-end"> 
+                                            <button @click="introDialog2 = false, introDialog3 = true, introButton2 = false, introButton3 = true" type="button" class="mt-3 px-4 py-2 w-2/3 border border-gray-300 rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                But I am a serious student!</button>
+                                        </div>
+                                        <div> 
+                                            <button @click="nevermindThen" type="button" class="mt-3 px-4 py-2 w-2/3 border border-gray-300 rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                Oh.  Nevermind then.</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="introButton3" class="flex justify-center"> 
+                                    <div class="grid grid-cols-2 gap-x-3"> 
+                                        <div class="flex justify-end"> 
+                                            <button @click="introDialog3 = false, introDialog4 = true, introButton3 = false, introButton4 = true" type="button" class="w-4/5 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                How can I prove myself?</button>
+                                        </div>
+                                        <div> 
+                                            <button @click="nevermindThen" type="button" class="w-4/5 mt-3 px-4 py-2 border border-gray-300 rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                Oh.  Nevermind then.</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="introButton4" class="flex justify-center"> 
+                                    <div class="grid grid-cols-2 gap-x-3"> 
+                                        <div class="flex justify-end"> 
+                                            <button @click="acceptQuest" type="button" class="w-4/5 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                I'll do it!</button>
+                                        </div>
+                                        <div> 
+                                            <button @click="nevermindThen" type="button" class="w-4/5 mt-3 px-4 py-2 border border-gray-300 rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                Oh.  Nevermind then.</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                <!-- close modal button -->
+                            <button @click="returnToSchool" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" >
+                                Return</button>
+                        </div>
+                    </DialogPanel>
+                </TransitionChild>
+            </div>
+        </div>
+    </Dialog>
+</TransitionRoot>
 
     </div>
 
@@ -204,7 +326,7 @@
                 <div class="grid grid-cols-1 pt-4"> 
                     <div class=" flex justify-center">
                         <button @click="returnToLobby" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
-                            Return to School Lobby</button>
+                            Return to Lobby</button>
                     </div>
                     <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
                         <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
@@ -215,23 +337,23 @@
                 </div>                
             </div>            
         </div>
-        
-
-
-
     </div>
 
 </template>
 
 <script setup> 
     import { ref } from 'vue'
+    import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import { usePlayerStore } from '@/stores/player'
 
     const playerStore = usePlayerStore();
-    const inLobby = ref(true);
-    const inschool = ref(false);
+    const inLobby = ref(false);
+    const inschool = ref(true);
     const inSpa = ref(false);
 
+// page navigation
+    const schoolOptionsAvailable = ref(false);
+    const spaOptionsAvailable = ref(true)
     function goToSchool() {
         inLobby.value = false;
         inschool.value = true;
@@ -248,7 +370,62 @@
         inschool.value = false;
     }
 
-    const spaOptionsAvailable = ref(true)
+// school conversations     
+    const openDialogModal = ref(false)
+    const introDialog = ref(false);
+    const introButton = ref(false);
+    const introDialog2 = ref(false);
+    const introButton2 = ref(false);
+    const introDialog3 = ref(false);
+    const introButton3 = ref(false);
+    const introDialog4 = ref(false);
+    const introButton4 = ref(false);
+
+    function speakToMatildaSchool() {
+        openDialogModal.value = true;
+        if (schoolOptionsAvailable.value === false) {
+            introDialog.value = true;
+            introButton.value = true;
+        }
+    }
+    function returnToSchool() {        //differs from nevermind in that it will have controls to reset ALL conversations, not just intros
+        openDialogModal.value = false;
+        introDialog.value = true;
+        introDialog2.value = false;
+        introDialog3.value = false;
+        introDialog4.value = false;
+        introButton.value = true;
+        introButton2.value = false;
+        introButton3.value = false;
+        introButton4.value = false;
+    }
+    function nevermindThen() {         // available just in intros
+        openDialogModal.value = false;
+        introDialog.value = true;
+        introDialog2.value = false;
+        introDialog3.value = false;
+        introDialog4.value = false;
+        introButton.value = true;
+        introButton2.value = false;
+        introButton3.value = false;
+        introButton4.value = false;
+    }
+    function acceptQuest() {
+        openDialogModal.value = false;
+        introDialog.value = true;
+        introButton.value = true;
+        introDialog4.value = false;
+        introButton4.value = false;
+        questAccepted.value = true;
+    }
+
+// Starting quest!
+    const questAccepted = ref(false);
+    // const questCompleted = ref(false);
+    
+
+
+// spa sales
     const noFunds = ref(false);
     function simpleSoak() {
         if (playerStore.coinOnHand - 50 < 0 ) {
