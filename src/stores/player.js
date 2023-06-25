@@ -1108,6 +1108,7 @@ export const usePlayerStore =
             carryCapacityBonus: 0,
 
             playerBank: [], // for storing items not in pack
+            playerBankLimit: 0,
 
             horseInventory: {
                 horse_shoes: [

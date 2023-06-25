@@ -32,6 +32,19 @@
         </div>
       </div> 
 
+      <div class="flex justify-end -mt-2 mr-1">
+        <div class="relative px-3 py-5 h-72 w-96 -mt-48 -mb-14 rounded-md border border-gray-600 bg-[#3d8c40] text-center text-xl font-medium focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          First-And-Only Village Bank 
+          <div class="pt-14 mx-3 text-left">
+            <p class="text-sm text-center">Finest bank in all the village.  We'll keep your treasures safe - for a price.</p>
+          </div>
+          <div class="mt-3">
+            <router-link :to="'/village_bank'" class="mt-20 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900">
+              Visit Bank</router-link>
+          </div>
+        </div>
+      </div>
+
       <div class="grid grid-cols-3 gap-x-6 pt-14">
         <div class="flex justify-center">
           <div class="mt-10 relative px-3 py-5  h-60 rounded-md border border-gray-600 bg-[#cd7f32] text-center text-xl text-gray-700 font-medium focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
