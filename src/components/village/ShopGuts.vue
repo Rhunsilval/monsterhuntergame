@@ -164,7 +164,7 @@
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
               <div>
-                <!-- shopkeeper image -->
+            <!-- shopkeeper image -->
                 <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
                   <img v-if="shopName === 'Apothecary'" src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                   <img v-else-if="shopName === 'Armory'" src="../../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
@@ -172,7 +172,7 @@
                   <img v-else-if="shopName === 'Magic'" src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
                   <img v-else src="../../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>                
-                <!-- landing dialog -->
+            <!-- landing dialog -->
                 <div v-if="landingThread" class="mt-3 text-center sm:mt-5">
                   <DialogTitle v-if="shopName ==='Apothecary'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hi there!</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Armory'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Hey there.</DialogTitle>
@@ -187,7 +187,7 @@
                     <p v-else class="text-sm text-gray-500">What do you want?</p>
                   </div>
                 </div>
-                <!-- conditional dialog threads -->
+            <!-- conditional dialog threads -->
                 <div v-if="convoThread1" class="mt-3 text-center sm:mt-5">
                   <DialogTitle v-if="shopName ==='Apothecary'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Of course!</DialogTitle>
                   <DialogTitle v-else-if="shopName === 'Armory'" as="h3" class="text-lg font-medium leading-6 text-gray-900">Sure.</DialogTitle>
@@ -216,7 +216,7 @@
                     <p v-else class="text-sm text-gray-500">I kid, I kid.  Yes, this is everything right now.  But there's always people buying and selling.  Come back later and I'll probably have different inventory.</p>
                   </div>
                 </div>
-                <!-- sell item dialog -->
+            <!-- sell item dialog -->
                 <div v-if="sellItemsDialog" class="mt-3 text-center sm:mt-5">
                   <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">What are you looking to sell?</DialogTitle>
                   <p v-if="acceptSale" class="pb-4">I'll take it for {{ offerPrice }}</p>
@@ -238,12 +238,11 @@
                     </div>
                   </div>
                 </div>
-
               </div>              
-              <!-- buttons -->
+          <!-- buttons -->
               <div class="mt-5 ">
                 <div class="grid grid-cols-2 pb-4">
-                    <!-- Sell items button -->
+            <!-- Sell items button -->
                     <button v-if="sellItemsDialog === false" @click="sellItemsDialog = true, convoThread1 = false, convoThread2 = false, landingThread = false" class="ml-10 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
                       Sell items</button>
                     <!-- conversation buttons -->
