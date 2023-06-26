@@ -47,5 +47,5 @@
 
 
 <script setup>
-import VillageMap from '../../components/VillageMap.vue';
+import VillageMap from '../../components/village/VillageMap.vue';
 </script>

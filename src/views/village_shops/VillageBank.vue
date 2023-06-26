@@ -31,7 +31,7 @@
                         <div class="mr-10 -ml-10"> 
                             <img src="../../assets/images/allpurpose/arch.png" alt="" class="w-full rounded-3xl"/>
                             <div v-if="openAccount" class="flex justify-center -mt-36"> 
-                                <button class="px-2 py-2 border border-gray-600 h-36 w-36 rounded-full font-serif font-semibold bg-white hover:bg-slate-400 "> 
+                                <button @click="goToVault" class="px-2 py-2 border border-gray-600 h-36 w-36 rounded-full font-serif font-semibold bg-white hover:bg-slate-400 "> 
                                     Visit your Deposit Box</button>
                             </div>
                         </div>
@@ -175,11 +175,19 @@
                             </div>
                             <div class="grid grid-cols-2 gap-5 pb-3 ">
                                 <div class="flex justify-end "> 
-                                    <button class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-slate-400"> Make a Deposit</button>
+                                    <button class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-slate-400"> 
+                                        Make a Deposit</button>
                                 </div>
                                 <div> 
-                                    <button class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-stone-400"> Make a Withdrawl</button>
+                                    <button @click="withdrawalInstructions = !withdrawalInstructions" class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-stone-400"> 
+                                        Make a Withdrawal</button>
                                 </div>  
+                            </div>
+                            <div v-if="withdrawalInstructions" class="flex justify-end">
+                                <div class="w-1/3 mr-36"> 
+                                    <p class="text-center text-lg">To make a withdrawal, click on an item in your vault </p>
+                                </div> 
+                                
                             </div>
                             
                         </div>
@@ -190,7 +198,25 @@
                 </div>
 
                 <div class="flex justify-center mt-10"> 
-                    <p>Item list</p>
+                    <h1 class="text-4xl font-serif font-semibold ">Vault Size: {{ playerStore.playerBankLimit }}</h1>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="text-center grid grid-cols-10 w-11/12 mt-10 border border-red-500">
+                        <playerbank-inventory
+                            v-for="(item, index) in playerStore.playerBank"
+                            :key="item.id"
+                            :index="index"
+                            :limit_by="limit_by"
+                            :id="item.id"
+                            :imageSrc="item.imageSrc"
+                            :name="item.name"
+                            :description="item.description" 
+                            :value="item.value"
+                            @emitWithdrawItem="checkInventory"
+                            @emitDropItem="dropItem"
+                        ></playerbank-inventory>
+                    </div>
                 </div>
                 
 
@@ -204,10 +230,11 @@
 <script setup> 
     import { ref, computed } from 'vue';
     import { usePlayerStore } from '@/stores/player'
+    import PlayerbankInventory from '../../components/village/PlayerbankInventory.vue'
 
     const playerStore = usePlayerStore();
     const inLobby = ref(false);
-    const openAccount = ref(true);
+    const openAccount = ref(false);
     const talkToBanker = ref(false);
     const visitVault = ref(true);
     const insufficientFunds = ref(false);
@@ -218,7 +245,13 @@
     }
     function returnToLobby() {
         talkToBanker.value = false;
+        visitVault.value = false;
         inLobby.value = true;
+    }
+    function goToVault() {
+        inLobby.value = false;
+        talkToBanker.value = false;
+        visitVault.value = true;
     }
 
 // set up an account    
@@ -320,6 +353,23 @@
             // let x = vaultUpgrades.findIndex(item => item.id === chosenUpgrade.value.id);
             // vaultUpgrades.splice(x, 1);
         }
+    }
+
+// vault actions 
+    const withdrawalInstructions = ref(false);
+    const limit_by = playerStore.playerBankLimit;
+    const chosenItemId = ref('')
+    const chosenItem = computed(function() {
+        return playerStore.playerBank.find(item => item.id === chosenItemId.value);
+    })
+
+    function dropItem(id) {
+        if(id!==undefined) {
+            console.log('chosen ID = ' + id);
+        }
+        chosenItemId.value = id;
+        let x = playerStore.playerBank.findIndex(item => item.id === chosenItem.value.id);
+        playerStore.playerBank.splice(x, 1);
     }
 
 </script>

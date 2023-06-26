@@ -20,11 +20,11 @@
       <div class="flex justify-center">
         <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
             <div class="pt-3 ">
-                <img v-if="shopName === 'Apothecary'"  src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800 "/>                 
-                <img v-else-if="shopName === 'Armory'"  src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800 "/>                 
-                <img v-else-if="shopName === 'Blacksmith'"  src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
-                <img v-else-if="shopName === 'Magic'"  src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
-                <img v-else  src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800 "/>
+                <img v-if="shopName === 'Apothecary'"  src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800 "/>                 
+                <img v-else-if="shopName === 'Armory'"  src="../../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800 "/>                 
+                <img v-else-if="shopName === 'Blacksmith'"  src="../../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
+                <img v-else-if="shopName === 'Magic'"  src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800 "/>                 
+                <img v-else  src="../../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800 "/>
             </div>
         </div>
       </div>
@@ -166,11 +166,11 @@
               <div>
                 <!-- shopkeeper image -->
                 <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
-                  <img v-if="shopName === 'Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-if="shopName === 'Apothecary'" src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Armory'" src="../../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Blacksmith'" src="../../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else src="../../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>                
                 <!-- landing dialog -->
                 <div v-if="landingThread" class="mt-3 text-center sm:mt-5">
@@ -278,11 +278,11 @@
               <div>
                 <!-- shopkeeper image -->
                 <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
-                  <img v-if="shopName ==='Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-if="shopName ==='Apothecary'" src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Armory'" src="../../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Blacksmith'" src="../../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else src="../../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>
                 <!-- dialog -->
                 <div class="mt-3 text-center sm:mt-5">
@@ -319,11 +319,11 @@
               <div>
                 <!-- shopkeeper image -->
                 <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
-                  <img v-if="shopName ==='Apothecary'" src="../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Armory'" src="../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Blacksmith'" src="../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else-if="shopName === 'Magic'" src="../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                  <img v-else src="../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-if="shopName ==='Apothecary'" src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Armory'" src="../../assets/images/village_armory/Armory_Shopkeeper.png" alt="" class="w-64 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Blacksmith'" src="../../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else-if="shopName === 'Magic'" src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                  <img v-else src="../../assets/images/village_oddities/Oddities_Shopkeeper.png" alt="" class="border border-gray-800" aria-hidden="true" />
                 </div>
                 <!-- dialog -->
                 <div class="mt-3 text-center sm:mt-5">
@@ -375,11 +375,11 @@
     })
 
     const storeTypes = {
-        Apothecary: require('../assets/images/village_apothecary/Apothecary_Shop.png'),
-        Armory: require('../assets/images/village_armory/Armory_Shop.png'),
-        Blacksmith: require('../assets/images/village_blacksmith/Blacksmith_Shop.png'),
-        Oddities: require('../assets/images/village_oddities/Oddities_Shop.png'),
-        Magic: require('../assets/images/village_magic/Magic_Shop.png')
+        Apothecary: require('../../assets/images/village_apothecary/Apothecary_Shop.png'),
+        Armory: require('../../assets/images/village_armory/Armory_Shop.png'),
+        Blacksmith: require('../../assets/images/village_blacksmith/Blacksmith_Shop.png'),
+        Oddities: require('../../assets/images/village_oddities/Oddities_Shop.png'),
+        Magic: require('../../assets/images/village_magic/Magic_Shop.png')
     }
     function getStoreType() {
         return props.shopName;

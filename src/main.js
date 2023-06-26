@@ -6,7 +6,7 @@ import { createPinia } from 'pinia'
 
 import TheHeader from './components/header/TheHeader.vue';
 import MonsterHunter from './components/monster_hunter/MonsterHunter.vue';
-import ShopGuts from './components/ShopGuts.vue';
+import ShopGuts from './components/village/ShopGuts.vue';
 
 const app = createApp(App);
 app.use(router);
