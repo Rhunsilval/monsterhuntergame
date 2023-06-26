@@ -96,7 +96,7 @@
         </div>
         <div class="flex justify-center"> 
             <div class="w-1/3 bg-white bg-opacity-70 flex justify-center py-3"> 
-                <div class="grid grid-cols-1 pt-4"> 
+                 <div class="grid grid-cols-1 pt-4"> 
                     <div class=" flex justify-center">
                         <button @click="returnToLobby" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                             Return to Lobby</button>

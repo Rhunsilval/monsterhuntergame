@@ -6,7 +6,7 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player_One',
             oldGame: false,
-            coinOnHand: 1000,            
+            coinOnHand: 10000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
             playerHealth: 100,              // max health, changes with equip/unequip items           

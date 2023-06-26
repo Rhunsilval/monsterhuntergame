@@ -4,7 +4,7 @@
     <div class="bg-[url('../assets/images/allpurpose/bank_background.png')] bg-contain">
         <div class="flex justify-center"> 
             <div class="w-2/3 bg-white bg-opacity-70 flex justify-center mt-14"> 
-                <h1 class="font-serif font-bold text-7xl py-10">The First-And-Only Village Bank</h1>
+                <h1 class="font-serif font-bold text-7xl py-10 text-center">The First-And-Only Village Bank</h1>
             </div>
         </div>
 <!-- bank lobby -->
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>        
-        <div v-if="inLobby" class="flex justify-center pb-32 "> 
+        <div v-if="inLobby" class="flex justify-center "> 
             <div class="w-2/3 bg-white bg-opacity-70 flex justify-center text-center"> 
                 <div class="grid grid-cols-1 pb-10">
                     <h1 class="text-2xl font-serif font-bold pt-10">Welcome, welcome!</h1>
@@ -47,6 +47,16 @@
                     <p>Tell me how I can help you today!</p>
                 </div>  
             </div>
+        </div>
+        <div v-if="inLobby" class="flex justify-center pb-32"> 
+            <div class="w-2/3 bg-white bg-opacity-70 flex justify-center"> 
+                    <div class="relative flex self-center rounded-lg p-0.5 pb-10">
+                        <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                            Explore the Village</router-link>
+                        <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                            Hunt for Monsters</router-link>
+                    </div>               
+            </div>            
         </div> 
 
 <!-- talk to banker -->
@@ -99,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="openAccount" class="flex justify-center pt-5 pb-10"> 
+                    <div v-if="openAccount" class="flex justify-center pt-5"> 
                         <div class="grid grid-cols-1 text-center font-serif text-lg">
                             <div class="grid grid-cols-1"> 
                                 <p class="font-semibold text-2xl ">Welcome back, {{ playerStore.playerId }}!</p>
@@ -109,11 +119,82 @@
 
                         </div>
                     </div>
-
-
+            <!-- nav buttons -->
+                    <div v-if="openAccount" class="flex justify-center"> 
+                        <div class="grid grid-cols-1 pt-4"> 
+                            <div class=" flex justify-center">
+                                <button @click="returnToLobby" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                                    Return to Lobby</button>
+                            </div>
+                            <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
+                                <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                                    Explore the Village</router-link>
+                                <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                                    Hunt for Monsters</router-link>
+                            </div>
+                        </div>
+                    </div>
+            <!-- upgrade options -->
+                    <div v-if="openAccount" class="flex justify-center pb-16"> 
+                        <div class="grid grid-cols-4 gap-x-4">  
+                            <div v-for="item in vaultUpgrades" :key="item.id">
+                                <button @click="upgradeVault(item.id)">
+                                    <img :src="item.image" alt="" class="h-40 w-56 rounded-lg "/>
+                                    <div class="text-center text-xl pt-2"> 
+                                        <p>{{ item.description }}</p>
+                                    </div>
+                                    <div class="text-center text-2xl font-serif"> 
+                                        <p>{{ item.price }} coin</p>
+                                    </div> 
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+<!-- player vault -->
+        <div v-if="visitVault" class="flex justify-center"> 
+            <div class="w-2/3 bg-white bg-opacity-70 min-h-screen mb-32"> 
+                <div class="flex justify-center"> 
+                    <div class="grid grid-cols-2"> 
+                        <div class="grid grid-cols-1 mt-20"> 
+                            <div class=" flex justify-center h-20">
+                                <button @click="returnToLobby" type="button" class="w-1/3 h-14 relative whitespace-nowrap rounded-md border border-gray-600 bg-gray-400 hover:bg-gray-300 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    Return to Lobby</button>
+                            </div>
+                            <div class="grid grid-cols-2 gap-5 pb-3 ">
+                                <div class="flex justify-end "> 
+                                    <router-link type="button" :to="'/village'" class="w-2/3 h-14 px-3 py-3 text-center text-sm font-semibold bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
+                                        Explore the Village</router-link>
+                                </div>
+                                <div> 
+                                    <router-link :to="'/map'" type="button" class="w-2/3 h-14 px-3 py-3 text-center text-sm font-semibold bg-[#305c79] hover:bg-blue-200 border border-gray-600 rounded-lg text-gray-300 hover:text-black">
+                                        Hunt for Monsters</router-link>
+                                </div>  
+                            </div>
+                            <div class="grid grid-cols-2 gap-5 pb-3 ">
+                                <div class="flex justify-end "> 
+                                    <button class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-slate-400"> Make a Deposit</button>
+                                </div>
+                                <div> 
+                                    <button class="h-28 w-28 rounded-full px-2 py-2 border border-gray-500 bg-white hover:bg-stone-400"> Make a Withdrawl</button>
+                                </div>  
+                            </div>
+                            
+                        </div>
+                        <div> 
+                            <img src="../../assets/images/allpurpose/vault.png" class="rounded-3xl w-11/12" />
+                        </div>
+                    </div>                    
+                </div>
 
+                <div class="flex justify-center mt-10"> 
+                    <p>Item list</p>
+                </div>
+                
+
+            </div>
         </div>
 
         
@@ -121,14 +202,14 @@
 </template>
 
 <script setup> 
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
     import { usePlayerStore } from '@/stores/player'
 
     const playerStore = usePlayerStore();
     const inLobby = ref(false);
     const openAccount = ref(true);
-    const talkToBanker = ref(true);
-    const visitVault = ref(false);
+    const talkToBanker = ref(false);
+    const visitVault = ref(true);
     const insufficientFunds = ref(false);
 
     function speakWithBanker() {
@@ -188,6 +269,57 @@
         talkToBanker.value = false;
         inLobby.value = true;
     }
-   
+
+// vault upgrades:
+    const vaultUpgrades = [
+        {
+            id: 'upgrade1',
+            image: require('../../assets/images/allpurpose/100vault.png'),
+            description: 'Vault holds 100 items',
+            price: 1500,
+            size: 100
+        },
+        {
+            id: 'upgrade2',
+            image: require('../../assets/images/allpurpose/200vault.png'),
+            description: 'Vault holds 200 items',
+            price: 3700,
+            size: 200
+        },
+        {
+            id: 'upgrade3',
+            image: require('../../assets/images/allpurpose/500vault.png'),
+            description: 'Vault holds 500 items',
+            price: 8000,
+            size: 500
+        },
+        {
+            id: 'upgrade4',
+            image: require('../../assets/images/allpurpose/1000vault.png'),
+            description: 'Vault holds 1000 items',
+            price: 10000,
+            size: 1000
+        },
+    ];
+
+    const chosenUpgradeId = ref('');
+    const chosenUpgrade = computed(function() {
+        return vaultUpgrades.find(product => product.id === chosenUpgradeId.value);
+    })
+    function upgradeVault(productId) {
+        chosenUpgradeId.value = productId;
+        if (playerStore.coinOnHand - chosenUpgrade.value.price < 0) {
+            insufficientFunds.value = true;
+        } else {
+            playerStore.coinOnHand = (playerStore.coinOnHand - chosenUpgrade.value.price);
+            playerStore.playerBankLimit = chosenUpgrade.value.size;
+        // my goal is to have sold items (and any items before the sold item) get deleted from the list 
+        // but it's not working and i don't know why.  this code works for my playerstore inventory array?
+        // is it because this upgrades array is defined instead of random?
+            // let x = vaultUpgrades.id = chosenUpgrade.value.id;
+            // let x = vaultUpgrades.findIndex(item => item.id === chosenUpgrade.value.id);
+            // vaultUpgrades.splice(x, 1);
+        }
+    }
 
 </script>
