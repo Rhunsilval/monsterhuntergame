@@ -9,13 +9,48 @@
                     <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="mt-10">Active Quests</p>
+                                <p class="my-10">Active Quests</p>
+                                <div> 
+                                    <ul> 
+                                        <li v-for="quest in playerStore.playerActiveQuests" :key="quest.id">
+                                            <div class="grid grid-cols-3"> 
+                                                <div class="flex justify-center"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 mt-7 border border-gray-500 rounded-full" />
+                                                </div>
+                                                <div class="grid grid-cols-1 gap-y-0"> 
+                                                    <p>{{ quest.title }}</p>
+                                                    <p class="text-sm">{{ quest.description }}</p>                                                    
+                                                </div>
+                                                <div> 
+                                                    <p class="mt-7">Points: {{ quest.questPoints }}</p>
+                                                </div>
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                            
                         </div>                        
                         <div class=" text-xl font-serif flex justify-center mt-5"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="mt-10">Completed Quests</p>
-                            </div>
+                                <p class="my-10">Completed Quests</p>
+                                <div> 
+                                    <ul> 
+                                        <li v-for="quest in playerStore.playerCompletedQuests" :key="quest.id">
+                                            <div class="grid grid-cols-2"> 
+                                                <div class="flex justify-center"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 border border-gray-500 rounded-full" />
+                                                </div>
+                                                <div class="grid grid-cols-1 gap-y-0 -ml-20 mr-20"> 
+                                                    <p>{{ quest.title }}</p>
+                                                    <p>Points: {{ quest.questPoints }}</p>
+                                                </div>
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>                            
+                            
                         </div>                        
                     </div>
                 </div>

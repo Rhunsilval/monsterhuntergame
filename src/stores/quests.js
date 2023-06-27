@@ -18,7 +18,8 @@ export const useQuestStore =
                     smallIcon: require('../assets/images/forest/forest_monster_1_treasure.png'),
                     questPoints: 10,
                     playerXP: 10,
-                    reward: "Gain permission to enroll in Matilda's School of Magic."
+                    reward: "Gain permission to enroll in Matilda's School of Magic.",
+                    rewardScript: "permission to enroll in my School of Magic."
                 }
             ],
 

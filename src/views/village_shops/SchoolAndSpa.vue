@@ -91,7 +91,7 @@
             </div>
             <div v-if="matildaQuest.active" class="flex justify-center"> 
                 <div class="w-1/3 bg-white bg-opacity-70 flex justify-center pt-4">
-                    <button @click="completeQuest = true" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                    <button @click="attemptCompleteQuest" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
                         Complete the Quest</button>
                 </div>
             </div>
@@ -136,9 +136,10 @@
 
     <!-- for completing the quest -->
         <div v-if="completeQuest" class="flex justify-center"> 
-            <div class="w-1/3 bg-white bg-opacity-70 flex justify-center"> 
+            <div class="w-1/3 bg-white bg-opacity-70 flex justify-center mb-52"> 
                 <quest-rendering
                     :quest="quest"
+                    @emit-quest-complete="questComplete"
                 ></quest-rendering>
             </div>
         </div>        
@@ -423,9 +424,9 @@
 // Starting quest!
     const questAccepted = ref(false);
     const completeQuest = ref(false);
-    // const questCompleted = ref(false);
+    const questCompleted = ref(false);
     const quest = ref('');
-    
+
     // not SUPER ideal - each quest will need its own set of commands and buttons 
     // fine here where there's just one quest.  but in the tavern and shops where i intend many possible quests
     // can get tedious?
@@ -440,7 +441,16 @@
         questAccepted.value = true;
         quest.value = 'matildaQuest';
         matildaQuest.active = true;
+        playerStore.playerActiveQuests.push(matildaQuest);
     }    
+    function attemptCompleteQuest() {
+        quest.value = 'matildaQuest';
+        completeQuest.value = true;
+    }
+    function questComplete() {
+        completeQuest.value = false;
+        questCompleted.value = true;
+    }
     
 
 
