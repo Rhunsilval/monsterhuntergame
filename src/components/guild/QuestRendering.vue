@@ -77,8 +77,8 @@
             playerStore.playerPacked.splice(x, 1);
         }
         if (renderedQuest.value.qty - 1 < 0) {
-            renderedQuest.value.complete = true;  // do i need this?
-            renderedQuest.value.active = false;   // do i need this?
+            renderedQuest.value.complete = true;  // do i need this? 
+            renderedQuest.value.active = false;   // do i need this? YES - for quest complete button on main page
             questDone.value = true;
             playerStore.playerXP = playerStore.playerXP + renderedQuest.value.playerXP;
             playerStore.playerTotalXP = playerStore.playerTotalXP + renderedQuest.value.playerXP;

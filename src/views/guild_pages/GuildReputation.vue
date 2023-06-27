@@ -86,6 +86,7 @@
             </div>
         </div>
     </div>
+
 <!-- reputation points calcuator -->
     <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
         <div class="flex w-2/3 pt-96 pr-32 flex-col items-center space-y-4 sm:items-end">
@@ -141,7 +142,7 @@
 
 <script setup>
     import { usePlayerStore } from '@/stores/player';
-    import { ref, computed } from 'vue';
+    import { computed } from 'vue';
 
     const playerStore = usePlayerStore();
 
@@ -150,10 +151,14 @@
         return (monsterList = monsterList.filter(item => item.count > 0))
     })
 
-    const questPoints = ref(0)   
-    const victoryPoints = playerStore.playerKillLog.map(amount).reduce(sum);
-    playerStore.playerReputation = (questPoints.value + victoryPoints)
-    function amount(item) {
+    const questPoints = playerStore.playerCompletedQuests.map(questAmount).reduce(sum); 
+    const victoryPoints = playerStore.playerKillLog.map(victoryAmount).reduce(sum);
+    playerStore.playerReputation = (questPoints + victoryPoints);
+
+    function questAmount(item) {
+        return item.questPoints;
+    }
+    function victoryAmount(item) {
         return item.count * item.points;
     }
     function sum(prev,next) {
