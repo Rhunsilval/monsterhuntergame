@@ -9,8 +9,8 @@
                     <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="my-10">Active Quests</p>
-                                <div> 
+                                <p class="my-10 text-2xl font-semibold">Active Quests</p>
+                                <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
                                     <ul> 
                                         <li v-for="quest in playerStore.playerActiveQuests" :key="quest.id">
                                             <div class="grid grid-cols-3"> 
@@ -33,8 +33,8 @@
                         </div>                        
                         <div class=" text-xl font-serif flex justify-center mt-5"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="my-10">Completed Quests</p>
-                                <div> 
+                                <p class="my-10 text-2xl font-semibold">Completed Quests</p>
+                                <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
                                     <ul> 
                                         <li v-for="quest in playerStore.playerCompletedQuests" :key="quest.id">
                                             <div class="grid grid-cols-2"> 
@@ -64,15 +64,15 @@
                 <div class="flex justify-center">
                     <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
-                            <table class="table-auto border border-black ">
-                                <thead class="text-left bg-gray-500">
+                            <table class="table-auto border border-black max-h-screen">
+                                <thead class="text-left bg-gray-500 ">
                                     <tr>
                                         <th class="pl-5 py-3 pr-5">Monster</th>
                                         <th class="pr-5 py-3">Count</th>
                                         <th class="pr-5 py-3">Points</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="relative align-top overflow-y-scroll">
                                     <tr v-for="item in validMonsterLog" :key="item.id" :class="item.place" class="bg-gray-500">
                                         <td class="pl-5 pb-3">{{ item.name }}</td>
                                         <td class="text-center pb-3 text-2xl">{{ item.count }}</td>

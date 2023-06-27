@@ -111,8 +111,8 @@
                         <div class="mt-2"> 
                             <p class="text-lg text-gray-700 font-semibold pt-4">Player Level: level {{ playerStore.playerLevel }}</p>
                             <p class="text-lg text-gray-700 font-semibold ">Points to Spend: {{ playerStore.playerPoints }}</p>
-                            <p class="text-lg text-gray-700 font-semibold ">XP to next levelstate: {{ playerStore.playerNeededXP }} </p>
-                            <p class="text-lg text-gray-700 font-semibold ">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                   
+                            <p class="text-lg text-gray-700 font-semibold ">XP to next level: {{ playerStore.playerNeededXP }} </p>
+                            <!-- <p class="text-lg text-gray-700 font-semibold ">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                    -->
                             <p class="font-bold text-cyan-700 text-2xl " >{{ playerStore.playerXP }} / {{ playerStore.nextLevel }} </p>
                             <p class="text-lg text-gray-700 font-semibold py-4">Total XP aquired: {{ playerStore.playerTotalXP }} </p>
                             
