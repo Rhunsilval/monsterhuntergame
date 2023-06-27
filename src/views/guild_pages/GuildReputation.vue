@@ -9,13 +9,48 @@
                     <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="mt-10">Active Quests</p>
+                                <p class="my-10 text-2xl font-semibold">Active Quests</p>
+                                <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
+                                    <ul> 
+                                        <li v-for="quest in playerStore.playerActiveQuests" :key="quest.id">
+                                            <div class="grid grid-cols-3"> 
+                                                <div class="flex justify-center"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 mt-7 border border-gray-500 rounded-full" />
+                                                </div>
+                                                <div class="grid grid-cols-1 gap-y-0"> 
+                                                    <p>{{ quest.title }}</p>
+                                                    <p class="text-sm">{{ quest.description }}</p>                                                    
+                                                </div>
+                                                <div> 
+                                                    <p class="mt-7">Points: {{ quest.questPoints }}</p>
+                                                </div>
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                            
                         </div>                        
                         <div class=" text-xl font-serif flex justify-center mt-5"> 
                             <div class="h-80 w-5/6 bg-gray-500 border border-black rounded-3xl text-center "> 
-                                <p class="mt-10">Completed Quests</p>
-                            </div>
+                                <p class="my-10 text-2xl font-semibold">Completed Quests</p>
+                                <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
+                                    <ul> 
+                                        <li v-for="quest in playerStore.playerCompletedQuests" :key="quest.id">
+                                            <div class="grid grid-cols-2"> 
+                                                <div class="flex justify-center"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 border border-gray-500 rounded-full" />
+                                                </div>
+                                                <div class="grid grid-cols-1 gap-y-0 -ml-20 mr-20"> 
+                                                    <p>{{ quest.title }}</p>
+                                                    <p>Points: {{ quest.questPoints }}</p>
+                                                </div>
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>                            
+                            
                         </div>                        
                     </div>
                 </div>
@@ -29,15 +64,15 @@
                 <div class="flex justify-center">
                     <div class="bg-amber-600 bg-opacity-60 py-8 border border-gray-600 w-11/12 rounded-3xl ">
                         <div class=" text-xl font-serif flex justify-center"> 
-                            <table class="table-auto border border-black ">
-                                <thead class="text-left bg-gray-500">
+                            <table class="table-auto border border-black max-h-screen">
+                                <thead class="text-left bg-gray-500 ">
                                     <tr>
                                         <th class="pl-5 py-3 pr-5">Monster</th>
                                         <th class="pr-5 py-3">Count</th>
                                         <th class="pr-5 py-3">Points</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="relative align-top overflow-y-scroll">
                                     <tr v-for="item in validMonsterLog" :key="item.id" :class="item.place" class="bg-gray-500">
                                         <td class="pl-5 pb-3">{{ item.name }}</td>
                                         <td class="text-center pb-3 text-2xl">{{ item.count }}</td>
@@ -51,6 +86,7 @@
             </div>
         </div>
     </div>
+
 <!-- reputation points calcuator -->
     <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
         <div class="flex w-2/3 pt-96 pr-32 flex-col items-center space-y-4 sm:items-end">
@@ -106,7 +142,7 @@
 
 <script setup>
     import { usePlayerStore } from '@/stores/player';
-    import { ref, computed } from 'vue';
+    import { computed } from 'vue';
 
     const playerStore = usePlayerStore();
 
@@ -115,10 +151,14 @@
         return (monsterList = monsterList.filter(item => item.count > 0))
     })
 
-    const questPoints = ref(0)   
-    const victoryPoints = playerStore.playerKillLog.map(amount).reduce(sum);
-    playerStore.playerReputation = (questPoints.value + victoryPoints)
-    function amount(item) {
+    const questPoints = playerStore.playerCompletedQuests.map(questAmount).reduce(sum); 
+    const victoryPoints = playerStore.playerKillLog.map(victoryAmount).reduce(sum);
+    playerStore.playerReputation = (questPoints + victoryPoints);
+
+    function questAmount(item) {
+        return item.questPoints;
+    }
+    function victoryAmount(item) {
         return item.count * item.points;
     }
     function sum(prev,next) {

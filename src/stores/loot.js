@@ -3600,7 +3600,8 @@ export const useLootStore =
                             },
                         );
                     } 
-                }else if (this.monsterId === 'swamp_monster3') {
+                }
+                else if (this.monsterId === 'swamp_monster3') {
                     const val = this.getRandomValue(1,3);
                     if (val === 1) {
                         this.lootList.push(
@@ -4109,7 +4110,6 @@ export const useLootStore =
                     this.getPotionDrop();
                     this.getPotionDrop();
                 } 
-
             },
 
             getDesertGems() {
