@@ -89,7 +89,7 @@
                         Speak with Matilda</button>
                 </div>
             </div>
-            <div v-if="questAccepted" class="flex justify-center"> 
+            <div v-if="matildaQuest.active" class="flex justify-center"> 
                 <div class="w-1/3 bg-white bg-opacity-70 flex justify-center pt-4">
                     <button @click="completeQuest = true" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
                         Complete the Quest</button>
@@ -224,7 +224,7 @@
                                         <div v-if="introButton4" class="flex justify-center"> 
                                             <div class="grid grid-cols-2 gap-x-3"> 
                                                 <div class="flex justify-end"> 
-                                                    <button @click="acceptQuest" type="button" class="w-4/5 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                    <button @click="acceptMatildaQuest" type="button" class="w-4/5 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                                         I'll do it!</button>
                                                 </div>
                                                 <div> 
@@ -417,8 +417,21 @@
         introButton3.value = false;
         introButton4.value = false;
     }
+
+
+
+// Starting quest!
+    const questAccepted = ref(false);
+    const completeQuest = ref(false);
+    // const questCompleted = ref(false);
     const quest = ref('');
-    function acceptQuest() {
+    
+    // not SUPER ideal - each quest will need its own set of commands and buttons 
+    // fine here where there's just one quest.  but in the tavern and shops where i intend many possible quests
+    // can get tedious?
+    
+    let matildaQuest = questStore.quests.find(quest => quest.id === 'matildaQuest');
+    function acceptMatildaQuest() {
         openDialogModal.value = false;
         introDialog.value = true;
         introButton.value = true;
@@ -426,15 +439,8 @@
         introButton4.value = false;
         questAccepted.value = true;
         quest.value = 'matildaQuest';
-        let x = questStore.quests.find(quest => quest.id === 'matildaQuest');        
-        x.active = true;
-        console.log('quest value: ' + quest.value);
-    }
-
-// Starting quest!
-    const questAccepted = ref(false);
-    const completeQuest = ref(false);
-    // const questCompleted = ref(false);
+        matildaQuest.active = true;
+    }    
     
 
 
