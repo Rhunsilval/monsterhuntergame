@@ -84,8 +84,12 @@
 <script setup>
   import { ref } from 'vue'
   import { usePlayerStore } from '@/stores/player'
+  import { useConditionalsStore } from '@/stores/conditionals';
+  import { useQuestStore } from '@/stores/quests';
 
   const playerStore = usePlayerStore();
+  const conditionalStore = useConditionalsStore();
+  const questStore = useQuestStore();
 
   const oldGame = playerStore.oldGame;
 
@@ -1244,18 +1248,22 @@
             imageSrc: require('../../assets/images/placeholders/bags.png'), 
         },
     );
+    // resetting all game conditionals to defaults
+    conditionalStore.villageBank.accountOpen = false;
+    conditionalStore.matildaSchool.questCompleted = false;
+    conditionalStore.matildaSchool.questInProgress = false;
+    conditionalStore.matildaSchool.questNeedsStarting = true;
+    // resetting all quest conditions to defaults
+    let a = questStore.quests.find(item => item.id === 'matildaQuest');
+        a.qty = 3;
+        a.active = false;
+
   }
 
   const userName = ref('');
   const userNameValidity = ref('pending');
   const readyToStart = ref(false);
-//   function validateUsername() {
-//     if (userName.value === '') {
-//         userNameValidity.value = 'invalid';
-//     } else {
-//         userNameValidity.value = 'valid'
-//     }
-//   }
+
   function submitForm() {
     if (userName.value === '') {
         userNameValidity.value = 'invalid';

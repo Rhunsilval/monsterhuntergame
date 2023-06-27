@@ -9,6 +9,11 @@
                 <p class="py-2">Do you have the {{ renderedQuest.need }} I asked for?</p>
                 <p>Quantity needed:</p>
                 <p class="text-3xl font-bold pb-4">{{ renderedQuest.qty }}</p>
+                <div class="flex justify-center"> 
+                    <button @click="emitLeaveQuest" class="mt-10 px-2 py-2 w-32 border border-gray-500 rounded-xl bg-stone-400 hover:bg-stone-600 hover:text-white text-center">
+                        Leave</button>
+                </div>
+                
             </div>            
         </div>
         <div v-if="questDone" class="flex justify-center mb-12"> 
@@ -47,6 +52,7 @@
     })
     const emit = defineEmits([
         'emitQuestComplete',
+        'emitLeaveQuest'
     ])
     const questStore = useQuestStore();
     const playerStore = usePlayerStore();
@@ -71,9 +77,8 @@
             playerStore.playerPacked.splice(x, 1);
         }
         if (renderedQuest.value.qty - 1 < 0) {
-            renderedQuest.value.complete = true;
-            renderedQuest.value.active = false;
-            console.log('quest complete? : ' + renderedQuest.value.complete);
+            renderedQuest.value.complete = true;  // do i need this?
+            renderedQuest.value.active = false;   // do i need this?
             questDone.value = true;
             playerStore.playerXP = playerStore.playerXP + renderedQuest.value.playerXP;
             playerStore.playerTotalXP = playerStore.playerTotalXP + renderedQuest.value.playerXP;
@@ -85,6 +90,9 @@
     }
     function emitQuestComplete() {
         emit('emitQuestComplete');
+    }
+    function emitLeaveQuest() {
+        emit('emitLeaveQuest');
     }
 
 </script>

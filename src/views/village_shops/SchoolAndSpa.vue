@@ -173,6 +173,7 @@
                 <quest-rendering
                     :quest="quest"
                     @emit-quest-complete="questComplete"
+                    @emit-leave-quest="leaveQuest"
                 ></quest-rendering>
             </div>
         </div>    
@@ -477,7 +478,6 @@
         introButton4.value = false;
         conditionalStore.matildaSchool.questNeedsStarting = false;
         conditionalStore.matildaSchool.questInProgress = true;
-        // questAccepted.value = true;
         quest.value = 'matildaQuest';
         matildaQuest.active = true;
         playerStore.playerActiveQuests.push(matildaQuest);
@@ -485,6 +485,9 @@
     function attemptCompleteQuest() {
         quest.value = 'matildaQuest';
         workOnQuest.value = true;
+    }
+    function leaveQuest() {
+        workOnQuest.value = false;
     }
     function questComplete() {
         workOnQuest.value = false;
