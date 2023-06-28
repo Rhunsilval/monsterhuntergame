@@ -4,11 +4,16 @@
             <img :src="renderedQuest.largeIcon" class="w-52 border border-gray-500 rounded-2xl " />
         </div>
         <div v-if="!questDone" class="flex justify-center"> 
-            <div class="text-center text-xl font-serif grid grid-cols-1"> 
-                <p class="text-2xl font-semibold">Ah, {{ playerStore.playerId }}.  You're back.</p>
-                <p class="py-2">Do you have the {{ renderedQuest.need }} I asked for?</p>
-                <p>Quantity needed:</p>
-                <p class="text-3xl font-bold pb-4">{{ renderedQuest.qty }}</p>
+            <div class="text-center text-lg font-serif grid grid-cols-1"> 
+                <!-- <div>  -->
+                    <p class="text-2xl font-semibold">Ah, {{ playerStore.playerId }}.  You're back.</p>
+                <!-- </div> -->
+                <!-- <div> -->
+                    <p class="py-2">I'm still looking for the</p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty }} {{ renderedQuest.need }}  </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty2 }} {{ renderedQuest.need2 }} </p>
+                    <p class="mt-3">that you owe me.</p>
+                <!-- </div> -->
                 <div class="flex justify-center"> 
                     <button @click="emitLeaveQuest" class="mt-10 px-2 py-2 w-32 border border-gray-500 rounded-xl bg-stone-400 hover:bg-stone-600 hover:text-white text-center">
                         Leave</button>

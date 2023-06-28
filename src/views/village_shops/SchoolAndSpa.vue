@@ -460,9 +460,7 @@
     }
 
 // Starting quest!
-    // const questAccepted = ref(false);
     const workOnQuest = ref(false);
-    // const questCompleted = ref(false);
     const quest = ref('');
 
     // not SUPER ideal - each quest will need its own set of commands and buttons 

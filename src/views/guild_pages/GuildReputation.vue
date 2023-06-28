@@ -12,14 +12,14 @@
                                 <p class="my-10 text-2xl font-semibold">Active Quests</p>
                                 <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
                                     <ul> 
-                                        <li v-for="quest in playerStore.playerActiveQuests" :key="quest.id">
+                                        <li v-for="quest in playerStore.playerActiveQuests" :key="quest.id" class="border border-x-transparent border-y-slate-400 py-2">
                                             <div class="grid grid-cols-3"> 
-                                                <div class="flex justify-center"> 
-                                                    <img :src="quest.smallIcon" class="w-14 h-14 mt-7 border border-gray-500 rounded-full" />
+                                                <div class="flex justify-start"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 ml-2 mt-7 border border-gray-600 rounded-full" />
                                                 </div>
-                                                <div class="grid grid-cols-1 gap-y-0"> 
+                                                <div class="grid grid-cols-1 gap-y-0 -ml-16 -mr-5"> 
                                                     <p>{{ quest.title }}</p>
-                                                    <p class="text-sm">{{ quest.description }}</p>                                                    
+                                                    <p class="text-xs">{{ quest.description }}</p>                                                    
                                                 </div>
                                                 <div> 
                                                     <p class="mt-7">Points: {{ quest.questPoints }}</p>

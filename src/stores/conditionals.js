@@ -11,6 +11,10 @@ export const useConditionalsStore =
                 questCompleted: false,
                 questInProgress: false,
                 questNeedsStarting: true,
+            },
+            huntersGuild: {
+                questAccepted: false,
+                collect10QuestAvailable: true,
             }
         }),
         actions: {}
