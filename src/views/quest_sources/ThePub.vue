@@ -70,7 +70,7 @@
 </template>
   
 <script setup>
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
 
   const people = [
     {
@@ -107,7 +107,17 @@
     },
   ] 
 
-  const conversationStarted = ref(false)
+  const insufficientFunds = ref(false);
+  const conversationStarted = ref(false);
+  const chosenCharacterID = ref('');
+  const chosenCharacter = computed(function() {
+        return people.find(x => x.id === chosenCharacterID.value);
+  })
+  
+  function startConversation(id) {
+    chosenCharacterID.value = id;
+
+  }
 
 </script>
 
