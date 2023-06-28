@@ -12,7 +12,7 @@
           <div class="flex-shrink-0">
             <img class="h-40  w-full object-cover border-b-gray-600 border-b-2" :src="quest.smallIcon" alt="" />
           </div>
-          <div class="flex justify-between bg-white p-2">
+          <div class="flex justify-between bg-white p-2 overflow-y-scroll">
             <div class="text-center">             
               <p class="text-base -mt-2 font-semibold text-gray-900">{{ quest.title }}</p>
               <p class="mt-3 text-xs text-gray-500">{{ quest.description }}</p>
