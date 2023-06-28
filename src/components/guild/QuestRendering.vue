@@ -120,8 +120,7 @@
         if (!(renderedQuest.value.qty7 > 0)) { q7.value = 0} else (q7.value = renderedQuest.value.qty7)
         console.log("q2: " +q2.value)
 
-        if ((renderedQuest.value.qty + q2.value + q3.value + q4.value + q5.value + q6.value + q7.value) 
-            - 1 < 0) {
+        if ((renderedQuest.value.qty + q2.value + q3.value + q4.value + q5.value + q6.value + q7.value) - 1 < 0) {
             renderedQuest.value.complete = true;  // do i need this? YES - for unlocking features in response to quest completion
             renderedQuest.value.active = false;   // do i need this? YES - for quest complete button on main page
             questDone.value = true;

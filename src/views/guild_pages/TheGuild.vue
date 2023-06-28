@@ -56,7 +56,7 @@
                         </div>
                         <div>
                           <router-link :to="'/guild_reputation'" type="button" class="px-3 pt-6 pb-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">
-                            Examine Personal Reputation</router-link>
+                            Evaluate Personal Reputation</router-link>
                         </div>
                       </div>
                       <div class="grid grid-cols-2">

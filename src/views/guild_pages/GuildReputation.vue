@@ -37,11 +37,11 @@
                                 <div class="h-56 max-h-56 -mt-5 overflow-y-scroll"> 
                                     <ul> 
                                         <li v-for="quest in playerStore.playerCompletedQuests" :key="quest.id">
-                                            <div class="grid grid-cols-2"> 
-                                                <div class="flex justify-center"> 
-                                                    <img :src="quest.smallIcon" class="w-14 h-14 border border-gray-500 rounded-full" />
+                                            <div class="grid grid-cols-2 my-1 border border-b-gray-600 border-t-transparent border-x-transparent"> 
+                                                <div class="flex justify-start items-center"> 
+                                                    <img :src="quest.smallIcon" class="w-14 h-14 ml-3 border border-gray-500 rounded-full" />
                                                 </div>
-                                                <div class="grid grid-cols-1 gap-y-0 -ml-20 mr-20"> 
+                                                <div class="grid grid-cols-1 gap-y-0 -ml-40 mr-3 mb-2"> 
                                                     <p>{{ quest.title }}</p>
                                                     <p>Points: {{ quest.questPoints }}</p>
                                                 </div>

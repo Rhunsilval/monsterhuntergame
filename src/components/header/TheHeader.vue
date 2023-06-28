@@ -110,7 +110,6 @@
                         <DialogTitle as="h3" class="leading-6 text-gray-900 text-4xl font-medium pt-5">{{ playerStore.playerId }}'s Stats:</DialogTitle>
                         <div class="mt-2"> 
                             <p class="text-lg text-gray-700 font-semibold pt-4">Player Level: level {{ playerStore.playerLevel }}</p>
-                            <p class="text-lg text-gray-700 font-semibold pt-4">Player Reputation: level {{ playerStore.playerReputation }}</p>
                             <p class="text-lg text-gray-700 font-semibold ">Points to Spend: {{ playerStore.playerPoints }}</p>
                             <p class="text-lg text-gray-700 font-semibold ">XP to next level: {{ playerStore.playerNeededXP }} </p>
                             <!-- <p class="text-lg text-gray-700 font-semibold ">XP to next levelaction: {{ playerStore.XPUntilNextLevel() }} </p>                    -->
