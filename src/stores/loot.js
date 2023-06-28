@@ -189,6 +189,7 @@ export const useLootStore =
 // desert monsters
                 if (this.monsterId === 'desert_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('desert monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -726,6 +727,7 @@ export const useLootStore =
 // forest monsters
                 else if (this.monsterId === 'forest_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('forest monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -1308,6 +1310,7 @@ export const useLootStore =
 // grassland monsters
                 else if (this.monsterId === 'grassland_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('grassland monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -1883,6 +1886,7 @@ export const useLootStore =
 // jungle monsters
                 else if (this.monsterId === 'jungle_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('jungle monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -2454,6 +2458,7 @@ export const useLootStore =
 // marshes monsters
                 else if (this.monsterId === 'marshes_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('marsh monster loot val: '+ val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -2467,7 +2472,7 @@ export const useLootStore =
                                 price: 50,
                                 imageSrc: require('../assets/images/marshes/marshes_monster_1_treasure.png'), 
                             },
-                        );
+                        );                        
                     } 
                 }
                 else if (this.monsterId === 'marshes_monster2') {
@@ -3020,6 +3025,7 @@ export const useLootStore =
 // mountain monsters
                 else if (this.monsterId === 'mountain_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('mountain monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -3567,6 +3573,7 @@ export const useLootStore =
 // swamp monsters
                 else if (this.monsterId === 'swamp_monster1') {
                     const val = this.getRandomValue(1,3);
+                    console.log('swamp monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {

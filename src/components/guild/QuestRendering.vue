@@ -12,6 +12,11 @@
                     <p class="py-2">I'm still looking for the</p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty }} {{ renderedQuest.need }}  </p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty2 }} {{ renderedQuest.need2 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty3 }} {{ renderedQuest.need3 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty4 }} {{ renderedQuest.need4 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty5 }} {{ renderedQuest.need5 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty6 }} {{ renderedQuest.need6 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty7 }} {{ renderedQuest.need7 }} </p>
                     <p class="mt-3">that you owe me.</p>
                 <!-- </div> -->
                 <div class="flex justify-center"> 
@@ -77,20 +82,55 @@
         if(id!==undefined) {
             console.log('chosen bankitem Id = ' + id);
         }
+        
         if (chosenItem.value.name === renderedQuest.value.need) {
             renderedQuest.value.qty = (renderedQuest.value.qty - 1);
             playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need2) {
+                renderedQuest.value.qty2 = (renderedQuest.value.qty2 - 1);
+                playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need3) {
+                renderedQuest.value.qty3 = (renderedQuest.value.qty3 - 1);
+                playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need4) {
+                renderedQuest.value.qty4 = (renderedQuest.value.qty4 - 1);
+                playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need5) {
+                renderedQuest.value.qty5 = (renderedQuest.value.qty5 - 1);
+                playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need6) {
+                renderedQuest.value.qty6 = (renderedQuest.value.qty6 - 1);
+                playerStore.playerPacked.splice(x, 1);
+        } else if (chosenItem.value.name === renderedQuest.value.need7) {
+                renderedQuest.value.qty7 = (renderedQuest.value.qty7 - 1);
+                playerStore.playerPacked.splice(x, 1);
         }
-        if (renderedQuest.value.qty - 1 < 0) {
-            renderedQuest.value.complete = true;  // do i need this? 
+        
+        const q2 = ref(0)
+        if (!(renderedQuest.value.qty2 > 0)) {q2.value = 0} else (q2.value = renderedQuest.value.qty2)
+        const q3 = ref(0)
+        if (!(renderedQuest.value.qty3 > 0)) { q3.value = 0} else (q3.value = renderedQuest.value.qty3)
+        const q4 = ref(0)
+        if (!(renderedQuest.value.qty4 > 0)) { q4.value = 0} else (q4.value = renderedQuest.value.qty4)
+        const q5 = ref(0)
+        if (!(renderedQuest.value.qty5 > 0 )) { q5.value = 0} else (q5.value = renderedQuest.value.qty5)
+        const q6 = ref(0)
+        if (!(renderedQuest.value.qty6 > 0)) { q6.value = 0} else (q6.value = renderedQuest.value.qty6)
+        const q7 = ref(0)
+        if (!(renderedQuest.value.qty7 > 0)) { q7.value = 0} else (q7.value = renderedQuest.value.qty7)
+        console.log("q2: " +q2.value)
+
+        if ((renderedQuest.value.qty + q2.value + q3.value + q4.value + q5.value + q6.value + q7.value) 
+            - 1 < 0) {
+            renderedQuest.value.complete = true;  // do i need this? YES - for unlocking features in response to quest completion
             renderedQuest.value.active = false;   // do i need this? YES - for quest complete button on main page
             questDone.value = true;
             playerStore.playerXP = playerStore.playerXP + renderedQuest.value.playerXP;
             playerStore.playerTotalXP = playerStore.playerTotalXP + renderedQuest.value.playerXP;
+            playerStore.coinOnHand = playerStore.coinOnHand + renderedQuest.value.coins;
             let y = playerStore.playerActiveQuests.findIndex(quest => quest.id === renderedQuest.value.id);
             playerStore.playerActiveQuests.splice(y,1);
             playerStore.playerCompletedQuests.push(renderedQuest.value);
-            
         }
     }
     function emitQuestComplete() {

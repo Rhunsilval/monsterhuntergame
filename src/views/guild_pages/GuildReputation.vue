@@ -58,7 +58,7 @@
         </div>
 
 <!-- kill log -->
-        <div class="border-l-4 border-amber-700 bg-[url('../assets/images/allpurpose/papyrus.png')] bg-cover ">
+        <div class="border-l-4 border-amber-700 bg-[url('../assets/images/allpurpose/papyrus.png')] bg-cover overflow-hidden ">
             <div class=" w-2/3 ml-80 "> 
                 <h1 class="text-5xl font-bold text-center my-16">Monsters Vanquished</h1>
                 <div class="flex justify-center">
@@ -167,13 +167,13 @@
 
     const reputationTitle = computed(function() {
         return  playerStore.playerReputation < 25 ? 'Unknown Nobody' : 
-                playerStore.playerReputation < 50 ? 'Recognized Nobody' :
-                playerStore.playerReputation < 75 ? 'Up-and-comer' :
-                playerStore.playerReputation < 100 ? 'Person of Interest' :
-                playerStore.playerReputation < 150 ? 'Smalltown Hero' :
-                playerStore.playerReputation < 200 ? 'Hunter Extraordinaire' :
-                playerStore.playerReputation < 300 ? 'Respectable' :
-                playerStore.playerReputation < 400 ? 'Hero' : 'Legend'
+                playerStore.playerReputation < 100 ? 'Recognized Nobody' :
+                playerStore.playerReputation < 200 ? 'Up-and-comer' :
+                playerStore.playerReputation < 400 ? 'Person of Interest' :
+                playerStore.playerReputation < 800 ? 'Smalltown Hero' :
+                playerStore.playerReputation < 1600 ? 'Hunter Extraordinaire' :
+                playerStore.playerReputation < 3200 ? 'Respectable' :
+                playerStore.playerReputation < 6000 ? 'Hero' : 'Legend'
     })
         
 </script>

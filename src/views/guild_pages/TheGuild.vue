@@ -166,6 +166,7 @@
     if (playerStore.coinOnHand - 500 < 0) {
       insufficientFunds.value = true;
     } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - 500);
       conditionalStore.huntersGuild.questAccepted = true;
       conditionalStore.huntersGuild.collect10QuestAvailable = false;
       collect10Quest.active = true;
@@ -177,6 +178,13 @@
         quest.value = 'guildCollectTen';
         openListModal.value = false;
         basicLobby.value = false;
+  }
+  function leaveQuest() {
+    basicLobby.value = true;
+  }
+  function questComplete() {
+        basicLobby.value = true;
+        conditionalStore.huntersGuild.questAccepted = false;
     }
   
 </script>
