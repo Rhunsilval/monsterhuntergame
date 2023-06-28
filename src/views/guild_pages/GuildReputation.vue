@@ -151,8 +151,8 @@
         return (monsterList = monsterList.filter(item => item.count > 0))
     })
 
-    const questPoints = playerStore.playerCompletedQuests.map(questAmount).reduce(sum); 
-    const victoryPoints = playerStore.playerKillLog.map(victoryAmount).reduce(sum);
+    const questPoints = playerStore.playerCompletedQuests.map(questAmount).reduce(sum,0); 
+    const victoryPoints = playerStore.playerKillLog.map(victoryAmount).reduce(sum,0);
     playerStore.playerReputation = (questPoints + victoryPoints);
 
     function questAmount(item) {
