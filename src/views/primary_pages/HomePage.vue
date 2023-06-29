@@ -47,37 +47,50 @@
 
 <!-- if new game start: -->
   <div v-if="newGame" class="bg-[url('../assets/images/allpurpose/map.png')] bg-cover">
-    <div class="mx-auto max-w-7xl pb-12 pt-16  px-4 sm:px-6 lg:px-8">
-      <div class="sm:align-center sm:flex sm:flex-col bg-stone-500 bg-opacity-80">
-        <div v-if="!readyToStart" class="pt-5"> 
-          <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-center">Choose your hunter name!</h1>
-          <p class="mt-5 text-xl text-gray-700 sm:text-center"> No one cares much what name you were born with.  This is your chance to re-invent yourself!</p>
-          <p class="mt-5 mb-3 text-3xl text-black sm:text-center font-extrabold">Choose well!</p>
-          <p class=" text-sm text-gray500 sm:text-center">This will be the name whispered around campfires.  Sung aloud in pubs!  Etched onto the Wall of Legends in the Hunter's Guild!!</p>
-          <p class=" text-sm text-gray500 sm:text-center">Or mocked by children in the street and parodied by traveling minstrels.</p>
-          <p class=" text-sm text-gray500 sm:text-center">Through success or failure, this is the name all will remember you by!</p>
-        </div>  
-        <div v-if="readyToStart" class="pt-5"> 
-            <h1 class="text-5xl text-gray-900 text-center">Welcome {{ playerStore.playerId }}!</h1>
-        </div>  
-        <form v-if="!readyToStart" @submit.prevent="submitForm">
-            <div class="relative text-center my-6 flex flex-col items-center self-center rounded-lg p-0.5 sm:mt-8">
-                <input type="text" v-model.trim="userName" placeholder="Player_One" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
-                <p v-if="userNameValidity === 'invalid'">You must choose your player name</p>
-                <button @click="submitForm" type="button" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-10">
-                    Done</button>              
-            </div>            
-        </form>
-        <div class="flex justify-center my-16"> 
-            <router-link v-if="readyToStart" type="button" :to="'/guild_points'" class="px-2 py-2 w-48 font-medium bg-white hover:bg-slate-500 border border-black rounded-lg mt-3">
-                <p class="text-center">Start game!</p></router-link>
+    <div class="mx-auto pt-16 pb-40 px-4 grid grid-cols-3">
+        <div class="flex items-center mx-10">
+            <img src="../../assets/images/allpurpose/monsterfighter.png" class=" w-full rounded-full"/>
         </div>
-        
-      </div>
-      <div class="mt-5 mb-52">
-        <img src="../../assets/images/allpurpose/monsterfighter.png" class="h-96 w-full w-fill "/>
-      </div>
+      
+        <div class="flex justify-center items-center">
+            <div class="grid grid-cols-1">
+                <div class="align-center flex flex-col bg-stone-500 bg-opacity-80 rounded-3xl px-5">
+                    <div v-if="!readyToStart" class="pt-5"> 
+                        <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-center">Choose your hunter name!</h1>
+                        <p class="mt-5 text-xl text-gray-700 sm:text-center"> No one cares much what name you were born with.  This is your chance to re-invent yourself!</p>
+                        <p class="mt-5 mb-3 text-3xl text-black sm:text-center font-extrabold">Choose well!</p>
+                        <p class=" text-sm text-gray500 sm:text-center">This will be the name whispered around campfires.  Sung aloud in pubs!  Etched onto the Wall of Legends in the Hunter's Guild!!</p>
+                        <p class=" text-sm text-gray500 sm:text-center">Or mocked by children in the street and parodied by traveling minstrels.</p>
+                        <p class=" text-sm text-gray500 sm:text-center">Through success or failure, this is the name all will remember you by!</p>
+                    </div>
+                    <form v-if="!readyToStart" @submit.prevent="submitForm">
+                        <div class="relative text-center my-6 flex flex-col items-center self-center rounded-lg p-0.5 sm:mt-8">
+                            <input type="text" v-model.trim="userName" placeholder="Player_One" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
+                            <p v-if="userNameValidity === 'invalid'">You must choose your player name</p>
+                            <button @click="submitForm" type="button" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-10">
+                                Done</button>              
+                        </div>            
+                    </form> 
+                    <div v-if="readyToStart" class="pb-14">
+                        <div class="h-96 flex items-center"> 
+                            <h1 class="text-5xl text-gray-900 text-center mt-10">Welcome {{ playerStore.playerId }}!</h1>
+                        </div>
+                    </div>
+                    <div v-if="readyToStart" class="flex justify-center -mt-48 mb-52"> 
+                        <router-link type="button" :to="'/guild_points'" class="px-2 py-2 w-48 font-medium bg-white hover:bg-slate-500 border border-black rounded-lg mt-3">
+                            <p class="text-center">Start game!</p></router-link>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="flex items-center mx-10">
+            <img src="../../assets/images/allpurpose/monsterfighter.png" class=" w-full rounded-full "/>
+        </div>
+      
     </div>
+    
   </div>
 </template>
   
@@ -96,7 +109,7 @@
 // all player stats need to be returned to default values - otherwise, picks up where you left off, but with new name
 // there has GOT TO BE an easier way to do this - but without an externally saved blank profile to start things off with ...
 // i don't know how to reset things here except manually as below
-  const newGame = ref(false);
+  const newGame = ref(true);
   function startNewGame() {   
     newGame.value = true;
     playerStore.playerId = 'Player_One';

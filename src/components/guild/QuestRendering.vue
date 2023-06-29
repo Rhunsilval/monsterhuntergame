@@ -33,8 +33,11 @@
                 <p>Quest Points: {{ renderedQuest.questPoints }}</p>
                 <p>Experience Points: {{ renderedQuest.playerXP }}</p>
                 <p class="">And you now have {{ renderedQuest.rewardScript }}</p>
-                <button @click="emitQuestComplete" class="py-3 px-3 mt-5 border border-gray-500 bg-white hover:bg-slate-300 rounded-xl">
+                <div class="flex justify-center"> 
+                    <button @click="emitQuestComplete" class="py-3 px-3 w-4/5 mt-5 border border-gray-500 bg-white hover:bg-slate-300 rounded-xl">
                     Okay!</button>
+                </div>
+                
             </div>            
         </div>
         <div class="flex justify-center">
@@ -84,26 +87,54 @@
         }
         
         if (chosenItem.value.name === renderedQuest.value.need) {
-            renderedQuest.value.qty = (renderedQuest.value.qty - 1);
-            playerStore.playerPacked.splice(x, 1);
+            if (renderedQuest.value.qty - 1 < 0 ) { 
+                renderedQuest.value.qty = 0;
+            } else {
+                renderedQuest.value.qty = (renderedQuest.value.qty - 1);
+                playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need2) {
+            if (renderedQuest.value.qty2 - 1 < 0) {
+                renderedQuest.value.qty2 = 0;
+            } else {
                 renderedQuest.value.qty2 = (renderedQuest.value.qty2 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need3) {
+            if (renderedQuest.value.qty3 - 1 < 0 ) {
+                renderedQuest.value.qty3 = 0;
+            } else {
                 renderedQuest.value.qty3 = (renderedQuest.value.qty3 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need4) {
+            if (renderedQuest.value.qty4 - 1 < 0 ) {
+                renderedQuest.value.qty4 = 0;
+            } else {
                 renderedQuest.value.qty4 = (renderedQuest.value.qty4 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need5) {
+            if (renderedQuest.value.qty5 - 1 < 0 ) {
+                renderedQuest.value.qty5 = 0;
+            } else {
                 renderedQuest.value.qty5 = (renderedQuest.value.qty5 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need6) {
+            if (renderedQuest.value.qty6 - 1 < 0 ) {
+                renderedQuest.value.qty6 = 0;
+            } else {
                 renderedQuest.value.qty6 = (renderedQuest.value.qty6 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         } else if (chosenItem.value.name === renderedQuest.value.need7) {
+            if (renderedQuest.value.qty7 - 1 < 0 ) {
+                renderedQuest.value.qty7 = 0;
+            } else {
                 renderedQuest.value.qty7 = (renderedQuest.value.qty7 - 1);
                 playerStore.playerPacked.splice(x, 1);
+            }
         }
         
         const q2 = ref(0)

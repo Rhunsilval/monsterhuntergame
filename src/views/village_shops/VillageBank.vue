@@ -1,7 +1,7 @@
 <template>
     <the-header></the-header>
 
-    <div class="bg-[url('../assets/images/allpurpose/bank_background.png')] bg-contain">
+    <div class="bg-[url('../assets/images/allpurpose/bank_background.png')] bg-cover">
         <div class="flex justify-center"> 
             <div class="w-2/3 bg-white bg-opacity-70 flex justify-center mt-14"> 
                 <h1 class="font-serif font-bold text-7xl py-10 text-center">The First-And-Only Village Bank</h1>
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="flex justify-center">
-                            <div class="mt-14">
+                            <div class="">
                                 <div class="pt-3 ">
                                     <img src="../../assets/images/allpurpose/bank_banker.png" alt="" class="h-56 border border-black"/>                     
                                 </div>             
@@ -202,13 +202,13 @@
                     <h1 class="text-4xl font-serif font-semibold">Items in Your Pack: </h1>
                 </div>
                 <div v-if="packinventoryVisible" class="flex justify-center mt-10">
-                    <ul class="grid grid-cols-10 w-11/12">
+                    <ul class="grid grid-cols-10 gap-1 w-11/12">
                       <li v-for="item in playerStore.playerPacked" :key="item.id">
                         <button @click="depositItem(item.id)" class="pb-5 aspect-w-1 aspect-h-1 w-24 h-24 align-top">
                             <img :src="item.imageSrc" alt="" class="w-24 h-24 border border-gray-600 " />
                         </button>
                         <div class="flex justify-center pr-4"> 
-                            <p class="text-center text-sm w-24">{{ item.name }} <br/> INVENTORY</p>
+                            <p class="text-center text-sm w-24">{{ item.name }}</p>
                         </div>                        
                       </li>
                     </ul>
@@ -218,18 +218,18 @@
                     <div class="grid grid-cols-1 text-center"> 
                         <h1 class="text-4xl font-serif font-semibold ">Vault Size: {{ playerStore.playerBankLimit }}</h1>
                         <h1 class="text-2xl font-serif font-semibold mt-2 ">Space used:  {{ playerStore.playerBank.length }} / {{ playerStore.playerBankLimit }}</h1>
-                        <h1 class="text-4xl font-serif font-semibold mt-4">Items in Your Vault:</h1>
+                        <h1 class="text-4xl font-serif font-semibold mt-4 mb-10">Items in Your Vault:</h1>
                     </div>                    
                 </div>
                 <div class="flex justify-center">
-                    <ul class="grid grid-cols-10 w-11/12"> 
+                    <ul class="grid grid-cols-10 gap-1 w-11/12 mb-10"> 
                         <li v-for="(item, index) in playerStore.playerBank" :key="item.id">
                             <div v-if="index < playerStore.playerBankLimit"> 
                                 <button @click="withdrawItem(item.id)">
                                     <img :src="item.imageSrc" class="w-24 h-24 border border-gray-600" />
                                 </button>
                                 <div class="flex justify-center pr-4"> 
-                                    <p class="text-center text-sm w-24">{{ item.name }} <br/> BANK </p>
+                                    <p class="text-center text-sm w-24">{{ item.name }} </p>
                                 </div>                                
                             </div>
                         </li>

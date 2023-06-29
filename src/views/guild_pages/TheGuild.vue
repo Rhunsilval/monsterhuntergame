@@ -10,7 +10,7 @@
                 </div>             
             </div>        
         </div>
-        
+<!-- when quest completion attempt active -->
         <div v-if="!basicLobby"> 
           <div class="flex justify-center"> 
             <div class="w-1/3 bg-white bg-opacity-50 flex justify-center scroll-mb-16"> 
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        
+<!-- basic lobby arrangement -->
         <div v-if="basicLobby">
           <div class="flex justify-center">
               <div class="text-center w-1/3 bg-white bg-opacity-50 flex justify-center">
@@ -47,25 +47,25 @@
 
                       <div class="grid grid-cols-3 py-5">
                         <div>
-                          <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
+                          <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-32 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
                             <p class="pt-6">Receive Training</p></router-link>
                         </div>
                         <div>
-                          <router-link :to="'/guild_points'" type="button" class="px-3 py-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
+                          <router-link :to="'/guild_points'" type="button" class="px-3 py-3 w-32 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
                             <p class="pt-7">Spend Points</p></router-link>
                         </div>
                         <div>
-                          <router-link :to="'/guild_reputation'" type="button" class="px-3 pt-6 pb-3 w-36 h-32 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">
+                          <router-link :to="'/guild_reputation'" type="button" class="px-3 pt-6 pb-3 w-32 h-32 bg-slate-400 hover:bg-slate-600 border hover:text-white border-slate-600 rounded-lg">
                             Evaluate Personal Reputation</router-link>
                         </div>
                       </div>
                       <div class="grid grid-cols-2">
                         <div>
-                          <router-link :to="'/guild_hospital'" type="button" class="ml-20 mt-3 px-3 py-3 w-36 h-32 bg-[#ffc0cb] hover:bg-[#de5d83] border border-slate-600 rounded-lg">
+                          <router-link :to="'/guild_hospital'" type="button" class="ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#ffc0cb] hover:bg-[#de5d83] border border-slate-600 rounded-lg">
                             <p class="pt-6">Visit Guild Hospital</p></router-link>
                         </div>
                         <div>
-                          <button @click="openListModal = !openListModal" type="button" class="-ml-20 mt-3 px-3 py-3 w-36 h-32 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
+                          <button @click="openListModal = !openListModal" type="button" class="-ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
                             Check Guild Postings</button>
                         </div>                        
                       </div>                      

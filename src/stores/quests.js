@@ -10,7 +10,7 @@ export const useQuestStore =
                     title: 'Prove Yourself to Matilda',
                     active: false,
                     complete: false,
-                    description: "Bring Matilda the Mage three Sacred Spores from the Mushroom Spirits of the Dark Forest.",
+                    description: "Bring Matilda the Mage three Sacred Spores from the Mushroom Spirits of the Black Forest.",
                     need: "Sacred Spores",
                     // need: "Basic Healing Draught",
                     qty: 3,

@@ -5,11 +5,20 @@
 <!-- landing page -->
       <div v-if="!conversationStarted">
         <div class="flex justify-center">
-          <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center pb-3">
+          <div class="text-center w-2/3 bg-white bg-opacity-95 flex justify-center pb-3">
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
               </div>             
           </div>        
+        </div>
+        <div v-if="chosenCharacterID === 'drunkard1'"> 
+          <div class="flex justify-center"> 
+            <div class="w-2/3 bg-white bg-opacity-95 flex justify-center"> 
+              <div> 
+                <p>Drunkard conversation and quest component</p>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- header and buttons -->
         <div class="flex justify-center">
@@ -48,7 +57,7 @@
                   <h3 class="mt-4 text-base text-gray-700">{{ person.description }}</h3>
                   <br/>
                   <!-- replace button with modal component? or open component at click? or ... ? -->
-                  <button class="bg-gray-400 px-2 py-2 border border-slate-700 hover:opacity-30 rounded-2xl">
+                  <button @click="startConversation" class="bg-gray-400 px-2 py-2 border border-slate-700 hover:opacity-30 rounded-2xl">
                     Buy them a drink? <br/> {{ person.price }} coin</button>
               </div>
             </a>
@@ -71,6 +80,9 @@
   
 <script setup>
   import { ref, computed } from 'vue';
+  import { usePlayerStore } from '@/stores/player';
+
+  const playerStore = usePlayerStore();
 
   const people = [
     {
@@ -116,7 +128,12 @@
   
   function startConversation(id) {
     chosenCharacterID.value = id;
-
+    if (playerStore.coinOnHand - chosenCharacter.value.price < 0 ) {
+      insufficientFunds.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - chosenCharacter.value.price);
+      conversationStarted.value = true;
+    }
   }
 
 </script>

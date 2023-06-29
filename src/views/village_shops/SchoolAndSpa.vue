@@ -14,7 +14,7 @@
 
         <div class="grid grid-cols-3">
             <div class="ml-5"> 
-                <button @click="goToSchool" class="px-3 py-3 w-11/12 bg-[#efdecd] hover:bg-[url('../assets/images/village_school/school_button.png')] border border-gray-600 rounded-full h-full text-4xl font-serif font-semibold">
+                <button @click="goToSchool" class="px-3 py-3 w-11/12 bg-[#efdecd] hover:bg-[url('../assets/images/village_school/school_button.png')] bg-cover border border-gray-600 rounded-full h-full text-4xl font-serif font-semibold">
                     School of Magic</button>
             </div>
 
@@ -190,7 +190,7 @@
                             <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                                 <div>
                                     <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
-                                        <img src="../../assets/images/village_school/school_teacher.png" alt="" class="border border-gray-800" aria-hidden="true" />
+                                        <img src="../../assets/images/village_school/school_teacher.png" alt="" class="border border-gray-800 h-72 " aria-hidden="true" />
                                     </div>                
                         <!-- intro dialog -->
                                     <div v-if="introDialog" class="mt-3 text-center sm:mt-5">
@@ -219,7 +219,7 @@
                                         <div v-if="introDialog4" class="mt-3 text-center sm:mt-5">
                                             <DialogTitle as="h3" class="text-xl font-medium leading-6 text-gray-900">I propose a quest.</DialogTitle>
                                             <div class="mt-2 text-sm text-gray-500 ">
-                                                <p class="">Bring me 3 Sacred Spores from the Mushroom Spirits of the Dark Forest</p>
+                                                <p class="">Bring me 3 Sacred Spores from the Mushroom Spirits of the Black Forest</p>
                                                 <p class="">Prove yourself as a capable hunter,</p>
                                                 <p class="">and as an obedient student,</p>
                                                 <p class="">and I'll let you enroll.</p>

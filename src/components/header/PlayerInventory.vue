@@ -11,17 +11,17 @@
             </div>
             <ul class="grid grid-cols-3 gap-x-5 px-5 py-5">
                 <li v-for="item in playerStore.horseInventory.horse_shoes" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-28 h-28 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
                 <li v-for="item in playerStore.horseInventory.horse_bag" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-28 h-28 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
                 <li v-for="item in playerStore.horseInventory.horse_saddle" :key="item.id" class="relative" >
-                    <div class="group aspect-w-1 aspect-h-1 w-32 h-32 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                    <div class="group aspect-w-1 aspect-h-1 w-28 h-28 block overflow-hidden rounded-lg bg-white border border-gray-600 focus-within:ring-2 focus-within:ring-slate-800 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                         <img :src="item.imageSrc" alt="" />
                     </div>
                 </li>
@@ -31,7 +31,7 @@
         <div class="col-span-3">
             <h1 class="text-center text-4xl text-teal-800 font-semibold my-3">Items on hand</h1>
             <p class="text-center text-sm">Carry capacity : {{ playerStore.carryCapacity }}</p>
-            <div class="text-center grid grid-cols-10">
+            <div class="text-center grid grid-cols-10 gap-x-0 overflow-y-scroll">
                 <playerinventory-pack
                     v-for="(item, index) in playerStore.playerPacked"
                     :key="item.id"

@@ -222,7 +222,7 @@
                   <p v-if="acceptSale" class="pb-4">I'll take it for {{ offerPrice }}</p>
                   <p v-else-if="rejectSale" class="pb-4">Thanks anyway, but I'm not interested in that.</p>
                   <div class="mt-2">
-                    <ul class="grid grid-cols-4">
+                    <ul class="grid grid-cols-4 h-36 overflow-y-scroll">
                       <li v-for="item in playerStore.playerPacked" :key="item.id">
                         <button @click="attemptSellItem(item.id)" class="pb-5 aspect-w-1 aspect-h-1 w-24 h-24 align-top">
                             <img :src="item.imageSrc" alt="" class="w-24 h-24 " />

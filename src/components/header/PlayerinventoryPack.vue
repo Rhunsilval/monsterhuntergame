@@ -1,5 +1,5 @@
 <template>
-    <div v-if="props.index < props.limit_by" class="overflow-hidden bg-white mx-5 mt-8">
+    <div v-if="props.index < props.limit_by" class="overflow-hidden bg-white mt-8">
 <!-- item image -->
         <button @click="openActions" class="pb-3 mb-2 w-24 align-top ">
             <img :src="imageSrc" alt="" class="h-24 w-24 border border-gray-400" />
