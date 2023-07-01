@@ -8,18 +8,9 @@
           <div class="text-center w-2/3 bg-white bg-opacity-95 flex justify-center pb-3">
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
-              </div>             
-          </div>        
-        </div>
-        <div v-if="chosenCharacterID === 'drunkard1'"> 
-          <div class="flex justify-center"> 
-            <div class="w-2/3 bg-white bg-opacity-95 flex justify-center"> 
-              <div> 
-                <p>Drunkard conversation and quest component</p>
               </div>
-            </div>
-          </div>
-        </div>
+          </div>        
+        </div>        
         <!-- header and buttons -->
         <div class="flex justify-center">
           <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
@@ -57,7 +48,7 @@
                   <h3 class="mt-4 text-base text-gray-700">{{ person.description }}</h3>
                   <br/>
                   <!-- replace button with modal component? or open component at click? or ... ? -->
-                  <button @click="startConversation" class="bg-gray-400 px-2 py-2 border border-slate-700 hover:opacity-30 rounded-2xl">
+                  <button @click="startConversation(person.id)" class="bg-gray-400 px-2 py-2 border border-slate-700 hover:opacity-30 rounded-2xl">
                     Buy them a drink? <br/> {{ person.price }} coin</button>
               </div>
             </a>
@@ -68,19 +59,38 @@
 <!-- conversation/quest pages -->
       <div v-if="conversationStarted">
         <div class="flex justify-center">
-          <div class="text-center w-3/4 bg-white bg-opacity-95 flex justify-center pb-3">
+          <div class="text-center w-3/4 bg-white bg-opacity-95 flex justify-center pb-3 mb-28">
+            <div class="grid grid-cols-1 gap-y-5 px-10">
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
-              </div>             
+              </div>
+
+              <div v-if="chosenCharacterID === 'drunkard1'" class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <!-- testing that props/emits is working - and yes!  though i don't need image props here.  it's just her page -->
+                      <conversation-drunkard
+                        :imageSrc = "chosenCharacter.imageSrc" 
+                        @emit-end-conversation="conversationEnded"
+                      ></conversation-drunkard>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>        
         </div>
       </div>
     </div>
+    
 </template>
   
 <script setup>
   import { ref, computed } from 'vue';
   import { usePlayerStore } from '@/stores/player';
+  import ConversationDrunkard from '../../components/village/ConversationsDrunkard.vue';
 
   const playerStore = usePlayerStore();
 
@@ -120,8 +130,9 @@
   ] 
 
   const insufficientFunds = ref(false);
-  const conversationStarted = ref(false);
-  const chosenCharacterID = ref('');
+  const conversationStarted = ref(true);
+  const chosenCharacterID = ref('drunkard1');
+  // const chosenCharacterID = ref('');
   const chosenCharacter = computed(function() {
         return people.find(x => x.id === chosenCharacterID.value);
   })
@@ -134,6 +145,10 @@
       playerStore.coinOnHand = (playerStore.coinOnHand - chosenCharacter.value.price);
       conversationStarted.value = true;
     }
+  }
+
+  function conversationEnded() {
+    conversationStarted.value = false;
   }
 
 </script>

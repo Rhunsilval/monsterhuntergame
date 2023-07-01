@@ -65,10 +65,18 @@
                     </div>
                     <form v-if="!readyToStart" @submit.prevent="submitForm">
                         <div class="relative text-center my-6 flex flex-col items-center self-center rounded-lg p-0.5 sm:mt-8">
-                            <input type="text" v-model.trim="userName" placeholder="Player_One" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
+                            <input type="text" 
+                                v-model.trim="userName" 
+                                placeholder="Player_One" 
+                                maxlength="14"
+                                minlength="1"
+                                class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8"/>
                             <p v-if="userNameValidity === 'invalid'">You must choose your player name</p>
-                            <button @click="submitForm" type="button" class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-10">
-                                Done</button>              
+                            <input 
+                                type="submit" 
+                                value="Done" 
+                                @click="submitForm" 
+                                class="px-2 py-2 font-medium bg-white border border-black rounded-lg mt-10">                                         
                         </div>            
                     </form> 
                     <div v-if="readyToStart" class="pb-14">
@@ -83,12 +91,16 @@
                 </div>
                 
             </div>
+            
         </div>
 
         <div class="flex items-center mx-10">
             <img src="../../assets/images/allpurpose/monsterfighter.png" class=" w-full rounded-full "/>
-        </div>
-      
+        </div>      
+    </div>
+    <!-- fills in the bottom of the screen for extra large 2xl screens -->
+    <div class="h-72"> 
+        <div></div>
     </div>
     
   </div>
@@ -109,7 +121,7 @@
 // all player stats need to be returned to default values - otherwise, picks up where you left off, but with new name
 // there has GOT TO BE an easier way to do this - but without an externally saved blank profile to start things off with ...
 // i don't know how to reset things here except manually as below
-  const newGame = ref(true);
+  const newGame = ref(false);
   function startNewGame() {   
     newGame.value = true;
     playerStore.playerId = 'Player_One';
