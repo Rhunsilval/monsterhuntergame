@@ -334,6 +334,13 @@
 
 <script setup> 
     import { ref } from 'vue';
+    import { useConditionalsStore } from '@/stores/conditionals';
+    import { useQuestStore } from '@/stores/quests';
+    import { usePlayerStore } from '@/stores/player';
+
+    const conditionalStore = useConditionalsStore();
+    const questStore = useQuestStore();
+    const playerStore = usePlayerStore();
 
     const emit = defineEmits([
             'emit-end-conversation',
@@ -342,8 +349,7 @@
         emit('emit-end-conversation');
     }
     function reallyEndConversation() {
-        // make quest inacessible in quest store 
-        // and conditionals store.  no do-overs
+        conditionalStore.bigDawgPub.convo1Available = false;
         endConversation();
     }
 
@@ -429,12 +435,24 @@
         option7.value = true;
     }
 
+    let drunkardQuest1 = questStore.quests.find(quest => quest.id === 'drunkardQuest1');
     function acceptQuest1A() {
         // full treasure
+        conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
+        conditionalStore.bigDawgPub.convo1Available = false;
+        drunkardQuest1.active = true;
+        drunkardQuest1.playerXP = 300;
+        drunkardQuest1.coins = 300;
+        playerStore.playerActiveQuests.push(drunkardQuest1);
         endConversation();
     }
     function acceptQuest1B() {
         // 300 coin treasure
+        conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
+        conditionalStore.bigDawgPub.convo1Available = false;
+        drunkardQuest1.active = true;
+        drunkardQuest1.coins = 300;
+        playerStore.playerActiveQuests.push(drunkardQuest1);
         endConversation();
     }
 

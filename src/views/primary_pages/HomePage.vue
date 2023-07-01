@@ -84,7 +84,7 @@
                             <h1 class="text-5xl text-gray-900 text-center mt-10">Welcome {{ playerStore.playerId }}!</h1>
                         </div>
                     </div>
-                    <div v-if="readyToStart" class="flex justify-center -mt-48 mb-52"> 
+                    <div v-if="readyToStart" class="flex justify-center -mt-44 mb-52"> 
                         <router-link type="button" :to="'/guild_points'" class="px-2 py-2 w-48 font-medium bg-white hover:bg-slate-500 border border-black rounded-lg mt-3">
                             <p class="text-center">Start game!</p></router-link>
                     </div>

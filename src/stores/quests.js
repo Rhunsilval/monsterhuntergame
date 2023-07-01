@@ -23,7 +23,7 @@ export const useQuestStore =
                     rewardScript: "permission to enroll in my School of Magic."
                 },
                 {
-                    id: 'guildCollectTen',
+                    id: 'guildCollectSeven',
                     title: 'Collect a small token from each of the hunting grounds',
                     active: false,
                     complete: false,
@@ -50,8 +50,25 @@ export const useQuestStore =
                     reward: "2000 coins.",
                     rewardScript: "your reward of 2000 coins, and the repect of the Guild."
                 },
-            ],
+                {
+                    id: 'drunkardQuest1',
+                    title: "Help the village drunk prove they're right",
+                    active: false,
+                    complete: false,
+                    description: "Collect three Sand Crab Shells to help prove that the Firesand Desert is actually an ocean in disguise.",
+                    need: "Sand Crab Shell",
+                    qty: 3,
+                    largeIcon: require('../assets/images/quests/Pub_drunkard.png'),
+                    smallIcon: require('../assets/images/desert/desert_monster_1_treasure.png'),
+                    questPoints: 10,
+                    playerXP: 0,
+                    coins: 0,
+                    reward: "Gain the respect of the village drunk.",
+                    rewardScript: ""
+                },
 
+                
+            ],
         }),
         actions: {},
     })

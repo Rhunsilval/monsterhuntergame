@@ -14,7 +14,12 @@ export const useConditionalsStore =
             },
             huntersGuild: {
                 questAccepted: false,
-                collect10QuestAvailable: true,
+                collect7QuestAvailable: true,
+            },
+            bigDawgPub: {
+                drunkardQuestAccepted: false,
+                convo1Available: true,
+                drunkardQuest1Activated: false,
             }
         }),
         actions: {}

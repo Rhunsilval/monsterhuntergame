@@ -3,7 +3,7 @@
      
     <div class="bg-[url('../assets/images/quests/Pub.png')] bg-cover max-w-full  ">
 <!-- landing page -->
-      <div v-if="!conversationStarted">
+      <div v-if="pubVisible === true">
         <div class="flex justify-center">
           <div class="text-center w-2/3 bg-white bg-opacity-95 flex justify-center pb-3">
               <div class="pt-3 ">
@@ -47,12 +47,21 @@
                   <h2 class="mt-4 font-semibold text-lg text-gray-700">{{ person.name }}</h2>
                   <h3 class="mt-4 text-base text-gray-700">{{ person.description }}</h3>
                   <br/>
-                  <!-- replace button with modal component? or open component at click? or ... ? -->
                   <button @click="startConversation(person.id)" class="bg-gray-400 px-2 py-2 border border-slate-700 hover:opacity-30 rounded-2xl">
                     Buy them a drink? <br/> {{ person.price }} coin</button>
               </div>
             </a>
           </div>
+<!-- if quest has started - cover buy a drink button with complete quest button -->
+          <div v-if="conditionalStore.bigDawgPub.drunkardQuestAccepted === true"> 
+
+            <div v-if="drunkardQuest1.active === true" class="-mt-20 ml-14 "> 
+              <button @click="attemptDrunkQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
+                Complete <br/> Quest?</button>
+            </div>
+
+          </div>
+
         </div> 
       </div>
       
@@ -64,7 +73,7 @@
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
               </div>
-
+              <!-- drunkard's page -->
               <div v-if="chosenCharacterID === 'drunkard1'" class="mb-48"> 
                 <div class="flex justify-center"> 
                   <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
@@ -77,12 +86,42 @@
                     </div>
                   </div>
                 </div>
+              </div>              
+            </div>
+          </div>        
+        </div>
+      </div>
+
+<!-- attempt to complete a quest page -->
+      <div v-if="questAttempt === true">
+        <div class="flex justify-center">
+          <div class="text-center w-3/4 bg-white bg-opacity-95 flex justify-center pb-3 mb-28">
+            <div class="grid grid-cols-1 gap-y-5 px-10">
+              <div class="pt-3 ">
+                  <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
               </div>
+
+              <div class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <quest-rendering
+                        :quest="quest"
+                        @emit-quest-complete="questComplete"
+                        @emit-leave-quest="leaveQuest"
+                      ></quest-rendering>
+                    </div>
+                  </div>
+                </div>
+              </div> 
 
             </div>
           </div>        
         </div>
       </div>
+
+
+
     </div>
     
 </template>
@@ -90,9 +129,14 @@
 <script setup>
   import { ref, computed } from 'vue';
   import { usePlayerStore } from '@/stores/player';
+  import { useConditionalsStore } from '@/stores/conditionals';
+  import { useQuestStore } from '@/stores/quests';
+  import QuestRendering from '../../components/guild/QuestRendering.vue';
   import ConversationDrunkard from '../../components/village/ConversationsDrunkard.vue';
 
   const playerStore = usePlayerStore();
+  const conditionalStore = useConditionalsStore();
+  const questStore = useQuestStore();
 
   const people = [
     {
@@ -130,9 +174,10 @@
   ] 
 
   const insufficientFunds = ref(false);
-  const conversationStarted = ref(true);
-  const chosenCharacterID = ref('drunkard1');
-  // const chosenCharacterID = ref('');
+  const pubVisible = ref(true);
+  const conversationStarted = ref(false);
+  // const chosenCharacterID = ref('drunkard1');
+  const chosenCharacterID = ref('');
   const chosenCharacter = computed(function() {
         return people.find(x => x.id === chosenCharacterID.value);
   })
@@ -143,12 +188,27 @@
       insufficientFunds.value = true;
     } else {
       playerStore.coinOnHand = (playerStore.coinOnHand - chosenCharacter.value.price);
+      pubVisible.value = false;
       conversationStarted.value = true;
     }
   }
-
   function conversationEnded() {
     conversationStarted.value = false;
+    pubVisible.value = true;
+  }
+
+  const quest = ref('');
+  const questAttempt = ref(false);
+  function leaveQuest() {
+    questAttempt.value = false;
+    pubVisible.value = true;
+  }
+
+  let drunkardQuest1 = questStore.quests.find(quest => quest.id === 'drunkardQuest1');
+  function attemptDrunkQuest1() {
+    pubVisible.value = false;
+    quest.value = 'drunkardQuest1';
+    questAttempt.value = true;
   }
 
 </script>

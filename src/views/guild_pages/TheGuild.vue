@@ -104,7 +104,7 @@
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted === false" class="flex justify-center">
                           <div v-if="!insufficientFunds" class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
-                              <button v-if="conditionalStore.huntersGuild.collect10QuestAvailable === true" @click="acceptGuildAcceptTenQuest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="conditionalStore.huntersGuild.collect7QuestAvailable === true" @click="acceptGuildAccept7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect a Sand Crab Shell, some Sacred Spores, a Rotten Femur, a piece of Bat Leather, a Fae Light, a set of Goblin Ears, and some Tangled Rootbeast Vines <br/> Payout: 2,000 coin</button>
                               
                                 <button class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
@@ -120,7 +120,7 @@
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted === true" class="flex justify-center">
                           <div class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
-                              <button v-if="collect10Quest.active" @click="attemptCompleteTenQuest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="collect7Quest.active" @click="attemptComplete7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                  Complete your Quest</button>
                           </div>
                         </div>
@@ -160,22 +160,22 @@
 
   const quest = ref('');
   const insufficientFunds = ref(false)
-  let collect10Quest = questStore.quests.find(quest => quest.id === 'guildCollectTen')
+  let collect7Quest = questStore.quests.find(quest => quest.id === 'guildCollectSeven');
 
-  function acceptGuildAcceptTenQuest() {
+  function acceptGuildAccept7Quest() {
     if (playerStore.coinOnHand - 500 < 0) {
       insufficientFunds.value = true;
     } else {
       playerStore.coinOnHand = (playerStore.coinOnHand - 500);
       conditionalStore.huntersGuild.questAccepted = true;
-      conditionalStore.huntersGuild.collect10QuestAvailable = false;
-      collect10Quest.active = true;
-      playerStore.playerActiveQuests.push(collect10Quest);
+      conditionalStore.huntersGuild.collect7QuestAvailable = false;
+      collect7Quest.active = true;
+      playerStore.playerActiveQuests.push(collect7Quest);
     }
     
   }
-  function attemptCompleteTenQuest() {
-        quest.value = 'guildCollectTen';
+  function attemptComplete7Quest() {
+        quest.value = 'guildCollectSeven';
         openListModal.value = false;
         basicLobby.value = false;
   }
