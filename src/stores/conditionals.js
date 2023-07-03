@@ -15,6 +15,7 @@ export const useConditionalsStore =
             huntersGuild: {
                 questAccepted: false,
                 collect7QuestAvailable: true,
+                fireRiverDrakeQuestAvailalbe: true,
             },
             bigDawgPub: {
                 drunkardQuestAccepted: false, 

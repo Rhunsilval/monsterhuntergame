@@ -61,7 +61,7 @@
           </div>
           
           <div v-if="conditionalStore.bigDawgPub.barkeepQuestAccepted">
-            <div v-if="barkeepQuest1.active" class="-mt-20 ml-80 "> 
+            <div v-if="barkeepQuest1.active" class="-mt-24  ml-80 "> 
               <div class="ml-12 "> 
                 <button @click="attemptBarkeepQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
                   Complete <br/> Quest?</button>

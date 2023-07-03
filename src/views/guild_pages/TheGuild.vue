@@ -104,10 +104,10 @@
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted === false" class="flex justify-center">
                           <div v-if="!insufficientFunds" class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
-                              <button v-if="conditionalStore.huntersGuild.collect7QuestAvailable === true" @click="acceptGuildAccept7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="conditionalStore.huntersGuild.collect7QuestAvailable" @click="acceptGuildAccept7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect a Sand Crab Shell, some Sacred Spores, a Rotten Femur, a piece of Bat Leather, a Fae Light, a set of Goblin Ears, and some Tangled Rootbeast Vines <br/> Payout: 2,000 coin</button>
                               
-                                <button class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="conditionalStore.huntersGuild.fireRiverDrakeQuestAvailalbe" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect the head of the Fire River Drake <br/> Payout: 150,000 coin</button>
                           </div>
                           <div v-if="insufficientFunds" class="mt-2 w-11/12"> 
@@ -118,10 +118,12 @@
                           </div>
                         </div>
                         
-                        <div v-if="conditionalStore.huntersGuild.questAccepted === true" class="flex justify-center">
+                        <div v-if="conditionalStore.huntersGuild.questAccepted" class="flex justify-center">
                           <div class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
                               <button v-if="collect7Quest.active" @click="attemptComplete7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                  Complete your Quest</button>
+                              <button v-if="collect7Quest.active" @click="failComplete7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                                 Quit your Quest</button>
                           </div>
                         </div>
 
@@ -171,14 +173,24 @@
       conditionalStore.huntersGuild.collect7QuestAvailable = false;
       collect7Quest.active = true;
       playerStore.playerActiveQuests.push(collect7Quest);
-    }
-    
+    }    
   }
   function attemptComplete7Quest() {
         quest.value = 'guildCollectSeven';
         openListModal.value = false;
         basicLobby.value = false;
   }
+  function failComplete7Quest() {
+        openListModal.value = false;
+        basicLobby.value = true;
+        collect7Quest.active = false;
+        collect7Quest.complete = false;
+        conditionalStore.huntersGuild.collect7QuestAvailable = false;
+        let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildCollectSeven');
+        playerStore.playerActiveQuests.splice(x, 1);
+        conditionalStore.huntersGuild.questAccepted = false;
+  }
+
   function leaveQuest() {
     basicLobby.value = true;
   }
