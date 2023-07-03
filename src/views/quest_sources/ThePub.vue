@@ -61,9 +61,11 @@
           </div>
           
           <div v-if="conditionalStore.bigDawgPub.barkeepQuestAccepted">
-            <div v-if="barkeepQuest1.active" class="-mt-20 ml-14 "> 
-              <button @click="attemptBarkeepQuest1" class="px-2 py-2 w-40 h-24 bg-red-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
-                Complete <br/> Quest?</button>
+            <div v-if="barkeepQuest1.active" class="-mt-20 ml-80 "> 
+              <div class="ml-12 "> 
+                <button @click="attemptBarkeepQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
+                  Complete <br/> Quest?</button>
+              </div>              
             </div>
           </div>
 
@@ -219,6 +221,8 @@
     questAttempt.value = false;
     pubVisible.value = true;
   }
+  
+  
   function extraQuestRewards() {
     if (quest.value === 'drunkardQuest1') {
       playerStore.playerPacked.push(
@@ -248,6 +252,12 @@
   function attemptDrunkQuest1() {
     pubVisible.value = false;
     quest.value = 'drunkardQuest1';
+    questAttempt.value = true;
+  }
+  let barkeepQuest1 = questStore.quests.find(quest => quest.id === 'barkeepQuest1');
+  function attemptBarkeepQuest1() {
+    pubVisible.value = false;
+    quest.value = 'barkeepQuest1';
     questAttempt.value = true;
   }
 
