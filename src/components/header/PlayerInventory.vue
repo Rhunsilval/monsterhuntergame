@@ -692,13 +692,15 @@
             else if (chosenItem.value.itemUse === 'multi') {
                 playerStore.playerHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
-                playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
-                playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+                playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
+                // playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
+                // playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
 
                 playerStore.playerMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
-                playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
-                playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                playerStore.playerActiveMana = (playerStore.playerActiveMana + chosenItem.value.mana);
+                // playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
+                // playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);

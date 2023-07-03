@@ -23,10 +23,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
         
-
-
 <!-- conversation 1 options -->
         <div v-if="option1A">
             <div> 
@@ -349,7 +347,8 @@
         emit('emit-end-conversation');
     }
     function reallyEndConversation() {
-        conditionalStore.bigDawgPub.convo1Available = false;
+        conditionalStore.conversationsDrunkard.convo1Available = false;
+        conditionalStore.conversationsDrunkard.convo2Availalbe = true;
         endConversation();
     }
 
@@ -439,7 +438,8 @@
     function acceptQuest1A() {
         // full treasure
         conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
-        conditionalStore.bigDawgPub.convo1Available = false;
+        conditionalStore.conversationsDrunkard.drunkardQuest1Activated = true;
+        conditionalStore.conversationsDrunkard.convo1Available = false;
         drunkardQuest1.active = true;
         drunkardQuest1.playerXP = 300;
         drunkardQuest1.coins = 300;
@@ -449,7 +449,8 @@
     function acceptQuest1B() {
         // 300 coin treasure
         conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
-        conditionalStore.bigDawgPub.convo1Available = false;
+        conditionalStore.conversationsDrunkard.drunkardQuest1Activated = true;
+        conditionalStore.conversationsDrunkard.convo1Available = false;
         drunkardQuest1.active = true;
         drunkardQuest1.coins = 300;
         playerStore.playerActiveQuests.push(drunkardQuest1);

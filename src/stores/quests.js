@@ -64,10 +64,26 @@ export const useQuestStore =
                     playerXP: 0,
                     coins: 0,
                     reward: "Gain the respect of the village drunk.",
-                    rewardScript: ""
+                    rewardScript: "300 coins and my *hic* ... my respect!  "
+                },
+                {
+                    id: 'barkeepQuest1',
+                    title: "Discretion is the key.",
+                    active: false,
+                    complete: false,
+                    description: "Purchase a Ring of Vigor to help the barkeep help his friend and help you out in the process.",
+                    need: "Enchanted Ring of Vigor",
+                    qty: 1,
+                    largeIcon: require('../assets/images/quests/Pub_barkeep.png'),
+                    smallIcon: require('../assets/images/village_oddities/Oddities_enchanted_ring_1.png'),
+                    questPoints: 25,
+                    playerXP: 200,
+                    coins: 3500,
+                    reward: "Gain the attention and gratitude of the Guild.",
+                    rewardScript: "3000 coins for the ring, 500 coins for our thanks, and the gratitude of the Guild."
                 },
 
-                
+
             ],
         }),
         actions: {},

@@ -17,9 +17,20 @@ export const useConditionalsStore =
                 collect7QuestAvailable: true,
             },
             bigDawgPub: {
-                drunkardQuestAccepted: false,
+                drunkardQuestAccepted: false, 
+                barkeepQuestAccepted: false,               
+            },
+            conversationsDrunkard: {
                 convo1Available: true,
+                convo1Started: false,
                 drunkardQuest1Activated: false,
+                convo2Availalbe: false,
+                drunkardQuest2Activated: false,
+            },
+            conversationsBarkeep: {
+                convo1Available: true,
+                convo1Started: false,
+                barkeepQuest1Activated: false,
             }
         }),
         actions: {}

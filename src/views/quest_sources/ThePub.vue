@@ -3,7 +3,7 @@
      
     <div class="bg-[url('../assets/images/quests/Pub.png')] bg-cover max-w-full  ">
 <!-- landing page -->
-      <div v-if="pubVisible === true">
+      <div v-if="pubVisible">
         <div class="flex justify-center">
           <div class="text-center w-2/3 bg-white bg-opacity-95 flex justify-center pb-3">
               <div class="pt-3 ">
@@ -53,13 +53,18 @@
             </a>
           </div>
 <!-- if quest has started - cover buy a drink button with complete quest button -->
-          <div v-if="conditionalStore.bigDawgPub.drunkardQuestAccepted === true"> 
-
-            <div v-if="drunkardQuest1.active === true" class="-mt-20 ml-14 "> 
+          <div v-if="conditionalStore.bigDawgPub.drunkardQuestAccepted">
+            <div v-if="drunkardQuest1.active" class="-mt-20 ml-14 "> 
               <button @click="attemptDrunkQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
                 Complete <br/> Quest?</button>
             </div>
-
+          </div>
+          
+          <div v-if="conditionalStore.bigDawgPub.barkeepQuestAccepted">
+            <div v-if="barkeepQuest1.active" class="-mt-20 ml-14 "> 
+              <button @click="attemptBarkeepQuest1" class="px-2 py-2 w-40 h-24 bg-red-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
+                Complete <br/> Quest?</button>
+            </div>
           </div>
 
         </div> 
@@ -73,34 +78,44 @@
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
               </div>
-              <!-- drunkard's page -->
+        <!-- drunkard's page -->
               <div v-if="chosenCharacterID === 'drunkard1'" class="mb-48"> 
                 <div class="flex justify-center"> 
                   <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
                     <div class="w-4/5 py-5">
-                      <!-- testing that props/emits is working - and yes!  though i don't need image props here.  it's just her page -->
                       <conversation-drunkard
-                        :imageSrc = "chosenCharacter.imageSrc" 
                         @emit-end-conversation="conversationEnded"
                       ></conversation-drunkard>
                     </div>
                   </div>
                 </div>
-              </div>              
+              </div>
+        <!-- barkeep's page -->
+              <div v-if="chosenCharacterID === 'barkeep1'" class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <conversation-barkeep
+                        @emit-end-conversation="conversationEnded"
+                      ></conversation-barkeep>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>        
         </div>
       </div>
 
 <!-- attempt to complete a quest page -->
-      <div v-if="questAttempt === true">
+      <div v-if="questAttempt">
         <div class="flex justify-center">
           <div class="text-center w-3/4 bg-white bg-opacity-95 flex justify-center pb-3 mb-28">
             <div class="grid grid-cols-1 gap-y-5 px-10">
               <div class="pt-3 ">
                   <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
               </div>
-
               <div class="mb-48"> 
                 <div class="flex justify-center"> 
                   <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
@@ -113,17 +128,13 @@
                     </div>
                   </div>
                 </div>
-              </div> 
-
+              </div>
             </div>
           </div>        
         </div>
       </div>
 
-
-
-    </div>
-    
+    </div>    
 </template>
   
 <script setup>
@@ -133,6 +144,7 @@
   import { useQuestStore } from '@/stores/quests';
   import QuestRendering from '../../components/guild/QuestRendering.vue';
   import ConversationDrunkard from '../../components/village/ConversationsDrunkard.vue';
+  import ConversationBarkeep from '../../components/village/ConversationsBarkeep.vue';
 
   const playerStore = usePlayerStore();
   const conditionalStore = useConditionalsStore();
@@ -176,7 +188,6 @@
   const insufficientFunds = ref(false);
   const pubVisible = ref(true);
   const conversationStarted = ref(false);
-  // const chosenCharacterID = ref('drunkard1');
   const chosenCharacterID = ref('');
   const chosenCharacter = computed(function() {
         return people.find(x => x.id === chosenCharacterID.value);
@@ -202,6 +213,35 @@
   function leaveQuest() {
     questAttempt.value = false;
     pubVisible.value = true;
+  }
+  function questComplete() {
+    extraQuestRewards();
+    questAttempt.value = false;
+    pubVisible.value = true;
+  }
+  function extraQuestRewards() {
+    if (quest.value === 'drunkardQuest1') {
+      playerStore.playerPacked.push(
+        {
+          id: 'tavern_drink_1',
+          itemSlot: '',
+          itemUse: 'healing',
+          itemShop: 'Apothecary, Tavern',
+          name: 'Swill',
+          description: "A cheap drink that will heal some of what ails you.  Can also be used to clean armor.",
+          value: '+3 life',
+          attack: null,
+          defense: null,
+          strength: null,
+          life: 3,
+          mana: null,
+          intelligence: null,
+          price: '10',
+          imageSrc: require('../../assets/images/village_tavern/tavern_drink_1.png'),
+        },
+      );
+      conditionalStore.conversationsDrunkard.convo2Availalbe = true;
+    }
   }
 
   let drunkardQuest1 = questStore.quests.find(quest => quest.id === 'drunkardQuest1');

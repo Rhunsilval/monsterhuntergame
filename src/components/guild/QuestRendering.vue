@@ -4,11 +4,8 @@
             <img :src="renderedQuest.largeIcon" class="w-52 border border-gray-500 rounded-2xl " />
         </div>
         <div v-if="!questDone" class="flex justify-center"> 
-            <div class="text-center text-lg font-serif grid grid-cols-1"> 
-                <!-- <div>  -->
+            <div class="text-center text-lg font-serif grid grid-cols-1">
                     <p class="text-2xl font-semibold">Ah, {{ playerStore.playerId }}.  You're back.</p>
-                <!-- </div> -->
-                <!-- <div> -->
                     <p class="py-2">I'm still looking for the</p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty }} {{ renderedQuest.need }}  </p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty2 }} {{ renderedQuest.need2 }} </p>
@@ -18,12 +15,10 @@
                     <p class="text-xl font-bold">{{ renderedQuest.qty6 }} {{ renderedQuest.need6 }} </p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty7 }} {{ renderedQuest.need7 }} </p>
                     <p class="mt-3">that you owe me.</p>
-                <!-- </div> -->
                 <div class="flex justify-center"> 
                     <button @click="emitLeaveQuest" class="mt-10 px-2 py-2 w-32 border border-gray-500 rounded-xl bg-stone-400 hover:bg-stone-600 hover:text-white text-center">
                         Leave</button>
-                </div>
-                
+                </div>                
             </div>            
         </div>
         <div v-if="questDone" class="flex justify-center mb-12"> 
@@ -36,8 +31,7 @@
                 <div class="flex justify-center"> 
                     <button @click="emitQuestComplete" class="py-3 px-3 w-4/5 mt-5 border border-gray-500 bg-white hover:bg-slate-300 rounded-xl">
                     Okay!</button>
-                </div>
-                
+                </div>                
             </div>            
         </div>
         <div class="flex justify-center">
@@ -48,8 +42,7 @@
                     </button>
                 </li>
             </ul>
-        </div>
-        
+        </div>        
     </div>
 </template>
 
