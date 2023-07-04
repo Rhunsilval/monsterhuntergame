@@ -58,13 +58,34 @@
               <button @click="attemptDrunkQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
                 Complete <br/> Quest?</button>
             </div>
-          </div>
-          
+          </div>          
           <div v-if="conditionalStore.bigDawgPub.barkeepQuestAccepted">
-            <div v-if="barkeepQuest1.active" class="-mt-24  ml-80 "> 
+            <div v-if="barkeepQuest1.active" class="-mt-20 ml-80 "> 
               <div class="ml-12 "> 
                 <button @click="attemptBarkeepQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
                   Complete <br/> Quest?</button>
+              </div>              
+            </div>
+          </div>          
+          <div v-if="conditionalStore.bigDawgPub.scholarQuestAccepted">
+            <div v-if="scholarQuest1.active" class="-mt-20 ml-80 "> 
+              <div class="ml-80 "> 
+                <div class="ml-12"> 
+                  <button @click="attemptScholarQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
+                    Complete <br/> Quest?</button>
+                </div>                
+              </div>              
+            </div>
+          </div>          
+          <div v-if="conditionalStore.bigDawgPub.hunterQuestAccepted">
+            <div v-if="hunterQuest1.active" class="-mt-20 ml-80 "> 
+              <div class="ml-80 "> 
+                <div class="ml-80"> 
+                  <div class="ml-10"> 
+                    <button @click="attemptHunterQuest1" class="px-2 py-2 w-40 h-24 bg-gray-400 hover:bg-gray-500 hover:text-white border border-black rounded-2xl ">
+                      Complete <br/> Quest?</button>
+                  </div> 
+                </div>                               
               </div>              
             </div>
           </div>
@@ -100,6 +121,30 @@
                       <conversation-barkeep
                         @emit-end-conversation="conversationEnded"
                       ></conversation-barkeep>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- scholar's page -->
+              <div v-if="chosenCharacterID === 'scholar1'" class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <conversation-scholar
+                        @emit-end-conversation="conversationEnded"
+                      ></conversation-scholar>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- hunter's page -->
+              <div v-if="chosenCharacterID === 'hunter1'" class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <conversation-hunter
+                        @emit-end-conversation="conversationEnded"
+                      ></conversation-hunter>
                     </div>
                   </div>
                 </div>
@@ -147,6 +192,8 @@
   import QuestRendering from '../../components/guild/QuestRendering.vue';
   import ConversationDrunkard from '../../components/village/ConversationsDrunkard.vue';
   import ConversationBarkeep from '../../components/village/ConversationsBarkeep.vue';
+  import ConversationScholar from '../../components/village/ConversationsScholar.vue';
+  import ConversationHunter from '@/components/village/ConversationsHunter.vue';
 
   const playerStore = usePlayerStore();
   const conditionalStore = useConditionalsStore();
@@ -258,6 +305,18 @@
   function attemptBarkeepQuest1() {
     pubVisible.value = false;
     quest.value = 'barkeepQuest1';
+    questAttempt.value = true;
+  }
+  let scholarQuest1 = questStore.quests.find(quest => quest.id === 'scholarQuest1');
+  function attemptScholarQuest1() {
+    pubVisible.value = false;
+    quest.value = 'scholarQuest1';
+    questAttempt.value = true;
+  }
+  let hunterQuest1 = questStore.quests.find(quest => quest.id === 'hunterQuest1');
+  function attemptHunterQuest1() {
+    pubVisible.value = false;
+    quest.value = 'hunterQuest1';
     questAttempt.value = true;
   }
 

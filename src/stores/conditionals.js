@@ -19,7 +19,9 @@ export const useConditionalsStore =
             },
             bigDawgPub: {
                 drunkardQuestAccepted: false, 
-                barkeepQuestAccepted: false,               
+                barkeepQuestAccepted: false,  
+                scholarQuestAccepted: false,
+                hunterQuestAccepted: false,             
             },
             conversationsDrunkard: {
                 convo1Available: true,
@@ -32,7 +34,17 @@ export const useConditionalsStore =
                 convo1Available: true,
                 convo1Started: false,
                 barkeepQuest1Activated: false,
-            }
+            },
+            conversationsScholar: {
+                convo1Available: true,
+                convo1Started: false,
+                scholarQuest1Activated: false,
+            },
+            conversationsHunter: {
+                convo1Available: true,
+                convo1Started: false,
+                hunterQuest1Activated: false,
+            },
         }),
         actions: {}
     })

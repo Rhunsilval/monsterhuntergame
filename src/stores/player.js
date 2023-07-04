@@ -72,7 +72,7 @@ export const usePlayerStore =
             
             playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
-            nextLevel: 1000,
+            nextLevel: 2000,
             increase: 2,
 
             playerXP: 0,        // what player has now
