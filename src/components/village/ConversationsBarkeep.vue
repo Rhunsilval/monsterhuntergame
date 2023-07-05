@@ -40,7 +40,7 @@
 <script setup> 
     import { ref } from 'vue';
     import { useConditionalsStore } from '@/stores/conditionals';
-    import BarkeepQuestOne from './barkeepQuestOne.vue'
+    import BarkeepQuestOne from '../quests/barkeepQuestOne.vue'
 
     const emit = defineEmits([
             'emit-end-conversation',

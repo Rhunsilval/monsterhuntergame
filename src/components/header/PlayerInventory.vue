@@ -636,7 +636,7 @@
         if (chosenItem.value.itemUse === 'null') {
             useshow.value = true;
         } else {
-            if (chosenItem.value.itemUse === 'healing') {
+            if (chosenItem.value.itemUse.includes('healing')) {
                 if ((playerStore.playerActiveHealth + chosenItem.value.life) > playerStore.playerHealth) {
                     playerStore.playerActiveHealth = playerStore.playerHealth;
                 } else {
@@ -649,7 +649,7 @@
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 console.log('health value :' + chosenItem.value.life);
             }
-            else if (chosenItem.value.itemUse === 'manaing') {
+            else if (chosenItem.value.itemUse.includes('manaing')) {
                 if ((playerStore.playerActiveMana + chosenItem.value.mana) > playerStore.playerMana) {
                     playerStore.playerActiveMana = playerStore.playerMana;
                 } else {
@@ -675,7 +675,7 @@
                 playerStore.playerDefense = (playerStore.playerDefense + chosenItem.value.defense);
                 playerStore.playerBaseDefense= (playerStore.playerBaseDefense + chosenItem.value.defense);
             }
-            else if (chosenItem.value.itemUse === 'strengthening') {
+            else if (chosenItem.value.itemUse.includes('strengthening')) {
                 playerStore.tempStrengthBonus = (playerStore.tempStrengthBonus + chosenItem.value.strength);            
             }
             else if (chosenItem.value.itemUse === 'strength') {

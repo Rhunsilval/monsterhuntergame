@@ -53,7 +53,7 @@
     import { ref } from 'vue';
     import { useConditionalsStore } from '@/stores/conditionals';
     import { usePlayerStore } from '@/stores/player';
-    import HunterQuestOne from './hunterQuestOne.vue'
+    import HunterQuestOne from '../quests/hunterQuestOne.vue'
 
     const emit = defineEmits([
             'emit-end-conversation',

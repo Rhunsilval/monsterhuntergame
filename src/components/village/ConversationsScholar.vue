@@ -53,7 +53,7 @@
     import { ref } from 'vue';
     import { useConditionalsStore } from '@/stores/conditionals';
     import { usePlayerStore } from '@/stores/player';
-    import ScholarQuestOne from './scholarQuestOne.vue'
+    import ScholarQuestOne from '../quests/scholarQuestOne.vue'
 
     const emit = defineEmits([
             'emit-end-conversation',
