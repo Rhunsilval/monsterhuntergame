@@ -45,17 +45,17 @@
           <div><p></p></div>
           <div><p></p></div>
           <div class="flex justify-center -mb-8 mt-8"> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -mr-72 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -mr-72 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
           <div class="flex justify-center"> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
           <div class="flex justify-center -mb-8 mt-8"> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -ml-72 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -ml-72 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -69,7 +69,7 @@
           </div>
           <div><p></p></div>
           <div class="flex justify-center"> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -mr-56 mt-8 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -mr-56 mt-8 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -79,7 +79,7 @@
               </router-link>
           </div>
           <div class="flex justify-center"> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -ml-56 mt-8 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -ml-56 mt-8 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -93,17 +93,17 @@
           <div><p></p></div>
           <div><p></p></div>
           <div class="flex justify-center "> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -mr-72 -mt-8 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -mr-72 -mt-8 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
           <div class="flex justify-center "> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
           <div class="flex justify-center "> 
-              <router-link :to="'/map_mountains'" class="group h-28 w-28 -ml-72 -mt-8 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/map_farmlands'" class="group h-28 w-28 -ml-72 -mt-8 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>

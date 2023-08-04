@@ -186,7 +186,8 @@
     'The Moving Jungle': require('../../assets/images/jungle/Jungle_background.png'),
     'Dead Marshes': require('../../assets/images/marshes/Marshes_background.png'),
     'Iron Mountains': require('../../assets/images/mountains/Mountains_background.png'),
-    'Noxus Swamp': require('../../assets/images/swamp/Swamp_background.png')
+    'Noxus Swamp': require('../../assets/images/swamp/Swamp_background.png'),
+    'Farmlands': require('../../assets/images/farmland/Farmland_background.jpg')
   }
   function getMapType() {
     return props.mapName;
