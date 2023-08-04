@@ -4,6 +4,10 @@ export const useConditionalsStore =
     defineStore({
         id: 'conditionals',
         state: () => ({
+            worldMap: {
+                basicMap: true,
+                expandedMap: false,
+            },
             villageBank:{ 
                 accountOpen: false,
             },
