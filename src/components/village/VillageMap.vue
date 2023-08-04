@@ -6,4 +6,6 @@
 
 <script setup>
 // on hold until i get home - need to convert png to svg file
+
+//or alternately: vuejsexamples.com/a-simple-image-map-component-in-vue-3/#google_vignette
 </script>

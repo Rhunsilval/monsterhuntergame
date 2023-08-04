@@ -22,19 +22,30 @@
 
             <div class="flex justify-center mb-20 border border-red-500">
 
-                <router-link :to="'/village'" class="-mt-20 -mr-20 h-20 w-20 overflow-hidden rounded-full  border border-black">
-                    <img src="../../assets/images/allpurpose/farmland.jpg" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                <router-link :to="'/village'" class="-mt-20 -mr-44 h-20 w-20 overflow-hidden rounded-full  border border-green-500">
+                    <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
                 </router-link>
-                <!-- <div class="-ml-2"> 
-                    <p class="text-xl text-white -ml-40 mt-16 h-10 opacity-0 hover:opacity-100">Thornstalk Village</p>
-                </div> -->
+                <router-link :to="'/village'" class="-mt-12 -mr-28 h-20 w-20 overflow-hidden rounded-full  border border-black">
+                    <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                </router-link>
+                <router-link :to="'/village'" class="mt-9 h-20 w-20 overflow-hidden rounded-full  border border-red-500">
+                    <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                </router-link>               
+                <router-link :to="'/village'" class="-mt-12 ml-36 h-20 w-20 overflow-hidden rounded-full  border border-blue-500">
+                    <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                </router-link>               
 
-                <router-link :to="'/village'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+                <router-link :to="'/village'" class="-ml-56 h-44 w-44 overflow-hidden rounded-full  border border-black">
                     <img src="../../assets/images/allpurpose/Thornstalk_Village.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
                 </router-link>
+
                 <div class="-ml-2"> 
                     <p class="text-xl text-white -ml-40 mt-16 h-10 opacity-0 hover:opacity-100">Thornstalk Village</p>
                 </div>
+
+                <router-link :to="'/village'" class="ml-2 mt-9 h-20 w-20 overflow-hidden rounded-full  border border-black">
+                    <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                </router-link>
 
 
                 
