@@ -248,6 +248,16 @@
                     <img v-if="monsterStore.monsterId == 'swamp_monster8'" src="../../assets/images/swamp/swamp_monster_8.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'swamp_monster9'" src="../../assets/images/swamp/swamp_monster_9.png" alt="" class="h-56 w-full object-cover object-top" />
                     <img v-if="monsterStore.monsterId == 'swamp_monster10'" src="../../assets/images/swamp/swamp_monster_10.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster1'" src="../../assets/images/farmland/farmland_monster_1.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster2'" src="../../assets/images/farmland/farmland_monster_2.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster3'" src="../../assets/images/farmland/farmland_monster_3.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster4'" src="../../assets/images/farmland/farmland_monster_4.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster5'" src="../../assets/images/farmland/farmland_monster_5.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster6'" src="../../assets/images/farmland/farmland_monster_6.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster7'" src="../../assets/images/farmland/farmland_monster_7.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster8'" src="../../assets/images/farmland/farmland_monster_8.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster9'" src="../../assets/images/farmland/farmland_monster_9.png" alt="" class="h-56 w-full object-cover object-top" />
+                    <img v-if="monsterStore.monsterId == 'farmland_monster10'" src="../../assets/images/farmland/farmland_monster_10.png" alt="" class="h-56 w-full object-cover object-center" />
                 </div>
             </div>
         

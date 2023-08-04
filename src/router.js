@@ -22,7 +22,6 @@ import GuildPoints from './views/guild_pages/GuildPoints.vue';
 import GuildHospital from './views/guild_pages/GuildHospital.vue';
 import GuildReputation from './views/guild_pages/GuildReputation.vue';
 import TheMap from './views/primary_pages/TheMap.vue';
-import TheMapTwo from './views/primary_pages/TheMapTwo.vue';
 import TheForest from './views/map_pages/TheForest.vue';
 import TheJungle from './views/map_pages/TheJungle.vue';
 import TheMountains from './views/map_pages/TheMountains.vue';
@@ -30,6 +29,7 @@ import TheGrassland from './views/map_pages/TheGrassland.vue';
 import TheDesert from './views/map_pages/TheDesert.vue';
 import TheMarshes from './views/map_pages/TheMarshes.vue';
 import TheSwamp from './views/map_pages/TheSwamp.vue';
+import TheFarmlands from './views/map_pages/TheFarmlands.vue';
 
 
 const router = createRouter({
@@ -57,8 +57,7 @@ const router = createRouter({
         { path: '/guild_points', component: GuildPoints },
         { path: '/guild_hospital', component: GuildHospital },
         { path: '/guild_reputation', component: GuildReputation },
-        { path: '/map', component: TheMap }, 
-        { path: '/map2', component: TheMapTwo }, 
+        { path: '/map', component: TheMap },
         { path: '/map_forest', component: TheForest },
         { path: '/map_jungle', component: TheJungle },
         { path: '/map_mountains', component: TheMountains },
@@ -66,6 +65,7 @@ const router = createRouter({
         { path: '/map_desert', component: TheDesert },
         { path: '/map_marshes', component: TheMarshes },
         { path: '/map_swamp', component: TheSwamp },
+        { path: '/map_farmlands', component: TheFarmlands },
     ],
     scrollBehavior() {
         return { left:0, top: 0 };

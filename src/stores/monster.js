@@ -202,6 +202,26 @@ export const useMonsterStore =
                     return this.monsterId = 'swamp_monster9';
                   } else if (val >= 100 && this.monsterMap === 'Noxus Swamp') {
                     return this.monsterId = 'swamp_monster10';
+                  } else if (val <= 23 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster1'; 
+                  } else if (val <= 40 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster2';
+                  } else if (val <= 52 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster3';
+                  } else if (val <= 64 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster4';
+                  } else if (val <= 74 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster5';
+                  } else if (val <= 84 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster6';
+                  } else if (val <= 90 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster7';
+                  } else if (val <= 96 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster8';
+                  } else if (val <= 99 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster9';
+                  } else if (val >= 100 && this.monsterMap === 'Farmlands') {
+                    return this.monsterId = 'farmland_monster10';
                   } else {
                     return this.monsterId = '';
                 }        
@@ -349,6 +369,26 @@ export const useMonsterStore =
                     return this.monsterName = 'Moss Dragon';
                   } else if (this.monsterId === 'swamp_monster10') {
                     return this.monsterName = 'Hydra';
+                  } else if (this.monsterId === 'farmland_monster1') {
+                    return this.monsterName = 'Headless Chicken';
+                  } else if (this.monsterId === 'farmland_monster2') {
+                    return this.monsterName = 'Nisse';
+                  } else if (this.monsterId === 'farmland_monster3') {
+                    return this.monsterName = 'Lady in White';
+                  } else if (this.monsterId === 'farmland_monster4') {
+                    return this.monsterName = 'Zombie';
+                  } else if (this.monsterId === 'farmland_monster5') {
+                    return this.monsterName = 'Scarecrow';
+                  } else if (this.monsterId === 'farmland_monster6') {
+                    return this.monsterName = 'Black Dog';
+                  } else if (this.monsterId === 'farmland_monster7') {
+                    return this.monsterName = 'Chupacabra';
+                  } else if (this.monsterId === 'farmland_monster8') {
+                    return this.monsterName = 'Rougarou';
+                  } else if (this.monsterId === 'farmland_monster9') {
+                    return this.monsterName = 'Poltergeist';
+                  } else if (this.monsterId === 'farmland_monster10') {
+                    return this.monsterName = 'Headless Horseman';
                   } else {
                     return this.monsterName = '';
                 }
@@ -495,6 +535,26 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'swamp_monster9') {
                     return this.monsterStartingHealth = this.getRandomValue(700, 1000);
                   } else if (this.monsterId === 'swamp_monster10') {
+                    return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
+                  } else if (this.monsterId === 'farmland_monster1') {
+                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                  } else if (this.monsterId === 'farmland_monster2') {
+                    return this.monsterStartingHealth = this.getRandomValue(100, 300);
+                  } else if (this.monsterId === 'farmland_monster3') {
+                    return this.monsterStartingHealth = this.getRandomValue(150, 400);
+                  } else if (this.monsterId === 'farmland_monster4') {
+                    return this.monsterStartingHealth = this.getRandomValue(250, 500);
+                  } else if (this.monsterId === 'farmland_monster5') {
+                    return this.monsterStartingHealth = this.getRandomValue(300, 600);
+                  } else if (this.monsterId === 'farmland_monster6') {
+                    return this.monsterStartingHealth = this.getRandomValue(350, 700);
+                  } else if (this.monsterId === 'farmland_monster7') {
+                    return this.monsterStartingHealth = this.getRandomValue(500, 850);
+                  } else if (this.monsterId === 'farmland_monster8') {
+                    return this.monsterStartingHealth = this.getRandomValue(600, 900);
+                  } else if (this.monsterId === 'farmland_monster9') {
+                    return this.monsterStartingHealth = this.getRandomValue(700, 1000);
+                  } else if (this.monsterId === 'farmland_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else {
                     return this.monsterStartingHealth = null;
@@ -647,6 +707,26 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'swamp_monster9') {
                     return this.monsterHit = this.getRandomValue(45, 50);
                   } else if (this.monsterId === 'swamp_monster10') {
+                    return this.monsterHit = this.getRandomValue(50, 60);
+                  } else if (this.monsterId === 'farmland_monster1') {
+                    return this.monsterHit = this.getRandomValue(5, 10); 
+                  } else if (this.monsterId === 'farmland_monster2') {
+                    return this.monsterHit = this.getRandomValue(10, 15);
+                  } else if (this.monsterId === 'farmland_monster3') {
+                    return this.monsterHit = this.getRandomValue(15, 20);
+                  } else if (this.monsterId === 'farmland_monster4') {
+                    return this.monsterHit = this.getRandomValue(20, 25);
+                  } else if (this.monsterId === 'farmland_monster5') {
+                    return this.monsterHit = this.getRandomValue(25, 30);
+                  } else if (this.monsterId === 'farmland_monster6') {
+                    return this.monsterHit = this.getRandomValue(30, 35);
+                  } else if (this.monsterId === 'farmland_monster7') {
+                    return this.monsterHit = this.getRandomValue(35, 40);
+                  } else if (this.monsterId === 'farmland_monster8') {
+                    return this.monsterHit = this.getRandomValue(40, 45);
+                  } else if (this.monsterId === 'farmland_monster9') {
+                    return this.monsterHit = this.getRandomValue(45, 50);
+                  } else if (this.monsterId === 'farmland_monster10') {
                     return this.monsterHit = this.getRandomValue(50, 60);
                   } else {
                     return this.monsterHit = null;
