@@ -6,6 +6,8 @@
 
 <script setup>
 // on hold until i get home - need to convert png to svg file
+// youtube: how to make a clickable map on website with vue 3 by mouse events
 
 //or alternately: vuejsexamples.com/a-simple-image-map-component-in-vue-3/#google_vignette
+// NOPE - missing come installs to run this example.  back to the svg file attempt
 </script>

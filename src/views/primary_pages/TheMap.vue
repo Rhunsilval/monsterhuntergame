@@ -86,7 +86,7 @@
           <div><p></p></div>
           <div class="flex justify-center"> 
               <router-link :to="'/map_mountains'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
-                  <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                  <img src="../../assets/images/beach/Beach.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
 
@@ -265,7 +265,7 @@
           </div>
           <div class="flex justify-center"> 
               <router-link :to="'/map_mountains'" class="group h-36 w-36 mt-20 -mb-20 -ml-16 overflow-hidden rounded-full  border border-black">
-                  <img src="../../assets/images/farmland/Farmland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
+                  <img src="../../assets/images/beach/Beach.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
 
