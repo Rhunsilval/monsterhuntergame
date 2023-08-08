@@ -30,8 +30,8 @@ export const usePlayerStore =
             manaPrice: 1000,
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
-            playerAttack: 1,
-            playerBaseAttack: 1,    // default max
+            playerAttack: 100,
+            playerBaseAttack: 100,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -40,8 +40,8 @@ export const usePlayerStore =
             neededAttackXP: 1000,
             attackPrice: 100,
 
-            playerDefense: 1,
-            playerBaseDefense: 1,
+            playerDefense: 100,
+            playerBaseDefense: 100,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -50,8 +50,8 @@ export const usePlayerStore =
             neededDefenseXP: 1000,
             defensePrice: 100,            
             
-            playerStrength: 1,
-            playerBaseStrength: 1,
+            playerStrength: 100,
+            playerBaseStrength: 100,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,
@@ -569,6 +569,76 @@ export const usePlayerStore =
                     id: 'swamp_monster10',
                     name: 'Hydra',
                     place: 'swamp',
+                    count: 0,
+                    points: 10,
+                },
+                {
+                    id: 'farmland_monster1',
+                    name: 'Headless Chicken',
+                    place: 'farmland',
+                    count: 0,
+                    points: 1,
+                },
+                {
+                    id: 'farmland_monster2',
+                    name: 'Nisse',
+                    place: 'farmland',
+                    count: 0,
+                    points: 2,
+                },
+                {
+                    id: 'farmland_monster3',
+                    name: 'Lady in White',
+                    place: 'farmland',
+                    count: 0,
+                    points: 3,
+                },
+                {
+                    id: 'farmland_monster4',
+                    name: 'Zombie',
+                    place: 'farmland',
+                    count: 0,
+                    points: 4,
+                },
+                {
+                    id: 'farmland_monster5',
+                    name: 'Scarecrow',
+                    place: 'farmland',
+                    count: 0,
+                    points: 5,
+                },
+                {
+                    id: 'farmland_monster6',
+                    name: 'Black Dog',
+                    place: 'farmland',
+                    count: 0,
+                    points: 6,
+                },
+                {
+                    id: 'farmland_monster7',
+                    name: 'Chupacabra',
+                    place: 'farmland',
+                    count: 0,
+                    points: 7,
+                },
+                {
+                    id: 'farmland_monster8',
+                    name: 'Rougarou',
+                    place: 'farmland',
+                    count: 0,
+                    points: 8,
+                },
+                {
+                    id: 'farmland_monster9',
+                    name: 'Poltergeist',
+                    place: 'farmland',
+                    count: 0,
+                    points: 9,
+                },
+                {
+                    id: 'farmland_monster10',
+                    name: 'Headless Horseman',
+                    place: 'farmland',
                     count: 0,
                     points: 10,
                 },
