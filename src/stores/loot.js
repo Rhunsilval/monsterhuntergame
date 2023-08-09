@@ -5488,8 +5488,8 @@ export const useLootStore =
             },
 
             getPotionDrop() {
-                const val = this.getRandomValue(1, 25);
-                if (val <=1) {
+                const val = this.getRandomValue(1, 215);
+                if (val <=30) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5510,7 +5510,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_1.png'),                    
                         },
                     )
-                } else if (val <=2) {
+                } else if (val <=40) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5531,7 +5531,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_2.png'),                    
                         }
                     )
-                } else if (val <=3) {
+                } else if (val <=45) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5552,7 +5552,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_3.png'),                    
                         },
                     )
-                } else if (val <=4) {
+                } else if (val <=46) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5573,7 +5573,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_healing_4.png'),                    
                         },
                     )
-                } else if (val<=5) {
+                } else if (val<=76) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5594,7 +5594,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_1.png'),                    
                         },
                     )
-                } else if (val<=6) {
+                } else if (val<=86) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5615,7 +5615,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_2.png'),                    
                         },
                     )
-                } else if (val<=7) {
+                } else if (val<=91) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5636,7 +5636,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_3.png'),                    
                         },
                     )
-                } else if (val<=8) {
+                } else if (val<=92) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5657,7 +5657,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_4.png'),                    
                         },
                     )
-                } else if (val<=9) {
+                } else if (val<=93) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5678,7 +5678,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_attack_5.png'),                    
                         },
                     )
-                } else if (val<=10) {
+                } else if (val<=123) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5699,7 +5699,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_1.png'),                    
                         },
                     )
-                } else if (val<=11) {
+                } else if (val<=133) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5720,7 +5720,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_2.png'),                    
                         },
                     )
-                } else if (val<=12) {
+                } else if (val<=134) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5741,7 +5741,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_3.png'),                    
                         },
                     )
-                } else if (val<=13) {
+                } else if (val<=135) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5762,7 +5762,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_defense_4.png'),                    
                         },
                     )
-                } else if (val<=14) {
+                } else if (val<=145) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5783,7 +5783,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_1.png'),                    
                         },
                     )
-                } else if (val<=15) {
+                } else if (val<=150) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5804,7 +5804,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_2.png'),                    
                         },
                     )
-                } else if (val<=16) {
+                } else if (val<=151) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5825,7 +5825,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_3.png'),                    
                         },
                     )
-                } else if (val<=17) {
+                } else if (val<=152) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5846,7 +5846,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_apothecary/Apothecary_strength_4.png'),                    
                         },
                     )
-                } else if (val<=18) {
+                } else if (val<=162) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5867,7 +5867,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_oddities/Oddities_potion_1.png'),
                         },
                     )
-                } else if (val<=19) {
+                } else if (val<=167) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5888,7 +5888,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_oddities/Oddities_potion_2.png'),
                         },
                     )
-                } else if (val<=20) {
+                } else if (val<=168) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5909,7 +5909,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_oddities/Oddities_potion_3.png'),
                         },
                     )
-                } else if (val<=21) {
+                } else if (val<=169) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5930,7 +5930,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_oddities/Oddities_potion_4.png'),
                         },
                     )
-                } else if (val<=22) {
+                } else if (val<=199) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
@@ -5951,7 +5951,7 @@ export const useLootStore =
                             imageSrc: require('../assets/images/village_magic/Magic_potion_1.png'),
                         },
                     )
-                } else if (val<=23) {
+                } else if (val<=209) {
                     this.lootList.push(
                         {
                             id: Math.floor(Math.random() * 10000),
