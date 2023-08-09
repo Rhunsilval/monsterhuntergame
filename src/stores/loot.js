@@ -5031,7 +5031,7 @@ export const useLootStore =
                             itemSlot: 'null',
                             itemUse: 'null',
                             itemShop: 'Armory, Blacksmith, Oddities, Magic',
-                            name: 'Pearls',
+                            name: 'Freshwater Pearls',
                             description: "These were hidden beneath all the muck.",
                             value: '?',
                             price: 3000,
