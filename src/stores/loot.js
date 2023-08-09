@@ -37,7 +37,10 @@ export const useLootStore =
                     this.monsterId === 'mountain_monster3' ||
                     this.monsterId === 'swamp_monster1' ||
                     this.monsterId === 'swamp_monster2' ||
-                    this.monsterId === 'swamp_monster3' 
+                    this.monsterId === 'swamp_monster3' ||
+                    this.monsterId === 'farmland_monster1' ||
+                    this.monsterId === 'farmland_monster2' ||
+                    this.monsterId === 'farmland_monster3' 
                     ) {
                         const val = this.getRandomValue(1,100);
                         this.lootCoins.push(
@@ -56,7 +59,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster4' ||
                     this.monsterId === 'marshes_monster4' ||
                     this.monsterId === 'mountain_monster4' ||
-                    this.monsterId === 'swamp_monster4'
+                    this.monsterId === 'swamp_monster4' ||
+                    this.monsterId === 'farmland_monster4'
                     ) {
                         const val = this.getRandomValue(50,150);
                         this.lootCoins.push(
@@ -75,7 +79,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster5' ||
                     this.monsterId === 'marshes_monster5' ||
                     this.monsterId === 'mountain_monster5' ||
-                    this.monsterId === 'swamp_monster5'
+                    this.monsterId === 'swamp_monster5' ||
+                    this.monsterId === 'farmland_monster5'
                     ) {
                         const val = this.getRandomValue(50,300);
                         this.lootCoins.push(
@@ -94,7 +99,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster6' ||
                     this.monsterId === 'marshes_monster6' ||
                     this.monsterId === 'mountain_monster6' ||
-                    this.monsterId === 'swamp_monster6'
+                    this.monsterId === 'swamp_monster6' ||
+                    this.monsterId === 'farmland_monster6'
                     ) {
                         const val = this.getRandomValue(150,400);
                         this.lootCoins.push(
@@ -113,7 +119,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster7' ||
                     this.monsterId === 'marshes_monster7' ||
                     this.monsterId === 'mountain_monster7' ||
-                    this.monsterId === 'swamp_monster7'
+                    this.monsterId === 'swamp_monster7' ||
+                    this.monsterId === 'farmland_monster7'
                     ) {
                         const val = this.getRandomValue(300,500);
                         this.lootCoins.push(
@@ -132,7 +139,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster8' ||
                     this.monsterId === 'marshes_monster8' ||
                     this.monsterId === 'mountain_monster8' ||
-                    this.monsterId === 'swamp_monster8'
+                    this.monsterId === 'swamp_monster8' ||
+                    this.monsterId === 'farmland_monster8'
                     ) {
                         const val = this.getRandomValue(400,600);
                         this.lootCoins.push(
@@ -151,7 +159,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster9' ||
                     this.monsterId === 'marshes_monster9' ||
                     this.monsterId === 'mountain_monster9' ||
-                    this.monsterId === 'swamp_monster9'
+                    this.monsterId === 'swamp_monster9' ||
+                    this.monsterId === 'farmland_monster9'
                     ) {
                         const val = this.getRandomValue(500,700);
                         this.lootCoins.push(
@@ -170,7 +179,8 @@ export const useLootStore =
                     this.monsterId === 'jungle_monster10' ||
                     this.monsterId === 'marshes_monster10' ||
                     this.monsterId === 'mountain_monster10' ||
-                    this.monsterId === 'swamp_monster10'
+                    this.monsterId === 'swamp_monster10' ||
+                    this.monsterId === 'farmland_monster10'
                     ) {
                         const val = this.getRandomValue(700,10000);
                         this.lootCoins.push(
@@ -3673,7 +3683,7 @@ export const useLootStore =
                     }
                     const val2 = this.getRandomValue(1,4);
                     if (val2 <= 1) {
-                        this.getMountainGems();
+                        this.getSwampGems();
                     }
                 } 
                 else if (this.monsterId === 'swamp_monster5') {
@@ -4117,6 +4127,596 @@ export const useLootStore =
                     this.getPotionDrop();
                     this.getPotionDrop();
                 } 
+// farmland monsters
+                else if (this.monsterId === 'farmland_monster1') {
+                    const val = this.getRandomValue(1,3);
+                    console.log('swamp monster loot val: ' + val);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities',
+                                name: 'Green chicken',
+                                description:"That doesn't look right ...",
+                                value: '?',
+                                price: 50,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_1_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'farmland_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_helm',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Oddities, Magic',
+                                name: "Gnome's Hat",
+                                description: "Red, plush, and magic!",
+                                value: '?',
+                                attack: this.getRandomValue(1,15),
+                                defense: this.getRandomValue(10,25),
+                                strength: 0,
+                                life: this.getRandomValue(5,25),
+                                mana: 0,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'farmland_monster3') {
+                    const val = this.getRandomValue(1,3);
+                    if (val === 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Magic, Oddities',
+                                name: 'Robes of Vengeance',
+                                description:"How ... romantic?",
+                                value: '?',
+                                price: 150,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_3_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itemShop: 'Blacksmith, Oddities, Magic',
+                                name: "Dagger of the Betrayed",
+                                description: "This dagger is motivated to cause harm",
+                                value: '?',
+                                attack: this.getRandomValue(8,30),
+                                defense: 0,
+                                strength: 0,
+                                life: this.getRandomValue(5,25),
+                                mana: 0,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_3_treasure2.png'), 
+                            }
+                        )
+                    }
+                } 
+                else if (this.monsterId === 'farmland_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Tavern, Oddities, Magic, Tavern',
+                                name: "Zombie's Hand Mushroom",
+                                description:"People really eat this?!",
+                                value: '?',
+                                price: 250,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Oddities, Magic',
+                                name: "Zombie's Hand",
+                                description:"Useful for spells that need to hold things",
+                                value: '?',
+                                price: 250,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getFarmlandGems();
+                    }
+                } 
+                else if (this.monsterId === 'farmland_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Oddities, Magic',
+                            name: "Weathered Farmer's Hat",
+                            description: "Doesn't look like it'd offer much protection?",
+                            value: '?',
+                            attack: 0,
+                            defense: this.getRandomValue(5,25),
+                            strength: 0,
+                            life: (this.getRandomValue(3,10)*-1),
+                            mana: 0,
+                            intelligence: 0,
+                            price: 600,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itemShop: 'Oddities, Magic',
+                                name: "Haunted Amulet",
+                                description: "Err... should anyone actually wear this thing?",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: this.getRandomValue(3,8),
+                                life: this.getRandomValue(5,25),
+                                mana: (this.getRandomValue(2,10)*-1),
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itemShop: 'Blacksmith, Oddities',
+                                name: "Rusty Sickle",
+                                description: "Is much sharper than it looks",
+                                value: '?',
+                                attack: this.getRandomValue(8,30),
+                                defense: (this.getRandomValue(0,5)*-1),
+                                strength: 0,
+                                life: 0,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getFarmlandHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'farmland_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: "Black Dog Fur",
+                            description: "About as soft as sandpaper",
+                            value: '?',
+                            price: 600,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Apothecary, Blacksmith, Oddities',
+                                name: "Black Dog Teeth",
+                                description:"Adds extra viciousness impact to spells",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Oddities',
+                                name: "Dark Collar",
+                                description:"Huh - seems magic-y",
+                                value: '?',
+                                attack: 0,
+                                defense: 10,
+                                strength: 2,
+                                life: -10,
+                                mana: 20,
+                                intelligence: 5,
+                                price: 600,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getFarmlandGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getFarmlandHerbs();
+                    } else (this.getFarmlandGems())
+                } 
+                else if (this.monsterId === 'farmland_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Oddities, Magic',
+                            name: "Chupacabra Head",
+                            description:"This thing weighs a ton!",
+                            value: '?',
+                            price: 900,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Oddities, Magic, Apothecary, Armory, Blacksmith',
+                            name: "Chupacabra scales",
+                            description:"Oooh!  They're soft!",
+                            value: '?',
+                            price: 900,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities ',
+                                name: 'Chupacabra Venom',
+                                description:"Scales and venom - are chupacabras snakes?",
+                                value: '?',
+                                price: 900,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Tavern, Oddities',
+                                name: 'Chupacabra Ham',
+                                description:"Bet it tastes like chicken",
+                                value: '?',
+                                price: 900,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getFarmlandGems();
+                            this.getFarmlandGems();
+                        } else if (val2 <=2) {
+                            this.getFarmlandHerbs();
+                            this.getFarmlandHerbs();
+                        } else (this.getFarmlandGems(), this.getFarmlandHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'farmland_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities',
+                            name: "Hunter's Axe",
+                            description:"Did the beast own or collect this axe?",
+                            value: '?',
+                            attack: this.getRandomValue(10,30),
+                            defense: 5,
+                            strength: 2,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 1200,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Oddities, Blacksmith',
+                            name: "Rougarou Pelt",
+                            description:"Wait ... didn't this thing used to be human?  Is this human skin!?",
+                            value: '?',
+                            price: 1200,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                                name: "Moonstone Necklace",
+                                description: "Wisdom is said to come from the moon",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 0,
+                                mana: this.getRandomValue(10,30),
+                                intelligence: this.getRandomValue(10,30),
+                                price: 1200,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_belt',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities, Armory, Blacksmith',
+                                name: 'Cursed Belt',
+                                description:"I mean, the word 'cursed' is right there in the name.  Probably shouldn't wear it",
+                                value: '?',
+                                attack: this.getRandomValue(10,30),
+                                defense: this.getRandomValue(10,30),
+                                strength: 4,
+                                life: -30,
+                                mana: -30,
+                                intelligence: 0,
+                                price: 1200,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getFarmlandGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getFarmlandHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'farmland_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Magic, Oddities',
+                            name: "Incorporeal Sheets",
+                            description:"Full of powerful, dark magic",
+                            value: '?',
+                            price: 1650,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_boots',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Armory',
+                            name: "Ghost Boots",
+                            description:"Spooky feet!",
+                            value: '?',
+                            attack: 0,
+                            defense: this.getRandomValue(5,20),
+                            strength: 4,
+                            life: (this.getRandomValue(10,25)*-1),
+                            mana: this.getRandomValue(5,30),
+                            intelligence: 0,
+                            price: 1650,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Apothecary, Oddities',
+                                name: 'Ghost Light',
+                                description:"Lets you see in the light",
+                                value: '?',
+                                price: 1650,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_ring',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Blacksmith, Magic, Oddities',
+                                name: 'Soul Ring',
+                                description:"I think the ring is screaming ... is that normal?",
+                                value: '?',
+                                attack: 0,
+                                defense: 30,
+                                strength: -2,
+                                life: (this.getRandomValue(10,30)*-1),
+                                mana: 20,
+                                intelligence: 5,
+                                price: 1650,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getFarmlandHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities',
+                                name: 'Spirit Reliquary',
+                                description: "What happens if one of them gets out?",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getFarmlandGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'farmland_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'horse_saddle',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Armory, Oddities',
+                            name: "Saddle of the Damned",
+                            description: "Forces the horse to carry 50% more items when worn",
+                            value: '?',
+                            carryBonus: 5,
+                            price: 2800,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Magic, Oddities',
+                            name: "Horseman's Head",
+                            description:"Looks like pumpkin, smells like sulphur",
+                            value: '?',
+                            price: 2250,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Oddities, Magic, Apothecary',
+                            name: "Hellfire",
+                            description:"So help me, this stuff better not spill on me!",
+                            value: '?',
+                            price: 2250,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Oddities, Magic, Blacksmith',
+                            name: "Horsemaster's Sword",
+                            description:"Sharp enough to cut a soul in half",
+                            value: '?',
+                            attack: 50,
+                            defense: this.getRandomValue(5,30),
+                            strength: 0,
+                            life: 0,
+                            mana: 20,
+                            intelligence: 0,
+                            price: 2250,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_armor',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Oddities, Armory',
+                            name: "Tattered Horseman's Cape",
+                            description:"Much warmer than it looks",
+                            value: '?',
+                            attack: 0,
+                            defense: this.getRandomValue(10,40),
+                            strength: 8,
+                            life: 10,
+                            mana: 10,
+                            intelligence: 0,
+                            price: 2250,
+                            imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getFarmlandGems();
+                    this.getFarmlandGems();
+                    this.getFarmlandGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_gloves',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Blacksmith, Magic, Oddities',
+                                name: "Dark Gauntlets",
+                                description: "There's dark and dangerous magic in these gloves",
+                                value: '?',
+                                attack: this.getRandomValue(10,30),
+                                defense: this.getRandomValue(15,35),
+                                strength: this.getRandomValue(2,8),
+                                life: (this.getRandomValue(5,30)*-1),
+                                mana: this.getRandomValue(10,40),
+                                intelligence: 0,
+                                price: 2250,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities',
+                                name: "King's Skulls",
+                                description: "Aww, they still have their crowns!",
+                                value: '?',
+                                price: 2644,
+                                imageSrc: require('../assets/images/farmland/farmland_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getFarmlandHerbs();
+                    this.getFarmlandHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
             },
 
             getDesertGems() {
@@ -4455,6 +5055,54 @@ export const useLootStore =
                 }
             },
 
+            getFarmlandGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: 'Fieldstone',
+                            description: "Reflective of all the colors of grass across the seasons",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/farmland/farmland_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: 'Rose Quartz',
+                            description: "Pink and powerful",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/farmland/farmland_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: "Gem of Fertility",
+                            description: "Use with protection",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/farmland/farmland_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -4786,6 +5434,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/swamp/swamp_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getFarmlandHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Thyme',
+                            description: "A common, useful herb that grows just about everywhere.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/farmland/farmland_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Parsley',
+                            description: "Useful for adding a freshness factor to magics and stews.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/farmland/farmland_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Rosemary',
+                            description: "Often found growing on the side of roads, very useful.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/farmland/farmland_herb_3.png')
                         }
                     )
                 }
