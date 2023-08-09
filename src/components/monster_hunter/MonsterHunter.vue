@@ -22,7 +22,7 @@
                     <br/>
                     <router-link :to="'/map'" type="button" class="my-4 px-16 pt-16 pb-28 w-96 h-16 bg-[#305c79] hover:bg-blue-200 hover:text-black border border-slate-800 rounded-2xl font-semibold font-serif text-white text-2xl">
                       Return to Map</router-link>
-                </div>             
+                </div>
             </div>        
         </div>
     </div>
@@ -71,6 +71,7 @@
                     <img v-else-if="mapName==='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     
                     <p v-if="mapName==='Firesand Desert'">Nothing here but lots of sand</p>  
@@ -79,6 +80,7 @@
                     <p v-else-if="mapName==='The Moving Jungle'">I found a bug, but no monster</p>
                     <p v-else-if="mapName==='Dead Marshes'">Mud and muck and nothing else</p> 
                     <p v-else-if="mapName==='Iron Mountains'">Nothing to see here</p>
+                    <p v-else-if="mapName==='Farmlands'">No monsters, but I found corn</p>
                     <p v-else>Nothing interesting here</p> 
                   </div>
                           
@@ -89,6 +91,7 @@
                     <img v-else-if="mapName==='The Moving Jungle'" src="../../assets/images/jungle/jungle_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <p>Nothing here either </p>                            
                   </div>                        

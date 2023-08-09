@@ -246,4 +246,7 @@
     .swamp {
         color: #c7ea46
     }
+    .farmland {
+        color: #8a3324
+    }
 </style>
