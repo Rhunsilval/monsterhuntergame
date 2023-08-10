@@ -72,6 +72,7 @@
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Calypso Beach'" src="../../assets/images/beach/beach_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     
                     <p v-if="mapName==='Firesand Desert'">Nothing here but lots of sand</p>  
@@ -81,6 +82,7 @@
                     <p v-else-if="mapName==='Dead Marshes'">Mud and muck and nothing else</p> 
                     <p v-else-if="mapName==='Iron Mountains'">Nothing to see here</p>
                     <p v-else-if="mapName==='Farmlands'">No monsters, but I found corn</p>
+                    <p v-else-if="mapName==='Calypso Beach'">I found a cool shell, but no monsters</p>
                     <p v-else>Nothing interesting here</p> 
                   </div>
                           
@@ -92,6 +94,7 @@
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Calypso Beach'" src="../../assets/images/beach/beach_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <p>Nothing here either </p>                            
                   </div>                        
@@ -190,7 +193,8 @@
     'Dead Marshes': require('../../assets/images/marshes/Marshes_background.png'),
     'Iron Mountains': require('../../assets/images/mountains/Mountains_background.png'),
     'Noxus Swamp': require('../../assets/images/swamp/Swamp_background.png'),
-    'Farmlands': require('../../assets/images/farmland/Farmland_background.jpg')
+    'Farmlands': require('../../assets/images/farmland/Farmland_background.jpg'),
+    'Calypso Beach': require('../../assets/images/beach/Beach_background.png'),
   }
   function getMapType() {
     return props.mapName;

@@ -30,6 +30,7 @@ import TheDesert from './views/map_pages/TheDesert.vue';
 import TheMarshes from './views/map_pages/TheMarshes.vue';
 import TheSwamp from './views/map_pages/TheSwamp.vue';
 import TheFarmlands from './views/map_pages/TheFarmlands.vue';
+import TheBeach from './views/map_pages/TheBeach.vue';
 
 
 const router = createRouter({
@@ -66,6 +67,7 @@ const router = createRouter({
         { path: '/map_marshes', component: TheMarshes },
         { path: '/map_swamp', component: TheSwamp },
         { path: '/map_farmlands', component: TheFarmlands },
+        { path: '/map_beach', component: TheBeach },
     ],
     scrollBehavior() {
         return { left:0, top: 0 };
