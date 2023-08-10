@@ -40,7 +40,10 @@ export const useLootStore =
                     this.monsterId === 'swamp_monster3' ||
                     this.monsterId === 'farmland_monster1' ||
                     this.monsterId === 'farmland_monster2' ||
-                    this.monsterId === 'farmland_monster3' 
+                    this.monsterId === 'farmland_monster3' ||
+                    this.monsterId === 'beach_monster1' ||
+                    this.monsterId === 'beach_monster2' ||
+                    this.monsterId === 'beach_monster3' 
                     ) {
                         const val = this.getRandomValue(1,100);
                         this.lootCoins.push(
@@ -60,6 +63,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster4' ||
                     this.monsterId === 'mountain_monster4' ||
                     this.monsterId === 'swamp_monster4' ||
+                    this.monsterId === 'beach_monster4' ||
                     this.monsterId === 'farmland_monster4'
                     ) {
                         const val = this.getRandomValue(50,150);
@@ -80,6 +84,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster5' ||
                     this.monsterId === 'mountain_monster5' ||
                     this.monsterId === 'swamp_monster5' ||
+                    this.monsterId === 'beach_monster5' ||
                     this.monsterId === 'farmland_monster5'
                     ) {
                         const val = this.getRandomValue(50,300);
@@ -100,6 +105,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster6' ||
                     this.monsterId === 'mountain_monster6' ||
                     this.monsterId === 'swamp_monster6' ||
+                    this.monsterId === 'beach_monster6' ||
                     this.monsterId === 'farmland_monster6'
                     ) {
                         const val = this.getRandomValue(150,400);
@@ -120,6 +126,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster7' ||
                     this.monsterId === 'mountain_monster7' ||
                     this.monsterId === 'swamp_monster7' ||
+                    this.monsterId === 'beach_monster7' ||
                     this.monsterId === 'farmland_monster7'
                     ) {
                         const val = this.getRandomValue(300,500);
@@ -140,6 +147,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster8' ||
                     this.monsterId === 'mountain_monster8' ||
                     this.monsterId === 'swamp_monster8' ||
+                    this.monsterId === 'beach_monster8' ||
                     this.monsterId === 'farmland_monster8'
                     ) {
                         const val = this.getRandomValue(400,600);
@@ -160,6 +168,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster9' ||
                     this.monsterId === 'mountain_monster9' ||
                     this.monsterId === 'swamp_monster9' ||
+                    this.monsterId === 'beach_monster9' ||
                     this.monsterId === 'farmland_monster9'
                     ) {
                         const val = this.getRandomValue(500,700);
@@ -180,6 +189,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster10' ||
                     this.monsterId === 'mountain_monster10' ||
                     this.monsterId === 'swamp_monster10' ||
+                    this.monsterId === 'beach_monster10' ||
                     this.monsterId === 'farmland_monster10'
                     ) {
                         const val = this.getRandomValue(700,10000);

@@ -7,6 +7,10 @@ export const useConditionalsStore =
             worldMap: {
                 basicMap: true,
                 expandedMap: false,
+                mountainsAvailable: false,
+                grasslandsAvailable: false,
+                beachAvailable: false,
+                desertAvailable: false,
             },
             villageBank:{ 
                 accountOpen: false,
