@@ -14,6 +14,8 @@
                     <p class="text-xl font-bold">{{ renderedQuest.qty5 }} {{ renderedQuest.need5 }} </p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty6 }} {{ renderedQuest.need6 }} </p>
                     <p class="text-xl font-bold">{{ renderedQuest.qty7 }} {{ renderedQuest.need7 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty8 }} {{ renderedQuest.need8 }} </p>
+                    <p class="text-xl font-bold">{{ renderedQuest.qty9 }} {{ renderedQuest.need9 }} </p>
                     <p class="mt-3">that you owe me.</p>
                 <div class="flex justify-center"> 
                     <button @click="emitLeaveQuest" class="mt-10 px-2 py-2 w-32 border border-gray-500 rounded-xl bg-stone-400 hover:bg-stone-600 hover:text-white text-center">
@@ -128,6 +130,20 @@
                 renderedQuest.value.qty7 = (renderedQuest.value.qty7 - 1);
                 playerStore.playerPacked.splice(x, 1);
             }
+        } else if (chosenItem.value.name === renderedQuest.value.need8) {
+            if (renderedQuest.value.qty8 - 1 < 0 ) {
+                renderedQuest.value.qty8 = 0;
+            } else {
+                renderedQuest.value.qty8 = (renderedQuest.value.qty8 - 1);
+                playerStore.playerPacked.splice(x, 1);
+            }
+        } else if (chosenItem.value.name === renderedQuest.value.need9) {
+            if (renderedQuest.value.qty9 - 1 < 0 ) {
+                renderedQuest.value.qty9 = 0;
+            } else {
+                renderedQuest.value.qty8 = (renderedQuest.value.qty9 - 1);
+                playerStore.playerPacked.splice(x, 1);
+            }
         }
         
         const q2 = ref(0)
@@ -142,9 +158,13 @@
         if (!(renderedQuest.value.qty6 > 0)) { q6.value = 0} else (q6.value = renderedQuest.value.qty6)
         const q7 = ref(0)
         if (!(renderedQuest.value.qty7 > 0)) { q7.value = 0} else (q7.value = renderedQuest.value.qty7)
+        const q8 = ref(0)
+        if (!(renderedQuest.value.qty8 > 0)) { q8.value = 0} else (q8.value = renderedQuest.value.qty8)
+        const q9 = ref(0)
+        if (!(renderedQuest.value.qty9 > 0)) { q9.value = 0} else (q9.value = renderedQuest.value.qty9)
         console.log("q2: " +q2.value)
 
-        if ((renderedQuest.value.qty + q2.value + q3.value + q4.value + q5.value + q6.value + q7.value) - 1 < 0) {
+        if ((renderedQuest.value.qty + q2.value + q3.value + q4.value + q5.value + q6.value + q7.value + q8.value + q9.value) - 1 < 0) {
             renderedQuest.value.complete = true;  // do i need this? YES - for unlocking features in response to quest completion
             renderedQuest.value.active = false;   // do i need this? YES - for quest complete button on main page
             questDone.value = true;

@@ -104,8 +104,19 @@
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted === false" class="flex justify-center">
                           <div v-if="!insufficientFunds" class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
-                              <button v-if="conditionalStore.huntersGuild.collect7QuestAvailable" @click="acceptGuildAccept7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
-                                Collect a Sand Crab Shell, some Sacred Spores, a Rotten Femur, a piece of Bat Leather, a Fae Light, a set of Goblin Ears, and some Tangled Rootbeast Vines <br/> Payout: 2,000 coin</button>
+                              <button v-if="conditionalStore.huntersGuild.grossStew1QuestAvailable"
+                                  @click="acceptGuildAcceptGrossStew1Quest" 
+                                  class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                                Collect 3 pieces of Green Chicken, 2 pieces of Bat Leather, and 3 pieces of Sacred Spores<br/> Payout: 600 coin</button>
+                              
+                              <button v-if="conditionalStore.huntersGuild.collect9QuestAvailable && 
+                                            conditionalStore.worldMap.desertAvailable && 
+                                            conditionalStore.worldMap.mountainsAvailable &&
+                                            conditionalStore.worldMap.beachAvailable &&
+                                            conditionalStore.worldMap.grasslandsAvailable" 
+                                  @click="acceptGuildAccept9Quest" 
+                                  class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                                Collect a piece of Green Chicken, a Sand Crab Shell, some Sacred Spores, a Rotten Femur, a piece of Bat Leather, a Fae Light, a set of Goblin Ears, a Jelly Stinger, and some Tangled Rootbeast Vines <br/> Payout: 2,000 coin</button>
                               
                               <button v-if="conditionalStore.huntersGuild.fireRiverDrakeQuestAvailalbe" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect the head of the Fire River Drake <br/> Payout: 150,000 coin</button>
@@ -120,9 +131,14 @@
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted" class="flex justify-center">
                           <div class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
-                              <button v-if="collect7Quest.active" @click="attemptComplete7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="collectGrossStew1Quest.active" @click="attemptCompleteGrossStew1Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                  Complete your Quest</button>
-                              <button v-if="collect7Quest.active" @click="failComplete7Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="collectGrossStew1Quest.active" @click="failCompleteGrossStew1Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                                 Quit your Quest</button>
+
+                              <button v-if="collect9Quest.active" @click="attemptComplete9Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                                 Complete your Quest</button>
+                              <button v-if="collect9Quest.active" @click="failComplete9Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                  Quit your Quest</button>
                           </div>
                         </div>
@@ -162,31 +178,59 @@
 
   const quest = ref('');
   const insufficientFunds = ref(false)
-  let collect7Quest = questStore.quests.find(quest => quest.id === 'guildCollectSeven');
-
-  function acceptGuildAccept7Quest() {
+  
+  let collectGrossStew1Quest = questStore.quests.find(quest => quest.id === 'guildGrossStew1');
+  function acceptGuildAcceptGrossStew1Quest() {
     if (playerStore.coinOnHand - 500 < 0) {
       insufficientFunds.value = true;
     } else {
       playerStore.coinOnHand = (playerStore.coinOnHand - 500);
       conditionalStore.huntersGuild.questAccepted = true;
-      conditionalStore.huntersGuild.collect7QuestAvailable = false;
-      collect7Quest.active = true;
-      playerStore.playerActiveQuests.push(collect7Quest);
+      conditionalStore.huntersGuild.grossStew1QuestAvailable = false;
+      collectGrossStew1Quest.active = true;
+      playerStore.playerActiveQuests.push(collectGrossStew1Quest);
     }    
   }
-  function attemptComplete7Quest() {
-        quest.value = 'guildCollectSeven';
+  function attemptCompleteGrossStew1Quest() {
+        quest.value = 'guildGrossStew1';
         openListModal.value = false;
         basicLobby.value = false;
   }
-  function failComplete7Quest() {
+  function failCompleteGrossStew1Quest() {
         openListModal.value = false;
         basicLobby.value = true;
-        collect7Quest.active = false;
-        collect7Quest.complete = false;
-        conditionalStore.huntersGuild.collect7QuestAvailable = false;
-        let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildCollectSeven');
+        collectGrossStew1Quest.active = false;
+        collectGrossStew1Quest.complete = false;
+        conditionalStore.huntersGuild.grossStew1QuestAvailable = false;
+        let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildGrossStew1');
+        playerStore.playerActiveQuests.splice(x, 1);
+        conditionalStore.huntersGuild.questAccepted = false;
+  }
+
+  let collect9Quest = questStore.quests.find(quest => quest.id === 'guildCollectNine');
+  function acceptGuildAccept9Quest() {
+    if (playerStore.coinOnHand - 500 < 0) {
+      insufficientFunds.value = true;
+    } else {
+      playerStore.coinOnHand = (playerStore.coinOnHand - 500);
+      conditionalStore.huntersGuild.questAccepted = true;
+      conditionalStore.huntersGuild.collect9QuestAvailable = false;
+      collect9Quest.active = true;
+      playerStore.playerActiveQuests.push(collect9Quest);
+    }    
+  }
+  function attemptComplete9Quest() {
+        quest.value = 'guildCollectNine';
+        openListModal.value = false;
+        basicLobby.value = false;
+  }
+  function failComplete9Quest() {
+        openListModal.value = false;
+        basicLobby.value = true;
+        collect9Quest.active = false;
+        collect9Quest.complete = false;
+        conditionalStore.huntersGuild.collect9QuestAvailable = false;
+        let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildCollectNine');
         playerStore.playerActiveQuests.splice(x, 1);
         conditionalStore.huntersGuild.questAccepted = false;
   }
