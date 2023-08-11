@@ -1,6 +1,6 @@
 <template> 
-    <div> 
-        <ul> 
+    <div class=""> 
+        <ul class="h-96 overflow-y-auto "> 
             <li v-for="(hunter, index) in sortedLeaderList" :key="hunter.id"> 
                 <div :class="hunter.color" class="grid grid-cols-3 border border-b-gray-600 border-t-transparent border-x-transparent py-1 px-3"> 
                     <p>{{ index + 1 }}</p>

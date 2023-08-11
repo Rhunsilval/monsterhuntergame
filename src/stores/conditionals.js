@@ -16,7 +16,7 @@ export const useConditionalsStore =
                 accountOpen: false,
             },
             matildaSchool: {
-                questCompleted: false,
+                questCompleted: true,
                 questInProgress: false,
                 questNeedsStarting: true,
             },

@@ -153,14 +153,18 @@
     <!-- school class options -->
             <div class="flex justify-center"> 
                 <div class="w-1/3 bg-white bg-opacity-70 flex justify-center mb-5"> 
-                    <div class="grid grid-cols-2 gap-x-24  mb-10">
-                        <div> 
-                            <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                    <div class="grid grid-cols-3 gap-x-24 mb-10 ">
+                        <div class="ml-8"> 
+                            <button @click="startCharmSchool" class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
                                 Learn Charms</button>
                         </div>
                         <div>
-                            <button class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                            <button @click="startItemSchool" class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
                                 Craft Items</button>
+                        </div>
+                        <div class="-ml-8">
+                            <button @click="startPotionSchool" class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                                Craft Potions</button>
                         </div>
                     </div>
                 </div>
@@ -383,12 +387,20 @@
         </div>
     </div>
 
+<!-- charm school active -->
+    <div v-if="charmSchool" class="bg-[url('../assets/images/village_school/school_library.png')] bg-contain"> > 
+        <school-charm
+            @emit-return-to-lobby="returnToLobby"
+        ></school-charm>
+    </div>
+
 </template>
 
 <script setup> 
     import { ref } from 'vue'
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import QuestRendering from '../../components/guild/QuestRendering.vue';
+    import SchoolCharm from '../../components/village/SchoolCharms.vue';
     import { usePlayerStore } from '@/stores/player';
     import { useQuestStore } from '@/stores/quests';
     import { useConditionalsStore } from '@/stores/conditionals'
@@ -398,8 +410,8 @@
     const conditionalStore = useConditionalsStore();
 
 // page navigation
-    const inLobby = ref(true);
-    const inschool = ref(false);
+    const inLobby = ref(false);
+    const inschool = ref(true);
     const inSpa = ref(false);
     function goToSchool() {
         inLobby.value = false;
@@ -415,6 +427,9 @@
         spaOptionsAvailable.value = true;
         noFunds.value = false;
         inschool.value = false;
+        charmSchool.value = false;
+        craftItemSchool.value = false;
+        craftPotionSchool.value = false;
     }
 
 // school conversations
@@ -543,6 +558,23 @@
         if (playerStore.playerActiveMana > playerStore.playerMana) {
             playerStore.playerActiveMana = playerStore.playerMana;
         } else (playerStore.playerActiveMana)
+    }
+
+// school classes
+    const charmSchool = ref(false);
+    const craftItemSchool = ref(false);
+    const craftPotionSchool = ref(false);
+    function startCharmSchool() {
+        inschool.value = false;
+        charmSchool.value = true;
+    }
+    function startItemSchool() {
+        inschool.value = false;
+        craftItemSchool.value = true;
+    }
+    function startPotionSchool() {
+        inschool.value = false;
+        craftPotionSchool.value = true;
     }
 
 </script>

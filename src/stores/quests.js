@@ -38,9 +38,9 @@ export const useQuestStore =
                     smallIcon: require('../assets/images/farmland/farmland_monster_1_treasure.png'),
                     questPoints: 15,
                     playerXP: 15,
-                    coins: 600,
-                    reward: "600 coins.",
-                    rewardScript: "600 coins and the respect of the Guild."
+                    coins: 1000,
+                    reward: "1000 coins.",
+                    rewardScript: "1000 coins and the respect of the Guild."
                 },
                 {
                     id: 'guildCollectNine',
