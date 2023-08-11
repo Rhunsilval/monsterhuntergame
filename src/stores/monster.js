@@ -437,7 +437,7 @@ export const useMonsterStore =
             // when a monster is generated, generate a monster starting health value, depending on which level (1-10) they are
             getMonsterStartingHealth() {
                 if (this.monsterId === 'desert_monster1') {
-                return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                 } else if (this.monsterId === 'desert_monster2') {
                 return this.monsterStartingHealth = this.getRandomValue(100, 300);
                 } else if (this.monsterId === 'desert_monster3') {
@@ -457,7 +457,7 @@ export const useMonsterStore =
                 } else if (this.monsterId === 'desert_monster10') {
                 return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                 } else if (this.monsterId === 'forest_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'forest_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'forest_monster3') {
@@ -477,7 +477,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'forest_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'grassland_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'grassland_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'grassland_monster3') {
@@ -497,7 +497,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'grassland_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'jungle_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'jungle_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'jungle_monster3') {
@@ -517,7 +517,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'jungle_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'marshes_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'marshes_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'marshes_monster3') {
@@ -537,7 +537,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'marshes_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'mountain_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'mountain_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'mountain_monster3') {
@@ -557,7 +557,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'mountain_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'swamp_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'swamp_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'swamp_monster3') {
@@ -577,7 +577,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'swamp_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'farmland_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'farmland_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'farmland_monster3') {
@@ -597,7 +597,7 @@ export const useMonsterStore =
                   } else if (this.monsterId === 'farmland_monster10') {
                     return this.monsterStartingHealth = this.getRandomValue(1000, 3000);
                   } else if (this.monsterId === 'beach_monster1') {
-                    return this.monsterStartingHealth = this.getRandomValue(50, 200); 
+                    return this.monsterStartingHealth = this.getRandomValue(50, 120); 
                   } else if (this.monsterId === 'beach_monster2') {
                     return this.monsterStartingHealth = this.getRandomValue(100, 300);
                   } else if (this.monsterId === 'beach_monster3') {

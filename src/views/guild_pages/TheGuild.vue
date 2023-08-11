@@ -91,6 +91,7 @@
               <div>
                 <div class="mx-auto flex items-center justify-center rounded-3xl pb-8 bg-[url('../assets/images/quests/The_Guild_list.png')]">
                     <div class="mt-3 bg-[#d2b55b] pb-3 w-2/3 text-center border border-black rounded-2xl sm:mt-5">
+            <!-- quest rules -->
                         <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">Guild Rules</DialogTitle>
                         <div class="mt-2">
                             <p class="text-sm text-gray-700 font-semibold">1. Quests are available on a first-claimed basis.</p>
@@ -99,11 +100,13 @@
                             <p class="text-sm text-gray-700 font-semibold">4. Quests must be completed in full to receive payment.</p>
                             <p class="text-sm text-gray-700 font-semibold">5. You have only 30 days to complete your quest.</p>
                             <p class="text-xs text-gray-700 font-medium  px-1 pt-2">After 30 days, we will assume you've been eaten by monsters and your quest will be made available to a new hunter.</p>
-                        </div>                        
+                        </div>     
+            <!-- quests -->
                         <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900 pt-4">Available Quests:</DialogTitle>
                         
                         <div v-if="conditionalStore.huntersGuild.questAccepted === false" class="flex justify-center">
                           <div v-if="!insufficientFunds" class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
+
                               <button v-if="conditionalStore.huntersGuild.grossStew1QuestAvailable"
                                   @click="acceptGuildAcceptGrossStew1Quest" 
                                   class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
@@ -118,9 +121,12 @@
                                   class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect a piece of Green Chicken, a Sand Crab Shell, some Sacred Spores, a Rotten Femur, a piece of Bat Leather, a Fae Light, a set of Goblin Ears, a Jelly Stinger, and some Tangled Rootbeast Vines <br/> Payout: 2,000 coin</button>
                               
-                              <button v-if="conditionalStore.huntersGuild.fireRiverDrakeQuestAvailalbe" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
+                              <button v-if="conditionalStore.huntersGuild.fireRiverDrakeQuestAvailalbe && 
+                                            playerStore.playerLevel >= 20" 
+                                  class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
                                 Collect the head of the Fire River Drake <br/> Payout: 150,000 coin</button>
                           </div>
+            <!-- insufficient funds warning -->
                           <div v-if="insufficientFunds" class="mt-2 w-11/12"> 
                             <button @click="insufficientFunds = false" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2"> 
                               <p>You don't have enough coinage to accept this quest</p>
@@ -129,6 +135,7 @@
                           </div>
                         </div>
                         
+            <!-- quest completion buttons -->
                         <div v-if="conditionalStore.huntersGuild.questAccepted" class="flex justify-center">
                           <div class="mt-2 grid grid-cols-1 gap-y-2 w-11/12">
                               <button v-if="collectGrossStew1Quest.active" @click="attemptCompleteGrossStew1Quest" class="text-sm text-gray-700 bg-gray-300 border border-black hover:bg-gray-600 hover:text-white rounded-3xl px-2 py-2">
