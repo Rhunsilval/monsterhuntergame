@@ -40,7 +40,10 @@ export const useLootStore =
                     this.monsterId === 'swamp_monster3' ||
                     this.monsterId === 'farmland_monster1' ||
                     this.monsterId === 'farmland_monster2' ||
-                    this.monsterId === 'farmland_monster3' 
+                    this.monsterId === 'farmland_monster3' ||
+                    this.monsterId === 'beach_monster1' ||
+                    this.monsterId === 'beach_monster2' ||
+                    this.monsterId === 'beach_monster3' 
                     ) {
                         const val = this.getRandomValue(1,100);
                         this.lootCoins.push(
@@ -60,6 +63,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster4' ||
                     this.monsterId === 'mountain_monster4' ||
                     this.monsterId === 'swamp_monster4' ||
+                    this.monsterId === 'beach_monster4' ||
                     this.monsterId === 'farmland_monster4'
                     ) {
                         const val = this.getRandomValue(50,150);
@@ -80,6 +84,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster5' ||
                     this.monsterId === 'mountain_monster5' ||
                     this.monsterId === 'swamp_monster5' ||
+                    this.monsterId === 'beach_monster5' ||
                     this.monsterId === 'farmland_monster5'
                     ) {
                         const val = this.getRandomValue(50,300);
@@ -100,6 +105,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster6' ||
                     this.monsterId === 'mountain_monster6' ||
                     this.monsterId === 'swamp_monster6' ||
+                    this.monsterId === 'beach_monster6' ||
                     this.monsterId === 'farmland_monster6'
                     ) {
                         const val = this.getRandomValue(150,400);
@@ -120,6 +126,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster7' ||
                     this.monsterId === 'mountain_monster7' ||
                     this.monsterId === 'swamp_monster7' ||
+                    this.monsterId === 'beach_monster7' ||
                     this.monsterId === 'farmland_monster7'
                     ) {
                         const val = this.getRandomValue(300,500);
@@ -140,6 +147,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster8' ||
                     this.monsterId === 'mountain_monster8' ||
                     this.monsterId === 'swamp_monster8' ||
+                    this.monsterId === 'beach_monster8' ||
                     this.monsterId === 'farmland_monster8'
                     ) {
                         const val = this.getRandomValue(400,600);
@@ -160,6 +168,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster9' ||
                     this.monsterId === 'mountain_monster9' ||
                     this.monsterId === 'swamp_monster9' ||
+                    this.monsterId === 'beach_monster9' ||
                     this.monsterId === 'farmland_monster9'
                     ) {
                         const val = this.getRandomValue(500,700);
@@ -180,6 +189,7 @@ export const useLootStore =
                     this.monsterId === 'marshes_monster10' ||
                     this.monsterId === 'mountain_monster10' ||
                     this.monsterId === 'swamp_monster10' ||
+                    this.monsterId === 'beach_monster10' ||
                     this.monsterId === 'farmland_monster10'
                     ) {
                         const val = this.getRandomValue(700,10000);
@@ -4130,7 +4140,7 @@ export const useLootStore =
 // farmland monsters
                 else if (this.monsterId === 'farmland_monster1') {
                     const val = this.getRandomValue(1,3);
-                    console.log('swamp monster loot val: ' + val);
+                    console.log('farmland monster loot val: ' + val);
                     if (val <= 1) {
                         this.lootList.push(
                             {
@@ -4138,7 +4148,7 @@ export const useLootStore =
                                 itemSlot: 'null',
                                 itemUse: 'null',
                                 itemShop: 'Magic, Oddities',
-                                name: 'Green chicken',
+                                name: 'Green Chicken',
                                 description:"That doesn't look right ...",
                                 value: '?',
                                 price: 50,
@@ -4217,7 +4227,7 @@ export const useLootStore =
                                 id: this.getRandomValue(1, 100000),
                                 itemSlot: 'null',
                                 itemUse: 'null',
-                                itemShop: 'Apothecary, Tavern, Oddities, Magic, Tavern',
+                                itemShop: 'Apothecary, Tavern, Oddities, Magic',
                                 name: "Zombie's Hand Mushroom",
                                 description:"People really eat this?!",
                                 value: '?',
@@ -4717,6 +4727,578 @@ export const useLootStore =
                     this.getPotionDrop();
                     this.getPotionDrop();
                 } 
+// beach monsters
+                else if (this.monsterId === 'beach_monster1') {
+                    const val = this.getRandomValue(1,3);
+                    console.log('beach monster loot val: ' + val);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities, Apothecary, Tavern',
+                                name: 'Jelly Stinger',
+                                description:"Ouch!",
+                                value: '?',
+                                price: 50,
+                                imageSrc: require('../assets/images/beach/beach_monster_1_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'beach_monster2') {
+                    const val = this.getRandomValue(1,2);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Tavern',
+                                name: "Sanded Blubber",
+                                description: "Supposedly, this stuff is tasty?",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_2_treasure.png'), 
+                            },
+                        );
+                    } 
+                }
+                else if (this.monsterId === 'beach_monster3') {
+                    const val = this.getRandomValue(1,3);
+                    if (val === 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_helm',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Magic, Oddities',
+                                name: 'Coral Crown',
+                                description:"Lovely - but it gets tangled in my hair pretty easily.",
+                                value: '?',
+                                attack: this.getRandomValue(1,15),
+                                defense: this.getRandomValue(10,25),
+                                strength: 0,
+                                life: this.getRandomValue(5,25),
+                                mana: 0,
+                                intelligence: 0,
+                                price: 150,
+                                imageSrc: require('../assets/images/beach/beach_monster_3_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_armor',
+                                itemUse: 'null',
+                                itemShop: 'Blacksmith, Oddities, Magic',
+                                name: "Shell Armor",
+                                description: "This is really supposed to protect me?",
+                                value: '?',
+                                attack: 0,
+                                defense: this.getRandomValue(10,30),
+                                strength: 0,
+                                life: 0,
+                                mana: 10,
+                                intelligence: 0,
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_3_treasure2.png'), 
+                            }
+                        )
+                    }
+                } 
+                else if (this.monsterId === 'beach_monster4') {
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Tavern',
+                                name: "Crab meat",
+                                description:"I need some garlic butter- now!",
+                                value: '?',
+                                price: 250,
+                                imageSrc: require('../assets/images/beach/beach_monster_4_treasure.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Oddities, Magic, Armory, Blacksmith',
+                                name: "Burrowing Crab Shell",
+                                description:"Hard but flexible, and heat resistant",
+                                value: '?',
+                                price: 250,
+                                imageSrc: require('../assets/images/beach/beach_monster_4_treasure2.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    if (val2 <= 1) {
+                        this.getBeachGems();
+                    }
+                } 
+                else if (this.monsterId === 'beach_monster5') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Oddities',
+                            name: "Coral Dagger",
+                            description: "Tiny but super-sharp!",
+                            value: '?',
+                            attack: 20,
+                            defense: 0,
+                            strength: 2,
+                            life: 0,
+                            mana: 0,
+                            intelligence: 0,
+                            price: 600,
+                            imageSrc: require('../assets/images/beach/beach_monster_5_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Oddities, Magic, Apothecary, Tavern',
+                                name: "Sea Monkey Fins",
+                                description: "Useful in both potions and soup broths!",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_5_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Apothecary, Oddities',
+                                name: "Sea Monkey Venom",
+                                description: "Figures those things were venomous",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_5_treasure3.png'), 
+                            }
+                        )
+                    }
+                    const val2 = this.getRandomValue(1,4);
+                    console.log('val2 = ' + val2);
+                    if (val2 <= 1) {
+                        this.getBeachHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'beach_monster6') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: "Selkie Coat",
+                            description: "Soft, enchanted, and just a wee bit disturbing",
+                            value: '?',
+                            price: 600,
+                            imageSrc: require('../assets/images/beach/beach_monster_6_treasure.png'), 
+                        }
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_necklace',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Magic, Oddities',
+                                name: "Shell necklace",
+                                description:"Looks innocent, but is really pretty powerful",
+                                value: '?',
+                                attack: 0,
+                                defense: this.getRandomValue(10,25),
+                                strength: 2,
+                                life: this.getRandomValue(5,25),
+                                mana: this.getRandomValue(5,25),
+                                intelligence: 5,
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_6_treasure2.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities',
+                                name: "Selkie magic",
+                                description:"Seal magic",
+                                value: '?',
+                                price: 600,
+                                imageSrc: require('../assets/images/beach/beach_monster_6_treasure3.png'), 
+                            }
+                        )
+                    }
+                    this.getBeachGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getBeachHerbs();
+                    } else (this.getBeachGems())
+                } 
+                else if (this.monsterId === 'beach_monster7') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Oddities, Magic',
+                            name: "Sea Spear",
+                            description:"Looks like metal, smells like seaweed",
+                            value: '?',
+                            attack: this.getRandomValue(10,25),
+                            defense: this.getRandomValue(10,25),
+                            strength: 0,
+                            life: 0,
+                            mana: this.getRandomValue(5,25),
+                            intelligence: 0,
+                            price: 900,
+                            imageSrc: require('../assets/images/beach/beach_monster_7_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itemShop: 'Oddities, Magic, Blacksmith',
+                            name: "Sea Warrior's Helm",
+                            description:"Fits like a glove ... for your head",
+                            value: '?',
+                            price: 900,
+                            imageSrc: require('../assets/images/beach/beach_monster_7_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,4);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities, Tavern ',
+                                name: 'Ichtyocentaur Tail',
+                                description:"It's basically all cartilidge",
+                                value: '?',
+                                price: 900,
+                                imageSrc: require('../assets/images/beach/beach_monster_7_treasure3.png'), 
+                            },
+                        );
+                    } else if (val <= 2) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'horse_bag',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Oddities',
+                                name: 'Seaweed Saddlebag',
+                                description:"Increases your holding capacity by 20% - and makes all your things smell like seaweed!",
+                                value: '?',
+                                carryBonus: 2,
+                                price: 900,
+                                imageSrc: require('../assets/images/beach/beach_monster_7_treasure4.png'), 
+                            }
+                        )
+                    } else {
+                        const val2 = this.getRandomValue(1,4);
+                        if (val2 <= 1) {
+                            this.getBeachGems();
+                            this.getBeachGems();
+                        } else if (val2 <=2) {
+                            this.getBeachHerbs();
+                            this.getBeachHerbs();
+                        } else (this.getBeachGems(), this.getBeachHerbs())
+                    }
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'beach_monster8') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Magic, Apothecary, Oddities',
+                            name: "Makara Ivory",
+                            description:"Useful item for crafting lots of things",
+                            value: '?',
+                            price: 1200,
+                            imageSrc: require('../assets/images/beach/beach_monster_8_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Oddities, Tavern',
+                            name: "Makara Tentacles",
+                            description:"Delicious when steamed",
+                            value: '?',
+                            price: 1200,
+                            imageSrc: require('../assets/images/beach/beach_monster_8_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities',
+                                name: "Elderich essence",
+                                description: "Looks, smells, feels very very old",
+                                value: '?',
+                                price: 1200,
+                                imageSrc: require('../assets/images/beach/beach_monster_8_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities, Tavern, Apothecary',
+                                name: 'Makara oil',
+                                description:"Use this and all your recipes will taste like genuine elderich Makara!",
+                                value: '?',
+                                price: 1200,
+                                imageSrc: require('../assets/images/beach/beach_monster_8_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getBeachGems();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.getBeachHerbs();
+                    }
+                } 
+                else if (this.monsterId === 'beach_monster9') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Magic, Oddities, Blacksmith, Apothecary',
+                            name: "Cetus Scales",
+                            description:"Glittery and magical",
+                            value: '?',
+                            price: 1650,
+                            imageSrc: require('../assets/images/beach/beach_monster_9_treasure.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_shield',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Armory',
+                            name: "Cetus Shield",
+                            description:"It even has a little ocean dragon on it in case you forgot where it came from!",
+                            value: '?',
+                            attack: 0,
+                            defense: this.getRandomValue(5,20),
+                            strength: 4,
+                            life: this.getRandomValue(10,25),
+                            mana: this.getRandomValue(5,30),
+                            intelligence: 0,
+                            price: 1650,
+                            imageSrc: require('../assets/images/beach/beach_monster_9_treasure2.png'), 
+                        },
+                    )
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Apothecary, Tavern',
+                                name: 'Cetus Steak',
+                                description:"Eat it before it eats you!",
+                                value: '?',
+                                price: 1650,
+                                imageSrc: require('../assets/images/beach/beach_monster_9_treasure3.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Apothecary, Magic, Oddities',
+                                name: 'Sea Power',
+                                description:"A bottle full of ocean magic.",
+                                value: '?',
+                                price: 1650,
+                                imageSrc: require('../assets/images/beach/beach_monster_9_treasure4.png'), 
+                            }
+                        )
+                    }
+                    this.getBeachHerbs();
+                    const val2 = this.getRandomValue(1,3);
+                    if (val2 <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'null',
+                                itemShop: 'Magic, Oddities, Apothecary',
+                                name: 'Eye of Cetus',
+                                description: "Can an eye look annoyed?  Because it looks annoyed.",
+                                value: '?',
+                                price: 1800,
+                                imageSrc: require('../assets/images/beach/beach_monster_9_treasure5.png'),
+                              },
+                        )
+                    } else (this.getBeachGems())
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
+                else if (this.monsterId === 'beach_monster10') {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_necklace',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Armory, Oddities',
+                            name: "Ocean's Collar",
+                            description: "Answers the question of how do you collar the ocean",
+                            value: '?',
+                            attack: 0,
+                            defense: this.getRandomValue(10,25),
+                            strength: 0,
+                            life: this.getRandomValue(5,25),
+                            mana: this.getRandomValue(10,40),
+                            intelligence: this.getRandomValue(5,20),
+                            price: 2800,
+                            imageSrc: require('../assets/images/beach/beach_monster_10_treasure.png'),
+                          },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Magic, Oddities',
+                            name: "Sword of Calypso",
+                            description:"Just oozing with ocean mist",
+                            value: '?',
+                            attack: this.getRandomValue(15,40),
+                            defense: this.getRandomValue(10,25),
+                            strength: 0,
+                            life: this.getRandomValue(5,25),
+                            mana: this.getRandomValue(10,30),
+                            intelligence: 0,
+                            price: 2250,
+                            imageSrc: require('../assets/images/beach/beach_monster_10_treasure2.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Oddities, Magic, Apothecary',
+                            name: "Storm at Sea",
+                            description:"Wet and angry",
+                            value: '?',
+                            price: 2250,
+                            imageSrc: require('../assets/images/beach/beach_monster_10_treasure3.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'player_helm',
+                            itemUse: 'null',
+                            itemShop: 'Oddities, Magic, Blacksmith',
+                            name: "Crown of Wisdom",
+                            description:"Look at you, smartypants!",
+                            value: '?',
+                            attack: 0,
+                            defense: 0,
+                            strength: 0,
+                            life: 0,
+                            mana: this.getRandomValue(10,20),
+                            intelligence: this.getRandomValue(15,40),
+                            price: 2250,
+                            imageSrc: require('../assets/images/beach/beach_monster_10_treasure4.png'), 
+                        },
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Magic, Oddities',
+                            name: "Book of the Sea",
+                            description:"Wonder what would happen if I read it?",
+                            value: '?',
+                            price: 2250,
+                            imageSrc: require('../assets/images/beach/beach_monster_10_treasure5.png'), 
+                        },
+                    )
+                    this.getBeachGems();
+                    this.getBeachGems();
+                    this.getBeachGems();
+                    const val = this.getRandomValue(1,3);
+                    if (val <= 1) {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'player_sword',
+                                itemUse: 'null',
+                                itemShop: 'Armory, Blacksmith, Magic, Oddities',
+                                name: "Calypso's Staff",
+                                description: "Guess this means she was a wizard?",
+                                value: '?',
+                                attack: this.getRandomValue(10,30),
+                                defense: this.getRandomValue(15,35),
+                                strength: this.getRandomValue(2,8),
+                                life: (this.getRandomValue(5,30)*-1),
+                                mana: this.getRandomValue(10,40),
+                                intelligence: 0,
+                                price: 2250,
+                                imageSrc: require('../assets/images/beach/beach_monster_10_treasure6.png'), 
+                            },
+                        );
+                    } else {
+                        this.lootList.push(
+                            {
+                                id: this.getRandomValue(1, 100000),
+                                itemSlot: 'null',
+                                itemUse: 'health',
+                                itemShop: 'Apothecary, Magic, Oddities, Tavern',
+                                name: "Immortal's Wine",
+                                description: "What would happen if I drank this?",
+                                value: '?',
+                                attack: 0,
+                                defense: 0,
+                                strength: 0,
+                                life: 30,
+                                mana: 0,
+                                intelligence: 0,
+                                price: 2644,
+                                imageSrc: require('../assets/images/beach/beach_monster_10_treasure7.png'), 
+                            }
+                        )
+                    }
+                    this.getBeachHerbs();
+                    this.getBeachHerbs();                    
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                    this.getPotionDrop();
+                } 
             },
 
             getDesertGems() {
@@ -5103,6 +5685,54 @@ export const useLootStore =
                 }
             },
 
+            getBeachGems() {
+                const val = this.getRandomValue(1,4);
+                console.log('random gem number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: 'Seaglass',
+                            description: "Seems to glow with an internal light",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/beach/beach_gem_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: 'Saltwater Pearl',
+                            description: "Perfectly spherical",
+                            value: '?',
+                            price: 3000,
+                            imageSrc: require('../assets/images/beach/beach_gem_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Armory, Blacksmith, Oddities, Magic',
+                            name: "Seaheart",
+                            description: "It even feels like it has a heartbeat",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/beach/beach_gem_3.png')
+                        }
+                    )
+                }
+            },
+
             getDesertHerbs() {
                 const val = this.getRandomValue(1,4);
                 console.log('random herb number:' + val)
@@ -5482,6 +6112,54 @@ export const useLootStore =
                             value: '?',
                             price: 5000,
                             imageSrc: require('../assets/images/farmland/farmland_herb_3.png')
+                        }
+                    )
+                }
+            },
+
+            getBeachHerbs() {
+                const val = this.getRandomValue(1,4);
+                console.log('random herb number:' + val)
+                if (val <= 1) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Sea Grape',
+                            description: "Salty and sweet - a delightful combo.",
+                            value: '?',
+                            price: 2000,
+                            imageSrc: require('../assets/images/beach/beach_herb_1.png')
+                        },
+                    );
+                } else if (val <= 2) {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Sand Palm',
+                            description: "Adds good drainage to spells.",
+                            value: '?',
+                            price: 4000,
+                            imageSrc: require('../assets/images/beach/beach_herb_2.png')
+                        }
+                    )
+                } else {
+                    this.lootList.push(
+                        {
+                            id: this.getRandomValue(1, 100000),
+                            itemSlot: 'null',
+                            itemUse: 'null',
+                            itemShop: 'Apothecary, Tavern, Magic, Oddities',
+                            name: 'Hibiscus',
+                            description: "Healing and floral.",
+                            value: '?',
+                            price: 5000,
+                            imageSrc: require('../assets/images/beach/beach_herb_3.png')
                         }
                     )
                 }

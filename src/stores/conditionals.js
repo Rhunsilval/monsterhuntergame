@@ -7,6 +7,10 @@ export const useConditionalsStore =
             worldMap: {
                 basicMap: true,
                 expandedMap: false,
+                mountainsAvailable: false,
+                grasslandsAvailable: false,
+                beachAvailable: false,
+                desertAvailable: false,
             },
             villageBank:{ 
                 accountOpen: false,
@@ -18,8 +22,10 @@ export const useConditionalsStore =
             },
             huntersGuild: {
                 questAccepted: false,
-                collect7QuestAvailable: true,
+                grossStew1QuestAvailable: true,
+                collect9QuestAvailable: true,
                 fireRiverDrakeQuestAvailalbe: true,
+                
             },
             bigDawgPub: {
                 drunkardQuestAccepted: false, 

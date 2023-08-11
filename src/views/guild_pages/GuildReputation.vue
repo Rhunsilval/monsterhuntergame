@@ -249,4 +249,7 @@
     .farmland {
         color: #8a3324
     }
+    .beach {
+        color: #cdaa6e
+    }
 </style>

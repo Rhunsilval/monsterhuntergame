@@ -18,7 +18,7 @@
           <div><p></p></div>
           <div><p></p></div>
           <div class="flex justify-center"> 
-              <router-link :to="'/map_mountains'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+              <router-link v-if="conditionalStore.worldMap.mountainsAvailable" :to="'/map_mountains'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/mountains/Mountains.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -63,7 +63,7 @@
           <div><p></p></div>
 
           <div class="flex justify-center"> 
-              <router-link :to="'/map_grassland'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+              <router-link v-if="conditionalStore.worldMap.grasslandsAvailable" :to="'/map_grassland'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/grassland/Grassland.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -85,7 +85,7 @@
           </div>
           <div><p></p></div>
           <div class="flex justify-center"> 
-              <router-link :to="'/map_mountains'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+              <router-link v-if="conditionalStore.worldMap.beachAvailable" :to="'/map_beach'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/beach/Beach.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -130,7 +130,7 @@
           <div><p></p></div>
           <div><p></p></div>
           <div class="flex justify-center mb-20"> 
-              <router-link :to="'/map_desert'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+              <router-link v-if="conditionalStore.worldMap.desertAvailable" :to="'/map_desert'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/desert/Desert.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>

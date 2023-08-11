@@ -288,9 +288,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="acceptQuest1A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption7A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
                             I'll do it!</button>
-                        <button @click="conversationOption7" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption7B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
                             What's in it for me?</button>
                     </div>
                     <div class="mt-3"> 
@@ -302,7 +302,22 @@
         </div>
         
 <!-- conversation option 7 -->
-        <div v-if="option7"> 
+        <div v-if="option7A"> 
+            <div> 
+                <p class="text-xl font-bold">Great!  You know where the desert is, right?</p>
+                <p class="">Go straight south from here and just keep on *hic* walking.  It's a bit further away than the Moving Jungle and ... and Noxus Swamp.</p>
+                <p class="text-lg">But you can't miss it!  Look for the sand.  Lots and lots of sand! </p>
+            </div>
+            <div class="flex justify-center -ml-6 mt-8"> 
+                <div class="grid grid-cols-1 align-middle"> 
+                    <div class=""> 
+                        <button @click="acceptQuest1A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                            Okay!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="option7B"> 
             <div> 
                 <p class="text-xl font-bold">What do you mean 'what's in it for you'?</p>
                 <p class="">It's not about the *hic* ... the money!  It's about the principle!  It's about the TRUTH!!</p>
@@ -313,7 +328,7 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="acceptQuest1B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption8" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
                             I accept.</button>
                         <button @click="endConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
                             No, thanks.</button>
@@ -324,6 +339,24 @@
                     </div>
                 </div>
             </div> 
+        </div>
+
+<!-- conversation option 8 -->
+        <div v-if="option8"> 
+            <div> 
+                <p class="text-xl font-bold">Fine.  You know where the desert is, right?</p>
+                <p class="">Go straight south from here and just keep on *hic* walking.</p>
+                <p class="">It's a bit further away than the Moving Jungle and ... and Noxus Swamp.</p>
+                <p class="">But you can't miss it!  Look for the sand.  Lots and lots of sand! </p>
+            </div>
+            <div class="flex justify-center -ml-6 mt-8"> 
+                <div class="grid grid-cols-1 align-middle"> 
+                    <div class=""> 
+                        <button @click="acceptQuest1B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                            Fine.</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         
@@ -428,10 +461,21 @@
         option6.value = true;
     }
 
-    const option7 = ref(false);
-    function conversationOption7() {
+    const option7A = ref(false);
+    const option7B = ref(false);
+    function conversationOption7A() {
         option6.value = false;
-        option7.value = true;
+        option7A.value = true;
+    }
+    function conversationOption7B() {
+        option6.value = false;
+        option7B.value = true;
+    }
+    
+    const option8 = ref(false);
+    function conversationOption8() {
+        option7B.value = false;
+        option8.value = true;
     }
 
     let drunkardQuest1 = questStore.quests.find(quest => quest.id === 'drunkardQuest1');
@@ -440,6 +484,7 @@
         conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
         conditionalStore.conversationsDrunkard.drunkardQuest1Activated = true;
         conditionalStore.conversationsDrunkard.convo1Available = false;
+        conditionalStore.worldMap.desertAvailable = true;
         drunkardQuest1.active = true;
         drunkardQuest1.playerXP = 300;
         drunkardQuest1.coins = 300;
@@ -451,6 +496,7 @@
         conditionalStore.bigDawgPub.drunkardQuestAccepted = true;
         conditionalStore.conversationsDrunkard.drunkardQuest1Activated = true;
         conditionalStore.conversationsDrunkard.convo1Available = false;
+        conditionalStore.worldMap.desertAvailable = true;
         drunkardQuest1.active = true;
         drunkardQuest1.coins = 300;
         playerStore.playerActiveQuests.push(drunkardQuest1);
