@@ -12,6 +12,10 @@ export const useConditionalsStore =
                 beachAvailable: false,
                 desertAvailable: false,
             },
+            monsterFighter: {
+                healingCharmAvailable: false,
+                attackCharmAvailalbe: false,
+            },
             villageBank:{ 
                 accountOpen: false,
             },
@@ -19,6 +23,8 @@ export const useConditionalsStore =
                 questCompleted: true,
                 questInProgress: false,
                 questNeedsStarting: true,
+                healing1CharmLearned: false,
+                attack1CharmLearned: false,
             },
             huntersGuild: {
                 questAccepted: false,

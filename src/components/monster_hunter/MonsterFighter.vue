@@ -149,10 +149,10 @@
                 <div class="mt-2" >
                     <button @click="emitattackMonster()" class="mr-2 text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 ">
                         Fight </button>                     
-                    <button @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >
+                    <button v-if="conditionalStore.monsterFighter.healingCharmAvailable" @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >
                         Heal</button>
                 </div>
-                <div v-if="props.specialAttackAvailable" class="mt-2" >
+                <div v-if="props.specialAttackAvailable && conditionalStore.monsterFighter.attackCharmAvailalbe" class="mt-2" >
                     <button @click="emitspecialAttack()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >
                         Special Attack!</button>
                 </div>
@@ -294,6 +294,7 @@
     import { ref, computed } from 'vue';
     import { usePlayerStore } from '@/stores/player';
     import { useMonsterStore } from '@/stores/monster';
+    import { useConditionalsStore } from '@/stores/conditionals';
 
     const props = defineProps({
         specialAttackAvailable: {},
@@ -310,6 +311,7 @@
 
     const playerStore = usePlayerStore();
     const monsterStore = useMonsterStore();
+    const conditionalStore = useConditionalsStore();
 
     const playerHealthPercentage = computed(function () {
         return (100 * playerStore.playerActiveHealth)/playerStore.playerHealth;
