@@ -45,7 +45,7 @@ export const useLootStore =
                     this.monsterId === 'beach_monster2' ||
                     this.monsterId === 'beach_monster3' 
                     ) {
-                        const val = this.getRandomValue(1,100);
+                        const val = this.getRandomValue(1,150);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',
@@ -66,7 +66,7 @@ export const useLootStore =
                     this.monsterId === 'beach_monster4' ||
                     this.monsterId === 'farmland_monster4'
                     ) {
-                        const val = this.getRandomValue(50,150);
+                        const val = this.getRandomValue(50,200);
                         this.lootCoins.push(
                             {
                                 id: 'looted_coins',

@@ -171,12 +171,14 @@
   import { usePlayerStore } from '@/stores/player'
   import { useMonsterStore } from '@/stores/monster'
   import { useLootStore } from '@/stores/loot'
+  // import { useConditionalsStore } from '@/stores/conditionals'
   import MonsterFighter from './MonsterFighter.vue'
   import BattleLog from './BattleLog.vue'
   import TheWinner from './TheWinner.vue'
 
   const playerStore = usePlayerStore();
   const monsterStore = useMonsterStore();
+  // const conditionalStore = useConditionalsStore();
   const lootStore = useLootStore();
   const props = defineProps({
     mapName: {
@@ -1204,14 +1206,18 @@
   function specialAttackMonster() {
     currentRound.value = 0;
     monsterRound.value = monsterRound.value + 1;
-    const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
-        playerStore.playerXP += attackValue;    // to gain XP
-    playerStore.playerTotalXP += attackValue;   // to keep track of XP
+    let attackValue = ref(0)
+    if(playerStore.attack1Charm) {
+      attackValue.value = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+    } 
+    
+    playerStore.playerXP += attackValue.value;    // to gain XP
+    playerStore.playerTotalXP += attackValue.value;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();
     playerStore.playerActiveMana -= (getRandomValue(1,20));
-    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
-    addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue.value));
+    addLogEntry('player', 'uses special-attack', attackValue.value, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -1274,20 +1280,28 @@
   function healPlayer() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
-    const healValue = getRandomValue(10, 25);
-    if (playerStore.playerActiveHealth + healValue > playerStore.playerHealth) {
+    let healValue = ref(0);
+    if (playerStore.healing1Charm) {
+      healValue.value = getRandomValue(10, 25);
+    }
+
+    if (playerStore.playerActiveHealth + healValue.value > playerStore.playerHealth) {
       playerStore.playerActiveHealth = playerStore.playerHealth;
     } else {
-      playerStore.playerActiveHealth += healValue;
+      playerStore.playerActiveHealth += healValue.value;
     }
-    const manaUse = getRandomValue(1,5);
-    // const manaUse = 80;
-    if (playerStore.playerActiveMana - manaUse < 0) {
+    
+    let manaUse = ref(0);
+    if (playerStore.healing1Charm) {
+      manaUse.value = getRandomValue(3,6);
+    }
+
+    if (playerStore.playerActiveMana - manaUse.value < 0) {
       playerStore.playerActiveMana = 0;
     } else (
-      playerStore.playerActiveMana = playerStore.playerActiveMana - manaUse
+      playerStore.playerActiveMana = playerStore.playerActiveMana - manaUse.value
     )
-    addLogEntry('player', 'heals', healValue);
+    addLogEntry('player', 'heals', healValue.value);
     attackPlayer();
     if (playerStore.playerActiveHealth < 0) {
       playerStore.playerActiveHealth = 0;

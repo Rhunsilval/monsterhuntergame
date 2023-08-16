@@ -18,6 +18,7 @@ export const usePlayerStore =
             neededHealthXP: 500,
             healthPrice: 1000,
             healthPerSec: .1,           // Fortitude - how fast player heals for not-working autoheal
+            healing1Charm: false,       // a learned healing charm used in battle
 
             playerActiveMana: 100,
             playerMana: 100,
@@ -30,8 +31,8 @@ export const usePlayerStore =
             manaPrice: 1000,
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
-            playerAttack: 100,
-            playerBaseAttack: 100,    // default max
+            playerAttack: 1,
+            playerBaseAttack: 1,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -39,9 +40,10 @@ export const usePlayerStore =
             attackXP: 0,
             neededAttackXP: 1000,
             attackPrice: 100,
+            attack1Charm: false,    // a learned charged attack charm used in battle
 
-            playerDefense: 100,
-            playerBaseDefense: 100,
+            playerDefense: 1,
+            playerBaseDefense: 1,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -50,8 +52,8 @@ export const usePlayerStore =
             neededDefenseXP: 1000,
             defensePrice: 100,            
             
-            playerStrength: 100,
-            playerBaseStrength: 100,
+            playerStrength: 1,
+            playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,

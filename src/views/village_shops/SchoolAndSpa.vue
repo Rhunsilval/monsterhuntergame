@@ -390,7 +390,7 @@
 <!-- charm school active -->
     <div v-if="charmSchool" class="bg-[url('../assets/images/village_school/school_library.png')] bg-contain"> > 
         <school-charm
-            @emit-return-to-lobby="returnToLobby"
+            @emit-return-to-school="returnToSchool2"
         ></school-charm>
     </div>
 
@@ -427,6 +427,16 @@
         spaOptionsAvailable.value = true;
         noFunds.value = false;
         inschool.value = false;
+        charmSchool.value = false;
+        craftItemSchool.value = false;
+        craftPotionSchool.value = false;
+    }
+    function returnToSchool2() {
+        inLobby.value = false;
+        inSpa.value = false;
+        spaOptionsAvailable.value = true;
+        noFunds.value = false;
+        inschool.value = true;
         charmSchool.value = false;
         craftItemSchool.value = false;
         craftPotionSchool.value = false;
