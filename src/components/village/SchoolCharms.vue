@@ -6,7 +6,7 @@
                 <div class="text-center my-3 flex justify-center"> 
                     <p class="text-2xl font-serif bg-white pt-5 pb-2 mt-5 w-3/4 rounded-full">Healing Charms:</p>
                 </div>
-                <div v-if="conditionalStore.matildaSchool.healing1CharmLearned === false" class="mx-3">
+                <div v-if="conditionalStore.matildaSchool.healing1CharmAvailable" class="mx-3">
                     <button @click="attemptBuyHealing1Charm" class="bg-white border border-gray-500 hover:bg-gray-500 hover:opacity-50"> 
                         <div class="grid grid-cols-2"> 
                             <div class="flex justify-center"> 
@@ -64,7 +64,7 @@
                 <div class="text-center my-3 flex justify-center "> 
                     <p class="text-2xl font-serif bg-white pt-5 pb-2 w-3/4 rounded-full">Attack Charms:</p>
                 </div>
-                <div v-if="conditionalStore.matildaSchool.attack1CharmLearned === false" class="mx-3">
+                <div v-if="conditionalStore.matildaSchool.attack1CharmAvailable" class="mx-3">
                     <button class="bg-white border border-gray-500 hover:bg-gray-500 hover:opacity-50"> 
                         <div @click="attemptBuyAttack1Charm" class="grid grid-cols-2"> 
                             <div class="flex justify-center"> 
@@ -204,7 +204,7 @@
                 <div class="text-center my-3 flex justify-center"> 
                     <p class="text-2xl font-serif bg-white pt-5 pb-2 w-3/4 rounded-full">Defense Charms:</p>
                 </div>
-                <div v-if="conditionalStore.matildaSchool.defense1CharmLearned === false" class="mx-3">
+                <div v-if="conditionalStore.matildaSchool.defense1CharmAvailable" class="mx-3">
                     <button class="bg-white border border-gray-500 hover:bg-gray-500 hover:opacity-50"> 
                         <div @click="attemptBuyDefense1Charm" class="grid grid-cols-2"> 
                             <div class="flex justify-center"> 
@@ -305,7 +305,7 @@
     }
     function buyHealing1Charm() {
         playerStore.coinOnHand = (playerStore.coinOnHand - 100);
-        conditionalStore.matildaSchool.healing1CharmLearned = true;
+        conditionalStore.matildaSchool.healing1CharmAvailable = false;
         conditionalStore.matildaSchool.healing2CharmAvailable = true;
         conditionalStore.monsterFighter.healingCharmAvailable = true;
         playerStore.healing1Charm = true;
@@ -374,7 +374,7 @@
     }
     function buyAttack1Charm() {
         playerStore.coinOnHand = (playerStore.coinOnHand - 100);
-        conditionalStore.matildaSchool.attack1CharmLearned = true;
+        conditionalStore.matildaSchool.attack1CharmAvailable = false;
         conditionalStore.matildaSchool.attack2CharmAvailable = true;
         conditionalStore.monsterFighter.attackCharmAvailalbe = true;
         playerStore.attack1Charm = true;
@@ -443,7 +443,7 @@
     }
     function buyDefense1Charm() {
         playerStore.coinOnHand = (playerStore.coinOnHand - 500);
-        conditionalStore.matildaSchool.defense1CharmLearned = true;
+        conditionalStore.matildaSchool.defense1CharmAvailable = false;
         conditionalStore.matildaSchool.defense2CharmAvailable = true;
         conditionalStore.monsterFighter.defenseCharmAvailable = true;
         playerStore.defense1Charm = true;
