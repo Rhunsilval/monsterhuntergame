@@ -15,6 +15,7 @@ export const useConditionalsStore =
             monsterFighter: {
                 healingCharmAvailable: false,
                 attackCharmAvailalbe: false,
+                defenseCharmAvailable: false,
             },
             villageBank:{ 
                 accountOpen: false,
@@ -24,7 +25,15 @@ export const useConditionalsStore =
                 questInProgress: false,
                 questNeedsStarting: true,
                 healing1CharmLearned: false,
+                healing2CharmAvailable: false,
+                healing3CharmAvailable: false,
                 attack1CharmLearned: false,
+                attack2CharmAvailable: false,
+                attack3CharmAvailable: false,
+                defense1CharmLearned: false,
+                defense2CharmAvailable: false,
+                defense3CharmAvailable: false,
+
             },
             huntersGuild: {
                 questAccepted: false,
