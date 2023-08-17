@@ -141,7 +141,7 @@
                         </div>                    
                     </div>                
                 </div>            
-                <div v-if="insufficicnetFunds" class="flex justify-center"> 
+                <div v-if="insufficientFunds" class="flex justify-center"> 
                     <div class="grid grid-cols-1 text-center mt-5 py-5 px-5"> 
                         <div> 
                             <p class="text-xl">I may be passionate about teaching, <br/> but I don't do it for free.</p> 
@@ -283,14 +283,14 @@
     const conditionalStore = useConditionalsStore();
     const playerStore = usePlayerStore();
     const welcomeScript = ref(true);
-    const insufficicnetFunds = ref(false);
+    const insufficientFunds = ref(false);
     const insufficientIntel = ref(false);
 
 
     function attemptBuyHealing1Charm() {
         if (playerStore.coinOnHand - 100 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyHealing1CharmIntel();
         }
@@ -313,7 +313,7 @@
     function attemptBuyHealing2Charm() {
         if (playerStore.coinOnHand - 1000 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyHealing2CharmIntel();
         }
@@ -336,7 +336,7 @@
     function attemptBuyHealing3Charm() {
         if (playerStore.coinOnHand - 5000 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyHealing3CharmIntel();
         }
@@ -359,7 +359,7 @@
     function attemptBuyAttack1Charm() {
         if (playerStore.coinOnHand - 100 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyAttack1CharmIntel();
         }
@@ -382,7 +382,7 @@
     function attemptBuyAttack2Charm() {
         if (playerStore.coinOnHand - 1500 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyAttack2CharmIntel();
         }
@@ -405,7 +405,7 @@
     function attemptBuyAttack3Charm() {
         if (playerStore.coinOnHand - 7000 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyAttack3CharmIntel();
         }
@@ -428,7 +428,7 @@
     function attemptBuyDefense1Charm() {
         if (playerStore.coinOnHand - 500 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyDefense1CharmIntel();
         }
@@ -451,7 +451,7 @@
     function attemptBuyDefense2Charm() {
         if (playerStore.coinOnHand - 3000 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyDefense2CharmIntel();
         }
@@ -474,7 +474,7 @@
     function attemptBuyDefense3Charm() {
         if (playerStore.coinOnHand - 8000 < 0 ) {
             welcomeScript.value = false;
-            insufficicnetFunds.value = true;
+            insufficientFunds.value = true;
         } else {
             checkBuyDefense3CharmIntel();
         }

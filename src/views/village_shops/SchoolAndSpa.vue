@@ -394,6 +394,13 @@
         ></school-charm>
     </div>
 
+<!-- potions school active -->
+    <div v-if="craftPotionSchool" class="bg-[url('../assets/images/village_school/school_library.png')] bg-contain"> > 
+        <school-potions
+            @emit-return-to-school="returnToSchool2"
+        ></school-potions>
+    </div>
+
 </template>
 
 <script setup> 
@@ -401,6 +408,7 @@
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import QuestRendering from '../../components/guild/QuestRendering.vue';
     import SchoolCharm from '../../components/village/SchoolCharms.vue';
+    import SchoolPotions from '../../components/village/SchoolPotions.vue';
     import { usePlayerStore } from '@/stores/player';
     import { useQuestStore } from '@/stores/quests';
     import { useConditionalsStore } from '@/stores/conditionals'
