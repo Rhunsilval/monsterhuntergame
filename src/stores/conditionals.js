@@ -7,19 +7,31 @@ export const useConditionalsStore =
             worldMap: {
                 basicMap: true,
                 expandedMap: false,
+                mountainsAvailable: false,
+                grasslandsAvailable: false,
+                beachAvailable: false,
+                desertAvailable: false,
+            },
+            monsterFighter: {
+                healingCharmAvailable: false,
+                attackCharmAvailalbe: false,
             },
             villageBank:{ 
                 accountOpen: false,
             },
             matildaSchool: {
-                questCompleted: false,
+                questCompleted: true,
                 questInProgress: false,
                 questNeedsStarting: true,
+                healing1CharmLearned: false,
+                attack1CharmLearned: false,
             },
             huntersGuild: {
                 questAccepted: false,
-                collect7QuestAvailable: true,
+                grossStew1QuestAvailable: true,
+                collect9QuestAvailable: true,
                 fireRiverDrakeQuestAvailalbe: true,
+                
             },
             bigDawgPub: {
                 drunkardQuestAccepted: false, 

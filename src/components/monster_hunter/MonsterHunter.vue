@@ -72,6 +72,7 @@
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
+                    <img v-else-if="mapName==='Calypso Beach'" src="../../assets/images/beach/beach_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster1.png" alt="" class="border border-black h-60  w-60 object-cover" />
                     
                     <p v-if="mapName==='Firesand Desert'">Nothing here but lots of sand</p>  
@@ -81,6 +82,7 @@
                     <p v-else-if="mapName==='Dead Marshes'">Mud and muck and nothing else</p> 
                     <p v-else-if="mapName==='Iron Mountains'">Nothing to see here</p>
                     <p v-else-if="mapName==='Farmlands'">No monsters, but I found corn</p>
+                    <p v-else-if="mapName==='Calypso Beach'">I found a cool shell, but no monsters</p>
                     <p v-else>Nothing interesting here</p> 
                   </div>
                           
@@ -92,6 +94,7 @@
                     <img v-else-if="mapName==='Dead Marshes'" src="../../assets/images/marshes/marshes_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Iron Mountains'" src="../../assets/images/mountains/mountain_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else-if="mapName==='Farmlands'" src="../../assets/images/farmland/farmland_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
+                    <img v-else-if="mapName==='Calypso Beach'" src="../../assets/images/beach/beach_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <img v-else src="../../assets/images/swamp/swamp_nomonster2.png" alt="" class="border border-black h-60 w-60 object-cover" />
                     <p>Nothing here either </p>                            
                   </div>                        
@@ -168,12 +171,14 @@
   import { usePlayerStore } from '@/stores/player'
   import { useMonsterStore } from '@/stores/monster'
   import { useLootStore } from '@/stores/loot'
+  // import { useConditionalsStore } from '@/stores/conditionals'
   import MonsterFighter from './MonsterFighter.vue'
   import BattleLog from './BattleLog.vue'
   import TheWinner from './TheWinner.vue'
 
   const playerStore = usePlayerStore();
   const monsterStore = useMonsterStore();
+  // const conditionalStore = useConditionalsStore();
   const lootStore = useLootStore();
   const props = defineProps({
     mapName: {
@@ -190,7 +195,8 @@
     'Dead Marshes': require('../../assets/images/marshes/Marshes_background.png'),
     'Iron Mountains': require('../../assets/images/mountains/Mountains_background.png'),
     'Noxus Swamp': require('../../assets/images/swamp/Swamp_background.png'),
-    'Farmlands': require('../../assets/images/farmland/Farmland_background.jpg')
+    'Farmlands': require('../../assets/images/farmland/Farmland_background.jpg'),
+    'Calypso Beach': require('../../assets/images/beach/Beach_background.png'),
   }
   function getMapType() {
     return props.mapName;
@@ -1200,14 +1206,18 @@
   function specialAttackMonster() {
     currentRound.value = 0;
     monsterRound.value = monsterRound.value + 1;
-    const attackValue = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
-        playerStore.playerXP += attackValue;    // to gain XP
-    playerStore.playerTotalXP += attackValue;   // to keep track of XP
+    let attackValue = ref(0)
+    if(playerStore.attack1Charm) {
+      attackValue.value = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+    } 
+    
+    playerStore.playerXP += attackValue.value;    // to gain XP
+    playerStore.playerTotalXP += attackValue.value;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();
     playerStore.playerActiveMana -= (getRandomValue(1,20));
-    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue));
-    addLogEntry('player', 'uses special-attack', attackValue, monsterisHit);
+    const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue.value));
+    addLogEntry('player', 'uses special-attack', attackValue.value, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
       monsterStore.monsterHealth = 0;
     } else {
@@ -1270,20 +1280,28 @@
   function healPlayer() {
     currentRound.value = currentRound.value + 1;
     monsterRound.value = monsterRound.value + 1;
-    const healValue = getRandomValue(10, 25);
-    if (playerStore.playerActiveHealth + healValue > playerStore.playerHealth) {
+    let healValue = ref(0);
+    if (playerStore.healing1Charm) {
+      healValue.value = getRandomValue(10, 25);
+    }
+
+    if (playerStore.playerActiveHealth + healValue.value > playerStore.playerHealth) {
       playerStore.playerActiveHealth = playerStore.playerHealth;
     } else {
-      playerStore.playerActiveHealth += healValue;
+      playerStore.playerActiveHealth += healValue.value;
     }
-    const manaUse = getRandomValue(1,5);
-    // const manaUse = 80;
-    if (playerStore.playerActiveMana - manaUse < 0) {
+    
+    let manaUse = ref(0);
+    if (playerStore.healing1Charm) {
+      manaUse.value = getRandomValue(3,6);
+    }
+
+    if (playerStore.playerActiveMana - manaUse.value < 0) {
       playerStore.playerActiveMana = 0;
     } else (
-      playerStore.playerActiveMana = playerStore.playerActiveMana - manaUse
+      playerStore.playerActiveMana = playerStore.playerActiveMana - manaUse.value
     )
-    addLogEntry('player', 'heals', healValue);
+    addLogEntry('player', 'heals', healValue.value);
     attackPlayer();
     if (playerStore.playerActiveHealth < 0) {
       playerStore.playerActiveHealth = 0;

@@ -18,6 +18,7 @@ export const usePlayerStore =
             neededHealthXP: 500,
             healthPrice: 1000,
             healthPerSec: .1,           // Fortitude - how fast player heals for not-working autoheal
+            healing1Charm: false,       // a learned healing charm used in battle
 
             playerActiveMana: 100,
             playerMana: 100,
@@ -30,8 +31,8 @@ export const usePlayerStore =
             manaPrice: 1000,
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
-            playerAttack: 100,
-            playerBaseAttack: 100,    // default max
+            playerAttack: 1,
+            playerBaseAttack: 1,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -39,9 +40,10 @@ export const usePlayerStore =
             attackXP: 0,
             neededAttackXP: 1000,
             attackPrice: 100,
+            attack1Charm: false,    // a learned charged attack charm used in battle
 
-            playerDefense: 100,
-            playerBaseDefense: 100,
+            playerDefense: 1,
+            playerBaseDefense: 1,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -50,8 +52,8 @@ export const usePlayerStore =
             neededDefenseXP: 1000,
             defensePrice: 100,            
             
-            playerStrength: 100,
-            playerBaseStrength: 100,
+            playerStrength: 1,
+            playerBaseStrength: 1,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,
@@ -639,6 +641,76 @@ export const usePlayerStore =
                     id: 'farmland_monster10',
                     name: 'Headless Horseman',
                     place: 'farmland',
+                    count: 0,
+                    points: 10,
+                },
+                {
+                    id: 'beach_monster1',
+                    name: 'Fathom Jelly',
+                    place: 'beach',
+                    count: 0,
+                    points: 1,
+                },
+                {
+                    id: 'beach_monster2',
+                    name: 'Beach Whale',
+                    place: 'beach',
+                    count: 0,
+                    points: 2,
+                },
+                {
+                    id: 'beach_monster3',
+                    name: 'Nereid',
+                    place: 'beach',
+                    count: 0,
+                    points: 3,
+                },
+                {
+                    id: 'beach_monster4',
+                    name: 'Burrowing Crab',
+                    place: 'beach',
+                    count: 0,
+                    points: 4,
+                },
+                {
+                    id: 'beach_monster5',
+                    name: 'Sea Monkey',
+                    place: 'beach',
+                    count: 0,
+                    points: 5,
+                },
+                {
+                    id: 'beach_monster6',
+                    name: 'Selkie',
+                    place: 'beach',
+                    count: 0,
+                    points: 6,
+                },
+                {
+                    id: 'beach_monster7',
+                    name: 'Ichtyocentaur',
+                    place: 'beach',
+                    count: 0,
+                    points: 7,
+                },
+                {
+                    id: 'beach_monster8',
+                    name: 'Makara',
+                    place: 'beach',
+                    count: 0,
+                    points: 8,
+                },
+                {
+                    id: 'beach_monster9',
+                    name: 'Cetus',
+                    place: 'beach',
+                    count: 0,
+                    points: 9,
+                },
+                {
+                    id: 'beach_monster10',
+                    name: 'Calypso',
+                    place: 'beach',
                     count: 0,
                     points: 10,
                 },

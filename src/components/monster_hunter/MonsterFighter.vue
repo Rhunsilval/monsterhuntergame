@@ -149,10 +149,10 @@
                 <div class="mt-2" >
                     <button @click="emitattackMonster()" class="mr-2 text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 ">
                         Fight </button>                     
-                    <button @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >
+                    <button v-if="conditionalStore.monsterFighter.healingCharmAvailable" @click="emithealPlayer()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5 " >
                         Heal</button>
                 </div>
-                <div v-if="props.specialAttackAvailable" class="mt-2" >
+                <div v-if="props.specialAttackAvailable && conditionalStore.monsterFighter.attackCharmAvailalbe" class="mt-2" >
                     <button @click="emitspecialAttack()" class="text-lg text-white bg-[#305c79] border border-black hover:bg-blue-200 hover:text-black rounded-3xl px-5 py-5" >
                         Special Attack!</button>
                 </div>
@@ -258,6 +258,16 @@
                     <img v-if="monsterStore.monsterId == 'farmland_monster8'" src="../../assets/images/farmland/farmland_monster_8.png" alt="" class="h-56 w-full object-cover object-center" />
                     <img v-if="monsterStore.monsterId == 'farmland_monster9'" src="../../assets/images/farmland/farmland_monster_9.png" alt="" class="h-56 w-full object-cover object-top" />
                     <img v-if="monsterStore.monsterId == 'farmland_monster10'" src="../../assets/images/farmland/farmland_monster_10.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster1'" src="../../assets/images/beach/beach_monster_1.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster2'" src="../../assets/images/beach/beach_monster_2.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster3'" src="../../assets/images/beach/beach_monster_3.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster4'" src="../../assets/images/beach/beach_monster_4.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster5'" src="../../assets/images/beach/beach_monster_5.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster6'" src="../../assets/images/beach/beach_monster_6.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster7'" src="../../assets/images/beach/beach_monster_7.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster8'" src="../../assets/images/beach/beach_monster_8.png" alt="" class="h-56 w-full object-cover object-center" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster9'" src="../../assets/images/beach/beach_monster_9.png" alt="" class="h-56 w-full object-cover object-top" />
+                    <img v-if="monsterStore.monsterId == 'beach_monster10'" src="../../assets/images/beach/beach_monster_10.png" alt="" class="h-56 w-full object-cover object-center" />
                 </div>
             </div>
         
@@ -284,6 +294,7 @@
     import { ref, computed } from 'vue';
     import { usePlayerStore } from '@/stores/player';
     import { useMonsterStore } from '@/stores/monster';
+    import { useConditionalsStore } from '@/stores/conditionals';
 
     const props = defineProps({
         specialAttackAvailable: {},
@@ -300,6 +311,7 @@
 
     const playerStore = usePlayerStore();
     const monsterStore = useMonsterStore();
+    const conditionalStore = useConditionalsStore();
 
     const playerHealthPercentage = computed(function () {
         return (100 * playerStore.playerActiveHealth)/playerStore.playerHealth;
