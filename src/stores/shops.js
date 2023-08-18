@@ -108,7 +108,7 @@ export const useShopStore =
                     id: 'apo_attack_2',
                     itemSlot: 'null',
                     itemUse: 'attacking',
-                    numberOfUses: 3,
+                    numberOfUses: 1,
                     itesmShop: 'Apothecary, Magic',
                     name: 'Tincure of Motivation',
                     description:"Apply this potion and get what you need to succeed.  Lasts for one battle.",

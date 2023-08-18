@@ -632,7 +632,7 @@
             console.log('chosen ID = ' + id);
         }
         chosenItemId.value = id;
-        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);    
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);  
 
         if (chosenItem.value.itemUse === 'null') {
             useshow.value = true;
@@ -695,14 +695,10 @@
                 playerStore.playerHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
-                // playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
-                // playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
 
                 playerStore.playerMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerActiveMana = (playerStore.playerActiveMana + chosenItem.value.mana);
-                // playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
-                // playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
@@ -715,22 +711,20 @@
             }
 
             if (chosenItem.value.itemUse.includes('healing', 'attacking', 'defending', 'strengthening', 'manaing')) {
-                chosenItem.value.numberOfUses = (chosenItem.value.numberOfUses -1);
-            }
-
-            if (chosenItem.value.itemUse.includes('healing', 'attacking', 'defending', 'strengthening', 'manaing') && chosenItem.value.numberOfUses <= 0) {
-                playerStore.playerPacked.splice(x, 1);
-            } 
-            // else (playerStore.playerPacked.splice(x, 1))
-            
-            // playerStore.getAttackValues();
-            // playerStore.getDefenseValues();
-            // playerStore.getStrengthValues();
-            // playerStore.getExtraHealth();
-            // playerStore.getExtraMana();
-            // playerStore.getIntelligenceValues();
+                numberOfUsesUpdate();
+            } else (playerStore.playerPacked.splice(x,1))
         }
-    } 
+    }
+    function numberOfUsesUpdate() {
+        chosenItem.value.numberOfUses -= 1;
+        usedUp();
+    }
+    function usedUp() {
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);
+        if (chosenItem.value.numberOfUses <= 0) {
+            playerStore.playerPacked.splice(x,1);
+        }
+    }
 
 // to drop unwanted items from player inventory
     function dropItem(id) {
