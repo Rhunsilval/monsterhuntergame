@@ -79,7 +79,7 @@ export const usePlayerStore =
             neededIntelligenceXP: 1000,
             intelligencePrice: 500,
             
-            playerLevel: 100,
+            playerLevel: 1,
             playerPoints: 5,    // points to spend on increasing stats
             nextLevel: 2000,
             increase: 2,
