@@ -41,7 +41,8 @@
                     :imageSrc="item.imageSrc"
                     :name="item.name"
                     :description="item.description" 
-                    :value="item.value"                   
+                    :value="item.value" 
+                    :uses="item.numberOfUses"                  
                     @emitEquipItem="checkInventory"
                     @emitUseItem="useItem"
                     @emitDropItem="dropItem"
@@ -662,7 +663,8 @@
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
             }
             else if (chosenItem.value.itemUse === 'attacking') {
-                playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);            
+                playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);
+                playerStore.playerAttack = (playerStore.playerAttack + playerStore.tempAttackBonus);
             } 
             else if (chosenItem.value.itemUse === 'attack') {
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
@@ -711,7 +713,16 @@
                 playerStore.playerIntelligence = (playerStore.playerIntelligence + chosenItem.value.intelligence);
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
-            playerStore.playerPacked.splice(x, 1);
+
+            if (chosenItem.value.itemUse.includes('healing', 'attacking', 'defending', 'strengthening', 'manaing')) {
+                chosenItem.value.numberOfUses = (chosenItem.value.numberOfUses -1);
+            }
+
+            if (chosenItem.value.itemUse.includes('healing', 'attacking', 'defending', 'strengthening', 'manaing') && chosenItem.value.numberOfUses <= 0) {
+                playerStore.playerPacked.splice(x, 1);
+            } 
+            // else (playerStore.playerPacked.splice(x, 1))
+            
             // playerStore.getAttackValues();
             // playerStore.getDefenseValues();
             // playerStore.getStrengthValues();

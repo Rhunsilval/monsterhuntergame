@@ -45,6 +45,16 @@
                           Hunt for Monsters</router-link>
                       </div>
 
+                      <div class="grid grid-cols-2">
+                        <div>
+                          <router-link :to="'/guild_hospital'" type="button" class="ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#ffc0cb] hover:bg-[#de5d83] border border-slate-600 rounded-lg">
+                            <p class="pt-6">Visit Guild Hospital</p></router-link>
+                        </div>
+                        <div>
+                          <button @click="openListModal = !openListModal" type="button" class="-ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
+                            Check Guild Postings</button>
+                        </div>                        
+                      </div> 
                       <div class="grid grid-cols-3 py-5">
                         <div>
                           <router-link :to="'/guild_gym'" type="button" class="px-3 py-3 w-32 h-32 bg-slate-400 hover:bg-slate-600 hover:text-white border border-slate-600 rounded-lg">
@@ -59,16 +69,7 @@
                             Evaluate Personal Reputation</router-link>
                         </div>
                       </div>
-                      <div class="grid grid-cols-2">
-                        <div>
-                          <router-link :to="'/guild_hospital'" type="button" class="ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#ffc0cb] hover:bg-[#de5d83] border border-slate-600 rounded-lg">
-                            <p class="pt-6">Visit Guild Hospital</p></router-link>
-                        </div>
-                        <div>
-                          <button @click="openListModal = !openListModal" type="button" class="-ml-20 mt-3 px-3 py-3 w-32 h-32 bg-[#d2b55b] hover:bg-[#bc9928] border border-slate-600 rounded-lg">
-                            Check Guild Postings</button>
-                        </div>                        
-                      </div>                      
+                                           
                   </div>             
               </div>        
           </div>
