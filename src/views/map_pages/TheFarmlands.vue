@@ -1,9 +1,9 @@
 <template>
-    <the-header></the-header>
+  <the-header></the-header>
   
-    <monster-hunter
+  <monster-hunter
       :mapName="mapName"
-    ></monster-hunter>
+  ></monster-hunter>
   
 </template>
   

@@ -22,7 +22,7 @@ export const usePlayerStore =
             healing2Charm: false,       // a learned healing charm used in battle
             healing3Charm: false,       // a learned healing charm used in battle
 
-            playerActiveMana: 0,
+            playerActiveMana: 100,
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
@@ -33,8 +33,8 @@ export const usePlayerStore =
             manaPrice: 1000,
             manaPerSec: .1,         // how fast player restores mana for not-working autoheal
             
-            playerAttack: 1,
-            playerBaseAttack: 1,    // default max
+            playerAttack: 100,
+            playerBaseAttack: 100,    // default max
             attackBonus: 0,         // from equipped items
             tempAttackBonus: 0,     // from potions etc
             nextAttackLevel: 1000,
@@ -46,8 +46,8 @@ export const usePlayerStore =
             attack2Charm: false,    // a learned charged attack charm used in battle
             attack3Charm: false,    // a learned charged attack charm used in battle
 
-            playerDefense: 1,
-            playerBaseDefense: 1,
+            playerDefense: 100,
+            playerBaseDefense: 100,
             defenseBonus: 0,        // from equipped items
             tempDefenseBonus: 0,    // from potions etc
             nextDefenseLevel: 1000,
@@ -59,8 +59,8 @@ export const usePlayerStore =
             defense2Charm: false,   // a learned background defense bonus
             defense3Charm: false,   // a learned background defense bonus
             
-            playerStrength: 1,
-            playerBaseStrength: 1,
+            playerStrength: 100,
+            playerBaseStrength: 100,
             strengthBonus: 0,       // from equipped items
             tempStrengthBonus: 0,   // from potions etc
             nextStrengthLevel: 1000,

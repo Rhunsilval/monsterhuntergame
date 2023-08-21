@@ -6,7 +6,7 @@
         <div class="flex justify-center pt-16">
             <div class="text-center w-1/2 bg-white bg-opacity-70  flex justify-center pb-3">
                 <div class="pt-16">
-                    <p class="font-extrabold font-serif text-7xl ">{{ mapName }}</p>                
+                    <p class="font-extrabold font-serif text-7xl ">{{ mapName }}</p>
                 </div>             
             </div>        
         </div>
@@ -1566,6 +1566,10 @@
 }
 .swamp {
   background-color: #8b7a32;
+  opacity: .6;
+}
+.farmland {
+  background-color: #82bc71;
   opacity: .6;
 }
 </style>
