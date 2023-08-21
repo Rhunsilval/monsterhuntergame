@@ -21,7 +21,7 @@
                     <button @click="emitLeaveQuest" class="mt-10 px-2 py-2 w-32 border border-gray-500 rounded-xl bg-stone-400 hover:bg-stone-600 hover:text-white text-center">
                         Leave</button>
                 </div>                
-            </div>            
+            </div>
         </div>
         <div v-if="questDone" class="flex justify-center mb-12"> 
             <div class="text-center text-xl font-serif grid grid-cols-1"> 

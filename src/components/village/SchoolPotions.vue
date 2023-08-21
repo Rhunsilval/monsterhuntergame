@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center">
-        <div v-if="makingPotion === false" class="bg-white bg-opacity-70 w-3/4 rounded-3xl">
+        <div v-if="!makingPotion" class="bg-white bg-opacity-70 w-3/4 rounded-3xl">
             <div class="flex justify-center mt-5">
                 <div class="bg-white bg-opacity-70 w-3/4 rounded-full">
                     <div class="flex justify-center mt-5"> 
@@ -93,7 +93,7 @@
                     <div class="mx-3 mb-3 grid grid-cols-4 gap-x-5"> 
                         <button
                             type="button"
-                            @click="makePotion"
+                            @click="makePotion(potion.id2)"
                             v-for="potion in availablePotions"
                             :key="potion.id2" 
                             class=" border border-gray-500 rounded-3xl bg-slate-200 px-2 py-2"
@@ -108,8 +108,11 @@
             </div>
         </div>
 
-        <div v-if="makingPotion" class="bg-white bg-opacity-70 w-3/4 rounded-3xl">
-            <p> TESTING </p>
+        <div v-if="makingPotion" class="bg-white bg-opacity-70 w-3/4 rounded-3xl pb-12 mb-44">
+            <school-potions-making
+                :potion="potion"
+                @emitComeBackLater="comeBackLater"
+            ></school-potions-making>
         </div>
     </div>
 </template>
@@ -119,6 +122,7 @@
     // import { useConditionalsStore } from '@/stores/conditionals'
     import { usePlayerStore } from '@/stores/player';
     import { useCraftingStore } from '@/stores/crafting';
+    import SchoolPotionsMaking from './SchoolPotionsMaking.vue';
 
     const emit = defineEmits([
             'emit-returnTo-Lobby',
@@ -174,7 +178,21 @@
         chosenLesson.value.available = false;
     }
 
-    function makePotion() {
+    const potion = ref('')
+    const chosenPotionId = ref('');
+    const chosenPotion = computed(function() {
+        return craftingStore.potions.find(item => item.id2 === chosenPotionId.value);
+    })
+    function makePotion(id) {
         makingPotion.value = true;
+        if (id === undefined) {
+            console.log('chosen potion = ' + id);
+        }
+        chosenPotionId.value = id;
+        potion.value = chosenPotion.value.id2
+    }
+
+    function comeBackLater() {
+        makingPotion.value = false;
     }
 </script>
