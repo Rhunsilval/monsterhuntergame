@@ -132,7 +132,7 @@
                     :specialAttackAvailable="specialAttackAvailable"
                     @emit-attack-monster="attackMonster"
                     @emit-run-away="runAway"
-                    @emit-special-attack="specialAttackMonster"
+                    @emit-special-attack="checkChargedAttackMana"
                     @emit-heal-player="checkHealingMana"
                     @emit-use-script="useScript"
                     @emit-use-spell="checkIntelligence"
@@ -1203,19 +1203,34 @@
   }
 
 // charged special attack 
+  function checkChargedAttackMana() {
+    if (playerStore.playerActiveMana === 0) {
+      outOfMana.value = true;
+    } else (specialAttackMonster())
+  }
   function specialAttackMonster() {
     currentRound.value = 0;
     monsterRound.value = monsterRound.value + 1;
     let attackValue = ref(0)
     if(playerStore.attack1Charm) {
       attackValue.value = Math.ceil(getRandomValue(10, 25) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
-    } 
-    
+      playerStore.playerActiveMana -= (getRandomValue(1,20));
+    } else if (playerStore.attack2Charm) {
+      attackValue.value = Math.ceil(getRandomValue(20,40) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+      playerStore.playerActiveMana -= (getRandomValue(1,15));
+    } else if (playerStore.attack3Charm) {
+      attackValue.value = Math.ceil(getRandomValue(30,80) + ((playerStore.playerAttack * .1) + (playerStore.playerStrength)));
+      playerStore.playerActiveMana -= (getRandomValue(1,10));
+    }
+    if (playerStore.playerActiveMana < 0) {
+      playerStore.playerActiveMana = 0
+    } else {playerStore.playerActiveMana}
+
     playerStore.playerXP += attackValue.value;    // to gain XP
     playerStore.playerTotalXP += attackValue.value;   // to keep track of XP
     playerStore.XPUntilNextLevel();             // to level up if applicable
     playerStore.levelUp();
-    playerStore.playerActiveMana -= (getRandomValue(1,20));
+
     const monsterisHit = (monsterStore.monsterHealth - (monsterStore.monsterHealth -= attackValue.value));
     addLogEntry('player', 'uses special-attack', attackValue.value, monsterisHit);
     if (monsterStore.monsterHealth < 0) {
@@ -1242,6 +1257,18 @@
       attackEffect.value = 0;
     }
     const fullAttackEffect = ref(Math.ceil(attackEffect.value - (attackEffect.value * amuletEffect.value)))
+
+    if (playerStore.defense1Charm && playerStore.playerActiveMana > 0) {
+      fullAttackEffect.value = Math.ceil((fullAttackEffect.value - (fullAttackEffect.value*.1)));
+      playerStore.playerActiveMana -= 1;
+    } else if (playerStore.defense2Charm && playerStore.playerActiveMana > 0) {
+      fullAttackEffect.value = Math.ceil((fullAttackEffect.value - (fullAttackEffect.value * .25)));
+      playerStore.playerActiveMana -= 1;
+    } else if (playerStore.defense3Charm && playerStore.playerActiveMana > 0) {
+      fullAttackEffect.value = Math.ceil((fullAttackEffect.value - (fullAttackEffect.value * .5)));
+      playerStore.playerActiveMana -= 1;
+    } else (fullAttackEffect.value)
+
     playerStore.playerActiveHealth -= fullAttackEffect.value;
     addLogEntry('monster', 'attacks', attackValue, fullAttackEffect.value);
   }
@@ -1283,6 +1310,10 @@
     let healValue = ref(0);
     if (playerStore.healing1Charm) {
       healValue.value = getRandomValue(10, 25);
+    } else if (playerStore.healing2Charm) {
+      healValue.value = (Math.round(playerStore.playerHealth*.5));
+    } else if (playerStore.healing3Charm) {
+      healValue.value = (Math.round(playerStore.playerHealth))
     }
 
     if (playerStore.playerActiveHealth + healValue.value > playerStore.playerHealth) {
@@ -1294,6 +1325,10 @@
     let manaUse = ref(0);
     if (playerStore.healing1Charm) {
       manaUse.value = getRandomValue(3,6);
+    } else if (playerStore.healing2Charm) {
+      manaUse.value = getRandomValue(5,10);
+    } else if (playerStore.healing3Charm) {
+      manaUse.value = getRandomValue(1,15);
     }
 
     if (playerStore.playerActiveMana - manaUse.value < 0) {

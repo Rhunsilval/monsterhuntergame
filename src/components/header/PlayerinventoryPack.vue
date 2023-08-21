@@ -8,6 +8,7 @@
             <div class="">
                 <p class="font-semibold text-black bg-gray-200 opacity-80 "> {{ props.name }}</p>
                 <p class="text-xs text-black bg-gray-200 opacity-80 "> {{ props.description }}</p>
+                <p>{{ props.uses }}</p>
             </div>
         </div>
 <!-- action buttons -->
@@ -37,6 +38,7 @@
         name:{},
         description: {},
         value:{},
+        uses: {},
     });
 
     const emit = defineEmits([

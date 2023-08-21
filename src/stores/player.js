@@ -6,7 +6,7 @@ export const usePlayerStore =
         state: () => ({
             playerId: 'Player_One',
             oldGame: false,
-            coinOnHand: 10000,            
+            coinOnHand: 100000,            
             
             playerActiveHealth: 100,        // constantly changes based on harm/healing
             playerHealth: 100,              // max health, changes with equip/unequip items           
@@ -19,8 +19,10 @@ export const usePlayerStore =
             healthPrice: 1000,
             healthPerSec: .1,           // Fortitude - how fast player heals for not-working autoheal
             healing1Charm: false,       // a learned healing charm used in battle
+            healing2Charm: false,       // a learned healing charm used in battle
+            healing3Charm: false,       // a learned healing charm used in battle
 
-            playerActiveMana: 100,
+            playerActiveMana: 0,
             playerMana: 100,
             playerBaseMana: 100,
             manaBonus: 0,           // from equipped items
@@ -41,6 +43,8 @@ export const usePlayerStore =
             neededAttackXP: 1000,
             attackPrice: 100,
             attack1Charm: false,    // a learned charged attack charm used in battle
+            attack2Charm: false,    // a learned charged attack charm used in battle
+            attack3Charm: false,    // a learned charged attack charm used in battle
 
             playerDefense: 1,
             playerBaseDefense: 1,
@@ -50,7 +54,10 @@ export const usePlayerStore =
             defenseLevelIncrease: 2,
             defenseXP: 0,
             neededDefenseXP: 1000,
-            defensePrice: 100,            
+            defensePrice: 100,  
+            defense1Charm: false,   // a learned background defense bonus
+            defense2Charm: false,   // a learned background defense bonus
+            defense3Charm: false,   // a learned background defense bonus
             
             playerStrength: 1,
             playerBaseStrength: 1,
@@ -62,8 +69,8 @@ export const usePlayerStore =
             neededStrengthXP: 1000,
             strengthPrice: 500,
             
-            playerIntelligence: 1,      // total intel level including all bonuses from items
-            playerBaseIntelligence: 1,
+            playerIntelligence: 100,      // total intel level including all bonuses from items
+            playerBaseIntelligence: 100,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
             nextIntelligenceLevel: 1000,

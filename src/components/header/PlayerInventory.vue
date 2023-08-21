@@ -41,7 +41,8 @@
                     :imageSrc="item.imageSrc"
                     :name="item.name"
                     :description="item.description" 
-                    :value="item.value"                   
+                    :value="item.value" 
+                    :uses="item.numberOfUses"                  
                     @emitEquipItem="checkInventory"
                     @emitUseItem="useItem"
                     @emitDropItem="dropItem"
@@ -631,7 +632,7 @@
             console.log('chosen ID = ' + id);
         }
         chosenItemId.value = id;
-        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);    
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);  
 
         if (chosenItem.value.itemUse === 'null') {
             useshow.value = true;
@@ -662,7 +663,8 @@
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
             }
             else if (chosenItem.value.itemUse === 'attacking') {
-                playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);            
+                playerStore.tempAttackBonus = (playerStore.tempAttackBonus + chosenItem.value.attack);
+                playerStore.playerAttack = (playerStore.playerAttack + playerStore.tempAttackBonus);
             } 
             else if (chosenItem.value.itemUse === 'attack') {
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
@@ -693,14 +695,10 @@
                 playerStore.playerHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerBaseHealth = (playerStore.playerBaseHealth + chosenItem.value.life);
                 playerStore.playerActiveHealth = (playerStore.playerActiveHealth + chosenItem.value.life);
-                // playerStore.playerStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
-                // playerStore.playerBaseStartingHealth = (playerStore.playerBaseStartingHealth + chosenItem.value.life);
 
                 playerStore.playerMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerBaseMana = (playerStore.playerBaseMana + chosenItem.value.mana);
                 playerStore.playerActiveMana = (playerStore.playerActiveMana + chosenItem.value.mana);
-                // playerStore.playerStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
-                // playerStore.playerBaseStartingMana = (playerStore.playerBaseStartingMana + chosenItem.value.mana);
                 
                 playerStore.playerAttack = (playerStore.playerAttack + chosenItem.value.attack);
                 playerStore.playerBaseAttack = (playerStore.playerBaseAttack + chosenItem.value.attack);
@@ -711,15 +709,22 @@
                 playerStore.playerIntelligence = (playerStore.playerIntelligence + chosenItem.value.intelligence);
                 playerStore.playerBaseIntelligence = (playerStore.playerBaseIntelligence + chosenItem.value.intelligence);
             }
-            playerStore.playerPacked.splice(x, 1);
-            // playerStore.getAttackValues();
-            // playerStore.getDefenseValues();
-            // playerStore.getStrengthValues();
-            // playerStore.getExtraHealth();
-            // playerStore.getExtraMana();
-            // playerStore.getIntelligenceValues();
+
+            if (chosenItem.value.itemUse.includes('healing', 'attacking', 'defending', 'strengthening', 'manaing')) {
+                numberOfUsesUpdate();
+            } else (playerStore.playerPacked.splice(x,1))
         }
-    } 
+    }
+    function numberOfUsesUpdate() {
+        chosenItem.value.numberOfUses -= 1;
+        usedUp();
+    }
+    function usedUp() {
+        let x = playerStore.playerPacked.findIndex(item => item.id === chosenItem.value.id);
+        if (chosenItem.value.numberOfUses <= 0) {
+            playerStore.playerPacked.splice(x,1);
+        }
+    }
 
 // to drop unwanted items from player inventory
     function dropItem(id) {
