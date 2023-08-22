@@ -1394,7 +1394,7 @@
 // resetting game after a victory
   function lootCollected() {
     gameover.value = false;
-    winner.value = false;
+    winner.value = null;
     startGame.value = false;
     toggleImage.value = false;
     monsterStore.monsterFound = false;

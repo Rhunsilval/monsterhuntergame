@@ -28,7 +28,7 @@
               <the-winner-loot></the-winner-loot>
             </div>
             <div> 
-              <button @click="emitLootCollected()" class="px-2 py-2 mt-3 rounded-xl bg-white border border-black">
+              <button @click="emitLootCollected()" class="px-2 py-2 mt-3 rounded-xl bg-white border border-black hover:text-white hover:bg-slate-600">
                 Done Collecting</button>
             </div>
           </div>
@@ -98,7 +98,9 @@
     return playerStore.playerKillLog.find(monster => monster.id === monsterKilledId)
   })
   function monsterLog() {
-    monsterKilled.value.count++;
+    // monsterKilled.value.count++;
+    monsterKilled.value.count = monsterKilled.value.count + 1
+    // console.log('count of monsterKilled = ' + monsterKilled.value.count);
   }
 
 // even though losing/draws don't return me to MonsterHunter page where the code lives,

@@ -11,9 +11,12 @@
                 <h1 class="text-xl font-semibold text-gray-700">So, you want to make a</h1>
                 <h2 class="text-2xl font-bold text-slate-700 px-4">{{ renderedPotion.id2 }}?</h2>
             </div>
-            <!-- <div> 
-                <img src="../../assets/images/village_school/school_empty_caldron.png" />
-            </div> -->
+            <div class="bg-white bg-opacity-70 flex justify-center"> 
+                <img 
+                    src="../../assets/images/village_school/school_empty_caldron.png" 
+                    class="h-52"
+                />
+            </div>
             <div class="text-center pt-2 text-xl text-gray-600 font-semibold bg-white bg-opacity-70"> 
                 <p class="">We can do that!</p>
                 <p class="my-3">You're going to need:</p>
