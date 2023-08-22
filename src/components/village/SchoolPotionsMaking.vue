@@ -203,7 +203,12 @@
       } else (collectItem())
     }
     function collectItem() {
-        playerStore.playerPacked.push(renderedPotion.value);
+        craftingStore.selectedPotion = renderedPotion.value.id2;
+        craftingStore.generatePotion();
+        
+        let x = craftingStore.craftedItem.findIndex(item => item.id === renderedPotion.value.id2); 
+
+        playerStore.playerPacked.push(craftingStore.craftedItem[x]);
         renderedPotion.value.qty = renderedPotion.value.baseQty;
         renderedPotion.value.qty2 = renderedPotion.value.baseQty2;
         renderedPotion.value.qty3 = renderedPotion.value.baseQty3;
