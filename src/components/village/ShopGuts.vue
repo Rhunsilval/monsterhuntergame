@@ -440,7 +440,7 @@
         playerStore.coinOnHand = (playerStore.coinOnHand + chosenProd.value.price);
         openDialogModal3.value = true
       } else (checkSale())
-    }    
+    }
 // to check that there are sufficient coins avaialble for a purchase, and to open an error dialog if there's not
 // and to add the item to player inventory if there is
     function checkSale() {
