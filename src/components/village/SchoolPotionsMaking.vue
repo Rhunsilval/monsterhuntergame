@@ -89,7 +89,7 @@
             </div>
             <div class="text-center pt-5 bg-white bg-opacity-70 rounded-t-3xl">  
                 <h1 class="text-xl font-semibold text-gray-700">Looks like your</h1>
-                <h2 class="text-2xl font-bold text-slate-700 px-4">{{ renderedPotion.id2 }}?</h2>
+                <h2 class="text-2xl font-bold text-slate-700 px-4">{{ renderedPotion.id2 }}</h2>
                 <p class="text-xl font-semibold text-gray-700">is ready!</p>
             </div>
             <div class="bg-white bg-opacity-70 flex justify-center pt-5"> 
@@ -206,9 +206,11 @@
         craftingStore.selectedPotion = renderedPotion.value.id2;
         craftingStore.generatePotion();
         
-        let x = craftingStore.craftedItem.findIndex(item => item.id === renderedPotion.value.id2); 
+        // let x = craftingStore.craftedItem.findIndex(item => item.id === renderedPotion.value.id2); 
 
-        playerStore.playerPacked.push(craftingStore.craftedItem[x]);
+        playerStore.playerPacked.push(craftingStore.craftedItem[0]);
+        craftingStore.craftedItem.splice(0,1);
+
         renderedPotion.value.qty = renderedPotion.value.baseQty;
         renderedPotion.value.qty2 = renderedPotion.value.baseQty2;
         renderedPotion.value.qty3 = renderedPotion.value.baseQty3;

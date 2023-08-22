@@ -69,7 +69,7 @@ export const useCraftingStore =
                             attack: 0,
                             defense: 0,
                             strength: 0,
-                            life: (Math.floor(Math.random()*(5 - 2)) + 2),
+                            life: (Math.floor(Math.random()*(20 - 5)) + 5),
                             mana: 0, 
                             intelligence: 0,
                             price: 500,
