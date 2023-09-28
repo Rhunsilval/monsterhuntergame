@@ -46,6 +46,26 @@ export const useCraftingStore =
                     priorLesson: "none",
                 },
             ],
+            items: [
+                {
+                    id: 'Lesser Sword of Light',
+                    imageSrc: require('../assets/images/village_school/crafting_sword_1.png'),
+                    learned: false,
+                    need: 'Basic Steel Sword',
+                    needImg: require('../assets/images/village_blacksmith/Blacksmith_sword_1.png'),
+                    qty: 1,
+                    baseQty: 1,
+                    need2: 'Tangled Rootbeast Vines',
+                    needImg2: require('../assets/images/swamp/swamp_monster_1_treasure.png'),
+                    qty2: 1,
+                    baseQty2: 1,
+                    need3: 'Fae Light',
+                    needImg3: require('../assets/images/marshes/marshes_monster_1_treasure.png'),
+                    qty3: 3,
+                    baseQty3: 3,
+                },
+            ],
+            selectedItem: '',
             craftedItem: [],
         }),
         actions: {
@@ -75,6 +95,29 @@ export const useCraftingStore =
                         },
                     )
                 }
-            }
+            },
+            generateItem() {
+                if (this.selectedItem === 'Lesser Sword of Light') {
+                    this.craftedItem.push(
+                        {
+                            id: Math.floor(Math.random() * 10000),
+                            itemSlot: 'player_sword',
+                            itemUse: 'null',
+                            itemShop: 'Blacksmith, Oddities',
+                            name: 'Lesser Sword of Light',                    
+                            description: 'An enchanted sword imbued with lesser light magic.',
+                            value: 'Hits between 10-25',
+                            attack: (Math.floor(Math.random()*(25 - 10)) + 10),
+                            defense: 3,
+                            strength: 0,
+                            life: 0,
+                            mana: 0, 
+                            intelligence: 0,
+                            price: 500,
+                            imageSrc: require('../assets/images/village_school/crafting_sword_1.png'),
+                        },
+                    )
+                }
+            },
         }
     })
