@@ -12,7 +12,7 @@
           </div>
       <!--need healing  -->
           <div v-if="playerStore.playerActiveHealth < (playerStore.playerHealth-10)" class="flex justify-center">
-            <div class="text-center bg-white bg-opacity-80 w-1/4 py-3 px-3"> 
+            <div class="text-center bg-white bg-opacity-80 w-1/4 py-3 px-3 rounded-t-2xl"> 
               <p class="text-xl font-semibold mb-2 ">Looks like you got mauled by monsters there, {{ playerStore.playerId }}</p>
               <p>You know you're not supposed to let them do that, right?</p>
               <p>Well, no matter.  We can help.</p>
@@ -21,7 +21,7 @@
           </div>
       <!--health is fine  -->
           <div v-if="playerStore.playerActiveHealth >= (playerStore.playerHealth-10)" class="flex justify-center">
-            <div class="text-center bg-white bg-opacity-80 w-1/4 py-3 px-3"> 
+            <div class="text-center bg-white bg-opacity-80 w-1/4 py-3 px-3 rounded-t-2xl"> 
               <p class="text-xl font-semibold mb-2 ">You look to be in fine health, {{ playerStore.playerId }}</p>
               <p>Our services are always available to you,</p>
               <p>but are you sure that you need them?</p>

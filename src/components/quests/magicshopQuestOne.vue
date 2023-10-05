@@ -1,28 +1,24 @@
 <template>
     <div class="grid grid-cols-1">
 
-<!-- ALL TO BE REWRITTEN ONCE I KNOW WHAT I WANT TO DO -->
-
 <!-- start -->
-        <div v-if="convoStart" class="text-center flex justify-center"> 
-            <div class="grid grid-cols-1">
-                <div class=""> 
-                    <p class="text-xl font-semibold">Hmmm. </p>
-                    <p class="text-lg">Depends.</p>
-                    <p class="text-lg ">Can you be discrete?</p>
-                </div>
-                <div class="flex justify-center mt-8">
-                    <div class="grid grid-cols-1 ">
-                        <div class="grid grid-cols-2 gap-3"> 
-                            <button @click="conversationOption1a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
-                                Discretion is my middle name!</button>
-                            <button @click="conversationOption1b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
-                                Of course.</button>                    
-                        </div>
-                        <div class="mt-3"> 
-                            <button @click="endConversation" class="px-2 py-2 w-1/2 border border-gray-500 rounded-xl bg-gray-400 hover:bg-gray-600 hover:text-white">
-                                I need to go.</button>
-                        </div>
+        <div v-if="convoStart">
+            <div class="text-sm leading-6 text-gray-900"> 
+                <p class="text-lg font-medium">You know, I think maybe you can.</p>
+                <p class="">I was in the middle of developing a new amulet when I ran out of some essential supplies.</p>
+                <p class="">If you could procure some for me, it would be a huge help.</p>
+            </div>
+            <div class="flex justify-center mt-8">
+                <div class="grid grid-cols-1 align-middle">
+                    <div class="grid grid-cols-2 gap-3 w-72"> 
+                        <button @click="conversationOption1a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
+                            What kind of amulet?</button>
+                        <button @click="conversationOption1b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
+                            Of course!  What do you need?</button>                    
+                    </div>
+                    <div class="mt-3"> 
+                        <button @click="endConversation" class="px-2 py-2 w-1/2 border border-gray-500 rounded-xl bg-gray-400 hover:bg-gray-600 hover:text-white">
+                            I need to go.</button>
                     </div>
                 </div>
             </div>
@@ -266,17 +262,18 @@
                 </div>
             </div>  
         </div>
+
     </div>
 </template>
 
 <script setup> 
     import { ref } from 'vue';
     import { useConditionalsStore } from '@/stores/conditionals';
-    import { useQuestStore } from '@/stores/quests';
+    // import { useQuestStore } from '@/stores/quests';
     import { usePlayerStore } from '@/stores/player';
 
     const conditionalStore = useConditionalsStore();
-    const questStore = useQuestStore();
+    // const questStore = useQuestStore();
     const playerStore = usePlayerStore();
 
     const emit = defineEmits([
@@ -286,89 +283,11 @@
         emit('emit-end-conversation');
     }
     function reallyEndConversation() {
-        conditionalStore.conversationsDrunkard.convo1Available = false;
-        conditionalStore.conversationsDrunkard.convo2Availalbe = true;
+        conditionalStore.magicShop.magicQuest1Available = false;
+        // conditionalStore.conversationsDrunkard.convo2Availalbe = true;
         endConversation();
     }
 
     const convoStart = ref(true);
-
-    const option1A = ref(false);
-    const option1B = ref(false);
-    function conversationOption1a() {
-        convoStart.value = false;
-        option1A.value = true;
-    }
-    function conversationOption1b() {
-        convoStart.value = false;
-        option1B.value = true;
-    }
-
-    const option2A = ref(false);
-    const option2B = ref(false);
-    function conversationOption2a() {
-        option1A.value = false;
-        option1B.value = false;
-        option2A.value = true;
-    }
-    function conversationOption2b() {
-        option1A.value = false;
-        option1B.value = false;
-        option2B.value = true;
-    }
-
-    const option3A = ref(false);
-    const option3B = ref(false);
-    function conversationOption3a() {
-        option2A.value = false;
-        option2B.value = false;
-        option3A.value = true;
-    }
-    function conversationOption3b() {
-        option2A.value = false;
-        option3B.value = true;
-    }
-
-    const option4A = ref(false);
-    const option4B = ref(false);
-    function conversationOption4a() {
-        option3A.value = false;
-        option3B.value = false;
-        option4A.value = true;
-    }
-    function conversationOption4b() {
-        option3A.value = false;
-        option4A.value = false;
-        option4B.value = true;
-    }
-
-    const option5A = ref(false);
-    const option5B = ref(false);
-    const option5C = ref(false);
-    function conversationOption5a() {
-        option4A.value = false;
-        option4B.value = false;
-        option5B.value = false;
-        option5A.value = true;
-    }
-    function conversationOption5b() {
-        option4A.value = false;
-        option4B.value = false;
-        option5B.value = true;
-    }
-    function conversationOption5c() {
-        option4B.value = false;
-        option5C.value = true;
-    }
-
-    let barkeepQuest1 = questStore.quests.find(quest => quest.id === 'barkeepQuest1');
-    function acceptQuest1() {
-        conditionalStore.bigDawgPub.barkeepQuestAccepted = true;
-        conditionalStore.conversationsBarkeep.barkeepQuest1Activated = true;
-        conditionalStore.conversationsBarkeep.convo1Available = false;
-        barkeepQuest1.active = true;
-        playerStore.playerActiveQuests.push(barkeepQuest1);
-        endConversation();
-    }
 
 </script>

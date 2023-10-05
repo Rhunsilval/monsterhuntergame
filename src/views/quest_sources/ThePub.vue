@@ -189,7 +189,7 @@
   import { usePlayerStore } from '@/stores/player';
   import { useConditionalsStore } from '@/stores/conditionals';
   import { useQuestStore } from '@/stores/quests';
-  import QuestRendering from '../../components/guild/QuestRendering.vue';
+  import QuestRendering from '../../components/quests/QuestRendering.vue';
   import ConversationDrunkard from '../../components/village/ConversationsDrunkard.vue';
   import ConversationBarkeep from '../../components/village/ConversationsBarkeep.vue';
   import ConversationScholar from '../../components/village/ConversationsScholar.vue';

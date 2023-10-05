@@ -411,7 +411,7 @@
       itemUse: 'healing',
       itemShop: 'Apothecary, Tavern',
       name: 'Aged Bourbon',
-      description: "Older than dirt, tastes better than it!",
+      description: "Older than dirt, tastes much better!",
       value: '+3 life',
       attack: null,
       defense: null,

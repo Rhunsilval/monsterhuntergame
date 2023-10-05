@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>          
         </div> 
 
 <!-- talk to banker -->
@@ -267,7 +267,8 @@
                     </div>
                 </div>
             </Dialog>
-        </TransitionRoot>        
+        </TransitionRoot>    
+        <div class="pb-28"></div>    
     </div>
 </template>
 

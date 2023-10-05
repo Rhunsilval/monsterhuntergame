@@ -74,7 +74,7 @@
               </div>        
           </div>
         </div>
-
+        <div class="pb-28"></div>
     </div>
 
 <!-- quest list modal display -->
@@ -149,7 +149,7 @@
   import { useQuestStore } from '@/stores/quests';
   import { usePlayerStore } from '@/stores/player';
   import GuildQuests from '../../components/guild/GuildQuests.vue';
-  import QuestRendering from '../../components/guild/QuestRendering.vue';
+  import QuestRendering from '../../components/quests/QuestRendering.vue';
 
   const conditionalStore = useConditionalsStore();
   const questStore = useQuestStore();
@@ -179,55 +179,26 @@
       conditionalStore.huntersGuild.grossStew1QuestAvailable = false;
       let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildGrossStew1');
       playerStore.playerActiveQuests.splice(x, 1);
-      conditionalStore.huntersGuild.questAccepted = false;
+    }
+    else if (id === 'guildCollectNine') {
+      let collect9Quest = questStore.quests.find(quest => quest.id === 'guildCollectNine');
+      collect9Quest.active = false;
+      collect9Quest.complete = false;
+      conditionalStore.huntersGuild.collect9QuestAvailable = false;
+      let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildCollectNine');
+      playerStore.playerActiveQuests.splice(x, 1);
+    }
+    else if (id === 'guildFixTheLights') {
+      let fixLightsQuest = questStore.quests.find(quest => quest.id === 'guildFixTheLights');
+      fixLightsQuest.active = false;
+      fixLightsQuest.complete = false;
+      conditionalStore.huntersGuild.fixLightsQuestAvailable = false;
+      let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildFixTheLights');
+      playerStore.playerActiveQuests.splice(x, 1);
     }
     basicLobby.value = true;
+    conditionalStore.huntersGuild.questAccepted = false;
   }
-  
-  // let collectGrossStew1Quest = questStore.quests.find(quest => quest.id === 'guildGrossStew1');
-  // function attemptCompleteGrossStew1Quest() {
-  //       quest.value = 'guildGrossStew1';
-  //       openListModal.value = false;
-  //       basicLobby.value = false;
-  // }
-  // function failCompleteGrossStew1Quest() {
-  //       openListModal.value = false;
-  //       basicLobby.value = true;
-  //       collectGrossStew1Quest.active = false;
-  //       collectGrossStew1Quest.complete = false;
-  //       conditionalStore.huntersGuild.grossStew1QuestAvailable = false;
-  //       let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildGrossStew1');
-  //       playerStore.playerActiveQuests.splice(x, 1);
-  //       conditionalStore.huntersGuild.questAccepted = false;
-  // }
-
-  // let collect9Quest = questStore.quests.find(quest => quest.id === 'guildCollectNine');
-  // function acceptGuildAccept9Quest() {
-  //   if (playerStore.coinOnHand - 500 < 0) {
-  //     insufficientFunds.value = true;
-  //   } else {
-  //     playerStore.coinOnHand = (playerStore.coinOnHand - 500);
-  //     conditionalStore.huntersGuild.questAccepted = true;
-  //     conditionalStore.huntersGuild.collect9QuestAvailable = false;
-  //     collect9Quest.active = true;
-  //     playerStore.playerActiveQuests.push(collect9Quest);
-  //   }    
-  // }
-  // function attemptComplete9Quest() {
-  //       quest.value = 'guildCollectNine';
-  //       openListModal.value = false;
-  //       basicLobby.value = false;
-  // }
-  // function failComplete9Quest() {
-  //       openListModal.value = false;
-  //       basicLobby.value = true;
-  //       collect9Quest.active = false;
-  //       collect9Quest.complete = false;
-  //       conditionalStore.huntersGuild.collect9QuestAvailable = false;
-  //       let x = playerStore.playerActiveQuests.findIndex(quest => quest.id === 'guildCollectNine');
-  //       playerStore.playerActiveQuests.splice(x, 1);
-  //       conditionalStore.huntersGuild.questAccepted = false;
-  // }
 
   function leaveQuest() {
     basicLobby.value = true;

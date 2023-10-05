@@ -63,6 +63,7 @@
                     Restorative Spa</button>
             </div>
         </div>
+        <div class="pb-28 "></div>
     </div>
 
 <!-- in school -->
@@ -413,7 +414,7 @@
 <script setup> 
     import { ref } from 'vue'
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-    import QuestRendering from '../../components/guild/QuestRendering.vue';
+    import QuestRendering from '../../components/quests/QuestRendering.vue';
     import SchoolCharm from '../../components/village/SchoolCharms.vue';
     import SchoolPotions from '../../components/village/SchoolPotions.vue';
     import SchoolCraft from '../../components/village/SchoolCraft.vue';

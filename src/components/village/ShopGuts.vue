@@ -37,7 +37,7 @@
                 <p v-else-if="shopName === 'Magic'" class="">If you're interested in magic, you've come to the right place. <br/> Ask me before you touch anything.</p>
                 <p v-else class="">I'll make you a deal.<br/> Don't ask me where I got anything, <br/>and I won't ask you what you intend to do with it.<br/>Ha!</p>
                 <div class="pt-4">  
-                  <button @click="openDialogModal = !openDialogModal" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
+                  <button @click="speakWithShopkeeper" class="px-3 py-3 border border-gray-600 rounded-md bg-[#7aa0bd] hover:bg-[#305c79] hover:text-white">
                     Speak with Shopkeeper</button>
                 </div>
                 <div class="pt-8">           
@@ -212,8 +212,12 @@
                     <p v-if="shopName ==='Apothecary'" class="text-sm text-gray-500">Don't worry though! I'm working on making lots more.  Be sure to check back later!</p>
                     <p v-else-if="shopName === 'Armory'" class="text-sm text-gray-500">Right now, sure; but I'm making more things.  If you come back later, they should be ready.</p>
                     <p v-else-if="shopName === 'Blacksmith'" class="text-sm text-gray-500">For now, yes.  But, I'm working on making more items.  It'll take me some time, but if you come back later, I should have something to interest you.</p>
-                    <p v-else-if="shopName === 'Magic'" class="text-sm text-gray-500">If you come back another time, I may have a few more things.  Otherwise, yes.  This is what I have.</p>
+                    <p v-else-if="shopName === 'Magic'" class="text-sm text-gray-500">If you come back another time, I may have a few more things. <br/>  Otherwise, yes, this is what I have.</p>
                     <p v-else class="text-sm text-gray-500">I kid, I kid.  Yes, this is everything right now.  But there's always people buying and selling.  Come back later and I'll probably have different inventory.</p>
+                  
+                    <p v-if="shopName === 'Magic' &&
+                        conditionalStore.magicShop.questAvailable" 
+                        class="text-sm text-gray-500">Unless ... if I could get my hands on some extra raw materials ...</p>
                   </div>
                 </div>
             <!-- sell item dialog -->
@@ -242,15 +246,23 @@
           <!-- buttons -->
               <div class="mt-5 ">
                 <div class="grid grid-cols-2 pb-4">
-            <!-- Sell items button -->
+                  <!-- Sell items button -->
                     <button v-if="sellItemsDialog === false" @click="sellItemsDialog = true, convoThread1 = false, convoThread2 = false, landingThread = false" class="ml-10 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
                       Sell items</button>
-                    <!-- conversation buttons -->
+                  <!-- conversation buttons -->
                     <div class="ml-10 ">
                         <button v-if="landingThread" @click="convoThread1 = !convoThread1, landingThread = false" type="button" class="mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
                           May I ask a question?</button>              
                         <button v-if="convoThread1" @click="convoThread2 = !convoThread2, convoThread1 = false" type="button" class="mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
                           Is this all your inventory?</button>
+                          
+                  <!-- buttons triggering quests -->
+                        <button v-if="convoThread2 && 
+                          shopName === 'Magic' &&
+                          conditionalStore.magicShop.questAvailable"
+                          @click="magicShopQuest" 
+                          class="mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
+                          Maybe I can help?</button>
                     </div>
                 </div>
                 <!-- close modal button -->
@@ -346,6 +358,49 @@
     </Dialog>
   </TransitionRoot>
 
+<!-- magic shopkeeper quest modal display -->
+  <TransitionRoot as="template" :show="openMagicQuestModal">
+    <Dialog as="div" class="relative z-10" @close="openMagicQuestModal = false">
+      <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+      </TransitionChild>
+      <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+            <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+              <div>
+                <!-- shopkeeper image -->
+                <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
+                  <img src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
+                </div>
+                <!-- dialog -->
+                <div class="mt-3 text-center sm:mt-5">
+                  <!-- <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">You know, I think maybe you can.</DialogTitle> -->
+                  <div class="mt-2">
+                    <div v-if="conditionalStore.magicShop.magicQuest1Available"> 
+                      <magicshop-quest-one
+                        @emit-end-conversation="endMagicQuestConversation"
+                      ></magicshop-quest-one>
+                    </div>
+                    
+                    <!-- <p class="text-sm text-gray-500">Looks like you're out of room to carry anything else.  Try coming back later when you've got more room.</p> -->
+                  </div>
+                </div>                              
+                  <!-- <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"> -->
+                  <!-- buttons -->
+                  <!-- <button @click="openMagicQuestModal = false" type="button" class="inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
+                    Return to Shop</button>
+                  <router-link to="/village" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
+                    Return to Village</router-link> -->
+                <!-- </div> -->
+              </div>
+            </DialogPanel>
+          </TransitionChild>
+        </div>
+      </div>
+    </Dialog>
+  </TransitionRoot>
+
 </template>
   
 
@@ -354,9 +409,11 @@
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import { usePlayerStore } from '@/stores/player'
     import { useShopStore } from '@/stores/shops'
+    import { useConditionalsStore } from '@/stores/conditionals';
 
     const playerStore = usePlayerStore();
     const shopStore = useShopStore();
+    const conditionalStore = useConditionalsStore();
     onMounted(() => {
       shopStore.playerId = playerStore.playerId;
     })
@@ -459,6 +516,10 @@
 
 
 // TO SELL ITEMS
+    function speakWithShopkeeper() {
+      openDialogModal.value = !openDialogModal.value;
+      conditionalStore.checkPlayerReputation();
+    }
 // for conditional rendering of dialog/buttons
     const acceptSale = ref(false)
     const rejectSale = ref(false)
@@ -492,6 +553,19 @@
 // close/reset sales dialog if player chooses not to sell
     function neverMind() {
       acceptSale.value = false;
+    }
+
+
+// to activate shopkeeper quests:
+    import MagicshopQuestOne from '../../components/quests/magicshopQuestOne.vue';
+    const openMagicQuestModal = ref(false);
+    function magicShopQuest() {
+      openDialogModal.value = false;
+      openDialogModal2.value = false;
+      openMagicQuestModal.value = true;
+    }
+    function endMagicQuestConversation() {
+      openMagicQuestModal.value = false;
     }
 
 </script>

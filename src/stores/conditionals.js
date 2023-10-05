@@ -4,6 +4,8 @@ export const useConditionalsStore =
     defineStore({
         id: 'conditionals',
         state: () => ({
+            playerReputation: 20,
+
             worldMap: {
                 basicMap: true,
                 expandedMap: false,
@@ -40,7 +42,7 @@ export const useConditionalsStore =
                 grossStew1QuestAvailable: true,
                 collect9QuestAvailable: true,
                 fireRiverDrakeQuestAvailalbe: true,
-                
+                fixLightsQuestAvailable: true,                
             },
             bigDawgPub: {
                 drunkardQuestAccepted: false, 
@@ -70,6 +72,20 @@ export const useConditionalsStore =
                 convo1Started: false,
                 hunterQuest1Activated: false,
             },
+            magicShop: {
+                questAvailable: false,
+                magicQuest1Available: false,
+                magicQuest1Completed: false,
+            }
         }),
-        actions: {}
+        actions: {
+            checkPlayerReputation(){
+                if (this.playerReputation >= 20) {
+                    if (this.magicShop.magicQuest1Completed === false) {
+                        this.magicShop.questAvailable = true;
+                        this.magicShop.magicQuest1Available = true;
+                    }
+                }
+            }
+        }
     })
