@@ -184,11 +184,13 @@
 
 <script setup>
     import { usePlayerStore } from '@/stores/player';
+    import { useConditionalsStore } from '@/stores/conditionals';
     import { computed, ref } from 'vue';
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import LeaderBoard from '../../components/guild/LeaderBoard.vue';
 
     const playerStore = usePlayerStore();
+    const conditionalStore = useConditionalsStore();
 
     const validMonsterLog = computed(function() {
         let monsterList = playerStore.playerKillLog;
@@ -198,6 +200,7 @@
     const questPoints = playerStore.playerCompletedQuests.map(questAmount).reduce(sum,0); 
     const victoryPoints = playerStore.playerKillLog.map(victoryAmount).reduce(sum,0);
     playerStore.playerReputation = (questPoints + victoryPoints);
+    conditionalStore.playerReputation = (questPoints + victoryPoints);
 
     function questAmount(item) {
         return item.questPoints;

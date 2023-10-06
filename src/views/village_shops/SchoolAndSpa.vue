@@ -63,6 +63,7 @@
                     Restorative Spa</button>
             </div>
         </div>
+        <div class="pb-28 "></div>
     </div>
 
 <!-- in school -->
@@ -159,7 +160,7 @@
                                 Learn Charms</button>
                         </div>
                         <div>
-                            <button @click="startItemSchool" class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
+                            <button @click="startCraftSchool" class="px-3 py-3 h-36 w-36 border border-gray-600 rounded-full bg-slate-500 font-semibold hover:bg-slate-400">
                                 Craft Items</button>
                         </div>
                         <div class="-ml-8">
@@ -394,6 +395,13 @@
         ></school-charm>
     </div>
 
+<!-- craft item school active -->
+    <div v-if="craftItemSchool" class="bg-[url('../assets/images/village_school/school_library.png')] bg-contain"> > 
+        <school-craft
+            @emit-return-to-school="returnToSchool2"
+        ></school-craft>
+    </div>
+
 <!-- potions school active -->
     <div v-if="craftPotionSchool" class="bg-[url('../assets/images/village_school/school_library.png')] bg-contain"> > 
         <school-potions
@@ -406,9 +414,10 @@
 <script setup> 
     import { ref } from 'vue'
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-    import QuestRendering from '../../components/guild/QuestRendering.vue';
+    import QuestRendering from '../../components/quests/QuestRendering.vue';
     import SchoolCharm from '../../components/village/SchoolCharms.vue';
     import SchoolPotions from '../../components/village/SchoolPotions.vue';
+    import SchoolCraft from '../../components/village/SchoolCraft.vue';
     import { usePlayerStore } from '@/stores/player';
     import { useQuestStore } from '@/stores/quests';
     import { useConditionalsStore } from '@/stores/conditionals'
@@ -418,8 +427,8 @@
     const conditionalStore = useConditionalsStore();
 
 // page navigation
-    const inLobby = ref(false);
-    const inschool = ref(true);
+    const inLobby = ref(true);
+    const inschool = ref(false);
     const inSpa = ref(false);
     function goToSchool() {
         inLobby.value = false;
@@ -586,7 +595,7 @@
         inschool.value = false;
         charmSchool.value = true;
     }
-    function startItemSchool() {
+    function startCraftSchool() {
         inschool.value = false;
         craftItemSchool.value = true;
     }

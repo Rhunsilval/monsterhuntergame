@@ -12,9 +12,9 @@
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption1a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption1a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             I have no idea.</button>
-                        <button @click="conversationOption1b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption1b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             You tripped and fell?</button>                    
                     </div>
                     <div class="mt-3"> 
@@ -36,9 +36,9 @@
             <div class="flex justify-center mt-8 -ml-8 w-80">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption2a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption2a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Oh my!</button>
-                        <button @click="conversationOption2b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption2b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Why would someone do that?</button>
                     </div>
                     <div class="mt-3"> 
@@ -58,9 +58,9 @@
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption2b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption2b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             What?  Why?</button>
-                        <button @click="conversationOption2a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption2a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Who would do that?</button>
                     </div>
                     <div class="mt-3"> 
@@ -83,9 +83,9 @@
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption3a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption3a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Oh? What was it about?</button>
-                        <button @click="conversationOption3b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption3b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Wait, you can read?</button>
                     </div>
                     <div class="mt-3"> 
@@ -105,9 +105,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption3c" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption3c" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Chose you?</button>
-                        <button @click="conversationOption3d" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption3d" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             The universe, huh?</button>
                     </div>
                     <div class="mt-3"> 
@@ -129,9 +129,9 @@
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Like what?</button>
-                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Uh huh.</button>
                     </div>
                     <div class="mt-3"> 
@@ -151,9 +151,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Wait.  What truth?</button>
-                        <button @click="reallyEndConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="reallyEndConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Cool.  Whatever.</button>
                     </div>
                     <div class="mt-3"> 
@@ -173,9 +173,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             What did it say?</button>
-                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Wow.  That's ... special.</button>
                     </div>
                     <div class="mt-3"> 
@@ -195,9 +195,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4a" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             What truth?</button>
-                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Well, okay then.</button>
                     </div>
                     <div class="mt-3"> 
@@ -220,9 +220,9 @@
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption4b" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             That's ridiculous.</button>
-                        <button @click="conversationOption5" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption5" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Wow!</button>
                     </div>
                     <div class="mt-3"> 
@@ -261,9 +261,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption6" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption6" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Maybe I can help?</button>
-                        <button @click="endConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="endConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Cool.  Good luck with that.</button>
                     </div>
                     <div class="mt-3"> 
@@ -288,9 +288,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption7A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption7A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             I'll do it!</button>
-                        <button @click="conversationOption7B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption7B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             What's in it for me?</button>
                     </div>
                     <div class="mt-3"> 
@@ -311,7 +311,7 @@
             <div class="flex justify-center -ml-6 mt-8"> 
                 <div class="grid grid-cols-1 align-middle"> 
                     <div class=""> 
-                        <button @click="acceptQuest1A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="acceptQuest1A" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Okay!</button>
                     </div>
                 </div>
@@ -328,9 +328,9 @@
             <div class="flex justify-center -ml-6 mt-8">
                 <div class="grid grid-cols-1 align-middle">
                     <div class="grid grid-cols-2 gap-3 w-72"> 
-                        <button @click="conversationOption8" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="conversationOption8" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             I accept.</button>
-                        <button @click="endConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="endConversation" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             No, thanks.</button>
                     </div>
                     <div class="mt-3"> 
@@ -352,7 +352,7 @@
             <div class="flex justify-center -ml-6 mt-8"> 
                 <div class="grid grid-cols-1 align-middle"> 
                     <div class=""> 
-                        <button @click="acceptQuest1B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-blue-400 hover:bg-blue-700 hover:text-white">
+                        <button @click="acceptQuest1B" class="px-2 py-2 w-full border border-gray-500 rounded-xl bg-[#84b0e3] hover:bg-[#225691] hover:text-white">
                             Fine.</button>
                     </div>
                 </div>

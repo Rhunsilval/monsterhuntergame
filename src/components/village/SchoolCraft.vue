@@ -5,7 +5,7 @@
                 <div class="bg-white bg-opacity-70 w-3/4 rounded-full">
                     <div class="flex justify-center mt-5"> 
                         <img src="../../assets/images/village_school/school_teacher.png" alt="" class=" mt-5 h-56 w-56 border border-black mx-2"/>
-                        <img src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="mt-5 h-56 w-56 border border-black mx-2"/>
+                        <img src="../../assets/images/village_blacksmith/Blacksmith_Shopkeeper.png" alt="" class="mt-5 h-56 w-56 border border-black mx-2"/>
                     </div>
                     <div v-if="welcomeScript" class="flex justify-center"> 
                         <div class="grid grid-cols-1 text-center py-5 px-5"> 
@@ -63,7 +63,7 @@
 
                 <div class="grid grid-cols-1 bg-white bg-opacity-70 mt-12 mx-5 mb-5"> 
                     <div class="flex justify-center text-center mt-5"> 
-                        <h1 class=" font-bold text-7xl text-gray-500 px-5 py-5">Magic Items Making Class</h1>
+                        <h1 class=" font-bold text-7xl text-gray-500 px-5 py-5">Magic Items Crafting Class</h1>
                     </div>
                     <div class="mx-3 mb-3 grid grid-cols-2 gap-x-5"> 
                         <button
@@ -88,19 +88,19 @@
 
                 <div class="grid grid-cols-1 bg-white bg-opacity-70 mt-12 mx-5 mb-5"> 
                     <div class="flex justify-center text-center mt-5"> 
-                        <h1 class="font-bold text-7xl text-gray-500 px-5 py-5">Potions Making Lab</h1>
+                        <h1 class="font-bold text-7xl text-gray-500 px-5 py-5">Magic Crafting Workshop</h1>
                     </div>
                     <div class="mx-3 mb-3 grid grid-cols-4 gap-x-5"> 
                         <button
                             type="button"
-                            @click="makePotion(potion.id2)"
-                            v-for="potion in availablePotions"
-                            :key="potion.id2" 
+                            @click="makeItem(item.id)"
+                            v-for="item in availableItems"
+                            :key="item.id" 
                             class=" border border-gray-500 rounded-3xl bg-slate-200 px-2 py-2"
                         >
-                            <h3 class="font-bold font-serif text-blue-500">{{ potion.id2 }}</h3>
+                            <h3 class="font-bold font-serif text-blue-500">{{ item.id }}</h3>
                             <div class="flex justify-center mt-3"> 
-                                <img :src="potion.imageSrc" :alt="''" class="h-20 object-cover object-center border border-gray-300" />
+                                <img :src="item.imageSrc" :alt="''" class="h-20 object-cover object-center border border-gray-300" />
                             </div>
                         </button>
                     </div>
@@ -108,11 +108,11 @@
             </div>
         </div>
 
-        <div v-if="makingPotion" class="bg-white bg-opacity-70 w-3/4 rounded-3xl pb-12 mb-44">
-            <school-potions-making
-                :potion="potion"
+        <div v-if="makingItem" class="bg-white bg-opacity-70 w-3/4 rounded-3xl pb-12 mb-44">
+            <school-craft-making
+                :item="item"
                 @emitComeBackLater="comeBackLater"
-            ></school-potions-making>
+            ></school-craft-making>
         </div>
     </div>
 </template>
@@ -122,7 +122,7 @@
     // import { useConditionalsStore } from '@/stores/conditionals'
     import { usePlayerStore } from '@/stores/player';
     import { useCraftingStore } from '@/stores/crafting';
-    import SchoolPotionsMaking from './SchoolPotionsMaking.vue';
+    import SchoolCraftMaking from './SchoolCraftMaking.vue';
 
     const emit = defineEmits([
             'emit-returnTo-Lobby',
@@ -135,25 +135,25 @@
     const playerStore = usePlayerStore();
     const craftingStore = useCraftingStore();
 
-    const makingPotion = ref(false);
+    const makingItem = ref(false);
 
     const welcomeScript = ref(true);
     const insufficientFunds = ref(false);
     const insufficientIntel = ref(false);
 
-    const availablePotionsLessons = computed(function() {
-      let potionsList = craftingStore.potionsLessons;
-      return (potionsList = potionsList.filter(item => item.available))
+    const availableItemsLessons = computed(function() {
+      let itemsList = craftingStore.itemsLessons;
+      return (itemsList = itemsList.filter(item => item.available))
     })
-    const availablePotions = computed(function() {
-        let potionsList = craftingStore.potions;
-        return (potionsList = potionsList.filter(item => item.learned))
+    const availableItems = computed(function() {
+        let itemsList = craftingStore.items;
+        return (itemsList = itemsList.filter(item => item.learned))
     })
 
     // to know which lesson is being selected in the rendered playerPack array
     const chosenLessonId = ref('')
     const chosenLesson = computed(function() {
-        return craftingStore.potionsLessons.find(item => item.id === chosenLessonId.value);
+        return craftingStore.itemsLessons.find(item => item.id === chosenLessonId.value);
     })
 
     function checkIntel(id) {
@@ -172,27 +172,27 @@
         } else (learnLesson())
     }
     function learnLesson() {
-        let x = craftingStore.potions.find(item => item.id2 === chosenLesson.value.id2);
+        let x = craftingStore.items.find(item => item.id === chosenLesson.value.id);
         playerStore.coinOnHand = (playerStore.coinOnHand - chosenLesson.value.cost);
         x.learned = true;
         chosenLesson.value.available = false;
     }
 
-    const potion = ref('')
-    const chosenPotionId = ref('');
-    const chosenPotion = computed(function() {
-        return craftingStore.potions.find(item => item.id2 === chosenPotionId.value);
+    const item = ref('')
+    const chosenItemId = ref('');
+    const chosenItem = computed(function() {
+        return craftingStore.items.find(item => item.id === chosenItemId.value);
     })
-    function makePotion(id) {
-        makingPotion.value = true;
+    function makeItem(id){
+        makingItem.value = true;
         if (id === undefined) {
-            console.log('chosen potion = ' + id);
+            console.log('chosen item = ' + id);
         }
-        chosenPotionId.value = id;
-        potion.value = chosenPotion.value.id2
+        chosenItemId.value = id;
+        item.value = chosenItem.value.id
     }
 
     function comeBackLater() {
-        makingPotion.value = false;
+        makingItem.value = false;
     }
 </script>
