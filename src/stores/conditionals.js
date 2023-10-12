@@ -23,7 +23,7 @@ export const useConditionalsStore =
                 accountOpen: false,
             },
             matildaSchool: {
-                questCompleted: true,
+                questCompleted: false,
                 questInProgress: false,
                 questNeedsStarting: true,
                 healing1CharmAvailable: true,

@@ -69,8 +69,8 @@ export const usePlayerStore =
             neededStrengthXP: 1000,
             strengthPrice: 500,
             
-            playerIntelligence: 100,      // total intel level including all bonuses from items
-            playerBaseIntelligence: 100,
+            playerIntelligence: 1,      // total intel level including all bonuses from items
+            playerBaseIntelligence: 1,
             intelligenceBonus: 0,       // from equipped items
             tempIntelligenceBonus: 0,   // from potions etc
             nextIntelligenceLevel: 1000,
