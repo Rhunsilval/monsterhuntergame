@@ -74,7 +74,9 @@ export const useConditionalsStore =
             },
             magicShop: {
                 questAvailable: false,
+                questStarted: false,
                 magicQuest1Available: false,
+                magicQuest1Started: false,
                 magicQuest1Completed: false,
             }
         }),

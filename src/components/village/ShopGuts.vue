@@ -4,7 +4,7 @@
     <div :style="{ backgroundImage: `url(${storeTypes[getStoreType()]})` }" alt="" class="bg-contain ">
 
 <!-- header -->    
-      <div class="flex justify-center">                
+      <div v-if="attemptQuest === false" class="flex justify-center">                
         <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center pb-2">
             <div class="pt-3 ">
                 <p v-if="shopName === 'Apothecary'" class="font-extrabold font-serif text-6xl ">Bobby Baker's Botanical Brews</p>                
@@ -17,7 +17,7 @@
       </div>
 
 <!-- shopkeeper -->
-      <div class="flex justify-center">
+      <div v-if="attemptQuest === false" class="flex justify-center">
         <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
             <div class="pt-3 ">
                 <img v-if="shopName === 'Apothecary'"  src="../../assets/images/village_apothecary/Apothecary_Shopkeeper.png" alt="" class="border border-gray-800 "/>                 
@@ -28,9 +28,11 @@
             </div>
         </div>
       </div>
-      <div class="flex justify-center">
+
+      <!-- if shopping -->
+      <div v-if="shopping" class="flex justify-center">
         <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
-            <div class="py-8 font-semibold font-mono ">
+            <div v-if="attemptQuest === false" class="py-8 font-semibold font-mono ">
                 <p v-if="shopName === 'Apothecary'" class="">Welcome to my apothecary shop! <br/> Please have a look around. <br/> Let me know if you're looking for something in particular.</p>
                 <p v-else-if="shopName === 'Armory'" class="">Hi!  Welcome to my shop. <br/> Please try not to touch anything. <br/> Some of my items are enchanted, and they can be temperamental. <br/> If you need any help, just ask!</p>
                 <p v-else-if="shopName === 'Blacksmith'" class="">If you're needing a good sword, you're in the right place. <br/> Let me know if I can help.</p>
@@ -48,8 +50,53 @@
         </div>        
       </div>
 
+<!-- if questing -->
+      <div v-if="questing" class="flex justify-center ">
+        <div class="text-center w-1/3 bg-white bg-opacity-95 flex justify-center">
+            <div class="py-8 font-semibold font-mono ">
+
+              <div class="mt-3 text-center sm:mt-5">
+                <div class="mt-5">
+                  <div v-if="conditionalStore.magicShop.magicQuest1Available"> 
+                    <magicshop-quest-one
+                      @emit-end-conversation="endMagicQuestConversation"
+                    ></magicshop-quest-one>
+                  </div>
+                </div>
+              </div> 
+            </div>                         
+        </div>
+      </div>
+      <div v-if="questing" class="pb-72 "><p></p></div>
+
+<!-- if attempting to complete a quest -->
+      <div v-if="attemptQuest">
+        <div class="flex justify-center">
+          <div class="text-center w-3/4 bg-white bg-opacity-95 flex justify-center pb-3 mb-28">
+            <div class="grid grid-cols-1 gap-y-5 px-10">
+              <!-- <div class="pt-3 ">
+                  <p class="font-extrabold font-serif text-7xl ">The Big Dawg</p>                
+              </div> -->
+              <div class="mb-48"> 
+                <div class="flex justify-center"> 
+                  <div class="bg-white bg-opacity-95 flex justify-center border border-gray-300"> 
+                    <div class="w-4/5 py-5">
+                      <quest-rendering
+                        :quest="quest"
+                        @emit-quest-complete="questComplete"
+                        @emit-leave-quest="leaveQuest"
+                      ></quest-rendering>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>        
+        </div>
+      </div>
+
 <!-- inventories -->
-      <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 bg-white bg-opacity-75 ">
+      <div v-if="shopping" class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 bg-white bg-opacity-75 ">
         <div v-if="shopName === 'Apothecary'" class="place-items-start grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">          
           <button
             type="button"
@@ -216,7 +263,7 @@
                     <p v-else class="text-sm text-gray-500">I kid, I kid.  Yes, this is everything right now.  But there's always people buying and selling.  Come back later and I'll probably have different inventory.</p>
                   
                     <p v-if="shopName === 'Magic' &&
-                        conditionalStore.magicShop.questAvailable" 
+                          conditionalStore.magicShop.questAvailable" 
                         class="text-sm text-gray-500">Unless ... if I could get my hands on some extra raw materials ...</p>
                   </div>
                 </div>
@@ -247,7 +294,7 @@
               <div class="mt-5 ">
                 <div class="grid grid-cols-2 pb-4">
                   <!-- Sell items button -->
-                    <button v-if="sellItemsDialog === false" @click="sellItemsDialog = true, convoThread1 = false, convoThread2 = false, landingThread = false" class="ml-10 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
+                    <button v-if="sellItemsDialog === false" @click="sellItemsDialog = true, convoThread1 = false, convoThread2 = false, landingThread = false" class="mx-7 mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
                       Sell items</button>
                   <!-- conversation buttons -->
                     <div class="ml-10 ">
@@ -260,13 +307,21 @@
                         <button v-if="convoThread2 && 
                           shopName === 'Magic' &&
                           conditionalStore.magicShop.questAvailable"
-                          @click="magicShopQuest" 
+                          @click="openDialogModal = false, convoThread1 = false, convoThread2 = false, sellItemsDialog = false, landingThread = true, shopping = false, questing = true" 
                           class="mt-3 rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
                           Maybe I can help?</button>
                     </div>
                 </div>
-                <!-- close modal button -->
-                <button @click="openDialogModal = false, convoThread1 = false, convoThread2 = false, sellItemsDialog = false, landingThread = true" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm" >
+              <!-- attempting to complete a quest activation button -->
+                <div v-if="conditionalStore.magicShop.magicQuest1Started"> 
+                <button @click="openDialogModal = false, convoThread1 = false, convoThread2 = false, sellItemsDialog = false, landingThread = true, attemptMagicshopQuest1()"
+                    class="my-2 inline-flex w-full justify-center rounded-md border border-transparent bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
+                    Complete Quest</button>
+                </div>
+              <!-- close modal button -->
+                <button @click="openDialogModal = false, convoThread1 = false, convoThread2 = false, sellItemsDialog = false, landingThread = true" 
+                  type="button" 
+                  class="inline-flex w-full justify-center rounded-md border border-transparent bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm" >
                   Return to shop</button>                    
               </div>
             </DialogPanel>
@@ -358,49 +413,6 @@
     </Dialog>
   </TransitionRoot>
 
-<!-- magic shopkeeper quest modal display -->
-  <TransitionRoot as="template" :show="openMagicQuestModal">
-    <Dialog as="div" class="relative z-10" @close="openMagicQuestModal = false">
-      <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-      </TransitionChild>
-      <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-            <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-              <div>
-                <!-- shopkeeper image -->
-                <div class="mx-auto flex items-center justify-center rounded-full bg-green-100">
-                  <img src="../../assets/images/village_magic/Magic_Shopkeeper.png" alt="" class="w-52 border border-gray-800" aria-hidden="true" />
-                </div>
-                <!-- dialog -->
-                <div class="mt-3 text-center sm:mt-5">
-                  <!-- <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">You know, I think maybe you can.</DialogTitle> -->
-                  <div class="mt-2">
-                    <div v-if="conditionalStore.magicShop.magicQuest1Available"> 
-                      <magicshop-quest-one
-                        @emit-end-conversation="endMagicQuestConversation"
-                      ></magicshop-quest-one>
-                    </div>
-                    
-                    <!-- <p class="text-sm text-gray-500">Looks like you're out of room to carry anything else.  Try coming back later when you've got more room.</p> -->
-                  </div>
-                </div>                              
-                  <!-- <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"> -->
-                  <!-- buttons -->
-                  <!-- <button @click="openMagicQuestModal = false" type="button" class="inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
-                    Return to Shop</button>
-                  <router-link to="/village" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
-                    Return to Village</router-link> -->
-                <!-- </div> -->
-              </div>
-            </DialogPanel>
-          </TransitionChild>
-        </div>
-      </div>
-    </Dialog>
-  </TransitionRoot>
-
 </template>
   
 
@@ -410,10 +422,12 @@
     import { usePlayerStore } from '@/stores/player'
     import { useShopStore } from '@/stores/shops'
     import { useConditionalsStore } from '@/stores/conditionals';
+    import { useQuestStore } from '@/stores/quests';
 
     const playerStore = usePlayerStore();
     const shopStore = useShopStore();
     const conditionalStore = useConditionalsStore();
+    const questStore = useQuestStore();
     onMounted(() => {
       shopStore.playerId = playerStore.playerId;
     })
@@ -441,6 +455,8 @@
         return props.shopName;
     }
 
+    const shopping = ref(true);
+    const questing = ref(false);
 
     const openDialogModal = ref(false)
     const openDialogModal2 = ref(false)
@@ -557,15 +573,51 @@
 
 
 // to activate shopkeeper quests:
-    import MagicshopQuestOne from '../../components/quests/magicshopQuestOne.vue';
-    const openMagicQuestModal = ref(false);
-    function magicShopQuest() {
-      openDialogModal.value = false;
-      openDialogModal2.value = false;
-      openMagicQuestModal.value = true;
+    const quest = ref("");
+    const attemptQuest = ref(false);
+    import QuestRendering from '../../components/quests/QuestRendering.vue';
+
+    function leaveQuest() {
+      attemptQuest.value = false;
     }
+    function questComplete() {
+      extraQuestRewards();
+      attemptQuest.value = false;
+  }  
+  // in place - to be updated later with actual reward items
+    function extraQuestRewards() {
+      if (quest.value === 'drunkardQuest1') {
+        playerStore.playerPacked.push(
+          {
+            id: 'tavern_drink_1',
+            itemSlot: '',
+            itemUse: 'healing',
+            itemShop: 'Apothecary, Tavern',
+            name: 'Swill',
+            description: "A cheap drink that will heal some of what ails you.  Can also be used to clean armor.",
+            value: '+3 life',
+            attack: null,
+            defense: null,
+            strength: null,
+            life: 3,
+            mana: null,
+            intelligence: null,
+            price: '10',
+            imageSrc: require('../../assets/images/village_tavern/tavern_drink_1.png'),
+          },
+        );
+        conditionalStore.conversationsDrunkard.convo2Availalbe = true;
+      }
+    }
+
+    import MagicshopQuestOne from '../../components/quests/magicshopQuestOne.vue';
     function endMagicQuestConversation() {
-      openMagicQuestModal.value = false;
+      questing.value = false;
+      shopping.value = true;
+    }
+    function attemptMagicshopQuest1() {
+      attemptQuest.value = true;
+      quest.value = questStore.questID;
     }
 
 </script>
