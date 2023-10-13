@@ -43,7 +43,7 @@
                     Speak with Shopkeeper</button>
                 </div>
                 <div class="pt-8">           
-                  <router-link to="/village" class="px-3 py-3 bg-[#a6bf8e] rounded-md hover:bg-green-100 border border-slate-600">
+                  <router-link to="/village2" class="px-3 py-3 bg-[#a6bf8e] rounded-md hover:bg-green-100 border border-slate-600">
                   Return to Village</router-link>
                 </div>
             </div>                         
@@ -361,7 +361,7 @@
                   <!-- buttons -->
                   <button @click="openDialogModal2 = false" type="button" class="inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
                     Keep Shopping</button>
-                  <router-link to="/village" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
+                  <router-link to="/village2" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
                     Return to Village</router-link>
                 </div>
               </div>
@@ -402,7 +402,7 @@
                   <!-- buttons -->
                   <button @click="openDialogModal3 = false" type="button" class="inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#7aa0bd] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-[#305c79] hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
                     Keep Shopping</button>
-                  <router-link to="/village" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
+                  <router-link to="/village2" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-600 bg-[#a6bf8e] px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"  ref="cancelButtonRef">
                     Return to Village</router-link>
                 </div>
               </div>

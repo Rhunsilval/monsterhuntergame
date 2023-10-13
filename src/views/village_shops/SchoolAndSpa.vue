@@ -47,7 +47,7 @@
                     <div class="w-full bg-white bg-opacity-70 py-3">
                         <div class="grid grid-cols-2 gap-5 pb-3">
                             <div class="flex justify-end "> 
-                                <router-link type="button" :to="'/village'" class="w-2/3 h-12 px-3 py-3 text-center bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
+                                <router-link type="button" :to="'/village2'" class="w-2/3 h-12 px-3 py-3 text-center bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
                                     Explore the Village</router-link>
                             </div>
                             <div> 
@@ -106,7 +106,7 @@
                                     Return to Lobby</button>
                             </div>
                             <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
-                                <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                                <router-link :to="'/village2'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                                     Explore the Village</router-link>
                                 <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                                     Hunt for Monsters</router-link>
@@ -143,7 +143,7 @@
                                 Return to Lobby</button>
                         </div>
                         <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
-                            <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                            <router-link :to="'/village2'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                                 Explore the Village</router-link>
                             <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                                 Hunt for Monsters</router-link>
@@ -378,7 +378,7 @@
                             Return to Lobby</button>
                     </div>
                     <div class="relative flex self-center rounded-lg p-0.5 pb-10 mt-3">
-                        <router-link :to="'/village'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
+                        <router-link :to="'/village2'" type="button" class="relative w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                             Explore the Village</router-link>
                         <router-link :to="'/map'" type="button" class="relative ml-1 w-1/2 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:w-auto sm:px-8">
                             Hunt for Monsters</router-link>

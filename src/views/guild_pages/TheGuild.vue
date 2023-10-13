@@ -39,7 +39,7 @@
                         <p class="pb-8 px-5 text-sm w-2/3 ">We offer services and support tailored toward Hunters of all levels. <br/> Please feel free to explore the guild at your leisure.</p>
                       </div>
                       <div class="grid grid-cols-2 gap-5">
-                        <router-link type="button" :to="'/village'" class="px-3 py-3 bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
+                        <router-link type="button" :to="'/village2'" class="px-3 py-3 bg-[#a6bf8e] hover:bg-green-100 border border-slate-600 rounded-lg">
                           Explore the Village</router-link>
                         <router-link :to="'/map'" type="button" class="px-3 py-3 bg-[#305c79] hover:bg-blue-200 border border-gray-600 rounded-lg text-gray-300 hover:text-black">
                           Hunt for Monsters</router-link>
