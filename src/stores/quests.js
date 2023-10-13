@@ -4,6 +4,7 @@ export const useQuestStore =
     defineStore({
         id: 'quest',
         state: () => ({
+            questID: "",
             quests: [
                 {
                     id: 'matildaQuest',
@@ -21,6 +22,60 @@ export const useQuestStore =
                     coins: 0,
                     reward: "Gain permission to enroll in Matilda's School of Magic.",
                     rewardScript: "permission to enroll in my School of Magic."
+                },
+                {
+                    id: 'magicshopQuest1a',
+                    title: 'Magical product development',
+                    active: false,
+                    complete: false,
+                    description: "Collect 10 pieces of Green Chicken and 10 Rotten Femurs for the Magic Shopkeeper.",
+                    need: "Green Chicken",
+                    qty: 10,
+                    need2: "Rotten Femur",
+                    qty2: 10,
+                    largeIcon: require('../assets/images/village_magic/Magic_Shopkeeper.png'),
+                    smallIcon: require('../assets/images/grassland/grassland_monster_1_treasure.png'),
+                    questPoints: 20,
+                    playerXP: 200,
+                    coins: 0,
+                    reward: "Receive a prototype of the shopkeeper's new amulet design.",
+                    rewardScript: "a Lesser Undead Protection amulet ."
+                },
+                {
+                    id: 'magicshopQuest1b',
+                    title: 'Magical product development',
+                    active: false,
+                    complete: false,
+                    description: "Collect 10 pieces of Green Chicken and 10 Rotten Femurs for the Magic Shopkeeper.",
+                    need: "Green Chicken",
+                    qty: 10,
+                    need2: "Rotten Femur",
+                    qty2: 10,
+                    largeIcon: require('../assets/images/village_magic/Magic_Shopkeeper.png'),
+                    smallIcon: require('../assets/images/grassland/grassland_monster_1_treasure.png'),
+                    questPoints: 20,
+                    playerXP: 200,
+                    coins: 800,
+                    reward: "Receive a fee of 800 coins for your troubles.",
+                    rewardScript: "800 coins, as promised.  And my gratitude."
+                },
+                {
+                    id: 'magicshopQuest1c',
+                    title: 'Magical product development',
+                    active: false,
+                    complete: false,
+                    description: "Collect 10 pieces of Green Chicken and 10 Rotten Femurs for the Magic Shopkeeper.",
+                    need: "Green Chicken",
+                    qty: 10,
+                    need2: "Rotten Femur",
+                    qty2: 10,
+                    largeIcon: require('../assets/images/village_magic/Magic_Shopkeeper.png'),
+                    smallIcon: require('../assets/images/grassland/grassland_monster_1_treasure.png'),
+                    questPoints: 25,
+                    playerXP: 250,
+                    coins: 800,
+                    reward: "Receive a fee of 800 coins and a Lesser Undead Protection amulet.",
+                    rewardScript: "800 coins for your troubles.  And a prototype of my new amulet to test out.  And you have my gratitude."
                 },
                 {
                     id: 'guildGrossStew1',

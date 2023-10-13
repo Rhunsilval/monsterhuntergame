@@ -23,7 +23,7 @@
           </div>
           <div v-if="oldGame" class="mt-2 sm:flex sm:justify-center lg:justify-center">
             <div class="rounded-md shadow">
-              <router-link :to="'/village'" type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-800 px-8 py-3 text-base font-medium text-white hover:bg-indigo-400 md:py-4 md:px-10 md:text-lg">
+              <router-link :to="'/village2'" type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-cyan-800 px-8 py-3 text-base font-medium text-white hover:bg-indigo-400 md:py-4 md:px-10 md:text-lg">
               Continue Old Game</router-link>
             </div>
           </div>
