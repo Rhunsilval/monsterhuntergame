@@ -42,7 +42,7 @@ const router = createRouter({
         { path: '/village', component: TheVillage },
         { path: '/village2', component: TheVillage2 },
         { path: '/village_apothecary', component: TheApothecary },
-        { path: '/village_armory', component: TheArmory }, 
+        { path: '/village_tailor', component: TheArmory }, 
         { path: '/village_blacksmith', component: TheBlacksmith }, 
         { path: '/village_oddities', component: TheOdditiesShop },
         { path: '/village_magicshop', component: TheMagicShop },
