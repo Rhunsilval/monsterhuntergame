@@ -56,7 +56,7 @@
             </div>
             
             <div>
-                <router-link :to="'/village'" type="button" @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
+                <router-link :to="'/village2'" type="button" @click="emitLootCollected()" class="bg-[#305c79] hover:bg-blue-200 text-white px-2 py-2 rounded-2xl border border-black">
                   Return to Village</router-link>
             </div>
         </div>

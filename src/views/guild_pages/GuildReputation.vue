@@ -130,7 +130,7 @@
                                             </div>
                                         </div>
                                         <div class="flex self-center text-center rounded-lg p-0.5 pb-20 sm:mt-8">
-                                            <router-link :to="'/village'" type="button" class="whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 px-3">
+                                            <router-link :to="'/village2'" type="button" class="whitespace-nowrap rounded-md border border-gray-600 bg-[#a6bf8e] hover:bg-green-100 py-2 text-sm font-medium text-gray-900 shadow-sm focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 px-3">
                                             Explore the <br/> Village</router-link>
                                             <router-link :to="'/map'" type="button" class=" ml-1 whitespace-nowrap rounded-md border border-gray-600 bg-[#305c79] hover:bg-blue-200 hover:text-black  py-2 text-sm font-medium text-gray-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-1/2 px-3">
                                             Hunt for <br/> Monsters</router-link>

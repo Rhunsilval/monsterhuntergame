@@ -74,7 +74,7 @@
               </router-link>
           </div>
           <div class="flex justify-center"> 
-              <router-link :to="'/village'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/village2'" class="group h-44 w-44 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/allpurpose/Thornstalk_Village.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -232,7 +232,7 @@
               </router-link>
           </div>
           <div class="flex justify-center"> 
-              <router-link :to="'/village'" class="group h-36 w-36 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/village2'" class="group h-36 w-36 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/allpurpose/Thornstalk_Village.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
@@ -254,7 +254,7 @@
               </router-link>
           </div>
           <div class="flex justify-center"> 
-              <router-link :to="'/village'" class="group h-36 w-36 overflow-hidden rounded-full  border border-black">
+              <router-link :to="'/village2'" class="group h-36 w-36 overflow-hidden rounded-full  border border-black">
                   <img src="../../assets/images/allpurpose/Thornstalk_Village.png" alt="" class="h-full w-full object-cover object-center hover:opacity-50 " />
               </router-link>
           </div>
